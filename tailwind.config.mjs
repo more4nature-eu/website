@@ -8,6 +8,11 @@ export default {
       fontSize: {
         '2xs': '.65rem', // 10px
       },
+      colors: {
+        blue: {
+          950: '#243B4A',
+        },
+      },
       fontFamily: {
         sans: ['Lexend', ...defaultTheme.fontFamily.sans],
       },
