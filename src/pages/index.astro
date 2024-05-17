@@ -3,67 +3,220 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Coming soon | more4nature">
-	<div class="flex min-h-dvh flex-col">
-		<header class="p-4 md:p-10">
-			<picture>
-				<source
-					srcset="/logo-desktop.svg"
-					media="(min-width: 1024px)"
-					width="263"
-					height="68"
-				/>
-				<source
-					srcset="/logo-mobile.svg"
-					media="(max-width: 1023px)"
-					width="117"
-					height="24"
-				/>
-				<img
-					src="/logo-desktop.svg"
-					width="263"
-					height="68"
-					alt="Logo more4nature"
-				/>
-			</picture>
-		</header>
-		<main class="m-auto flex max-w-7xl flex-1 items-center p-4 md:py-10 lg:px-0">
-			<div class="grid grid-cols-12">
-				<div class="col-span-12 space-y-8 text-center text-blue-950 lg:col-span-8 lg:col-start-3">
-					<h1 class="text-2xl md:text-8xl">Coming soon</h1>
-					<p class="text-sm md:text-2xl">
-						We are on a mission to trigger transformative change in conservation efforts regarding zero pollution,
-						biodiversity protection and deforestation prevention by strengthening the role of citizens and communities.
-					</p>
-				</div>
-			</div>
-		</main>
-		<footer class="p-4 md:p-10">
-			<div class="float-right flex max-w-[470px] items-center space-x-2 text-right">
-				<div class="font-serif text-2xs text-blue-950 lg:text-xs">
-					This project has received funding from the European Union&apos;s Horizon Europe research and
-					innovation programme under grant agreement No. 101133983
-				</div>
-				<picture class="shrink-0">
-					<source
-						srcset="/flag-of-europe.svg"
-						media="(min-width: 1024px)"
-						width="72"
-						height="48"
-					/>
-					<source
-						srcset="/flag-of-europe.svg"
-						media="(max-width: 1023px)"
-						width="38"
-						height="26"
-					/>
-					<img
-						src="/flag-of-europe.svg"
-						width="72"
-						height="48"
-						alt="Logo European Commission"
-					/>
-				</picture>
-			</div>
-		</footer>
+
+	<div class="bg-forest h-[725px] bg-cover bg-no-repeat flex justify-center p-20">
+		<div class="bg-m4n-logo h-[185px] w-[255px] bg-contain bg-no-repeat" />
 	</div>
+	<div class="container mx-auto px-4 md:px-16 lg:px-[120px] space-y-12 relative pt-72 md:pt-[450px]  xl:pt-[505px]">
+		<div class="bg-green-900 md:grid md:grid-cols-2 gap-4 py-20 px-8 lg:pl-[120px] lg:pr-16 max-w-[1040px] absolute left-4 right-4 lg:left-auto lg:right-auto -top-1/2 translate-y-1/2 lg:-translate-x-[120px] flex flex-col">
+			<h2 class="text-3xl text-lime-300 font-semibold before:w-14 relative before:h-0.5 before:bg-lime-300 before:absolute before:-top-3">Project overview</h2>
+			<div class="text-white font-serif space-y-6 leading-8 text-xs md:text-[16px]">
+				<p>
+					The more4nature project endeavours to catalyse transformative change related to <span class="text-lime-300 font-bold">zero pollution, biodiversity protection, and deforestation</span> prevention by actively involving citizens and communities as key stakeholders in collaborative ECA initiatives.
+				</p>
+				<p>
+					A pivotal aspect in reversing the trajectory of environmental degradation involves redefining interventions in ECA. <span class="text-lime-300 font-bold">Citizen Science Initiatives (CSIs)</span> offer innovative avenues for joint data and knowledge generation, as well as for empowering citizens in sustainable natural resource management. However, barriers to the adoption of <span class="text-lime-300 font-bold">Citizen Generated Data (CGD)</span> and citizen involvement in ECA remain unaddressed.
+				</p>
+			</div>
+		</div>
+
+		<div class="grid md:grid-cols-2 !mt-0">
+			<p class="text-[16px] md:text-2xl font-medium"><span class="font-bold">more4nature</span> adopts a socio-technical approach to confront these challenges and enhance the role of citizens and communities in ECA by:</p>
+		</div>
+
+		<div class="grid md:grid-cols-3 gap-10 !mb-10 md:!mb-20">
+			<div class="space-y-4">
+				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">1</span>
+				<p class="leading-[30px] font-serif">Enhancing the capacity of existing CSIs to provide relevant and reliable data and fostering understanding of the significance of ECA.</p>
+			</div>
+			<div class="space-y-4">
+				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">2</span>
+				<p class="leading-[30px] font-serif">Facilitating and supporting collaboration and partnerships between CSIs and authorities to address data gaps and shape policy monitoring frameworks.</p>
+			</div>
+			<div class="space-y-4">
+				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">3</span>
+				<p class="leading-[30px] font-serif">Developing and testing tools to validate data from CSIs, thereby contributing to the use of such data sources by environmental governance authorities.</p>
+			</div>
+			<div class="space-y-4">
+				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">4</span>
+				<p class="leading-[30px] font-serif">Making CGD an accessible component of the Green Deal Data Space.</p>
+			</div>
+			<div class="space-y-4">
+				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">5</span>
+				<p class="leading-[30px] font-serif">Leveraging the urgency for immediate action among citizens and communities by fostering synergies between CSIs and partnerships, and other initiatives such as Fab Labs, which share values of sustainability transitions and can aid in co-designing actions as part of green and digital transformations.</p>
+			</div>
+		</div>
+
+	</div> 
+
+	<div class="pb-3 md:container md:mx-auto">
+		<div class="grid md:grid-cols-12 gap-3">
+			<div class="md:col-span-8 md:h-full w-full">
+				<video class="h-full w-full" autoplay loop>				  
+					<source src="/butterfly.mp4" type="video/mp4" />
+				</video>
+			</div>
+			<div class="md:col-span-4 h-[475px] md:h-full">
+				<div class="bg-naturist bg-cover bg-no-repeat h-full w-full" />
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-lime-300 py-20 space-y-12">
+		<div class="container mx-auto px-4 md:px-16 lg:px-[120px]">
+			<h2 class="text-green-900 text-3xl md:text-5xl text-center font-serif !leading-[150%]">Join us in empowering Citizen Science for a sustainable future.</h2>
+		</div>
+
+		<div class="flex justify-center">
+			<ul class="space-x-6 list-none flex">
+				<li class="flex">
+					<a href="https://x.com/more4nature" target="_blank" rel="noopener noreferrer" class="p-4 bg-green-900 rounded-lg hover:bg-[#428C8A] transition-colors">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g id="Icon/X">
+							<path id="Vector" d="M18.3263 1.90381H21.6998L14.3297 10.3273L23 21.7898H16.2112L10.894 14.8378L4.80995 21.7898H1.43443L9.31743 12.7799L1 1.90381H7.96111L12.7674 8.25814L18.3263 1.90381ZM17.1423 19.7706H19.0116L6.94539 3.81694H4.93946L17.1423 19.7706Z" fill="white"/>
+							</g>
+						</svg>
+					</a>
+				</li>
+				<li class="flex">
+					<a href="https://www.linkedin.com/company/more4nature" target="_blank" rel="noopener noreferrer" class="p-4 bg-green-900 rounded-lg hover:bg-[#428C8A] transition-colors">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g id="Icon/LinkedIn" clip-path="url(#clip0_7_813)">
+							<path id="Vector" d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z" fill="white"/>
+							</g>
+							<defs>
+							<clipPath id="clip0_7_813">
+							<rect width="24" height="24" fill="white"/>
+							</clipPath>
+							</defs>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="py-12 md:py-20 px-4 md:px-16">
+		<div class="container mx-auto space-y-10 md:space-y-20 xl:px-[120px]">
+			<h2 class="text-3xl text-green-900 font-semibold before:w-14 relative before:h-0.5 before:bg-green-900 before:absolute before:-top-3">Partners</h2>
+			<ul class="flex gap-x-5 md:gap-x-10 flex-wrap gap-y-10 md:gap-y-20">
+				<li class="flex items-center justify-center">
+					<div class="bg-ihe bg-contain bg-no-repeat w-[183px] h-[65px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-creaf bg-contain bg-no-repeat w-[118px] h-[43px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-earthwatch bg-contain bg-no-repeat w-[151px] h-[33px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-dreamocracy bg-contain bg-no-repeat w-[164px] h-[40px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-cw bg-contain bg-no-repeat w-[98px] h-[69px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-ecsa bg-contain bg-no-repeat w-[170px] h-[37px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-ciencias-lisboa bg-contain bg-no-repeat w-[143px] h-[59px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-forest-of-the-world bg-contain bg-no-repeat w-[129px] h-[37px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-flb-iaac bg-contain bg-no-repeat w-[134px] h-[34px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-nilu bg-contain bg-no-repeat w-[43px] h-[46px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-nioo bg-contain bg-no-repeat w-[130px] h-[52px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-niia bg-contain bg-no-repeat w-[69px] h-[20px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-nordeco bg-contain bg-no-repeat w-[98px] h-[42px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-polski bg-contain bg-no-repeat w-[109px] h-[55px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-tracasa-global bg-contain bg-no-repeat w-[112px] h-[35px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-ku bg-contain bg-no-repeat w-[118px] h-[43px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-vms bg-contain bg-no-repeat w-[183px] h-[81px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-necu bg-contain bg-no-repeat w-[43px] h-[35px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-unep bg-contain bg-no-repeat w-[108px] h-[32px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-vito bg-contain bg-no-repeat w-[122px] h-[46px]" />
+				</li>
+				<li class="flex items-center justify-center">
+					<div class="bg-vizzuality bg-contain bg-no-repeat w-[121px] h-[46px]" />
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<footer class="bg-blue-950 text-white">
+		<div class="container mx-auto px-4 md:px-16 lg:px-[120px] py-10 md:py-20">
+			<div class="flex justify-between flex-col md:flex-row space-y-10 md:space-y-0">
+				<div class="bg-m4n-logo-white bg-contain w-[230px] h-16" />
+				<div>
+					<div class="flex flex-col space-y-3">
+						<div class="flex-1"><a href="mailto:more4nature_project@un-ihe.org" class="flex space-x-2">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M19.5 22.4999C20.2956 22.4999 21.0587 22.1839 21.6213 21.6212C22.1839 21.0586 22.5 20.2956 22.5 19.4999V11.3259L15.621 15.3479L19.106 17.2239C19.2812 17.3183 19.4117 17.4785 19.4688 17.6691C19.5259 17.8597 19.5049 18.0653 19.4105 18.2404C19.3161 18.4156 19.1559 18.5461 18.9653 18.6032C18.7747 18.6603 18.5692 18.6393 18.394 18.5449L12.711 15.4849C12.4925 15.3673 12.2482 15.3057 12 15.3057C11.7518 15.3057 11.5075 15.3673 11.289 15.4849L5.606 18.5449C5.43131 18.6353 5.2281 18.6535 5.04015 18.5955C4.8522 18.5375 4.69455 18.408 4.60117 18.2349C4.5078 18.0618 4.48616 17.8589 4.54094 17.67C4.59571 17.4811 4.7225 17.3212 4.894 17.2249L8.379 15.3479L1.5 11.3259V19.4999C1.5 20.2956 1.81607 21.0586 2.37868 21.6212C2.94129 22.1839 3.70435 22.4999 4.5 22.4999H19.5Z" fill="white"/>
+								<path d="M1.5 9.58909V8.84409C1.49992 8.30226 1.64659 7.77052 1.92443 7.30534C2.20227 6.84016 2.6009 6.45892 3.078 6.20209L10.578 2.16409C11.0151 1.92882 11.5036 1.80566 12 1.80566C12.4964 1.80566 12.9849 1.92882 13.422 2.16409L20.922 6.20209C21.3991 6.45892 21.7977 6.84016 22.0756 7.30534C22.3534 7.77052 22.5001 8.30226 22.5 8.84409V9.58909L14.074 14.5151L13.422 14.1641C12.9849 13.9288 12.4964 13.8057 12 13.8057C11.5036 13.8057 11.0151 13.9288 10.578 14.1641L9.926 14.5151L1.5 9.58909Z" fill="white"/>
+							</svg>
+							<span class="font-serif text-[16px]">more4nature_project@un-ihe.org</span>
+						</a></div>
+						<div class="flex space-x-4 items-center">
+						<div>
+							<a href="https://x.com/more4nature" target="_blank" rel="noopener noreferrer" class="flex space-x-2 items-center">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g id="Icon/X">
+									<path id="Vector" d="M18.3263 1.90381H21.6998L14.3297 10.3273L23 21.7898H16.2112L10.894 14.8378L4.80995 21.7898H1.43443L9.31743 12.7799L1 1.90381H7.96111L12.7674 8.25814L18.3263 1.90381ZM17.1423 19.7706H19.0116L6.94539 3.81694H4.93946L17.1423 19.7706Z" fill="white"/>
+									</g>
+								</svg>
+								<span class="font-serif text-[16px]">@more4nature</span>
+							</a>
+						</div>
+						<div>
+							<a href="https://www.linkedin.com/company/more4nature" target="_blank" rel="noopener noreferrer" class="flex space-x-2 items-center">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g id="Icon/LinkedIn" clip-path="url(#clip0_7_813)">
+										<path id="Vector" d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z" fill="white"/>
+											</g>
+										<defs>
+										<clipPath id="clip0_7_813">
+											<rect width="24" height="24" fill="white"/>
+										</clipPath>
+									</defs>
+								</svg>
+								<span class="font-serif text-[16px]">more4nature</span>
+							</a>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mx-auto px-4 md:px-16 lg:px-[120px] py-6 md:py-10 border-t border-t-white/5">
+			<div class="flex gap-6">
+				<div class="bg-europe-flag min-w-[72px] h-12 bg-contain bg-no-repeat" />
+				<p class="font-serif text-xs leading-6">This project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement No. 101133983. UK participants in Horizon Europe Project more4nature are supported by UKRI grant numbers: 10108638 UNEP-WCMC and 10110989 Earthwatch Europe.</p>
+			</div>
+		</div>
+	</footer>
+
 </Layout>
