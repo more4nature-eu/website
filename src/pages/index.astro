@@ -7,8 +7,8 @@ import Layout from '../layouts/Layout.astro';
 	<div class="bg-forest h-[725px] bg-cover bg-no-repeat flex justify-center p-20">
 		<div class="bg-m4n-logo h-[185px] w-[255px] bg-contain bg-no-repeat" />
 	</div>
-	<div class="container mx-auto px-4 md:px-16 lg:px-[120px] space-y-12 relative pt-[435px]  xl:pt-[505px]">
-		<div class="bg-green-900 md:grid md:grid-cols-2 gap-4 py-20 px-8 lg:pl-[120px] lg:pr-16 max-w-[1040px] absolute left-4 right-4 lg:left-auto lg:right-auto -top-1/2 translate-y-1/2 lg:-translate-x-[120px] flex flex-col">
+	<div class="container mx-auto px-4 md:px-16 lg:px-[120px] relative">
+		<div class="bg-green-900 md:grid md:grid-cols-2 gap-4 py-20 px-8 lg:pl-[120px] lg:pr-16 max-w-[1040px] relative -translate-y-[400px]  md:-translate-y-[200px] lg:-translate-x-[120px] flex flex-col">
 			<h2 class="text-3xl text-lime-300 font-semibold before:w-14 relative before:h-0.5 before:bg-lime-300 before:absolute before:-top-3">Project overview</h2>
 			<div class="text-white font-serif space-y-6 leading-8 text-xs md:text-[16px]">
 				<p>
@@ -19,33 +19,36 @@ import Layout from '../layouts/Layout.astro';
 				</p>
 			</div>
 		</div>
-
-		<div class="grid md:grid-cols-2 !mt-0">
-			<p class="text-[16px] md:text-2xl font-medium"><span class="font-bold">more4nature</span> adopts a socio-technical approach to confront these challenges and enhance the role of citizens and communities in ECA by:</p>
+		<div class="-mt-[300px] md:-mt-[100px] space-y-12">
+			<div class="grid md:grid-cols-2 !mt-0">
+				<p class="text-[16px] md:text-2xl font-medium"><span class="font-bold">more4nature</span> adopts a socio-technical approach to confront these challenges and enhance the role of citizens and communities in ECA by:</p>
+			</div>
+	
+			<div class="grid md:grid-cols-3 gap-10 !mb-10 md:!mb-20">
+				<div class="space-y-4">
+					<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">1</span>
+					<p class="leading-[30px] font-serif">Enhancing the capacity of existing CSIs to provide relevant and reliable data and fostering understanding of the significance of ECA.</p>
+				</div>
+				<div class="space-y-4">
+					<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">2</span>
+					<p class="leading-[30px] font-serif">Facilitating and supporting collaboration and partnerships between CSIs and authorities to address data gaps and shape policy monitoring frameworks.</p>
+				</div>
+				<div class="space-y-4">
+					<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">3</span>
+					<p class="leading-[30px] font-serif">Developing and testing tools to validate data from CSIs, thereby contributing to the use of such data sources by environmental governance authorities.</p>
+				</div>
+				<div class="space-y-4">
+					<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">4</span>
+					<p class="leading-[30px] font-serif">Making CGD an accessible component of the Green Deal Data Space.</p>
+				</div>
+				<div class="space-y-4">
+					<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">5</span>
+					<p class="leading-[30px] font-serif">Leveraging the urgency for immediate action among citizens and communities by fostering synergies between CSIs and partnerships, and other initiatives such as Fab Labs, which share values of sustainability transitions and can aid in co-designing actions as part of green and digital transformations.</p>
+				</div>
+			</div>
 		</div>
 
-		<div class="grid md:grid-cols-3 gap-10 !mb-10 md:!mb-20">
-			<div class="space-y-4">
-				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">1</span>
-				<p class="leading-[30px] font-serif">Enhancing the capacity of existing CSIs to provide relevant and reliable data and fostering understanding of the significance of ECA.</p>
-			</div>
-			<div class="space-y-4">
-				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">2</span>
-				<p class="leading-[30px] font-serif">Facilitating and supporting collaboration and partnerships between CSIs and authorities to address data gaps and shape policy monitoring frameworks.</p>
-			</div>
-			<div class="space-y-4">
-				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">3</span>
-				<p class="leading-[30px] font-serif">Developing and testing tools to validate data from CSIs, thereby contributing to the use of such data sources by environmental governance authorities.</p>
-			</div>
-			<div class="space-y-4">
-				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">4</span>
-				<p class="leading-[30px] font-serif">Making CGD an accessible component of the Green Deal Data Space.</p>
-			</div>
-			<div class="space-y-4">
-				<span class="bg-lime-300 w-10 h-10 flex justify-center items-center rounded-full">5</span>
-				<p class="leading-[30px] font-serif">Leveraging the urgency for immediate action among citizens and communities by fostering synergies between CSIs and partnerships, and other initiatives such as Fab Labs, which share values of sustainability transitions and can aid in co-designing actions as part of green and digital transformations.</p>
-			</div>
-		</div>
+		
 
 	</div> 
 
