@@ -7,17 +7,33 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const description = "Discover more4nature, a transformative project empowering citizens and communities to combat environmental degradation. Explore our case studies on zero pollution, biodiversity protection, and deforestation prevention. Learn how you can be part of the solution through collaborative Citizen Science Initiatives and Environmental Compliance Assurance."
+//  update image
+const openGraphTitle = "Citizen Science in Environmental Compliance Assurance";
+const openGraphImage = "https://landgriffon.com/images/og/m4n.png";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="We are on a mission to trigger transformative change in conservation efforts regarding zero pollution, biodiversity protection and deforestation prevention by strengthening the role of citizens and communities." />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="og:title" content={openGraphTitle} />
+		<meta name="og:description" content={description} />
+		<meta name="og:type" content="website" />
+		<meta name="og:url" content="https://more4nature.eu/" />
+		<meta name="og:image" content={openGraphImage} />
+		<!-- twitter/X -->
+		<meta name="twitter:card" content="summary" /> 
+		<meta name="twitter:site" content="@more4nature" /> 
+		<meta name="twitter:title" content={openGraphTitle} /> 
+		<meta name="twitter:description" content={description} /> 
+		<meta name="twitter:image" content={openGraphImage} />
 	</head>
 	<body>
 		<slot />
