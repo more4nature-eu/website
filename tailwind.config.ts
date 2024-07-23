@@ -8,7 +8,10 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: '3.75rem',
+      padding: {
+        DEFAULT: '1rem',
+        md: '3.75rem',
+      },
       screens: {
         '2xl': '1400px',
       },
@@ -16,6 +19,40 @@ const config = {
     extend: {
       fontFamily: {
         sans: ['Legend', ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        '2xs': [
+          '0.625rem',
+          {
+            lineHeight: '1.25rem',
+          },
+        ],
+        lg: [
+          '1.25rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
+        xl: [
+          '2.375rem',
+          {
+            lineHeight: '3rem',
+          },
+        ],
+        '2xl': [
+          '4rem',
+          {
+            lineHeight: '4.25rem',
+            fontWeight: '700',
+          },
+        ],
+        '3xl': [
+          '5.625rem',
+          {
+            lineHeight: '4.75rem',
+            fontWeight: '700',
+          },
+        ],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -81,21 +118,25 @@ const config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        '4xl': 'calc(var(--radius) * 4)',
       },
-      // keyframes: {
-      //   'accordion-down': {
-      //     from: { height: '0' },
-      //     to: { height: 'var(--radix-accordion-content-height)' },
-      //   },
-      //   'accordion-up': {
-      //     from: { height: 'var(--radix-accordion-content-height)' },
-      //     to: { height: '0' },
-      //   },
-      // },
-      // animation: {
-      //   'accordion-down': 'accordion-down 0.2s ease-out',
-      //   'accordion-up': 'accordion-up 0.2s ease-out',
-      // },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      aria: {
+        invalid: 'invalid="true"',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
