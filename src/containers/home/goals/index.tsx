@@ -1,8 +1,6 @@
 import Image from 'next/image';
 
-import { FaArrowRight } from 'react-icons/fa6';
-
-import { Button } from '@/components/ui/button';
+import DiscoverMoreButton from '@/components/discover-more-button';
 import {
   Dialog,
   DialogContent,
@@ -27,12 +25,7 @@ export default function Goals() {
             </p>
             <Dialog>
               <DialogTrigger asChild>
-                <Button type="button" variant="link" size="none" className="space-x-2 text-white">
-                  <span className="uppercase">Discover more</span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white">
-                    <FaArrowRight className="" />
-                  </span>
-                </Button>
+                <DiscoverMoreButton />
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>

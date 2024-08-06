@@ -9,16 +9,16 @@ const config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '1rem',
+        DEFAULT: '2rem',
         md: '3.75rem',
-      },
-      screens: {
-        '2xl': '1400px',
       },
     },
     extend: {
       fontFamily: {
         sans: ['Legend', ...defaultTheme.fontFamily.sans],
+      },
+      screens: {
+        '2xl': '1400px',
       },
       fontSize: {
         '2xs': [
@@ -136,6 +136,9 @@ const config = {
       },
       aria: {
         invalid: 'invalid="true"',
+      },
+      gridTemplateColumns: {
+        partners: 'repeat(4, minmax(0, 242px))',
       },
     },
   },
