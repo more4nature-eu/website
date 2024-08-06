@@ -4,7 +4,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2025-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/town.webp',
     location: 'thailand',
   },
   {
@@ -12,7 +12,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2024-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/people.webp',
     location: 'thailand',
   },
   {
@@ -20,7 +20,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2023-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/town.webp',
     location: 'street name 5, Copenhagen',
   },
   {
@@ -28,7 +28,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2022-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/people.webp',
     location: 'street name 5, Copenhagen',
   },
   {
@@ -36,7 +36,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2022-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/town.webp',
     location: 'street name 5, Copenhagen',
   },
   {
@@ -44,7 +44,7 @@ const events = [
     description:
       '<p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p><p>Event description lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
     date: '2022-12-31',
-    image: '/images/events-back/event-1.webp',
+    image: '/images/events/people.webp',
     location: 'street name 5, Copenhagen',
   },
 ];

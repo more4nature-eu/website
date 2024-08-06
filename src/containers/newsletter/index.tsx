@@ -88,7 +88,6 @@ export default function Newsletter() {
       evt.preventDefault();
 
       form.handleSubmit(async (formValues) => {
-        console.log(formValues);
         try {
           const parsed = NewsletterSchema.omit({
             privacyPolicy: true,

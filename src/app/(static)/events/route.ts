@@ -4,7 +4,7 @@ import { EventsService, Event } from '@/lib/events.service';
 
 import events from '@/data/events';
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
 
   const filters: Partial<Event> = {
