@@ -18,11 +18,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import APP_HOSTNAME from '@/lib';
 import formatDate from '@/utils/date';
 
 export default function UpcomingEvents() {
   const { data } = useQuery<Event[]>({
     queryKey: queryKeys.events.upcoming.queryKey,
+  });
+
+  console.log({
+    APP_HOSTNAME,
+    final: `${APP_HOSTNAME}/events`,
   });
 
   return (
