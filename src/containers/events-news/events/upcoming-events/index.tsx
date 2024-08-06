@@ -25,8 +25,6 @@ export default function UpcomingEvents() {
     queryKey: queryKeys.events.upcoming.queryKey,
   });
 
-  console.log({ NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL });
-
   return (
     <ul className="">
       {data?.map(({ name, image, location, date, description }) => (
