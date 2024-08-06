@@ -1,17 +1,22 @@
-import fs from 'fs';
-import path from 'path';
+import { NextRequest, NextResponse } from 'next/server';
 
-import { NextApiRequest, NextApiResponse } from 'next';
+import { EventsService, Event } from '@/lib/events.service';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const filePath = path.join(process.cwd(), 'data', 'events.json');
-  const jsonData = fs.readFileSync(filePath, 'utf-8');
-  const events = JSON.parse(jsonData);
+import events from '@/data/events';
 
-  const futureEvents = events.filter((event: { date: string }) => {
-    const eventDate = new Date(event.date);
-    return eventDate > new Date();
-  });
+export async function GET(req: NextRequest, res: NextResponse) {
+  const { searchParams } = req.nextUrl;
 
-  res.status(200).json(futureEvents);
+  const filters: Partial<Event> = {
+    location: searchParams.get('location') || undefined,
+    date: searchParams.get('date') || undefined,
+    name: searchParams.get('name') || undefined,
+  };
+  const eventsService = new EventsService(events, filters);
+  const data = {
+    upcoming: eventsService.getUpcomingEvents(),
+    past: eventsService.getPastEvents(),
+  };
+
+  return NextResponse.json({ data });
 }
