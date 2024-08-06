@@ -1,0 +1,26 @@
+name: Tests
+
+on:
+  push:
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Node setup
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Run Client tests
+        run: pnpm test
