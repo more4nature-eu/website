@@ -14,7 +14,8 @@ export default function Intro() {
       />
       <div className="absolute top-0 h-full w-full bg-gradient-to-r from-grey-900/80 via-transparent to-grey-900/50" />
       <div className="container relative z-10 flex h-full flex-col py-4">
-        <Header />
+        <Header showSocial />
+
         <div className="flex flex-1 flex-col items-start justify-center space-y-9 md:grid md:grid-cols-12 md:items-center md:justify-between">
           <div className="col-span-8 space-y-9 text-white">
             <h1 className="text-xl text-white md:text-3xl">
@@ -27,7 +28,7 @@ export default function Intro() {
               <span className="font-bold">of citizen science initiatives with authorities</span>.
             </p>
           </div>
-          <SocialMenu className="col-span-4 justify-center md:flex-col md:items-end" />
+          <SocialMenu className="col-span-4 justify-center md:hidden" />
         </div>
       </div>
     </div>
