@@ -51,9 +51,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <LayoutProviders>
       <html lang="en">
-        <body className={lexend.className}>
-          <main>{children}</main>
-        </body>
+        <body className={lexend.className}>{children}</body>
       </html>
     </LayoutProviders>
   );

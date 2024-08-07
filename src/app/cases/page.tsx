@@ -1,7 +1,15 @@
+import Header from '@/containers/cases/header';
+import Map from '@/containers/cases/map';
+import Sidebar from '@/containers/cases/sidebar';
+
 export default function Cases() {
   return (
-    <div>
-      <h1>Cases</h1>
-    </div>
+    <>
+      <Header />
+      <div className="flex flex-1">
+        <Sidebar />
+        <Map />
+      </div>
+    </>
   );
 }
