@@ -5,6 +5,7 @@ import { Lexend } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import './globals.css';
+import LayoutProviders from '@/app/providers';
 
 const lexend = Lexend({ subsets: ['latin'], weight: ['100', '400', '500', '700'] });
 
@@ -48,10 +49,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
-      <body className={lexend.className}>
-        <main>{children}</main>
-      </body>
-    </html>
+    <LayoutProviders>
+      <html lang="en">
+        <body className={lexend.className}>
+          <main>{children}</main>
+        </body>
+      </html>
+    </LayoutProviders>
   );
 }

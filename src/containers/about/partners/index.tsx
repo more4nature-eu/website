@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { FaArrowRight } from 'react-icons/fa6';
 import { HiOutlineExternalLink, HiPlus } from 'react-icons/hi';
 
 import { Button } from '@/components/ui/button';
