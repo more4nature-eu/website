@@ -11,9 +11,7 @@ import APP_HOSTNAME from '@/lib';
 
 const INITIAL_NEWS_PAGE = 1;
 
-export default async function EventsNews() {
-  const queryClient = new QueryClient();
-
+const prefetchData = async (queryClient: QueryClient) => {
   await queryClient.prefetchQuery({
     queryKey: queryKeys.events.past.queryKey,
     queryFn: async () => {
@@ -37,7 +35,7 @@ export default async function EventsNews() {
     queryFn: async () => {
       try {
         const response = await fetch(`${APP_HOSTNAME}/events
-`);
+  `);
         if (!response.ok) {
           throw new Error('Failed to fetch upcoming events');
         }
@@ -67,6 +65,12 @@ export default async function EventsNews() {
       }
     },
   });
+};
+
+export default async function EventsNews() {
+  const queryClient = new QueryClient();
+
+  await prefetchData(queryClient);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
