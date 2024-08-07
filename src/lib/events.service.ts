@@ -1,6 +1,6 @@
 // src/services/EventsService.ts
 
-import SearchEngine from '@/lib/search.engine';
+import { Paginator } from '@/lib/paginator';
 
 export type Event = {
   name: string;
@@ -10,7 +10,7 @@ export type Event = {
   location: string;
 };
 
-export class EventsService extends SearchEngine<Event> {
+export class EventsService extends Paginator<Event> {
   private readonly currentDate: string;
   private readonly events: Event[];
   private readonly filters: Partial<Event>;
@@ -39,5 +39,16 @@ export class EventsService extends SearchEngine<Event> {
   getPastEvents(): Event[] {
     const pastEvents = this.events.filter((event) => event.date <= this.currentDate);
     return this.filter(pastEvents, this.filters);
+  }
+
+  static extractFilters(searchParams: URLSearchParams): {
+    filters: Partial<Event>;
+  } {
+    const filters: Partial<Event> = {
+      location: searchParams.get('location') || undefined,
+      date: searchParams.get('date') || undefined,
+      name: searchParams.get('name') || undefined,
+    };
+    return { filters };
   }
 }
