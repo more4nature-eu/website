@@ -25,7 +25,7 @@ export default function Header({
   showSocial = false,
 }: {
   className?: HTMLDivElement['className'];
-  showSocial: boolean;
+  showSocial?: boolean;
 }) {
   const handleContactUs = useCallback(() => {
     document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
