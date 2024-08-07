@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { EventsService, Event } from '@/lib/events.service';
+import { EventsService } from '@/lib/events.service';
 
 import events from '@/data/events';
 
