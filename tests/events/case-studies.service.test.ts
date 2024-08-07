@@ -4,17 +4,18 @@ import {
   ComplianceType,
   Impact,
   ThematicArea,
+  Location,
 } from '@/lib/case-studies.service';
 
 const mockCaseStudies: CaseStudy[] = [
   {
     name: 'Case Study Alpha',
     description: 'Description for Case Study Alpha',
-    location: 'Arizona',
+    location: Location.ASIA,
     impact: Impact.LOCAL,
     complianceType: ComplianceType.PROMOTING,
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, 'Arizona'],
+    tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.ASIA],
     citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
     citizenScienceData: ['Data 1A', 'Data 1B'],
     partner: { name: 'Partner 1', url: 'http://partner1.com' },
@@ -22,11 +23,11 @@ const mockCaseStudies: CaseStudy[] = [
   {
     name: 'Beta Study',
     description: 'Description for Beta Study',
-    location: 'Brazil',
+    location: Location.AMERICAS,
     impact: Impact.NATIONAL,
     complianceType: ComplianceType.MONITORING,
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, 'Brazil'],
+    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
     citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
     citizenScienceData: ['Data 2A', 'Data 2B'],
     partner: { name: 'Partner 2', url: 'http://partner2.com' },
@@ -34,11 +35,11 @@ const mockCaseStudies: CaseStudy[] = [
   {
     name: 'Case Study Gamma',
     description: 'Description for Case Study Gamma',
-    location: 'Gaza',
+    location: Location.AFRICA,
     impact: Impact.LOCAL,
     complianceType: ComplianceType.ENFORCEMENT,
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-    tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, 'Gaza'],
+    tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, Location.AFRICA],
     citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
     citizenScienceData: ['Data 3A', 'Data 3B'],
     partner: { name: 'Partner 3', url: 'http://partner3.com' },
@@ -46,11 +47,11 @@ const mockCaseStudies: CaseStudy[] = [
   {
     name: 'Delta Study',
     description: 'Description for Delta Study',
-    location: 'Kazakhstan',
+    location: Location.EUROPE,
     impact: Impact.NATIONAL,
     complianceType: ComplianceType.PROMOTING,
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, 'Kazakhstan'],
+    tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
     citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
     citizenScienceData: ['Data 4A', 'Data 4B'],
     partner: { name: 'Partner 4', url: 'http://partner4.com' },
@@ -58,11 +59,11 @@ const mockCaseStudies: CaseStudy[] = [
   {
     name: 'Case Study Epsilon',
     description: 'Description for Case Study Epsilon',
-    location: 'Azerbaijan',
+    location: Location.OCEANIA,
     impact: Impact.LOCAL,
     complianceType: ComplianceType.MONITORING,
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.LOCAL, ThematicArea.BIODIVERSITY_PROTECTION, 'Azerbaijan'],
+    tags: [Impact.LOCAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
     citizenScienceInitiatives: ['Initiative 5A', 'Initiative 5B'],
     citizenScienceData: ['Data 5A', 'Data 5B'],
     partner: { name: 'Partner 5', url: 'http://partner5.com' },
@@ -79,11 +80,11 @@ describe('CaseStudyService', () => {
       {
         name: 'Case Study Alpha',
         description: 'Description for Case Study Alpha',
-        location: 'Arizona',
+        location: Location.ASIA,
         impact: Impact.LOCAL,
         complianceType: ComplianceType.PROMOTING,
         thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, 'Arizona'],
+        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.ASIA],
         citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
         citizenScienceData: ['Data 1A', 'Data 1B'],
         partner: { name: 'Partner 1', url: 'http://partner1.com' },
@@ -92,7 +93,7 @@ describe('CaseStudyService', () => {
   });
 
   it('should filter case studies by keyword in tags', () => {
-    const filters = { keyword: 'Brazil' };
+    const filters = { keyword: 'Americas' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
 
@@ -100,11 +101,11 @@ describe('CaseStudyService', () => {
       {
         name: 'Beta Study',
         description: 'Description for Beta Study',
-        location: 'Brazil',
+        location: Location.AMERICAS,
         impact: Impact.NATIONAL,
         complianceType: ComplianceType.MONITORING,
         thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-        tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, 'Brazil'],
+        tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
         citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
         citizenScienceData: ['Data 2A', 'Data 2B'],
         partner: { name: 'Partner 2', url: 'http://partner2.com' },
@@ -129,11 +130,11 @@ describe('CaseStudyService', () => {
       {
         name: 'Case Study Gamma',
         description: 'Description for Case Study Gamma',
-        location: 'Gaza',
+        location: Location.AFRICA,
         impact: Impact.LOCAL,
         complianceType: ComplianceType.ENFORCEMENT,
         thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-        tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, 'Gaza'],
+        tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, Location.AFRICA],
         citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
         citizenScienceData: ['Data 3A', 'Data 3B'],
         partner: { name: 'Partner 3', url: 'http://partner3.com' },
@@ -142,7 +143,7 @@ describe('CaseStudyService', () => {
   });
 
   it('should filter case studies by partial keyword in tags', () => {
-    const filters = { keyword: 'Ka' };
+    const filters = { keyword: 'Europe' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
 
@@ -150,11 +151,11 @@ describe('CaseStudyService', () => {
       {
         name: 'Delta Study',
         description: 'Description for Delta Study',
-        location: 'Kazakhstan',
+        location: Location.EUROPE,
         impact: Impact.NATIONAL,
         complianceType: ComplianceType.PROMOTING,
         thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, 'Kazakhstan'],
+        tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
         citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
         citizenScienceData: ['Data 4A', 'Data 4B'],
         partner: { name: 'Partner 4', url: 'http://partner4.com' },

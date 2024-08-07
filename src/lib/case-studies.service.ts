@@ -19,8 +19,15 @@ export enum ComplianceType {
 
 // TODO: Looking to the design, tags should have any value of Impact, ThematicArea and Location. Not sure how to handle this because in the design only countries are shown as location,
 //       even having Local as impact. However, for other entities, location has a unknown granularity.
-export type Tag = Impact | ThematicArea | string;
+export type Tag = Impact | ThematicArea | Location;
 export type Partner = { name: string; url: string };
+export enum Location {
+  EUROPE = 'Europe',
+  AMERICAS = 'Americas',
+  ASIA = 'Asia',
+  AFRICA = 'Africa',
+  OCEANIA = 'Oceania',
+}
 
 // TODO: It is not clear if Impact and Compliance and Partner types should be an array of values or a single value.
 export type CaseStudy = {
@@ -29,7 +36,7 @@ export type CaseStudy = {
   citizenScienceInitiatives: string[];
   citizenScienceData: string[];
   partner: Partner;
-  location: string;
+  location: Location;
   impact: Impact;
   complianceType: ComplianceType;
   thematicAreas: ThematicArea[];
@@ -91,7 +98,7 @@ export class CaseStudyService extends Paginator<CaseStudy> {
         searchParams.getAll('thematicAreas').map((area) => area as ThematicArea) || undefined,
       complianceType: (searchParams.get('complianceType') as ComplianceType) || undefined,
       impact: (searchParams.get('impact') as Impact) || undefined,
-      location: searchParams.get('location') || undefined,
+      location: (searchParams.get('location') as Location) || undefined,
       keyword: searchParams.get('keyword') || undefined,
     };
     const paginationFilters = this.extractPaginationFilters(searchParams);
