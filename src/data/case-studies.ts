@@ -6,7 +6,7 @@ import {
   ComplianceType,
 } from '@/lib/case-studies.service';
 
-const CASE_STUDIES: CaseStudy[] = [
+export const CASE_STUDIES: CaseStudy[] = [
   {
     name: 'Case Study Alpha',
     description: 'Description for Case Study Alpha',
