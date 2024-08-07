@@ -6,7 +6,7 @@ export const eventKeys = createQueryKeys('events', {
 });
 
 export const newsKeys = createQueryKeys('news', {
-  paginated: ({ page = 1 }) => [{ page }],
+  paginated: ({ page }) => [{ page }],
 });
 
 export const queryKeys = mergeQueryKeys(eventKeys, newsKeys);

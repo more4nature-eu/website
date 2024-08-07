@@ -2,6 +2,12 @@
 
 import { useState } from 'react';
 
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
+
+import { News } from '@/lib/news.service';
+import { PaginatedResult } from '@/lib/paginator';
+import queryKeys from '@/lib/query-keys';
+
 import DiscoverMoreButton from '@/components/discover-more-button';
 import { Paginator } from '@/components/paginator';
 import { Badge } from '@/components/ui/badge';
@@ -15,28 +21,7 @@ import {
 } from '@/components/ui/dialog';
 import formatDate from '@/utils/date';
 
-const NEWS = [
-  {
-    name: 'News 1',
-    date: '2022-01-01',
-    description: '<p>News 1 description</p>',
-    categories: ['category 1', 'category 2'],
-  },
-  {
-    name: 'Lorem ipsum dolor sit amet consectetur.',
-    date: '2022-01-01',
-    description: '<p>News 1 description</p>',
-    categories: ['category 1', 'category 2'],
-  },
-  {
-    name: 'News 1',
-    date: '2022-01-01',
-    description: '<p>News 1 description</p>',
-    categories: ['category 1', 'category 2'],
-  },
-];
-
-function NewsItem({ name, date, description, categories }: (typeof NEWS)[number]) {
+function NewsItem({ name, date, description, categories }: News) {
   return (
     <div className="grid grid-cols-12 border-t border-t-white/30 py-16 text-white">
       <span className="col-span-3 uppercase">{formatDate(date)}</span>
@@ -76,13 +61,32 @@ function NewsItem({ name, date, description, categories }: (typeof NEWS)[number]
   );
 }
 
+const PAGE_SIZE = 5;
+
 export default function NewsList() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
+
+  const { data } = useQuery<PaginatedResult<News>>({
+    queryKey: queryKeys.news.paginated({ page: page + 1 }).queryKey,
+    queryFn: async () => {
+      try {
+        const response = await fetch(`/news?page=${page + 1}&pageSize=${PAGE_SIZE}`);
+
+        if (!response.ok) {
+          throw new Error('Error fetching news');
+        }
+        return await response.json();
+      } catch (err) {
+        throw new Error('Error fetching news');
+      }
+    },
+    placeholderData: keepPreviousData,
+  });
 
   return (
     <>
       <ul>
-        {NEWS.map((news) => (
+        {data?.data?.map((news) => (
           <li key={news.name}>
             <NewsItem {...news} />
           </li>
@@ -90,7 +94,9 @@ export default function NewsList() {
       </ul>
       <Paginator
         pageIndex={page}
-        pageCount={12}
+        pageCount={Math.ceil(
+          (data?.total as NonNullable<PaginatedResult<News>['total']>) / PAGE_SIZE,
+        )}
         totalPagesToDisplay={6}
         onPagePrevious={() => {
           setPage(page - 1);

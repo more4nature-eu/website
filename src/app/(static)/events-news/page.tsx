@@ -2,9 +2,11 @@ import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { HydrationBoundary } from '@tanstack/react-query';
 
 import { EventsService } from '@/lib/events.service';
+import NewsService from '@/lib/news.service';
 import queryKeys from '@/lib/query-keys';
 
 import events from '@/data/events';
+import news from '@/data/news';
 
 import EventsShowcase from '@/containers/events-news/events';
 import News from '@/containers/events-news/news';
@@ -23,7 +25,13 @@ const prefetchData = async (queryClient: QueryClient) => {
   queryClient.setQueryData(queryKeys.events.past.queryKey, data.past);
   queryClient.setQueryData(queryKeys.events.upcoming.queryKey, data.upcoming);
 
-  // todo: prefetch news
+  const newsService = new NewsService(news, {}, { page: INITIAL_NEWS_PAGE, pageSize: 5 });
+  const paginatedNews = newsService.searchNews();
+
+  queryClient.setQueryData(
+    queryKeys.news.paginated({ page: INITIAL_NEWS_PAGE }).queryKey,
+    paginatedNews,
+  );
 };
 
 export default async function EventsNews() {
