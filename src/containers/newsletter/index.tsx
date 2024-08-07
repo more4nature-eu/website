@@ -105,7 +105,7 @@ export default function Newsletter() {
   );
 
   return (
-    <div className="container space-y-14 py-16">
+    <div className="container space-y-14 py-16" id="contact-us">
       <h2 className="text-xl font-bold text-grey-800 md:text-2xl">
         Interested in environmental conservation?
       </h2>
@@ -201,7 +201,7 @@ export default function Newsletter() {
                           aria-invalid={form.formState.errors[field.name] !== undefined}
                         />
                         <Label htmlFor={field.name} className="font-normal">
-                          I agree with 4Growth&apos;s{' '}
+                          I agree with more4nature&apos;s{' '}
                           <Link
                             href="/privacy-policy"
                             className="underline"

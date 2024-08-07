@@ -26,7 +26,7 @@ export default function UpcomingEvents() {
   });
 
   return (
-    <ul className="">
+    <ul>
       {data?.map(({ name, image, location, date, description }) => (
         <li key={name} className="grid grid-cols-12 gap-14 border-t border-t-grey-800/30 py-[60px]">
           <div className="relative col-span-6 h-[242px]">
