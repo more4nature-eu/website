@@ -1,5 +1,7 @@
 'use client';
 
+import { useCallback } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,10 +17,13 @@ export const SECTIONS = [
   { name: 'About', href: '/about' },
   { name: 'Cases', href: '/cases' },
   { name: 'Events & News', href: '/events-news' },
-  { name: 'Contact us', href: '#contact-us' },
 ];
 
 export default function Header({ className }: { className?: HTMLDivElement['className'] }) {
+  const handleContactUs = useCallback(() => {
+    document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
   return (
     <header className={cn('flex items-center justify-between', className)}>
       <Link href="/" className="inline-flex">
@@ -52,6 +57,15 @@ export default function Header({ className }: { className?: HTMLDivElement['clas
                 </Link>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                className="text-lg hover:underline hover:underline-offset-4"
+                onClick={handleContactUs}
+              >
+                Contact us
+              </button>
+            </li>
           </ul>
         </PopoverContent>
       </Popover>
