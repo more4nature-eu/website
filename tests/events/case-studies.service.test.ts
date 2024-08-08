@@ -71,7 +71,7 @@ const mockCaseStudies: CaseStudy[] = [
 ];
 
 describe('CaseStudyService', () => {
-  it('should filter case studies by keyword in name', () => {
+  it('should filter cases studies by keyword in name', () => {
     const filters = { keyword: 'Alpha' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
@@ -92,7 +92,7 @@ describe('CaseStudyService', () => {
     ]);
   });
 
-  it('should filter case studies by keyword in tags', () => {
+  it('should filter cases studies by keyword in tags', () => {
     const filters = { keyword: 'Americas' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
@@ -113,7 +113,7 @@ describe('CaseStudyService', () => {
     ]);
   });
 
-  it('should filter case studies by keyword in both name and tags', () => {
+  it('should filter cases studies by keyword in both name and tags', () => {
     const filters = { keyword: 'Study' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
@@ -121,7 +121,7 @@ describe('CaseStudyService', () => {
     expect(result.data.length).toBe(5);
   });
 
-  it('should filter case studies by partial keyword in name', () => {
+  it('should filter cases studies by partial keyword in name', () => {
     const filters = { keyword: 'gamm' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();
@@ -142,7 +142,7 @@ describe('CaseStudyService', () => {
     ]);
   });
 
-  it('should filter case studies by partial keyword in tags', () => {
+  it('should filter cases studies by partial keyword in tags', () => {
     const filters = { keyword: 'Europe' };
     const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
     const result = caseStudyService.searchCaseStudies();

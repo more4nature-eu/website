@@ -6,7 +6,7 @@ export default function Cases() {
   return (
     <>
       <Header />
-      <div className="flex flex-1">
+      <div className="relative flex flex-1">
         <Sidebar />
         <Map />
       </div>
