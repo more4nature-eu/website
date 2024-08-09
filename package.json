@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --config jest.config.ts",
-    "lint": "next lint"
+    "lint": "next lint",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop"
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.0",
