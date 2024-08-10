@@ -9,6 +9,10 @@ export const newsKeys = createQueryKeys('news', {
   paginated: ({ page }) => [{ page }],
 });
 
-export const queryKeys = mergeQueryKeys(eventKeys, newsKeys);
+export const caseStudyKeys = createQueryKeys('cases', {
+  paginated: ({ page }) => [{ page }],
+});
+
+export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys);
 
 export default queryKeys;
