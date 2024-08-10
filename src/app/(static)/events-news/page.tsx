@@ -1,5 +1,4 @@
-import { QueryClient, dehydrate } from '@tanstack/react-query';
-import { HydrationBoundary } from '@tanstack/react-query';
+import { QueryClient, dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 import { EventsService } from '@/lib/events.service';
 import NewsService from '@/lib/news.service';
