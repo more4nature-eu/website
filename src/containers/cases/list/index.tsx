@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import Case from '@maplibre/maplibre-gl-style-spec/src/expression/definitions/case';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 
 import { CaseStudy } from '@/lib/case-studies.service';
@@ -64,30 +65,13 @@ import formatDate from '@/utils/date';
 
 const PAGE_SIZE = 5;
 
-export default function CaseStudyList() {
+export default function CaseStudyList({ data }: PaginatedResult<CaseStudy>) {
   const [page, setPage] = useState(0);
-
-  const { data } = useQuery<PaginatedResult<CaseStudy>>({
-    queryKey: queryKeys.cases.paginated({ page: page + 1 }).queryKey,
-    queryFn: async () => {
-      try {
-        const response = await fetch(`/case-studies?page=${page + 1}&pageSize=${PAGE_SIZE}`);
-
-        if (!response.ok) {
-          throw new Error('Error fetching cases');
-        }
-        return await response.json();
-      } catch (err) {
-        throw new Error('Error fetching cases');
-      }
-    },
-    placeholderData: keepPreviousData,
-  });
 
   return (
     <>
       <ul>
-        {data?.data?.map((news) => (
+        {data?.map((news) => (
           <li key={news.name} className="text-red-500">
             {news.name}
           </li>

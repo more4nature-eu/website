@@ -1,4 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 import { CaseStudyService } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
@@ -18,11 +18,13 @@ const prefetchData = async (queryClient: QueryClient) => {
     { page: INITIAL_NEWS_PAGE, pageSize: 5 },
   );
   const paginatedCaseStudies = caseStudiesService.searchCaseStudies();
+  const totalCaseStudies = paginatedCaseStudies.total;
 
   queryClient.setQueryData(
     queryKeys.cases.paginated({ page: INITIAL_NEWS_PAGE }).queryKey,
     paginatedCaseStudies,
   );
+  queryClient.setQueryData(queryKeys.totalCases.total.queryKey, totalCaseStudies);
 };
 
 export default async function Cases() {
@@ -30,11 +32,13 @@ export default async function Cases() {
   await prefetchData(queryClient);
   return (
     <>
-      <Header />
-      <div className="relative flex flex-1">
-        <Sidebar />
-        <Map />
-      </div>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Header />
+        <div className="relative flex flex-1">
+          <Sidebar />
+          <Map />
+        </div>
+      </HydrationBoundary>
     </>
   );
 }

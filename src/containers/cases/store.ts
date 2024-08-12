@@ -17,5 +17,3 @@ export const filtersAtom = atom<{
   impact: [],
   location: [],
 });
-
-export const totalCaseStudiesAtom = atom<number>(0);

@@ -13,6 +13,10 @@ export const caseStudyKeys = createQueryKeys('cases', {
   paginated: ({ page }) => [{ page }],
 });
 
-export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys);
+export const totalCaseStudiesKeys = createQueryKeys('totalCases', {
+  total: null,
+});
+
+export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys, totalCaseStudiesKeys);
 
 export default queryKeys;

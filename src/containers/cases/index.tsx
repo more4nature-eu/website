@@ -12,7 +12,6 @@ export default function CaseStudies() {
   return (
     <div className="h-full w-full">
       <Wrapper className="h-full w-full space-y-16 bg-transparent">
-        <h4 className="text-xl text-white">CaseStudies</h4>
         <CaseStudyList />
       </Wrapper>
     </div>
