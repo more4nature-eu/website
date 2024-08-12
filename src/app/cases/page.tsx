@@ -9,15 +9,11 @@ import Header from '@/containers/cases/header';
 import Map from '@/containers/cases/map';
 import Sidebar from '@/containers/cases/sidebar';
 
-const INITIAL_NEWS_PAGE = 1;
-
 const prefetchData = async (queryClient: QueryClient) => {
   const caseStudiesService = new CaseStudyService(CASE_STUDIES, {}, {});
   const allCaseStudies = caseStudiesService.searchCaseStudies();
-  const totalCaseStudies = allCaseStudies.total;
 
   queryClient.setQueryData(queryKeys.cases.cases.queryKey, allCaseStudies);
-  queryClient.setQueryData(queryKeys.totalCases.total.queryKey, totalCaseStudies);
 };
 
 export default async function Cases() {

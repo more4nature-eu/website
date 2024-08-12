@@ -13,10 +13,6 @@ export const caseStudyKeys = createQueryKeys('cases', {
   cases: null,
 });
 
-export const totalCaseStudiesKeys = createQueryKeys('totalCases', {
-  total: null,
-});
-
-export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys, totalCaseStudiesKeys);
+export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys);
 
 export default queryKeys;

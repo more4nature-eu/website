@@ -2,13 +2,15 @@
 
 import { useQuery } from '@tanstack/react-query';
 
+import { CaseStudy } from '@/lib/case-studies.service';
+import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
 
 export default function CaseStudiesTotal() {
-  const { data } = useQuery<number>({
-    queryKey: queryKeys.totalCases.total.queryKey,
+  const { data } = useQuery<PaginatedResult<CaseStudy[]>>({
+    queryKey: queryKeys.cases.cases.queryKey,
   });
-  const totalCaseStudies = data || 0;
+  const totalCaseStudies = data?.total || 0;
 
   return (
     <div className="mb-8">
