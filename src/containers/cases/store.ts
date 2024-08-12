@@ -6,14 +6,14 @@ export const sidebarAtom = atom(false);
 
 export const filtersAtom = atom<{
   search: string | '';
-  thematicArea: `${ThematicArea}` | null;
-  complianceType: `${ComplianceType}` | null;
-  impact: `${Impact}` | null;
-  location: `${Location}` | null;
+  thematicArea: `${ThematicArea}`[];
+  complianceType: `${ComplianceType}`[];
+  impact: `${Impact}`[];
+  location: `${Location}`[];
 }>({
   search: '',
-  thematicArea: null,
-  complianceType: null,
-  impact: null,
-  location: null,
+  thematicArea: [],
+  complianceType: [],
+  impact: [],
+  location: [],
 });
