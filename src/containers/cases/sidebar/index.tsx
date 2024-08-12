@@ -3,34 +3,15 @@
 import { useAtom } from 'jotai';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
-import { CaseStudy } from '@/lib/case-studies.service';
-import type { Event } from '@/lib/events.service';
-import { PaginatedResult } from '@/lib/paginator';
-import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
 
 import CaseStudies from '@/containers/cases';
 import { sidebarAtom } from '@/containers/cases/store';
+import CaseStudiesTotal from '@/containers/cases/total';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const SIDEBAR_WIDTH = 455;
-
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
-
-function CaseStudiesTotal() {
-  const { data } = useQuery<number>({
-    queryKey: queryKeys.totalCases.total.queryKey,
-  });
-  const totalCaseStudies = data || 0;
-
-  return (
-    <div className="mb-8">
-      <h1 className="text-2xl font-bold text-gray-800">Case studies</h1>
-      <p className="text-lg text-gray-500">{totalCaseStudies} case studies</p>
-    </div>
-  );
-}
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useAtom(sidebarAtom);
