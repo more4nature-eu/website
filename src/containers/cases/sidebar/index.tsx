@@ -40,7 +40,9 @@ export default function Sidebar() {
         {!isCollapsed && <HiOutlineChevronLeft />}
       </button>
       <ScrollArea className="w-full grow px-[60px] py-8">
-        <CaseStudiesTotal />
+        <div className="sticky top-0 z-10 bg-white">
+          <CaseStudiesTotal />
+        </div>
         <CaseStudies />
       </ScrollArea>
     </aside>

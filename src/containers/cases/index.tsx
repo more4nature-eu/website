@@ -1,3 +1,5 @@
+'use client';
+
 import CaseStudyList from '@/containers/cases/list';
 
 import Wrapper from '@/components/ui/wrapper';
