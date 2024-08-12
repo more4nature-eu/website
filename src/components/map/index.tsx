@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, FC } from 'react';
+import { useEffect, useState, useCallback, ComponentProps } from 'react';
 
 import ReactMapGL, {
   ViewState,
@@ -15,12 +15,12 @@ import { cn } from '@/lib/utils';
 import type { CustomMapProps } from './types';
 
 export const DEFAULT_VIEW_STATE: Partial<ViewState> = {
-  zoom: 3,
+  zoom: 0,
   latitude: 0,
   longitude: 0,
 };
 
-export const Map: FC<CustomMapProps> = ({
+export default function Map({
   id = 'default',
   children,
   className,
@@ -31,7 +31,7 @@ export const Map: FC<CustomMapProps> = ({
   onMapViewStateChange,
   onLoad,
   ...mapboxProps
-}: CustomMapProps) => {
+}: CustomMapProps) {
   /**
    * REFS
    */
@@ -46,7 +46,7 @@ export const Map: FC<CustomMapProps> = ({
           ...DEFAULT_VIEW_STATE,
           ...viewState,
         }
-      : null,
+      : initialViewState,
   );
   const [isFlying, setFlying] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -54,9 +54,12 @@ export const Map: FC<CustomMapProps> = ({
   /**
    * CALLBACKS
    */
-  const debouncedViewStateChange = useDebounce((_viewState: Partial<ViewState>) => {
-    if (onMapViewStateChange) onMapViewStateChange(_viewState);
-  }, 250);
+  const debouncedViewStateChange = useDebounce(
+    (_viewState: ComponentProps<typeof Map>['viewState']) => {
+      if (onMapViewStateChange) onMapViewStateChange(_viewState);
+    },
+    0,
+  );
 
   const handleFitBounds = useCallback(() => {
     if (mapRef && bounds) {
@@ -137,7 +140,7 @@ export const Map: FC<CustomMapProps> = ({
   }, [bounds, isFlying]);
 
   return (
-    <div className={cn('relative z-0 h-full w-full', className)}>
+    <div className={cn('relative z-0 w-full', className)}>
       <ReactMapGL
         id={id}
         initialViewState={initialViewState}
@@ -145,12 +148,9 @@ export const Map: FC<CustomMapProps> = ({
         onLoad={handleMapLoad}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
         {...mapboxProps}
-        {...localViewState}
       >
         {!!mapRef && loaded && children}
       </ReactMapGL>
     </div>
   );
-};
-
-export default Map;
+}

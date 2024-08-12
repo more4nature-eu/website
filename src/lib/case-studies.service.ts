@@ -1,3 +1,5 @@
+import { Feature, Geometry } from 'geojson';
+
 import { Paginator, SearchParams, PaginatedResult } from '@/lib/paginator';
 
 export enum Impact {
@@ -31,6 +33,7 @@ export enum Location {
 
 // TODO: It is not clear if Impact and Compliance and Partner types should be an array of values or a single value.
 export type CaseStudy = {
+  id: string;
   name: string;
   description: string;
   citizenScienceInitiatives: string[];
@@ -41,6 +44,14 @@ export type CaseStudy = {
   complianceType: ComplianceType;
   thematicAreas: ThematicArea[];
   tags: Tag[];
+  point: Feature<
+    Geometry,
+    {
+      id: string;
+      name: string;
+      thematicAreas: ThematicArea[];
+    }
+  >;
 };
 
 export type CaseStudyFilters = {
