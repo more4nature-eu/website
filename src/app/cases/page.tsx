@@ -12,18 +12,11 @@ import Sidebar from '@/containers/cases/sidebar';
 const INITIAL_NEWS_PAGE = 1;
 
 const prefetchData = async (queryClient: QueryClient) => {
-  const caseStudiesService = new CaseStudyService(
-    CASE_STUDIES,
-    {},
-    { page: INITIAL_NEWS_PAGE, pageSize: 5 },
-  );
-  const paginatedCaseStudies = caseStudiesService.searchCaseStudies();
-  const totalCaseStudies = paginatedCaseStudies.total;
+  const caseStudiesService = new CaseStudyService(CASE_STUDIES, {}, {});
+  const allCaseStudies = caseStudiesService.searchCaseStudies();
+  const totalCaseStudies = allCaseStudies.total;
 
-  queryClient.setQueryData(
-    queryKeys.cases.paginated({ page: INITIAL_NEWS_PAGE }).queryKey,
-    paginatedCaseStudies,
-  );
+  queryClient.setQueryData(queryKeys.cases.cases.queryKey, allCaseStudies);
   queryClient.setQueryData(queryKeys.totalCases.total.queryKey, totalCaseStudies);
 };
 

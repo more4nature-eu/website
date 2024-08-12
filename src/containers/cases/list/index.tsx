@@ -5,22 +5,8 @@ import { useState } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 
 import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
-import { News } from '@/lib/news.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
-
-import DiscoverMoreButton from '@/components/discover-more-button';
-import { Paginator } from '@/components/paginator';
-import { Badge } from '@/components/ui/badge';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import formatDate from '@/utils/date';
 
 const getThematicAreaColor = (thematicArea: ThematicArea) => {
   switch (thematicArea) {
@@ -40,7 +26,6 @@ interface CaseStudyItemProps {
 }
 
 function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
-  console.log(caseStudy);
   return (
     <div className="mb-8 flex flex-col">
       <div className="flex items-center space-x-2">
@@ -66,25 +51,10 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
   );
 }
 
-const PAGE_SIZE = 5;
-
 export default function CaseStudyList() {
   const [page, setPage] = useState(0);
   const { data } = useQuery<PaginatedResult<CaseStudy>>({
-    queryKey: queryKeys.news.paginated({ page: page + 1 }).queryKey,
-    queryFn: async () => {
-      try {
-        const response = await fetch(`/case-studies?page=${page + 1}&pageSize=${PAGE_SIZE}`);
-
-        if (!response.ok) {
-          throw new Error('Error fetching news');
-        }
-        return await response.json();
-      } catch (err) {
-        throw new Error('Error fetching news');
-      }
-    },
-    placeholderData: keepPreviousData,
+    queryKey: queryKeys.cases.cases.queryKey,
   });
 
   return (
@@ -96,22 +66,6 @@ export default function CaseStudyList() {
           </li>
         ))}
       </ul>
-      {/*<Paginator*/}
-      {/*  pageIndex={page}*/}
-      {/*  pageCount={Math.ceil(*/}
-      {/*    (data?.total as NonNullable<PaginatedResult<News>['total']>) / PAGE_SIZE,*/}
-      {/*  )}*/}
-      {/*  totalPagesToDisplay={6}*/}
-      {/*  onPagePrevious={() => {*/}
-      {/*    setPage(page - 1);*/}
-      {/*  }}*/}
-      {/*  onPageNext={() => {*/}
-      {/*    setPage(page + 1);*/}
-      {/*  }}*/}
-      {/*  onPageIndex={(p) => {*/}
-      {/*    setPage(p);*/}
-      {/*  }}*/}
-      {/*/>*/}
     </>
   );
 }

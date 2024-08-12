@@ -10,7 +10,7 @@ export const newsKeys = createQueryKeys('news', {
 });
 
 export const caseStudyKeys = createQueryKeys('cases', {
-  paginated: ({ page }) => [{ page }],
+  cases: null,
 });
 
 export const totalCaseStudiesKeys = createQueryKeys('totalCases', {
