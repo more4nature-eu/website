@@ -1,11 +1,11 @@
-name: Tests
+name: Build and Test
 
 on:
   push:
 
 jobs:
-  tests:
-    name: tests
+  build-and-test:
+    name: Build and Test
     runs-on: ubuntu-22.04
 
     steps:
@@ -21,6 +21,9 @@ jobs:
 
       - name: Install deps
         run: pnpm install
+
+      - name: Build
+        run: pnpm build
 
       - name: Run Client tests
         run: pnpm test
