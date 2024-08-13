@@ -1,89 +1,39 @@
-import { ExtractAtomValue } from 'jotai/index';
-
-import { ComplianceType, ThematicArea, Impact, Location } from '@/lib/case-studies.service';
-
-import { filtersAtom } from '@/containers/cases/store';
+import {
+  ComplianceType,
+  ThematicArea,
+  Impact,
+  Location,
+  CaseStudyFilters,
+} from '@/lib/case-studies.service';
 
 export const FILTERS: {
   name: string;
-  key: keyof Omit<ExtractAtomValue<typeof filtersAtom>, 'search'>;
+  key: keyof CaseStudyFilters;
   options: (
-    | { label: `${ThematicArea}`; value: `${ThematicArea}` }
-    | { label: `${ComplianceType}`; value: `${ComplianceType}` }
-    | { label: `${Impact}`; value: `${Impact}` }
-    | { label: `${Location}`; value: `${Location}` }
+    | { label: ThematicArea; value: ThematicArea }
+    | { label: ComplianceType; value: ComplianceType }
+    | { label: Impact; value: Impact }
+    | { label: Location; value: Location }
   )[];
 }[] = [
   {
     name: 'By thematic area',
-    key: 'thematicArea',
-    options: [
-      {
-        label: ThematicArea.ZERO_POLLUTION,
-        value: ThematicArea.ZERO_POLLUTION,
-      },
-      {
-        label: ThematicArea.BIODIVERSITY_PROTECTION,
-        value: ThematicArea.BIODIVERSITY_PROTECTION,
-      },
-      {
-        label: ThematicArea.DEFORESTATION_PREVENTION,
-        value: ThematicArea.DEFORESTATION_PREVENTION,
-      },
-    ],
+    key: 'thematicAreas',
+    options: Object.values(ThematicArea).map((area) => ({ label: area, value: area })),
   },
   {
     name: 'By compliance type',
-    key: 'complianceType',
-    options: [
-      {
-        label: ComplianceType.PROMOTING,
-        value: ComplianceType.PROMOTING,
-      },
-      {
-        label: ComplianceType.MONITORING,
-        value: ComplianceType.MONITORING,
-      },
-      {
-        label: ComplianceType.ENFORCEMENT,
-        value: ComplianceType.ENFORCEMENT,
-      },
-    ],
+    key: 'complianceTypes',
+    options: Object.values(ComplianceType).map((type) => ({ label: type, value: type })),
   },
   {
     name: 'By impact',
-    key: 'impact',
-    options: [
-      {
-        label: Impact.LOCAL,
-        value: Impact.LOCAL,
-      },
-      {
-        label: Impact.NATIONAL,
-        value: Impact.NATIONAL,
-      },
-    ],
+    key: 'impacts',
+    options: Object.values(Impact).map((impact) => ({ label: impact, value: impact })),
   },
   {
     name: 'By location',
-    key: 'location',
-    options: [
-      {
-        label: Location.EUROPE,
-        value: Location.EUROPE,
-      },
-      {
-        label: Location.ASIA,
-        value: Location.ASIA,
-      },
-      {
-        label: Location.AFRICA,
-        value: Location.AFRICA,
-      },
-      {
-        label: Location.AMERICAS,
-        value: Location.AMERICAS,
-      },
-    ],
+    key: 'locations',
+    options: Object.values(Location).map((location) => ({ label: location, value: location })),
   },
 ];

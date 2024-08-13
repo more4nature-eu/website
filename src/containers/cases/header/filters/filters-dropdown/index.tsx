@@ -17,11 +17,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { FILTERS } from './constants';
 
-const INITIAL_FILTERS_STATE: Omit<ExtractAtomValue<typeof filtersAtom>, 'search'> = {
-  complianceType: [],
-  impact: [],
-  location: [],
-  thematicArea: [],
+const INITIAL_FILTERS_STATE: Omit<ExtractAtomValue<typeof filtersAtom>, 'keyword'> = {
+  complianceTypes: [],
+  impacts: [],
+  locations: [],
+  thematicAreas: [],
 };
 
 export default function FiltersDropdown() {
@@ -39,6 +39,7 @@ export default function FiltersDropdown() {
     }));
   }, [setGlobalFilters, filters]);
 
+  // @ts-ignore
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -66,7 +67,7 @@ export default function FiltersDropdown() {
                     <li key={option.value}>
                       <Badge
                         // @ts-expect-error to type
-                        data-active={filters[key].includes(option.value)}
+                        data-active={filters[key]?.includes(option.value)}
                         onClick={() => {
                           // @ts-expect-error to type
                           if (filters[key].includes(option.value)) return null;

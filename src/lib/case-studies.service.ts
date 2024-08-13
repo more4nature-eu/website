@@ -43,16 +43,20 @@ export type CaseStudy = {
   tags: Tag[];
 };
 
-export class CaseStudyService extends Paginator<CaseStudy> {
-  private readonly filters: Partial<CaseStudy & { keyword?: string }>;
+export type CaseStudyFilters = {
+  thematicAreas: ThematicArea[] | undefined;
+  complianceTypes: ComplianceType[] | undefined;
+  impacts: Impact[] | undefined;
+  locations: Location[] | undefined;
+  keyword: string | undefined;
+};
 
-  constructor(
-    caseStudies: CaseStudy[],
-    filters: Partial<CaseStudy & { keyword?: string }>,
-    params?: SearchParams,
-  ) {
+export class CaseStudyService extends Paginator<CaseStudy> {
+  private readonly filters: CaseStudyFilters;
+
+  constructor(caseStudies: CaseStudy[], filters: CaseStudyFilters, params?: SearchParams) {
     super(caseStudies, params);
-    this.filters = filters || {};
+    this.filters = filters || ({} as CaseStudyFilters);
   }
 
   protected filter(items: CaseStudy[]): CaseStudy[] {
@@ -62,12 +66,15 @@ export class CaseStudyService extends Paginator<CaseStudy> {
       const filterByThematicArea = this.filters.thematicAreas
         ? this.filters.thematicAreas.every((area) => caseStudy.thematicAreas.includes(area))
         : true;
-      const filterByComplianceType = this.filters.complianceType
-        ? caseStudy.complianceType === this.filters.complianceType
+      const filterByComplianceType = this.filters.complianceTypes
+        ? this.filters.complianceTypes.includes(caseStudy.complianceType)
         : true;
-      const filterByImpact = this.filters.impact ? caseStudy.impact === this.filters.impact : true;
-      const filterByLocation = this.filters.location
-        ? caseStudy.location.includes(this.filters.location)
+
+      const filterByImpact = this.filters.impacts
+        ? this.filters.impacts.includes(caseStudy.impact)
+        : true;
+      const filterByLocation = this.filters.locations
+        ? this.filters.locations.includes(caseStudy.location)
         : true;
 
       const filterByKeyword = keywordRegex
@@ -90,15 +97,25 @@ export class CaseStudyService extends Paginator<CaseStudy> {
   }
 
   static extractFilters(searchParams: URLSearchParams): {
-    filters: Partial<CaseStudy>;
+    filters: CaseStudyFilters;
     paginationFilters: SearchParams;
   } {
-    const filters: Partial<CaseStudy & { keyword?: string }> = {
-      thematicAreas:
-        searchParams.getAll('thematicAreas').map((area) => area as ThematicArea) || undefined,
-      complianceType: (searchParams.get('complianceType') as ComplianceType) || undefined,
-      impact: (searchParams.get('impact') as Impact) || undefined,
-      location: (searchParams.get('location') as Location) || undefined,
+    const filters: CaseStudyFilters = {
+      thematicAreas: searchParams.getAll('thematicAreas').length
+        ? searchParams.getAll('thematicAreas').map((area) => area as ThematicArea)
+        : undefined,
+      complianceTypes: searchParams.getAll('complianceTypes').length
+        ? searchParams
+            .getAll('complianceTypes')
+            .map((complianceType) => complianceType as ComplianceType)
+        : undefined,
+
+      impacts: searchParams.getAll('impacts').length
+        ? searchParams.getAll('impacts').map((impact) => impact as Impact)
+        : undefined,
+      locations: searchParams.getAll('locations').length
+        ? searchParams.getAll('locations').map((location) => location as Location)
+        : undefined,
       keyword: searchParams.get('keyword') || undefined,
     };
     const paginationFilters = this.extractPaginationFilters(searchParams);
