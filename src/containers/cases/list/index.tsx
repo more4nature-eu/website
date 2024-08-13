@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-
-import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
+import { useAtomValue } from 'jotai';
+import queryString from 'query-string';
 
 import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
+
+import { filtersAtom } from '@/containers/cases/store';
 
 const getThematicAreaColor = (thematicArea: ThematicArea) => {
   switch (thematicArea) {
@@ -52,9 +54,17 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
 }
 
 export default function CaseStudyList() {
-  const [page, setPage] = useState(0);
+  const filters = useAtomValue(filtersAtom);
   const { data } = useQuery<PaginatedResult<CaseStudy>>({
-    queryKey: queryKeys.cases.cases.queryKey,
+    queryKey: [queryKeys.cases.cases.queryKey, filters],
+    queryFn: async () => {
+      const serialized = queryString.stringify(filters);
+
+      // const serialized = queryString.stringify(filters);
+      // //console.log('keyword', serialized);
+      const response = await fetch(`/case-studies?${serialized}`);
+      return response.json();
+    },
   });
 
   return (
