@@ -44,11 +44,11 @@ export type CaseStudy = {
 };
 
 export type CaseStudyFilters = {
-  thematicAreas: ThematicArea[] | undefined;
-  complianceTypes: ComplianceType[] | undefined;
-  impacts: Impact[] | undefined;
-  locations: Location[] | undefined;
-  keyword: string | undefined;
+  thematicAreas?: ThematicArea[] | undefined;
+  complianceTypes?: ComplianceType[] | undefined;
+  impacts?: Impact[] | undefined;
+  locations?: Location[] | undefined;
+  keyword?: string | undefined;
 };
 
 export class CaseStudyService extends Paginator<CaseStudy> {
