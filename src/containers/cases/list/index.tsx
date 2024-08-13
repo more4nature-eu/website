@@ -59,11 +59,13 @@ export default function CaseStudyList() {
     queryKey: [queryKeys.cases.cases.queryKey, filters],
     queryFn: async () => {
       const serialized = queryString.stringify(filters);
-
-      // const serialized = queryString.stringify(filters);
-      // //console.log('keyword', serialized);
-      const response = await fetch(`/case-studies?${serialized}`);
-      return response.json();
+      try {
+        const response = await fetch(`/case-studies?${serialized}`);
+        if (!response.ok) throw new Error('An error occurred while fetching the data');
+        return response.json();
+      } catch (error) {
+        throw new Error('An error occurred while fetching the data');
+      }
     },
   });
 
