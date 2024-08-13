@@ -39,7 +39,6 @@ export default function FiltersDropdown() {
     }));
   }, [setGlobalFilters, filters]);
 
-  // @ts-ignore
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -74,6 +73,7 @@ export default function FiltersDropdown() {
 
                           setFilters((prev) => ({
                             ...prev,
+                            // @ts-expect-error to type
                             [key]: [...prev[key], option.value],
                           }));
                         }}
@@ -87,6 +87,7 @@ export default function FiltersDropdown() {
                             onClick={() => {
                               setFilters((prev) => ({
                                 ...prev,
+                                // @ts-expect-error to type
                                 [key]: prev[key].filter((v) => v !== option.value),
                               }));
                             }}
