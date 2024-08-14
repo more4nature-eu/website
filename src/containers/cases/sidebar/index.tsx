@@ -5,7 +5,9 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
 import { cn } from '@/lib/utils';
 
+import CaseStudies from '@/containers/cases';
 import { sidebarAtom } from '@/containers/cases/store';
+import CaseStudiesTotal from '@/containers/cases/total';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -38,10 +40,10 @@ export default function Sidebar() {
         {!isCollapsed && <HiOutlineChevronLeft />}
       </button>
       <ScrollArea className="w-full grow px-[60px] py-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec tortor
-        tincidunt fermentum. Nullam nec purus nec tortor tincidunt fermentum. Nullam nec purus nec
-        tortor tincidunt fermentum. Nullam nec purus nec tortor tincidunt fermentum. Nullam nec
-        purus nec
+        <div className="sticky top-0 z-10 bg-white">
+          <CaseStudiesTotal />
+        </div>
+        <CaseStudies />
       </ScrollArea>
     </aside>
   );

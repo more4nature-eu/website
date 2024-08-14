@@ -17,11 +17,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { FILTERS } from './constants';
 
-const INITIAL_FILTERS_STATE: Omit<ExtractAtomValue<typeof filtersAtom>, 'search'> = {
-  complianceType: [],
-  impact: [],
-  location: [],
-  thematicArea: [],
+const INITIAL_FILTERS_STATE: Omit<ExtractAtomValue<typeof filtersAtom>, 'keyword'> = {
+  complianceTypes: [],
+  impacts: [],
+  locations: [],
+  thematicAreas: [],
 };
 
 export default function FiltersDropdown() {
@@ -66,13 +66,14 @@ export default function FiltersDropdown() {
                     <li key={option.value}>
                       <Badge
                         // @ts-expect-error to type
-                        data-active={filters[key].includes(option.value)}
+                        data-active={filters[key]?.includes(option.value)}
                         onClick={() => {
                           // @ts-expect-error to type
                           if (filters[key].includes(option.value)) return null;
 
                           setFilters((prev) => ({
                             ...prev,
+                            // @ts-expect-error to type
                             [key]: [...prev[key], option.value],
                           }));
                         }}
@@ -86,6 +87,7 @@ export default function FiltersDropdown() {
                             onClick={() => {
                               setFilters((prev) => ({
                                 ...prev,
+                                // @ts-expect-error to type
                                 [key]: prev[key].filter((v) => v !== option.value),
                               }));
                             }}

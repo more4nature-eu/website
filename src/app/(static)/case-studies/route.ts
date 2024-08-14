@@ -9,7 +9,6 @@ import { CASE_STUDIES } from '@/data/case-studies';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-
   const { filters, paginationFilters } = CaseStudyService.extractFilters(searchParams);
   const caseStudyService = new CaseStudyService(CASE_STUDIES, filters, paginationFilters);
   const result = caseStudyService.searchCaseStudies();

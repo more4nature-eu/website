@@ -14,8 +14,8 @@ export default function CaseFilters() {
     <div className="flex items-center space-x-5">
       <Search
         placeholder="Search case studies by keyword..."
-        onChange={(search) => {
-          setFilters((prev) => ({ ...prev, search }));
+        onChange={(keyword) => {
+          setFilters((prev) => ({ ...prev, keyword }));
         }}
       />
       <FiltersDropdown />
