@@ -55,9 +55,10 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
 
 export default function CaseStudyList() {
   const filters = useAtomValue(filtersAtom);
-  const { data } = useQuery<PaginatedResult<CaseStudy>>({
-    queryKey: [queryKeys.cases.cases.queryKey, filters],
-    queryFn: async () => {
+
+  const { data } = useQuery({
+    queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
+    queryFn: async (): Promise<PaginatedResult<CaseStudy>> => {
       const serialized = queryString.stringify(filters);
       try {
         const response = await fetch(`/case-studies?${serialized}`);
@@ -67,17 +68,16 @@ export default function CaseStudyList() {
         throw new Error('An error occurred while fetching the data');
       }
     },
+    select: (data) => data?.data,
   });
 
   return (
-    <>
-      <ul>
-        {data?.data.map((caseStudy) => (
-          <li key={caseStudy.name}>
-            <CaseStudyItem caseStudy={caseStudy} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {data?.map((caseStudy) => (
+        <li key={caseStudy.id}>
+          <CaseStudyItem caseStudy={caseStudy} />
+        </li>
+      ))}
+    </ul>
   );
 }

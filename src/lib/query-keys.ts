@@ -1,4 +1,7 @@
 import { createQueryKeys, mergeQueryKeys } from '@lukemorales/query-key-factory';
+import { ExtractAtomValue } from 'jotai';
+
+import { filtersAtom } from '@/containers/cases/store';
 
 export const eventKeys = createQueryKeys('events', {
   upcoming: null,
@@ -9,8 +12,8 @@ export const newsKeys = createQueryKeys('news', {
   paginated: ({ page }) => [{ page }],
 });
 
-export const caseStudyKeys = createQueryKeys('cases', {
-  cases: null,
+export const caseStudyKeys = createQueryKeys('studyCases', {
+  filteredList: (filters: ExtractAtomValue<typeof filtersAtom>) => [{ ...filters }],
 });
 
 export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys);

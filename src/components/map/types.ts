@@ -22,5 +22,5 @@ export interface CustomMapProps extends ComponentProps<typeof Map> {
   };
 
   /** A function that exposes the viewport */
-  onMapViewStateChange?: (viewState: Partial<ViewState>) => void;
+  onMapViewStateChange?: (viewState: ComponentProps<typeof Map>['viewState']) => void;
 }
