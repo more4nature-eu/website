@@ -19,7 +19,7 @@ export default function Search({
 
   const debouncedOnChange = useDebouncedCallback((value: string) => {
     onChange(value);
-  }, 300);
+  }, 150);
 
   return (
     <div className="flex">

@@ -1,10 +1,11 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 import { bbox as getBbox } from '@turf/turf';
 import { useAtomValue } from 'jotai';
+import queryString from 'query-string';
 import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
@@ -32,7 +33,8 @@ export default function CasesMap() {
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
     queryFn: async (): Promise<{ data: CaseStudy[]; total: number }> => {
       try {
-        const response = await fetch('/case-studies');
+        const serialized = queryString.stringify(filters);
+        const response = await fetch(`/case-studies?${serialized}`);
 
         if (!response.ok) {
           throw new Error('Error fetching case studies');
@@ -43,6 +45,8 @@ export default function CasesMap() {
       }
     },
     select: (data) => {
+      if (!data) return [];
+
       return data?.data.map(({ point }) => point);
     },
   });
@@ -54,10 +58,14 @@ export default function CasesMap() {
     map?.flyTo({ zoom: nextZoom, center: coordinates as [number, number] });
   };
 
-  const initialBbox = getBbox({
-    type: 'FeatureCollection',
-    features: data as NonNullable<typeof data>,
-  });
+  const initialBbox = useMemo(() => {
+    if (!data) return [];
+
+    return getBbox({
+      type: 'FeatureCollection',
+      features: data as NonNullable<typeof data>,
+    });
+  }, [data]);
 
   const resetMapView = useCallback(() => {
     map?.fitBounds(initialBbox as LngLatBoundsLike, {
