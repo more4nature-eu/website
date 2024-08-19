@@ -24,7 +24,7 @@ import MarkerCluster from '@/components/map/markers/cluster';
 import MarkerPin from '@/components/map/markers/pin';
 
 export default function CasesMap() {
-  const isCollapsed = useAtomValue(sidebarAtom);
+  const isExpanded = useAtomValue(sidebarAtom);
   const { default: map } = useMap();
   const bbox = map?.getBounds().toArray().flat() as [number, number, number, number];
   const filters = useAtomValue(filtersAtom);
@@ -76,11 +76,11 @@ export default function CasesMap() {
       padding: {
         top: 25,
         bottom: 25,
-        left: isCollapsed ? 25 : SIDEBAR_WIDTH + 25,
+        left: isExpanded ? SIDEBAR_WIDTH + 25 : 25,
         right: 25,
       },
     });
-  }, [map, isCollapsed, initialBbox]);
+  }, [map, isExpanded, initialBbox]);
 
   return (
     <Map
@@ -90,7 +90,7 @@ export default function CasesMap() {
           padding: {
             top: 25,
             bottom: 25,
-            left: isCollapsed ? 25 : SIDEBAR_WIDTH + 25,
+            left: isExpanded ? SIDEBAR_WIDTH + 25 : 25,
             right: 25,
           },
         },

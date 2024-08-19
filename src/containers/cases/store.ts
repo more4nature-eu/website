@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 
 import { CaseStudyFilters } from '@/lib/case-studies.service';
 
-const sidebarAtom = atom(false);
+const sidebarAtom = atom(true);
 
 export const INITIAL_FILTERS_STATE: CaseStudyFilters = {
   keyword: undefined,
