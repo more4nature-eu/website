@@ -29,7 +29,7 @@ export default function Sidebar() {
       <button
         type="button"
         className={cn(
-          'absolute -right-7 top-4 z-10 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white shadow-md',
+          'absolute -right-7 top-4 z-10 z-20 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white shadow-md',
           {
             'translate-x-3/4': !isExpanded,
           },
@@ -39,11 +39,13 @@ export default function Sidebar() {
         {isExpanded && <HiOutlineChevronLeft />}
         {!isExpanded && <HiOutlineChevronRight />}
       </button>
-      <ScrollArea className="w-full grow px-[60px] py-8">
-        <div className="sticky top-0 z-10 bg-white">
-          <CaseStudiesTotal />
+      <div className="px-[60px]">
+        <CaseStudiesTotal />
+      </div>
+      <ScrollArea className="pb-8">
+        <div className="px-[60px]">
+          <CaseStudies />
         </div>
-        <CaseStudies />
       </ScrollArea>
     </aside>
   );

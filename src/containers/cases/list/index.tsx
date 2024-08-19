@@ -1,25 +1,48 @@
 'use client';
 
+import Link from 'next/link';
+
 import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 import queryString from 'query-string';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
+import { cn } from '@/lib/utils';
 
 import { filtersAtom } from '@/containers/cases/store';
 
-const getThematicAreaColor = (thematicArea: ThematicArea) => {
+import { Badge } from '@/components/ui/badge';
+
+const getThematicAreaColor = (thematicArea: ThematicArea | undefined) => {
   switch (thematicArea) {
     case ThematicArea.ZERO_POLLUTION:
-      return 'bg-blue-100 text-blue-800';
+      return {
+        badge: 'bg-blue-500',
+        border: 'before:bg-blue-500',
+        background: 'hover:bg-blue-500',
+      };
     case ThematicArea.BIODIVERSITY_PROTECTION:
-      return 'bg-orange-100 text-orange-800';
+      return {
+        badge: 'bg-orange-500',
+        border: 'before:bg-orange-500',
+        background: 'hover:bg-orange-500',
+      };
     case ThematicArea.DEFORESTATION_PREVENTION:
-      return 'bg-lime-100 text-lime-800';
+      return {
+        badge: 'bg-green-500',
+        border: 'before:bg-green-500',
+        background: 'hover:bg-green-500',
+      };
     default:
-      return 'bg-gray-100 text-gray-800';
+      return {
+        badge: 'bg-grey-800',
+        border: 'before:bg-grey-800',
+        background: 'hover:bg-grey-800',
+      };
   }
 };
 
@@ -27,26 +50,77 @@ interface CaseStudyItemProps {
   caseStudy: CaseStudy;
 }
 
+function getThematicStyles(caseStudy: CaseStudy) {
+  if (caseStudy.thematicAreas.length === 1) {
+    return getThematicAreaColor(caseStudy.thematicAreas[0]);
+  }
+
+  return getThematicAreaColor(undefined);
+}
+
 function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
+  const thematicStyles = getThematicStyles(caseStudy);
+
   return (
-    <div className="mb-8 flex flex-col">
-      <div className="flex items-center space-x-2">
-        <span
-          className={`inline-block h-2 w-2 rounded-full ${getThematicAreaColor(caseStudy.thematicAreas[0])}`}
-        />
-        <span className={`text-xs font-bold ${getThematicAreaColor(caseStudy.thematicAreas[0])}`}>
-          {caseStudy.thematicAreas[0]}
-        </span>
-      </div>
-      <h2 className="mt-2 text-lg font-bold leading-tight text-gray-900">{caseStudy.name}</h2>
-      <div className="mt-1">
-        <span className="text-xs font-semibold text-gray-600">Related tags:</span>
-        <div className="mt-1 flex flex-wrap gap-1">
-          {caseStudy.tags.map((tag, index) => (
-            <span key={index} className="rounded-full bg-gray-200 px-2 py-1 text-xs text-gray-600">
-              {tag}
-            </span>
+    <div
+      className={`flex flex-1 space-x-5 bg-white transition-colors before:h-full before:w-[5px] ${thematicStyles.border} ${thematicStyles.background} group`}
+    >
+      <div className="flex flex-col space-y-3 py-2 pl-3">
+        <div className="flex items-center gap-2 space-x-2">
+          {caseStudy.thematicAreas.map((thematicArea, index) => (
+            <Badge
+              key={index}
+              className={`text-xs ${getThematicAreaColor(thematicArea).badge} pointer-events-none`}
+            >
+              <span className="relative pl-4 leading-none before:absolute before:left-0 before:top-1/2 before:block before:h-[9px] before:w-[9px] before:-translate-y-1/2 before:rounded-full before:bg-grey-800">
+                {thematicArea}
+              </span>
+            </Badge>
           ))}
+        </div>
+        <motion.div
+          className="flex items-baseline space-x-1 overflow-hidden"
+          variants={{
+            initial: { x: 0 },
+            hover: {
+              x: 25,
+            },
+          }}
+          initial="initial"
+          animate="initial"
+          whileHover="hover"
+        >
+          <HiOutlineArrowRight className="h-4 w-4 shrink-0 text-grey-800" />
+          <Link
+            href={`/case-studies/${caseStudy.id}`}
+            className={cn('left-0 text-lg font-semibold leading-6 hover:underline', {
+              'group-hover:text-white': caseStudy.thematicAreas.length > 1,
+            })}
+          >
+            {caseStudy.name}
+          </Link>
+        </motion.div>
+        <div className="space-y-2">
+          <span
+            className={cn({
+              'group-hover:text-white': caseStudy.thematicAreas.length > 1,
+            })}
+          >
+            Related tags:
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {caseStudy.tags.map((tag, index) => (
+              <Badge
+                key={index}
+                variant={caseStudy.thematicAreas.length > 1 ? 'default' : 'secondary'}
+                className={cn('pointer-events-none', {
+                  'group-hover:text-white': caseStudy.thematicAreas.length > 1,
+                })}
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -72,9 +146,9 @@ export default function CaseStudyList() {
   });
 
   return (
-    <ul>
+    <ul className="space-y-3">
       {data?.map((caseStudy) => (
-        <li key={caseStudy.id}>
+        <li key={caseStudy.id} className="flex">
           <CaseStudyItem caseStudy={caseStudy} />
         </li>
       ))}
