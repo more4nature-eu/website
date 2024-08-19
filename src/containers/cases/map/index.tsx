@@ -49,6 +49,10 @@ export default function CasesMap() {
 
       return data?.data.map(({ point }) => point);
     },
+    placeholderData: {
+      data: [],
+      total: 0,
+    },
   });
 
   const onSelectMarker = (
