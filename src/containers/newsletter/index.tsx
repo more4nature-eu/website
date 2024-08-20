@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useCallback, useRef } from 'react';
+import { FormEvent, useCallback, useRef, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -8,6 +8,8 @@ import Link from 'next/link';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+
+import subscribeNewsletter from '@/containers/newsletter/action';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -31,9 +33,9 @@ import {
 
 const ORGANIZATION_TYPES_VALUES = [
   'NGO',
-  'csi',
-  'policy_authorities',
-  'research_academia',
+  'Citizen Science Initiative',
+  'Policy and Authorities',
+  'Research & Academia',
   'other',
 ] as const;
 
@@ -45,7 +47,7 @@ const ORGANIZATION_TYPES = [
   { label: 'Other', value: ORGANIZATION_TYPES_VALUES[4] },
 ];
 
-const NewsletterSchema = z.object({
+export const NewsletterSchema = z.object({
   name: z.string({ message: 'Name is required' }).min(2, 'Name must contain at least 2 characters'),
   email: z
     .string({ message: 'Email is required' })
@@ -59,17 +61,22 @@ const NewsletterSchema = z.object({
   otherOrganization: z.string().optional(),
 });
 
-const refinedNewsletterSchema = NewsletterSchema.superRefine(({ organizationType }, ctx) => {
-  if (organizationType === 'other') {
-    return ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: 'Please, provide an answer',
-      path: ['otherOrganization'],
-    });
-  }
-});
+const refinedNewsletterSchema = NewsletterSchema.superRefine(
+  ({ organizationType, otherOrganization }, ctx) => {
+    if (organizationType === 'other' && otherOrganization === undefined) {
+      return ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Please, provide an answer',
+        path: ['otherOrganization'],
+      });
+    }
+  },
+);
 
 export default function Newsletter() {
+  const [subscribedStatus, setSubscribedStatus] = useState<
+    'idle' | 'loading' | 'subscribed' | 'error'
+  >('idle');
   const formRef = useRef<HTMLFormElement>(null);
   const form = useForm<z.infer<typeof refinedNewsletterSchema>>({
     resolver: zodResolver(refinedNewsletterSchema),
@@ -89,15 +96,25 @@ export default function Newsletter() {
 
       form.handleSubmit(async (formValues) => {
         try {
+          setSubscribedStatus('loading');
           const parsed = NewsletterSchema.omit({
             privacyPolicy: true,
           }).safeParse(formValues);
 
           if (parsed.success) {
-            //     todo
+            const response = await subscribeNewsletter(parsed.data.email, {
+              FNAME: parsed.data.name.split(' ')[0],
+              LNAME: parsed.data.name.split(' ')[1],
+              ...(parsed.data.organizationType !== 'other' && {
+                ORG_TYPE: parsed.data.organizationType,
+              }),
+              ...(parsed.data.otherOrganization && { ORG_TYPE_O: parsed.data.otherOrganization }),
+            });
+
+            setSubscribedStatus(response.ok ? 'subscribed' : 'error');
           }
         } catch (err) {
-          // todo: error handling. Show toast with a explicit error message here. The user will read this.
+          setSubscribedStatus('error');
         }
       })(evt);
     },
@@ -243,9 +260,15 @@ export default function Newsletter() {
             </div>
 
             <div className="space-y-2">
-              <Button type="submit" className="w-full md:w-auto">
-                Subscribe to newsletter
-              </Button>
+              {!['subscribed', 'error'].includes(subscribedStatus) && (
+                <Button type="submit" className="w-full md:w-auto">
+                  Subscribe to newsletter
+                </Button>
+              )}
+              {subscribedStatus === 'subscribed' && <p>Thank you for subscribing.</p>}
+              {subscribedStatus === 'error' && (
+                <p>There was an error subscribing to the newsletter. Please, try again</p>
+              )}
             </div>
           </div>
         </form>
