@@ -19,6 +19,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
     citizenScienceData: ['Data 1A', 'Data 1B'],
     partner: { name: 'Partner 1', url: 'http://partner1.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -44,6 +48,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
     citizenScienceData: ['Data 2A', 'Data 2B'],
     partner: { name: 'Partner 2', url: 'http://partner2.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -69,6 +77,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
     citizenScienceData: ['Data 3A', 'Data 3B'],
     partner: { name: 'Partner 3', url: 'http://partner3.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -94,6 +106,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
     citizenScienceData: ['Data 4A', 'Data 4B'],
     partner: { name: 'Partner 4', url: 'http://partner4.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -119,6 +135,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 5A', 'Initiative 5B'],
     citizenScienceData: ['Data 5A', 'Data 5B'],
     partner: { name: 'Partner 5', url: 'http://partner5.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -149,6 +169,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 6A', 'Initiative 6B'],
     citizenScienceData: ['Data 6A', 'Data 6B'],
     partner: { name: 'Partner 6', url: 'http://partner6.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -174,6 +198,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 7A', 'Initiative 7B'],
     citizenScienceData: ['Data 7A', 'Data 7B'],
     partner: { name: 'Partner 7', url: 'http://partner7.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -199,6 +227,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
     citizenScienceData: ['Data 8A', 'Data 8B'],
     partner: { name: 'Partner 8', url: 'http://partner8.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -224,6 +256,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 9A', 'Initiative 9B'],
     citizenScienceData: ['Data 9A', 'Data 9B'],
     partner: { name: 'Partner 9', url: 'http://partner9.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -249,6 +285,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 10A', 'Initiative 10B'],
     citizenScienceData: ['Data 10A', 'Data 10B'],
     partner: { name: 'Partner 10', url: 'http://partner10.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -274,6 +314,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 11A', 'Initiative 11B'],
     citizenScienceData: ['Data 11A', 'Data 11B'],
     partner: { name: 'Partner 11', url: 'http://partner11.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -299,6 +343,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 12A', 'Initiative 12B'],
     citizenScienceData: ['Data 12A', 'Data 12B'],
     partner: { name: 'Partner 12', url: 'http://partner12.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -324,6 +372,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 13A', 'Initiative 13B'],
     citizenScienceData: ['Data 13A', 'Data 13B'],
     partner: { name: 'Partner 13', url: 'http://partner13.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -349,6 +401,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
     citizenScienceData: ['Data 14A', 'Data 14B'],
     partner: { name: 'Partner 14', url: 'http://partner14.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -374,6 +430,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 15A', 'Initiative 15B'],
     citizenScienceData: ['Data 15A', 'Data 15B'],
     partner: { name: 'Partner 15', url: 'http://partner15.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {
@@ -403,6 +463,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceInitiatives: ['Initiative 15A', 'Initiative 15B'],
     citizenScienceData: ['Data 15A', 'Data 15B'],
     partner: { name: 'Partner 15', url: 'http://partner15.com' },
+    country: {
+      name: 'Denmark',
+      code: 'DK',
+    },
     point: {
       type: 'Feature',
       geometry: {

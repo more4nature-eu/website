@@ -1,19 +1,17 @@
 'use client';
 
+import { PropsWithChildren } from 'react';
+
 import { useAtom } from 'jotai';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
 import { cn } from '@/lib/utils';
 
-import CaseStudies from '@/containers/cases';
 import { sidebarAtom } from '@/containers/cases/store';
-import CaseStudiesTotal from '@/containers/cases/total';
-
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const SIDEBAR_WIDTH = 455;
 
-export default function Sidebar() {
+export default function Sidebar({ children }: PropsWithChildren) {
   const [isExpanded, setIsExpanded] = useAtom(sidebarAtom);
 
   return (
@@ -29,7 +27,7 @@ export default function Sidebar() {
       <button
         type="button"
         className={cn(
-          'absolute -right-7 top-4 z-10 z-20 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white shadow-md',
+          'absolute -right-7 top-4 z-20 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white shadow-md',
           {
             'translate-x-3/4': !isExpanded,
           },
@@ -39,14 +37,7 @@ export default function Sidebar() {
         {isExpanded && <HiOutlineChevronLeft />}
         {!isExpanded && <HiOutlineChevronRight />}
       </button>
-      <div className="px-[60px]">
-        <CaseStudiesTotal />
-      </div>
-      <ScrollArea className="pb-8">
-        <div className="px-[60px]">
-          <CaseStudies />
-        </div>
-      </ScrollArea>
+      {children}
     </aside>
   );
 }

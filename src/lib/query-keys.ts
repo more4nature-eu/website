@@ -14,6 +14,7 @@ export const newsKeys = createQueryKeys('news', {
 
 export const caseStudyKeys = createQueryKeys('studyCases', {
   filteredList: (filters: ExtractAtomValue<typeof filtersAtom>) => [{ ...filters }],
+  byId: (id: string) => [id],
 });
 
 export const queryKeys = mergeQueryKeys(eventKeys, newsKeys, caseStudyKeys);

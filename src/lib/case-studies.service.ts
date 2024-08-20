@@ -44,6 +44,10 @@ export type CaseStudy = {
   complianceType: ComplianceType;
   thematicAreas: ThematicArea[];
   tags: Tag[];
+  country: {
+    name: string;
+    code: string;
+  };
   point: Feature<
     Geometry,
     {
@@ -105,6 +109,10 @@ export class CaseStudyService extends Paginator<CaseStudy> {
   public searchCaseStudies(): PaginatedResult<CaseStudy> {
     const filteredItems = this.filter(this.items);
     return this.paginate(filteredItems);
+  }
+
+  public searchById(id: string): CaseStudy | undefined {
+    return this.items.find((item) => item.id === id);
   }
 
   static extractFilters(searchParams: URLSearchParams): {
