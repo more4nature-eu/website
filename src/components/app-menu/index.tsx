@@ -1,7 +1,5 @@
 'use client';
 
-import { useCallback } from 'react';
-
 import Link from 'next/link';
 
 import { motion } from 'framer-motion';
@@ -12,10 +10,6 @@ import { SECTIONS } from '@/containers/header';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default function AppMenu() {
-  const handleContactUs = useCallback(() => {
-    document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
-
   return (
     <Popover>
       <PopoverTrigger asChild className="group">
@@ -40,15 +34,6 @@ export default function AppMenu() {
               </Link>
             </li>
           ))}
-          <li>
-            <button
-              type="button"
-              className="text-lg hover:underline hover:underline-offset-4"
-              onClick={handleContactUs}
-            >
-              Contact us
-            </button>
-          </li>
         </ul>
       </PopoverContent>
     </Popover>
