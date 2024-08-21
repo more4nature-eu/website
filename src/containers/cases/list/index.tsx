@@ -63,7 +63,7 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
 
   return (
     <div
-      className={`flex flex-1 space-x-5 bg-white transition-colors before:h-full before:w-[5px] ${thematicStyles.border} ${thematicStyles.background} group`}
+      className={`flex flex-1 space-x-5 bg-white transition-colors before:h-full before:w-[5px] before:shrink-0 ${thematicStyles.border} ${thematicStyles.background} group`}
     >
       <div className="flex flex-col space-y-3 py-2 pl-3">
         <div className="flex items-center gap-2 space-x-2">
