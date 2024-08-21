@@ -92,7 +92,7 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
         >
           <HiOutlineArrowRight className="h-4 w-4 shrink-0 text-grey-800" />
           <Link
-            href={`/case-studies/${caseStudy.id}`}
+            href={`/cases/${caseStudy.id}`}
             className={cn('left-0 text-lg font-semibold leading-6 hover:underline', {
               'group-hover:text-white': caseStudy.thematicAreas.length > 1,
             })}

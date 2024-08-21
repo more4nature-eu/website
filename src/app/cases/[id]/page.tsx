@@ -5,39 +5,35 @@ import queryKeys from '@/lib/query-keys';
 
 import CASE_STUDIES from '@/data/case-studies';
 
-import CaseStudies from '@/containers/cases';
+import CaseDetailSidebar from '@/containers/case-detail/sidebar';
 import Map from '@/containers/cases/map';
 import Sidebar from '@/containers/cases/sidebar';
 import { INITIAL_FILTERS_STATE } from '@/containers/cases/store';
-import CaseStudiesTotal from '@/containers/cases/total';
 
-import { ScrollArea } from '@/components/ui/scroll-area';
-
-const prefetchData = async (queryClient: QueryClient) => {
+const prefetchData = async (queryClient: QueryClient, id: string) => {
   const caseStudiesService = new CaseStudyService(CASE_STUDIES, {}, {});
   const allCaseStudies = caseStudiesService.searchCaseStudies();
+
+  const studyCase = caseStudiesService.searchById(id);
 
   queryClient.setQueryData(
     queryKeys.studyCases.filteredList({ ...INITIAL_FILTERS_STATE }).queryKey,
     allCaseStudies,
   );
+
+  if (studyCase) {
+    queryClient.setQueryData(queryKeys.studyCases.byId(id).queryKey, studyCase);
+  }
 };
 
-export default async function Cases() {
+export default async function CaseDetail({ params: { id } }: { params: { id: string } }) {
   const queryClient = new QueryClient();
-  await prefetchData(queryClient);
+  await prefetchData(queryClient, id);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Sidebar>
-        <div className="px-[60px]">
-          <CaseStudiesTotal />
-        </div>
-        <ScrollArea className="pb-8">
-          <div className="px-[60px]">
-            <CaseStudies />
-          </div>
-        </ScrollArea>
+        <CaseDetailSidebar />
       </Sidebar>
       <Map />
     </HydrationBoundary>
