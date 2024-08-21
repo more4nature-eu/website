@@ -11,6 +11,7 @@ import Supercluster from 'supercluster';
 
 import { CaseStudy } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
+import { cn } from '@/lib/utils';
 
 import { SIDEBAR_WIDTH } from '@/containers/cases/sidebar';
 import { filtersAtom, sidebarAtom } from '@/containers/cases/store';
@@ -22,6 +23,22 @@ import ClusterLayer from '@/components/map/layers/cluster';
 import { ClusterLayerProps } from '@/components/map/layers/cluster/types';
 import MarkerCluster from '@/components/map/markers/cluster';
 import MarkerPin from '@/components/map/markers/pin';
+import { Badge } from '@/components/ui/badge';
+
+function Legend({ className }: { className?: HTMLDivElement['className'] }) {
+  return (
+    <div
+      className={cn(
+        'flex gap-2 rounded-4xl bg-white p-[10px] text-xs font-medium text-grey-800 shadow-md',
+        className,
+      )}
+    >
+      <Badge className="pointer-events-none bg-blue-500">Zero pollution</Badge>
+      <Badge className="pointer-events-none bg-orange-500">Biodiversity protection</Badge>
+      <Badge className="pointer-events-none bg-green-500">Deforestation prevention</Badge>
+    </div>
+  );
+}
 
 export default function CasesMap() {
   const isExpanded = useAtomValue(sidebarAtom);
@@ -108,6 +125,11 @@ export default function CasesMap() {
           <ZoomControl />
           <FitBoundsControl onFitBoundsChange={resetMapView} bounds={{ bbox }} />
         </div>
+        <Legend
+          className={cn(`absolute bottom-2 translate-x-[calc(455px+16px)] transition-transform`, {
+            'translate-x-4': !isExpanded,
+          })}
+        />
       </>
     </Map>
   );
