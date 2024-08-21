@@ -2,7 +2,7 @@ import {
   ComplianceType,
   ThematicArea,
   Impact,
-  Location,
+  Continent,
   CaseStudyFilters,
 } from '@/lib/case-studies.service';
 
@@ -13,7 +13,7 @@ export const FILTERS: {
     | { label: ThematicArea; value: ThematicArea }
     | { label: ComplianceType; value: ComplianceType }
     | { label: Impact; value: Impact }
-    | { label: Location; value: Location }
+    | { label: Continent; value: Continent }
   )[];
 }[] = [
   {
@@ -34,6 +34,6 @@ export const FILTERS: {
   {
     name: 'By location',
     key: 'locations',
-    options: Object.values(Location).map((location) => ({ label: location, value: location })),
+    options: Object.values(Continent).map((location) => ({ label: location, value: location })),
   },
 ];

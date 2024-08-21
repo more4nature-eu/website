@@ -19,51 +19,51 @@ export enum ComplianceType {
   ENFORCEMENT = 'Enforcement',
 }
 
-// TODO: Looking to the design, tags should have any value of Impact, ThematicArea and Location. Not sure how to handle this because in the design only countries are shown as location,
-//       even having Local as impact. However, for other entities, location has a unknown granularity.
-export type Tag = Impact | ThematicArea | Location;
-export type Partner = { name: string; url: string };
-export enum Location {
+export type URLink = { title: string; url: string };
+
+export type Tag = Impact | ThematicArea | Continent | ComplianceType;
+export enum Continent {
   EUROPE = 'Europe',
   AMERICAS = 'Americas',
   ASIA = 'Asia',
   AFRICA = 'Africa',
-  OCEANIA = 'Oceania',
 }
 
-// TODO: It is not clear if Impact and Compliance and Partner types should be an array of values or a single value.
 export type CaseStudy = {
   id: string;
-  name: string;
-  description: string;
-  citizenScienceInitiatives: string[];
-  citizenScienceData: string[];
-  complianceNeed: string[];
-  partner: Partner;
-  location: Location;
-  impact: Impact;
-  complianceType: ComplianceType;
+  title: string;
+  subTheme: string;
+  citizenScienceInitiatives: (string | URLink)[];
+  citizenScienceData: (string | URLink)[];
+  complianceNeed: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
+  stakeholders: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
+  authorities: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
+  contact: URLink;
+  impact: Impact[];
   thematicAreas: ThematicArea[];
   tags: Tag[];
-  country: {
-    name: string;
-    code: string;
-  };
-  point: Feature<
-    Geometry,
-    {
-      id: string;
+  location: {
+    continent: Continent;
+    country: {
       name: string;
-      thematicAreas: ThematicArea[];
-    }
-  >;
+      code: string;
+    };
+    coordinates: Feature<
+      Geometry,
+      {
+        id: string;
+        name: string;
+        thematicAreas: ThematicArea[];
+      }
+    >;
+  };
 };
 
 export type CaseStudyFilters = {
   thematicAreas?: ThematicArea[] | undefined;
   complianceTypes?: ComplianceType[] | undefined;
   impacts?: Impact[] | undefined;
-  locations?: Location[] | undefined;
+  locations?: Continent[] | undefined;
   keyword?: string | undefined;
 };
 
@@ -83,18 +83,18 @@ export class CaseStudyService extends Paginator<CaseStudy> {
         ? this.filters.thematicAreas.every((area) => caseStudy.thematicAreas.includes(area))
         : true;
       const filterByComplianceType = this.filters.complianceTypes
-        ? this.filters.complianceTypes.includes(caseStudy.complianceType)
+        ? this.filters.complianceTypes.every((compliance) => caseStudy.tags.includes(compliance))
         : true;
 
       const filterByImpact = this.filters.impacts
-        ? this.filters.impacts.includes(caseStudy.impact)
+        ? this.filters.impacts.every((impact) => caseStudy.impact.includes(impact))
         : true;
       const filterByLocation = this.filters.locations
-        ? this.filters.locations.includes(caseStudy.location)
+        ? this.filters.locations.includes(caseStudy.location.continent)
         : true;
 
       const filterByKeyword = keywordRegex
-        ? keywordRegex.test(caseStudy.name) || caseStudy.tags.some((tag) => keywordRegex.test(tag))
+        ? keywordRegex.test(caseStudy.title) || caseStudy.tags.some((tag) => keywordRegex.test(tag))
         : true;
 
       return (
@@ -134,7 +134,7 @@ export class CaseStudyService extends Paginator<CaseStudy> {
         ? searchParams.getAll('impacts').map((impact) => impact as Impact)
         : undefined,
       locations: searchParams.getAll('locations').length
-        ? searchParams.getAll('locations').map((location) => location as Location)
+        ? searchParams.getAll('locations').map((location) => location as Continent)
         : undefined,
       keyword: searchParams.get('keyword') || undefined,
     };

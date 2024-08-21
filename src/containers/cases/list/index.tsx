@@ -97,7 +97,7 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
               'group-hover:text-white': caseStudy.thematicAreas.length > 1,
             })}
           >
-            {caseStudy.name}
+            {caseStudy.title}
           </Link>
         </motion.div>
         <div className="space-y-2">

@@ -9,7 +9,7 @@ import queryString from 'query-string';
 import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
-import { CaseStudy } from '@/lib/case-studies.service';
+import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
 
@@ -33,9 +33,13 @@ function Legend({ className }: { className?: HTMLDivElement['className'] }) {
         className,
       )}
     >
-      <Badge className="pointer-events-none bg-blue-500">Zero pollution</Badge>
-      <Badge className="pointer-events-none bg-orange-500">Biodiversity protection</Badge>
-      <Badge className="pointer-events-none bg-green-500">Deforestation prevention</Badge>
+      <Badge className="pointer-events-none bg-blue-500">{ThematicArea.ZERO_POLLUTION}</Badge>
+      <Badge className="pointer-events-none bg-orange-500">
+        {ThematicArea.BIODIVERSITY_PROTECTION}
+      </Badge>
+      <Badge className="pointer-events-none bg-green-500">
+        {ThematicArea.DEFORESTATION_PREVENTION}
+      </Badge>
     </div>
   );
 }
@@ -64,7 +68,7 @@ export default function CasesMap() {
     select: (data) => {
       if (!data) return [];
 
-      return data?.data.map(({ point }) => point);
+      return data?.data.map(({ location }) => location.coordinates);
     },
     placeholderData: {
       data: [],
