@@ -38,6 +38,7 @@ export type CaseStudy = {
   description: string;
   citizenScienceInitiatives: string[];
   citizenScienceData: string[];
+  complianceNeed: string[];
   partner: Partner;
   location: Location;
   impact: Impact;
