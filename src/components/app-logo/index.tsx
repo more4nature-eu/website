@@ -13,14 +13,18 @@ export default function AppLogo({
   variant?: 'default' | 'secondary';
 }) {
   return (
-    <Link href="/" className={cn('inline-flex', className)}>
-      <Image
-        src={variant === 'secondary' ? '/images/m4n-logo-alt.webp' : '/images/m4n-logo.webp'}
-        alt="more4nature logo"
-        width={200}
-        height={70}
-        className="h-auto w-full"
-      />
-    </Link>
+    <div
+      className={cn('relative flex h-[69px] w-[203px]', {
+        'h-[60px] w-[173px]': variant === 'secondary',
+      })}
+    >
+      <Link href="/" className={cn('flex', className)}>
+        <Image
+          src={variant === 'secondary' ? '/images/m4n-logo-alt.webp' : '/images/m4n-logo.webp'}
+          alt="more4nature logo"
+          fill
+        />
+      </Link>
+    </div>
   );
 }
