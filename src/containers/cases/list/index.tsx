@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 import queryString from 'query-string';
@@ -143,6 +143,7 @@ export default function CaseStudyList() {
       }
     },
     select: (data) => data?.data,
+    placeholderData: keepPreviousData,
   });
 
   return (

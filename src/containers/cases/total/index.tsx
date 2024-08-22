@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useAtomValue } from 'jotai';
 
 import { CaseStudy } from '@/lib/case-studies.service';
@@ -14,6 +14,7 @@ export default function CaseStudiesTotal() {
 
   const { data } = useQuery<PaginatedResult<CaseStudy[]>>({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
+    placeholderData: keepPreviousData,
   });
   const totalCaseStudies = data?.total || 0;
 

@@ -17,7 +17,7 @@ export default function Sidebar({ children }: PropsWithChildren) {
   return (
     <aside
       className={cn(
-        'pointer-events-auto absolute bottom-0 top-0 z-10 flex max-h-screen max-w-[455px] flex-1 flex-col border-r border-r-grey-400 bg-white shadow transition-transform',
+        'pointer-events-auto absolute bottom-0 top-0 z-10 flex max-h-screen w-full max-w-[455px] flex-1 flex-col border-r border-r-grey-400 bg-white shadow transition-transform',
         {
           'translate-x-0 transform': isExpanded,
           '-translate-x-full transform': !isExpanded,
