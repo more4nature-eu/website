@@ -23,19 +23,19 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import formatDate from '@/utils/date';
+import dateFormatter from '@/utils/date';
 
-function PastEvent({ name, date, image, description }: Event) {
+function PastEvent({ title, date, image, formatDate, description }: Event) {
   return (
     <div className="flex h-full flex-col space-y-8 border-l border-l-grey-900/30 px-6">
-      <Image src={image} alt={name} width={310} height={203} className="h-[203px] max-w-[310px]" />
+      <Image src={image} alt={title} width={310} height={203} className="h-[203px] max-w-[310px]" />
       <div className="flex flex-1 flex-col items-start justify-between space-y-8">
         <div className="shrink-0 space-y-4">
           <span className="flex items-center space-x-2">
             <HiOutlineCalendarDays className="h-6 w-6" />
-            <span>{formatDate(date)}</span>
+            <span>{dateFormatter(date, formatDate)}</span>
           </span>
-          <h4 className="text-lg">{name}</h4>
+          <h4 className="text-lg">{title}</h4>
         </div>
         <Dialog>
           <DialogTrigger asChild>
@@ -43,7 +43,7 @@ function PastEvent({ name, date, image, description }: Event) {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{name}</DialogTitle>
+              <DialogTitle>{title}</DialogTitle>
               <DialogDescription>
                 <div
                   className="space-y-4"
@@ -115,7 +115,7 @@ export default function PastEvents() {
         >
           <CarouselContent>
             {data?.map((event) => (
-              <CarouselItem key={event.name} className="basis-1/3">
+              <CarouselItem key={event.id} className="basis-1/3">
                 <PastEvent {...event} />
               </CarouselItem>
             ))}

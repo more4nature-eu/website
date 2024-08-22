@@ -1,1428 +1,2327 @@
 import {
-  CaseStudy,
   CaseStudyService,
   ComplianceType,
   Impact,
   ThematicArea,
-  Location,
+  Continent,
   CaseStudyFilters,
 } from '@/lib/case-studies.service';
 
-const mockCaseStudies: CaseStudy[] = [
-  {
-    id: '1',
-    name: 'Pioneer Case 1 and 2',
-    description: 'Description for Case Study Alpha',
-    location: Location.ASIA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.PROMOTING,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.ASIA],
-    citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
-    citizenScienceData: ['Data 1A', 'Data 1B'],
-    partner: { name: 'Partner 1', url: 'http://partner1.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [9.441795399183874, 55.984683236682784],
-      },
-      properties: {
-        id: '1',
-        name: 'Pioneer Case 1 and 2',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-      },
-    },
-  },
-  {
-    id: '2',
-    name: 'Pioneer Case 3 and 4',
-    description: 'Description for Beta Study',
-    location: Location.AMERICAS,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.MONITORING,
-    thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
-    citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
-    citizenScienceData: ['Data 2A', 'Data 2B'],
-    partner: { name: 'Partner 2', url: 'http://partner2.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-8.043277825790401, 40.01914953666145],
-      },
-      properties: {
-        id: '2',
-        name: 'Pioneer Case 3 and 4',
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '3',
-    name: 'Pioneer Case 5',
-    description: 'Description for Case Study Gamma',
-    location: Location.AFRICA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-    tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, Location.AFRICA],
-    citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
-    citizenScienceData: ['Data 3A', 'Data 3B'],
-    partner: { name: 'Partner 3', url: 'http://partner3.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [4.899829613176121, 52.39353661709069],
-      },
-      properties: {
-        id: '3',
-        name: 'Pioneer Case 5',
-        thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-      },
-    },
-  },
-  {
-    id: '4',
-    name: 'Pioneer Case 6 and 7',
-    description: 'Description for Delta Study',
-    location: Location.EUROPE,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.PROMOTING,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
-    citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
-    citizenScienceData: ['Data 4A', 'Data 4B'],
-    partner: { name: 'Partner 4', url: 'http://partner4.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [6.070817014926126, 58.78746279402633],
-      },
-      properties: {
-        id: '4',
-        name: 'Pioneer Case 6 and 7',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-      },
-    },
-  },
-  {
-    id: '5',
-    name: 'Pioneer Case 8',
-    description: 'Description for Case Study Epsilon',
-    location: Location.OCEANIA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.MONITORING,
-    thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.LOCAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
-    citizenScienceInitiatives: ['Initiative 5A', 'Initiative 5B'],
-    citizenScienceData: ['Data 5A', 'Data 5B'],
-    partner: { name: 'Partner 5', url: 'http://partner5.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-11.874590438445415, 9.09185585862],
-      },
-      properties: {
-        id: '5',
-        name: 'Pioneer Case 8',
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '6',
-    name: 'Pioneer Case 9',
-    description: 'Description for Case Study Zeta',
-    location: Location.EUROPE,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION, ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [
-      Impact.LOCAL,
-      ThematicArea.ZERO_POLLUTION,
-      ThematicArea.BIODIVERSITY_PROTECTION,
-      Location.EUROPE,
-    ],
-    citizenScienceInitiatives: ['Initiative 6A', 'Initiative 6B'],
-    citizenScienceData: ['Data 6A', 'Data 6B'],
-    partner: { name: 'Partner 6', url: 'http://partner6.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [12.240924646771024, 45.49272481983484],
-      },
-      properties: {
-        id: '6',
-        name: 'Pioneer Case 9',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION, ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '7',
-    name: 'Pioneer Case 10',
-    description: 'Description for Case Study Eta',
-    location: Location.ASIA,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.PROMOTING,
-    thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-    tags: [Impact.NATIONAL, ThematicArea.DEFORESTATION_PREVENTION, Location.ASIA],
-    citizenScienceInitiatives: ['Initiative 7A', 'Initiative 7B'],
-    citizenScienceData: ['Data 7A', 'Data 7B'],
-    partner: { name: 'Partner 7', url: 'http://partner7.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-6.258428722269101, 53.34587913160031],
-      },
-      properties: {
-        id: '7',
-        name: 'Pioneer Case 10',
-        thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-      },
-    },
-  },
-  {
-    id: '8',
-    name: 'Pioneer Case 11',
-    description: 'Description for Case Study Theta',
-    location: Location.AFRICA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.MONITORING,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-    citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
-    citizenScienceData: ['Data 8A', 'Data 8B'],
-    partner: { name: 'Partner 8', url: 'http://partner8.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-6.994805119538429, 52.153970892963315],
-      },
-      properties: {
-        id: '8',
-        name: 'Pioneer Case 11',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-      },
-    },
-  },
-  {
-    id: '9',
-    name: 'Pioneer Case 12',
-    description: 'Description for Case Study Iota',
-    location: Location.AMERICAS,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
-    citizenScienceInitiatives: ['Initiative 9A', 'Initiative 9B'],
-    citizenScienceData: ['Data 9A', 'Data 9B'],
-    partner: { name: 'Partner 9', url: 'http://partner9.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-7.7693864125233185, 52.28489265784818],
-      },
-      properties: {
-        id: '9',
-        name: 'Pioneer Case 12',
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '10',
-    name: 'Pioneer Case 13',
-    description: 'Description for Case Study Kappa',
-    location: Location.OCEANIA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.PROMOTING,
-    thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-    tags: [Impact.LOCAL, ThematicArea.DEFORESTATION_PREVENTION, Location.OCEANIA],
-    citizenScienceInitiatives: ['Initiative 10A', 'Initiative 10B'],
-    citizenScienceData: ['Data 10A', 'Data 10B'],
-    partner: { name: 'Partner 10', url: 'http://partner10.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [10.77518886774447, 59.9124148103055],
-      },
-      properties: {
-        id: '10',
-        name: 'Pioneer Case 13',
-        thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-      },
-    },
-  },
-  {
-    id: '11',
-    name: 'Pioneer Case 14',
-    description: 'Description for Case Study Lambda',
-    location: Location.EUROPE,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.MONITORING,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
-    citizenScienceInitiatives: ['Initiative 11A', 'Initiative 11B'],
-    citizenScienceData: ['Data 11A', 'Data 11B'],
-    partner: { name: 'Partner 11', url: 'http://partner11.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [20.990477226558713, 52.23140447391029],
-      },
-      properties: {
-        id: '11',
-        name: 'Pioneer Case 14',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-      },
-    },
-  },
-  {
-    id: '12',
-    name: 'Pioneer Case 15 local',
-    description: 'Description for Case Study Mu',
-    location: Location.ASIA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.LOCAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.ASIA],
-    citizenScienceInitiatives: ['Initiative 12A', 'Initiative 12B'],
-    citizenScienceData: ['Data 12A', 'Data 12B'],
-    partner: { name: 'Partner 12', url: 'http://partner12.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [5.76467838897042, 51.937121018546925],
-      },
-      properties: {
-        id: '12',
-        name: 'Pioneer Case 15 local',
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '13',
-    name: 'Pioneer Case 16',
-    description: 'Description for Case Study Nu',
-    location: Location.AMERICAS,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.PROMOTING,
-    thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-    tags: [Impact.NATIONAL, ThematicArea.DEFORESTATION_PREVENTION, Location.AMERICAS],
-    citizenScienceInitiatives: ['Initiative 13A', 'Initiative 13B'],
-    citizenScienceData: ['Data 13A', 'Data 13B'],
-    partner: { name: 'Partner 13', url: 'http://partner13.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [7.948881832659551, 58.143415786630904],
-      },
-      properties: {
-        id: '13',
-        name: 'Pioneer Case 16',
-        thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
-      },
-    },
-  },
-  {
-    id: '14',
-    name: 'Pioneer Case 17 and 18',
-    description: 'Description for Case Study Xi',
-    location: Location.AFRICA,
-    impact: Impact.LOCAL,
-    complianceType: ComplianceType.MONITORING,
-    thematicAreas: [ThematicArea.ZERO_POLLUTION],
-    tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-    citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
-    citizenScienceData: ['Data 14A', 'Data 14B'],
-    partner: { name: 'Partner 14', url: 'http://partner14.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [9.463768054020553, 56.55809512928662],
-      },
-      properties: {
-        id: '14',
-        name: 'Pioneer Case 17 and 18',
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-      },
-    },
-  },
-  {
-    id: '15',
-    name: 'Pioneer Case 19',
-    description: 'Description for Case Study Omicron',
-    location: Location.OCEANIA,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
-    citizenScienceInitiatives: ['Initiative 15A', 'Initiative 15B'],
-    citizenScienceData: ['Data 15A', 'Data 15B'],
-    partner: { name: 'Partner 15', url: 'http://partner15.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [104.85648556428505, 12.70157454584046],
-      },
-      properties: {
-        id: '15',
-        name: 'Pioneer Case 19',
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-      },
-    },
-  },
-  {
-    id: '16',
-    name: 'Pioneer Case 20',
-    description: 'Description for Case Study Omicron',
-    location: Location.OCEANIA,
-    impact: Impact.NATIONAL,
-    complianceType: ComplianceType.ENFORCEMENT,
-    thematicAreas: [
-      ThematicArea.BIODIVERSITY_PROTECTION,
-      ThematicArea.DEFORESTATION_PREVENTION,
-      ThematicArea.ZERO_POLLUTION,
-    ],
-    tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
-    citizenScienceInitiatives: ['Initiative 15A', 'Initiative 15B'],
-    citizenScienceData: ['Data 15A', 'Data 15B'],
-    partner: { name: 'Partner 15', url: 'http://partner15.com' },
-    point: {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-64.40656063713384, -16.554895031581502],
-      },
-      properties: {
-        id: '16',
-        name: 'Pioneer Case 20',
-        thematicAreas: [
-          ThematicArea.BIODIVERSITY_PROTECTION,
-          ThematicArea.DEFORESTATION_PREVENTION,
-          ThematicArea.ZERO_POLLUTION,
-        ],
-      },
-    },
-  },
-];
+import { CASE_STUDIES } from '@/data/case-studies';
 
 describe('CaseStudyService', () => {
   it('should filter cases studies by keyword in name', () => {
-    const filters = { keyword: 'Pioneer Case 1 and 2' };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const filters = { keyword: 'Citizens for a deforestation-free Denmark' };
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '1',
-        name: 'Pioneer Case 1 and 2',
-        description: 'Description for Case Study Alpha',
-        location: Location.ASIA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.PROMOTING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.ASIA],
-        citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
-        citizenScienceData: ['Data 1A', 'Data 1B'],
-        partner: { name: 'Partner 1', url: 'http://partner1.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.441795399183874, 55.984683236682784],
+        id: '14',
+        title: 'Citizens for a deforestation-free Denmark',
+        subTheme: 'Halting illegal deforestation',
+        thematicAreas: ['Deforestation Prevention'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Denmark',
+            code: 'DK',
           },
-          properties: {
-            id: '1',
-            name: 'Pioneer Case 1 and 2',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [9.463768054020553, 56.55809512928662],
+            },
+            properties: {
+              id: '14',
+              name: 'Citizens for a deforestation-free Denmark',
+              thematicAreas: ['Deforestation Prevention'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Authorities are unable to identify every case of illegal deforestation. Citizen Generated Data can highlight areas for further investigation so authorities can take action.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Authorities unable to identify every case of illegal deforestation. Citizen Science data can highlight areas for further investigation so that authorities can take action.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Nature and Biodiversity Division, Danish Ministry of Environment and the general public with an estimated 300-400 citizens’ report per year.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Selected Forest districts (3), chief science officers, and individual citizens',
+              ],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: ['Nature and Biodiversity Division, Danish Ministry of Environment.'],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['Selected Forest districts and private forest owners.'],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Citizens’ reports on national forest interventions & imports of commodities causing deforestation or forest degradation.',
+        ],
+        citizenScienceData: [
+          'Reports on potentially illegal placement of commodities causing deforestation or forest degradation. Reports on forest management interventions in Denmark. Geo-referenced reports on forest management interventions that may be in contradiction with national forest law.',
+        ],
+        contact: {
+          title: 'University of Copenhagen',
+          url: 'https://www.ku.dk/english/',
+        },
+        tags: [
+          'Deforestation Prevention',
+          'Promoting',
+          'Monitoring',
+          'Local',
+          'National',
+          'Europe',
+        ],
       },
     ]);
   });
 
   it('should filter cases studies by keyword in tags', () => {
     const filters = { keyword: 'Americas' };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '2',
-        name: 'Pioneer Case 3 and 4',
-        description: 'Description for Beta Study',
-        location: 'Americas',
-        impact: 'National',
-        complianceType: 'Monitoring',
-        thematicAreas: ['Biodiversity Protection'],
-        tags: ['National', 'Biodiversity Protection', 'Americas'],
-        citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
-        citizenScienceData: ['Data 2A', 'Data 2B'],
-        partner: {
-          name: 'Partner 2',
-          url: 'http://partner2.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-8.043277825790401, 40.01914953666145],
-          },
-          properties: {
-            id: '2',
-            name: 'Pioneer Case 3 and 4',
-            thematicAreas: ['Biodiversity Protection'],
-          },
-        },
-      },
-      {
-        id: '9',
-        name: 'Pioneer Case 12',
-        description: 'Description for Case Study Iota',
-        location: 'Americas',
-        impact: 'National',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Biodiversity Protection'],
-        tags: ['National', 'Biodiversity Protection', 'Americas'],
-        citizenScienceInitiatives: ['Initiative 9A', 'Initiative 9B'],
-        citizenScienceData: ['Data 9A', 'Data 9B'],
-        partner: {
-          name: 'Partner 9',
-          url: 'http://partner9.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-7.7693864125233185, 52.28489265784818],
-          },
-          properties: {
-            id: '9',
-            name: 'Pioneer Case 12',
-            thematicAreas: ['Biodiversity Protection'],
-          },
-        },
-      },
-      {
-        id: '13',
-        name: 'Pioneer Case 16',
-        description: 'Description for Case Study Nu',
-        location: 'Americas',
-        impact: 'National',
-        complianceType: 'Promoting',
+        id: '16',
+        title: '[TBD] study case 20',
+        subTheme: 'Reducing forest loss from illegal activities and fires',
         thematicAreas: ['Deforestation Prevention'],
-        tags: ['National', 'Deforestation Prevention', 'Americas'],
-        citizenScienceInitiatives: ['Initiative 13A', 'Initiative 13B'],
-        citizenScienceData: ['Data 13A', 'Data 13B'],
-        partner: {
-          name: 'Partner 13',
-          url: 'http://partner13.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [7.948881832659551, 58.143415786630904],
+        location: {
+          continent: 'Americas',
+          country: {
+            name: 'Bolivia',
+            code: 'BO',
           },
-          properties: {
-            id: '13',
-            name: 'Pioneer Case 16',
-            thematicAreas: ['Deforestation Prevention'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-64.40656063713384, -16.554895031581502],
+            },
+            properties: {
+              id: '16',
+              name: '[TBD] study case 20',
+              thematicAreas: ['Deforestation Prevention'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          'Indigenous organizations are largely responsible for compliance assurance within formally recognized collectively titled indigenous territories. Communities can collect citizen science data but need to integrate with other relevant data from Earth Observation and link to relevant national policies.',
+        ],
+        stakeholders: [
+          'The indigenous Chiquitano population, their organisations & authorities; 20 local fire brigades, each with 10 members; Apoyo Para el Campesino-Indígena del Oriente Boliviano (APCOB), local implementing NGO, and FoW.',
+        ],
+        authorities: [
+          {
+            title: 'The Territorial Government of Monte Verde (TGMV)',
+            url: 'https://www.facebook.com/GTIMVBolivia/',
+          },
+          'The Municipal Governments of Lomerío',
+          'San Javier and Concepción',
+          {
+            title: 'The Municipal Emergency Operations Centre (COEM)',
+            url: 'http://www.defensacivil.gob.bo/web/uploads/images/doc_20210429_140951.pdf',
+          },
+          {
+            title: 'The Forest and Land Operational Unit (UOBT)',
+            url: 'https://abt.gob.bo/index.php/institucion/oficina/unidad-operativa-de-bosques-y-tierra',
+          },
+          'Concepción',
+          {
+            title:
+              'The Departmental Directorate of the Authority of Social Control and Inspection of Forests and Land (ABT) of Santa Cruz\n',
+            url: 'https://abt.gob.bo/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Members of the Chiquitano indigenous people participate in forest monitoring in the field and reporting on illegal forest activities. Reports are passed on to traditional indigenous authorities and public authorities',
+        ],
+        citizenScienceData: [
+          'Geo-referenced data on forest resources, illegal forest activities and forest fires. Daily reports on forest fires during the fire season August-November during 2019-2022. Freely available satellite images.',
+        ],
+        contact: {
+          title: 'Forests of the World',
+          url: 'https://www.forestsoftheworld.org/',
+        },
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Americas'],
       },
     ]);
   });
 
   it('should filter cases studies by keyword in both name and tags', () => {
-    const filters = { keyword: 'local' };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const filters = { keyword: 'deforestation' };
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
-    expect(result.data.length).toBe(8);
+    expect(result.data.length).toBe(3);
   });
 
   it('should filter cases studies by partial keyword in name', () => {
-    const filters = { keyword: 'Case 3 an' };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const filters = { keyword: 'Woodburning and' };
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '2',
-        name: 'Pioneer Case 3 and 4',
-        description: 'Description for Beta Study',
-        location: Location.AMERICAS,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-        tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
-        citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
-        citizenScienceData: ['Data 2A', 'Data 2B'],
-        partner: { name: 'Partner 2', url: 'http://partner2.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-8.043277825790401, 40.01914953666145],
+        id: '13',
+        title: 'Woodburning and Industry',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
           },
-          properties: {
-            id: '2',
-            name: 'Pioneer Case 3 and 4',
-            thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [7.948881832659551, 58.143415786630904],
+            },
+            properties: {
+              id: '12',
+              name: 'Woodburning and Industry',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['Local'],
+        complianceNeed: [
+          'Municipalities seek higher spatial density of data due to limited spatial coverage of reference stations, finding that Citizen Science data for PM2.5 is complementary and can serve as indicative measurement. Due to regulatory monitoring focus on air pollution from traffic, particularly for pollutants from seasonal hotspots due to woodburning (PM2.5). There is also a need to assess the suitability of sensor data for monitoring other air quality parameters than PM2,5, such as SO2.',
+        ],
+        stakeholders: [
+          '>30 citizen scientists, 3-4 neighborhoods, municipalities, research institutes, Norwegian Asthma and Allergy association (NAAF), Sauna associations/companies',
+        ],
+        authorities: ['Municipalities of Oslo', 'Bærum', 'Kristiansand'],
+        citizenScienceInitiatives: [
+          'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
+        ],
+        citizenScienceData: ['Air Quality (PM 2,5, SO2, and perceived Odor)'],
+        contact: {
+          title: 'NILU',
+          url: 'https://nilu.com/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
     ]);
   });
 
   it('should filter cases studies by partial keyword in tags', () => {
-    const filters: CaseStudyFilters = { keyword: 'Europe' };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const filters: CaseStudyFilters = { keyword: 'Africa' };
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '4',
-        name: 'Pioneer Case 6 and 7',
-        description: 'Description for Delta Study',
-        location: 'Europe',
-        impact: 'National',
-        complianceType: 'Promoting',
+        id: '5',
+        title: '[TBD] study case 8',
+        subTheme: 'Clean and healthy surface water',
         thematicAreas: ['Zero Pollution'],
-        tags: ['National', 'Zero Pollution', 'Europe'],
-        citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
-        citizenScienceData: ['Data 4A', 'Data 4B'],
-        partner: {
-          name: 'Partner 4',
-          url: 'http://partner4.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [6.070817014926126, 58.78746279402633],
+        location: {
+          continent: 'Africa',
+          country: {
+            name: 'Sierra Leone',
+            code: 'SL',
           },
-          properties: {
-            id: '4',
-            name: 'Pioneer Case 6 and 7',
-            thematicAreas: ['Zero Pollution'],
-          },
-        },
-      },
-      {
-        id: '6',
-        name: 'Pioneer Case 9',
-        description: 'Description for Case Study Zeta',
-        location: 'Europe',
-        impact: 'Local',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Zero Pollution', 'Biodiversity Protection'],
-        tags: ['Local', 'Zero Pollution', 'Biodiversity Protection', 'Europe'],
-        citizenScienceInitiatives: ['Initiative 6A', 'Initiative 6B'],
-        citizenScienceData: ['Data 6A', 'Data 6B'],
-        partner: {
-          name: 'Partner 6',
-          url: 'http://partner6.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [12.240924646771024, 45.49272481983484],
-          },
-          properties: {
-            id: '6',
-            name: 'Pioneer Case 9',
-            thematicAreas: ['Zero Pollution', 'Biodiversity Protection'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-11.874590438445415, 9.09185585862],
+            },
+            properties: {
+              id: '5',
+              name: '[TBD] study case 8',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
-      },
-      {
-        id: '11',
-        name: 'Pioneer Case 14',
-        description: 'Description for Case Study Lambda',
-        location: 'Europe',
-        impact: 'National',
-        complianceType: 'Monitoring',
-        thematicAreas: ['Zero Pollution'],
-        tags: ['National', 'Zero Pollution', 'Europe'],
-        citizenScienceInitiatives: ['Initiative 11A', 'Initiative 11B'],
-        citizenScienceData: ['Data 11A', 'Data 11B'],
-        partner: {
-          name: 'Partner 11',
-          url: 'http://partner11.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [20.990477226558713, 52.23140447391029],
+        impact: ['National'],
+        complianceNeed: [
+          'There is a need to integrate citizen science data into SDG 632 reporting, as the first water quality report submitted to the UN in 2021 showed that over half of the sampled areas failed to meet national standards. Spatial and temporal data gaps persist due to lack of technical capacity to integrate citizen science with agency data and manage non-citizen science monitoring data effectively.',
+        ],
+        stakeholders: ['31 local communities.'],
+        authorities: ['Sierra Leona National Water Resources.'],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
           },
-          properties: {
-            id: '11',
-            name: 'Pioneer Case 14',
-            thematicAreas: ['Zero Pollution'],
-          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description for the Rokel River Basin Management Plan.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
         },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Africa'],
       },
     ]);
   });
   it('should filter case studies by thematicAreas', () => {
     const filters: CaseStudyFilters = { thematicAreas: [ThematicArea.ZERO_POLLUTION] };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '1',
-        name: 'Pioneer Case 1 and 2',
-        description: 'Description for Case Study Alpha',
-        location: Location.ASIA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.PROMOTING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.ASIA],
-        citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
-        citizenScienceData: ['Data 1A', 'Data 1B'],
-        partner: { name: 'Partner 1', url: 'http://partner1.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.441795399183874, 55.984683236682784],
+        id: '5',
+        title: '[TBD] study case 8',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Africa',
+          country: {
+            name: 'Sierra Leone',
+            code: 'SL',
           },
-          properties: {
-            id: '1',
-            name: 'Pioneer Case 1 and 2',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
-          },
-        },
-      },
-      {
-        id: '4',
-        name: 'Pioneer Case 6 and 7',
-        description: 'Description for Delta Study',
-        location: Location.EUROPE,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.PROMOTING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
-        citizenScienceInitiatives: ['Initiative 4A', 'Initiative 4B'],
-        citizenScienceData: ['Data 4A', 'Data 4B'],
-        partner: { name: 'Partner 4', url: 'http://partner4.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [6.070817014926126, 58.78746279402633],
-          },
-          properties: {
-            id: '4',
-            name: 'Pioneer Case 6 and 7',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-11.874590438445415, 9.09185585862],
+            },
+            properties: {
+              id: '5',
+              name: '[TBD] study case 8',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'There is a need to integrate citizen science data into SDG 632 reporting, as the first water quality report submitted to the UN in 2021 showed that over half of the sampled areas failed to meet national standards. Spatial and temporal data gaps persist due to lack of technical capacity to integrate citizen science with agency data and manage non-citizen science monitoring data effectively.',
+        ],
+        stakeholders: ['31 local communities.'],
+        authorities: ['Sierra Leona National Water Resources.'],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
+          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description for the Rokel River Basin Management Plan.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Africa'],
       },
       {
         id: '6',
-        name: 'Pioneer Case 9',
-        description: 'Description for Case Study Zeta',
-        location: Location.EUROPE,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.ENFORCEMENT,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION, ThematicArea.BIODIVERSITY_PROTECTION],
-        tags: [
-          Impact.LOCAL,
-          ThematicArea.ZERO_POLLUTION,
-          ThematicArea.BIODIVERSITY_PROTECTION,
-          Location.EUROPE,
-        ],
-        citizenScienceInitiatives: ['Initiative 6A', 'Initiative 6B'],
-        citizenScienceData: ['Data 6A', 'Data 6B'],
-        partner: { name: 'Partner 6', url: 'http://partner6.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [12.240924646771024, 45.49272481983484],
+        title: '[TBD] study case 9',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Italy',
+            code: 'IT',
           },
-          properties: {
-            id: '6',
-            name: 'Pioneer Case 9',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION, ThematicArea.BIODIVERSITY_PROTECTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [12.240924646771024, 45.49272481983484],
+            },
+            properties: {
+              id: '6',
+              name: '[TBD] study case 9',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'Current regulatory monitoring has data gaps, especially in tributaries, smaller water bodies, and wetlands, while ongoing Citizen Science Initiatives could provide better spatial coverage and collect necessary data for the Water Framework Directive.',
+        ],
+        stakeholders: ['Schools, community members, local associations.'],
+        authorities: [
+          {
+            title: 'ARPAV (Environment Agency)',
+            url: 'https://www.arpa.veneto.it/',
+          },
+          {
+            title: 'Consorzio di Bonifica (river management consortium)',
+            url: 'https://www.bonificabasilicata.it/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
+          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '7',
+        title: '[TBD] study case 10',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Ireland',
+            code: 'IE',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-6.258428722269101, 53.34587913160031],
+            },
+            properties: {
+              id: '8',
+              name: '[TBD] study case 10',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'Half of Irish Natura 2000 sites with seagrass do not achieve Favourable Conservation Status due to eutrophication and algal blooms, exacerbated by insufficient statutory monitoring of pollution incidents. Citizen Generated Data can provide improved spatial and temporal coverage to detect pollution events.',
+        ],
+        stakeholders: [
+          {
+            title: 'Inland Fisheries Ireland',
+            url: 'https://www.fisheriesireland.ie/',
+          },
+          {
+            title: 'LAWPRO',
+            url: 'https://www.lawpro.ca/',
+          },
+          'coastal stakeholders with septic tanks, farmers and operators of wastewater treatment',
+        ],
+        authorities: [
+          {
+            title: 'Inland Fisheries Ireland',
+            url: 'https://www.fisheriesireland.ie/',
+          },
+          {
+            title: 'LAWPRO',
+            url: 'https://www.lawpro.ca/',
+          },
+          'coastal stakeholders with septic tanks, farmers and operators of wastewater treatment',
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Coastwatch Autumn Survey and Seagrass Campaign',
+            url: 'https://www.coastwatch.org/all-ireland-survey',
+          },
+        ],
+        citizenScienceData: [
+          'Shore quality indicators based on Zostera beds, opportunistic seaweeds, stream quality and Nitrogen tests.',
+        ],
+        contact: {
+          title: 'Coastwatch',
+          url: 'https://www.coastwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Enforcement', 'National', 'Europe'],
       },
       {
         id: '8',
-        name: 'Pioneer Case 11',
-        description: 'Description for Case Study Theta',
-        location: Location.AFRICA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-        citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
-        citizenScienceData: ['Data 8A', 'Data 8B'],
-        partner: { name: 'Partner 8', url: 'http://partner8.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-6.994805119538429, 52.153970892963315],
+        title: '[TBD] study case 11',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Ireland',
+            code: 'IE',
           },
-          properties: {
-            id: '8',
-            name: 'Pioneer Case 11',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-6.994805119538429, 52.153970892963315],
+            },
+            properties: {
+              id: '8',
+              name: '[TBD] study case 11',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['Local'],
+        complianceNeed: [
+          'Authorities seek to meet the Bathing Water Directive through sodium hypochlorite bleach disinfection of streams entering bathing waters, prompting a review of bleach policy and a shift towards addressing stream pollution causes and restoring stream health with citizen participation, influenced by Citizen Generated Data and media coverage of data.',
+        ],
+        stakeholders: [
+          'Local authority',
+          {
+            title: 'LAWPRO',
+            url: 'https://www.lawpro.ca/',
+          },
+          'NGO',
+          'citizens',
+          'riparian landowners',
+        ],
+        authorities: [
+          {
+            title: 'Waterford County Council',
+            url: 'https://waterfordcouncil.ie/',
+          },
+          {
+            title: 'Environmental Protection Agency',
+            url: 'https://www.epa.ie/',
+          },
+        ],
+        citizenScienceInitiatives: ['Halt Stream Chemical Pollution'],
+        citizenScienceData: [
+          'Qualitative & quantitative reports from citizens on stream life, chlorine smell test',
+        ],
+        contact: {
+          title: 'Coastwatch',
+          url: 'https://www.coastwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
+      },
+      {
+        id: '9',
+        title: '[TBD] study case 12',
+        subTheme: 'Preventing plastics in the ocean',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Ireland',
+            code: 'IE',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-7.7693864125233185, 52.28489265784818],
+            },
+            properties: {
+              id: '9',
+              name: '[TBD] study case 12',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'Coastwatch data pre- and post-2021 ban under the Single-Use Plastics Directive shows reduced single-use plastics in shore litter, but plastic straws, cups, and cutlery still appear on over 10% of surveyed shores. Ad hoc checks reveal ongoing use of plastic cutlery and confusion over cup materials.',
+        ],
+        stakeholders: ['Coastwatchers from schools, community groups, individual volunteers.'],
+        authorities: [
+          'The Department of the Environment, Climate and Communications, and for enforcement Local Government.',
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Coastwatch Autumn Survey',
+            url: 'https://www.coastwatch.org/all-ireland-survey',
+          },
+        ],
+        citizenScienceData: [
+          'Coastwatch marine litter data from several hundred sites in 2020, 2021 and 2022.',
+        ],
+        contact: {
+          title: 'Coastwatch',
+          url: 'https://www.coastwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Enforcement', 'National', 'Europe'],
+      },
+      {
+        id: '10',
+        title: '[TBD] study case 13',
+        subTheme: 'Preventing plastics in the ocean',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [10.77518886774447, 59.9124148103055],
+            },
+            properties: {
+              id: '10',
+              name: '[TBD] study case 13',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'There is insufficient statutory monitoring of plastic litter, despite ample available Citizen Generated Data, necessitating the establishment of data standards and guidelines to ensure its relevance and adequacy for environmental compliance assurance concerning beach and sea plastic litter.',
+        ],
+        stakeholders: [
+          'NGOs, industry representatives, policy implementors, citizens representatives (e.g. schools, CSOs). Rydde has currently 300+ civic actions with 1000+ volunteers across Norway',
+        ],
+        authorities: [
+          {
+            title: 'Norwegian Environment Agency',
+            url: 'https://www.environmentagency.no/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Keep Norway Beautiful',
+            url: 'https://www.norden.org/en/nominee/keep-norway-beautiful-norway',
+          },
+          {
+            title: 'Norwegian Centre against Marine Litter',
+            url: 'https://www.marfo.no/en/',
+          },
+          'initiative Ryddenorge',
+        ],
+        citizenScienceData: [
+          'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway.',
+        ],
+        contact: {
+          title: 'The Norwegian Institute for Water Research',
+          url: 'https://www.niva.no/en',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Enforcement', 'National', 'Europe'],
       },
       {
         id: '11',
-        name: 'Pioneer Case 14',
-        description: 'Description for Case Study Lambda',
-        location: Location.EUROPE,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
-        citizenScienceInitiatives: ['Initiative 11A', 'Initiative 11B'],
-        citizenScienceData: ['Data 11A', 'Data 11B'],
-        partner: { name: 'Partner 11', url: 'http://partner11.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [20.990477226558713, 52.23140447391029],
+        title: '[TBD] study case 14',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Poland',
+            code: 'PL',
           },
-          properties: {
-            id: '11',
-            name: 'Pioneer Case 14',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
-          },
-        },
-      },
-      {
-        id: '14',
-        name: 'Pioneer Case 17 and 18',
-        description: 'Description for Case Study Xi',
-        location: Location.AFRICA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-        citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
-        citizenScienceData: ['Data 14A', 'Data 14B'],
-        partner: { name: 'Partner 14', url: 'http://partner14.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.463768054020553, 56.55809512928662],
-          },
-          properties: {
-            id: '14',
-            name: 'Pioneer Case 17 and 18',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [20.990477226558713, 52.23140447391029],
+            },
+            properties: {
+              id: '11',
+              name: '[TBD] study case 14',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
-      },
-      {
-        id: '16',
-        name: 'Pioneer Case 20',
-        description: 'Description for Case Study Omicron',
-        location: Location.OCEANIA,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.ENFORCEMENT,
-        thematicAreas: [
-          ThematicArea.BIODIVERSITY_PROTECTION,
-          ThematicArea.DEFORESTATION_PREVENTION,
-          ThematicArea.ZERO_POLLUTION,
+        impact: ['National'],
+        complianceNeed: [
+          'There is a data gap in official monitoring of air quality, highlighting the need to identify local hotspots to facilitate the development of additional air quality protection measures.',
         ],
-        tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
-        citizenScienceInitiatives: ['Initiative 15A', 'Initiative 15B'],
-        citizenScienceData: ['Data 15A', 'Data 15B'],
-        partner: { name: 'Partner 15', url: 'http://partner15.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-64.40656063713384, -16.554895031581502],
+        stakeholders: [
+          {
+            title: 'Poland Chief Environmental Inspectorate',
+            url: 'https://www.gov.pl/web/gios-en',
           },
-          properties: {
-            id: '16',
-            name: 'Pioneer Case 20',
-            thematicAreas: [
-              ThematicArea.BIODIVERSITY_PROTECTION,
-              ThematicArea.DEFORESTATION_PREVENTION,
-              ThematicArea.ZERO_POLLUTION,
-            ],
+          {
+            title: 'Ministry of Climate and Environment, Environmental Research Institute',
+            url: 'https://www.gov.pl/web/climate',
+          },
+          'local authorities',
+        ],
+        authorities: [
+          {
+            title: 'Norwegian Environment Agency',
+            url: 'https://www.environmentagency.no/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Polish Smog Alert',
+            url: 'https://www.polishsmogalert.org/',
+          },
+          {
+            title: 'Education Antismog Network',
+            url: 'https://en.nask.pl/eng/activities/educational-projects/esa-educational-anti-sm/3418,ESA-Educational-Anti-Smog-Network.html',
+          },
+          {
+            title: 'Airly',
+            url: 'https://airly.org/map/en/',
+          },
+          {
+            title: 'LookO2',
+            url: 'https://looko2.com/heatmap.php',
+          },
+          {
+            title: 'Kanarek',
+            url: 'https://play.google.com/store/apps/details?id=pl.tajchert.canary&hl=en_US',
+          },
+          {
+            title: 'Sensor.Community',
+            url: 'https://sensor.community/en/',
+          },
+        ],
+        citizenScienceData: [
+          'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway.',
+        ],
+        contact: {
+          title: 'Krakow Smog Alert',
+          url: 'https://www.polishsmogalert.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '12',
+        title: 'Measure Together (Samen Meten)',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Netherlands',
+            code: 'NL',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [5.76467838897042, 51.937121018546925],
+            },
+            properties: {
+              id: '12',
+              name: 'Measure Together (Samen Meten)',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'Finding out how citizen science data can complement official air quality monitoring, for example by creating more detailed maps, making it possible to identify local hot spots to develop additional air quality protection measures.',
+        ],
+        stakeholders: [
+          {
+            title: 'Poland Chief Environmental Inspectorate',
+            url: 'https://www.gov.pl/web/gios-en',
+          },
+          {
+            title: 'Ministry of Climate and Environment, Environmental Research Institute',
+            url: 'https://www.gov.pl/web/climate',
+          },
+          'local authorities',
+        ],
+        authorities: [
+          'RIVM',
+          {
+            title: 'Members of the Clean Air Agreement - Schone Lucht Akkoord',
+            url: 'https://www.schoneluchtakkoord.nl/default.aspx',
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Many bottom-up and top-down initiatives, many (but not all) of them using Sensor.Community methods',
+        ],
+        citizenScienceData: [
+          'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more',
+        ],
+        contact: {
+          title: 'National Institute for Public Health and the Environment',
+          url: 'https://www.rivm.nl/en/about-rivm',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '13',
+        title: 'Woodburning and Industry',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [7.948881832659551, 58.143415786630904],
+            },
+            properties: {
+              id: '12',
+              name: 'Woodburning and Industry',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['Local'],
+        complianceNeed: [
+          'Municipalities seek higher spatial density of data due to limited spatial coverage of reference stations, finding that Citizen Science data for PM2.5 is complementary and can serve as indicative measurement. Due to regulatory monitoring focus on air pollution from traffic, particularly for pollutants from seasonal hotspots due to woodburning (PM2.5). There is also a need to assess the suitability of sensor data for monitoring other air quality parameters than PM2,5, such as SO2.',
+        ],
+        stakeholders: [
+          '>30 citizen scientists, 3-4 neighborhoods, municipalities, research institutes, Norwegian Asthma and Allergy association (NAAF), Sauna associations/companies',
+        ],
+        authorities: ['Municipalities of Oslo', 'Bærum', 'Kristiansand'],
+        citizenScienceInitiatives: [
+          'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
+        ],
+        citizenScienceData: ['Air Quality (PM 2,5, SO2, and perceived Odor)'],
+        contact: {
+          title: 'NILU',
+          url: 'https://nilu.com/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
     ]);
   });
 
   it('should filter case studies by complianceTypes', () => {
     const filters: CaseStudyFilters = { complianceTypes: [ComplianceType.MONITORING] };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '2',
-        name: 'Pioneer Case 3 and 4',
-        description: 'Description for Beta Study',
-        location: Location.AMERICAS,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-        tags: [Impact.NATIONAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.AMERICAS],
-        citizenScienceInitiatives: ['Initiative 2A', 'Initiative 2B'],
-        citizenScienceData: ['Data 2A', 'Data 2B'],
-        partner: { name: 'Partner 2', url: 'http://partner2.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-8.043277825790401, 40.01914953666145],
+        id: '1',
+        title: '[TBD] study case 1 & 2',
+        subTheme: 'Monitoring and achieving global biodiversity targets',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Portugal',
+            code: 'PT',
           },
-          properties: {
-            id: '2',
-            name: 'Pioneer Case 3 and 4',
-            thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [9.441795399183874, 55.984683236682784],
+            },
+            properties: {
+              id: '1',
+              name: '[TBD] study case 1 & 2',
+              thematicAreas: ['Biodiversity Protection'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'All 195 parties to the Convention on Biological Diversity must track progress towards goals and targets using an agreed monitoring framework. Governments are encouraged to use Citizen Generated Data to enhance their reports, with provisional estimates indicating that it can be involved in 45% of the 365 indicators.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'As a Natura 2000 area, the park is envisaged to track progress towards the goals and targets of the Global Biodiversity Framework.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: ['10,000 citizen scientists.'],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['500 citizen scientists.'],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                {
+                  title: 'Danish Nature Agency',
+                  url: 'https://eng.naturstyrelsen.dk/',
+                },
+                {
+                  title: 'Danish Ministry of Environment',
+                  url: 'https://eng.mim.dk/',
+                },
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                {
+                  title: 'Thy National Park',
+                  url: 'https://eng.nationalparkthy.dk/',
+                },
+              ],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Arter.dk',
+            url: 'https://arter.dk/landing-page',
+          },
+          {
+            title: 'Bugbase',
+            url: 'https://bugbase.cs.umn.edu/',
+          },
+          {
+            title: 'DOFbasen',
+            url: 'https://dofbasen.dk/',
+          },
+          {
+            title: 'InsektObs',
+            url: 'https://www.fynskeinsekter.dk/viewpage.php?page_id=2',
+          },
+        ],
+        citizenScienceData: [
+          '20 datasets. Global Biodiversity Framework indicators, e.g.: Change in the quality of coastal water ecosystems over time, Red List Index, and services provided by ecosystems.',
+        ],
+        contact: {
+          title: 'The Nordic Agency for Development and Ecology',
+          url: 'https://www.nordeco.dk/',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
+      },
+      {
+        id: '2',
+        title: '[TBD] study case 3 & 4',
+        subTheme: 'Reversing the decline of pollinators',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Denmark',
+            code: 'DK',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-8.043277825790401, 40.01914953666145],
+            },
+            properties: {
+              id: '2',
+              name: '[TBD] study case 3 & 4',
+              thematicAreas: ['Biodiversity Protection'],
+            },
+          },
+        },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'The lack of a government initiative specifically targeting pollinators and pollination highlights the need for compliance, and Citizen Generated Data (CGD) can provide crucial evidence for the National Strategy for Nature Conservation and Biodiversity 2030.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Oeiras Municipal Plan of Adaptation to Climate Change (PMAACO) includes objectives around biodiversity but there is a lack of statutory monitoring to assess progress. Ongoing CSIs can provide relevant data particularly on pollinators.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Around 1100 observers, local communities, municipalities, NGO’s, universities, national authorities.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['Local communities, schools, municipalities.'],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                {
+                  title:
+                    'Portuguese Ministry of Environment; Portuguese Institute of Nature Conservation and Forests',
+                  url: 'https://icnf.pt/',
+                },
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                {
+                  title: 'Municipality of Oeiras',
+                  url: 'https://www.oeiras.pt/',
+                },
+              ],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Biodiversity4All platform',
+            url: 'https://www.biodiversity4all.org/',
+          },
+          {
+            title:
+              'Portuguese Butterfly Census (Censos de Borboletas de Portugal - connected to the European Butterfly Monitoring Scheme - eBMS)',
+            url: 'https://butterfly-monitoring.net/es/portugal-bms',
+          },
+          {
+            title: 'FitCount (Flower-Insect Timed Counts)',
+            url: 'https://fitcount.ceh.ac.uk/',
+          },
+          {
+            title: 'PolinizAÇÃO',
+            url: 'https://www.inaturalist.org/projects/polinizacao-interacoes-planta-polinizador',
+          },
+        ],
+        citizenScienceData: [
+          'Data available at the Biodiversity4All platform, the Censos de Borboletas de Portugal website and FitCount app.',
+        ],
+        contact: {
+          title: 'Faculdade de Ciências da Universidade de Lisboa',
+          url: 'https://www.fciencias-id.pt/',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
+      },
+      {
+        id: '3',
+        title: '[TBD] study case 5',
+        subTheme: 'Reversing the decline of pollinators',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Netherlands',
+            code: 'NL',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [4.899829613176121, 52.39353661709069],
+            },
+            properties: {
+              id: '3',
+              name: '[TBD] study case 5',
+              thematicAreas: ['Biodiversity Protection'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'Almost all available data on butterflies is based on citizen science, but it could be better integrated into official reporting.',
+        ],
+        stakeholders: ['800 citizen scientists.'],
+        authorities: [
+          {
+            title: 'Network Ecological Monitoring',
+            url: 'https://www.cbs.nl/en-gb/news/2010/48/water-birds-tend-to-migrate-less-far-to-the-southwest/network-ecological-monitoring',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Dutch Butterfly Conservation (De Vlinderstichting)',
+            url: 'https://www.vlinderstichting.nl/english/',
+          },
+          {
+            title: 'European Butterfly Monitoring Scheme (eBMS)',
+            url: 'https://butterfly-monitoring.net/',
+          },
+        ],
+        citizenScienceData: [
+          'Trends and indicators based on national data are available through Environmental Data Compendium Netherlands and in national and provincial reports.',
+        ],
+        contact: {
+          title: 'Netherlands Institute of Ecology (NIOO)',
+          url: 'https://nioo.knaw.nl/en',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '4',
+        title: '[TBD] study case 6 & 7',
+        subTheme: 'Free-flowing rivers for freshwater and wetland biodiversity',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [6.070817014926126, 58.78746279402633],
+            },
+            properties: {
+              id: '4',
+              name: '[TBD] study case 6 & 7',
+              thematicAreas: ['Biodiversity Protection'],
+            },
+          },
+        },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Member states are required to produce a national inventory of current river barriers and prioritize obsolete ones for removal, but thousands of barriers are estimated to be unaccounted for, creating a data gap that can be filled with citizen science.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Local areas are required to contribute to national inventory of river barriers. Many barriers are small and unsuitable for aerial surveillance. Citizen science can help to fill data gaps and provide additional information such as whether fish species are able to pass the barriers.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'River basin district authorities, water managers, anglers and angling organizations; county governors.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Local angler organizations, the local catchments (river basin sub-districts) managers.',
+              ],
+            },
+          },
+        ],
+        authorities: [
+          {
+            title: 'Norwegian Environment Agency',
+            url: 'https://www.environmentagency.no/',
+          },
+        ],
+        citizenScienceInitiatives: ['AMBER river barrier app.'],
+        citizenScienceData: [
+          'National / regional dataset available through the AMBER Barrier Atlas.',
+        ],
+        contact: {
+          title: 'The Norwegian Institute for Water Research (NIVA)',
+          url: 'https://www.niva.no/en',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
       },
       {
         id: '5',
-        name: 'Pioneer Case 8',
-        description: 'Description for Case Study Epsilon',
-        location: Location.OCEANIA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
-        tags: [Impact.LOCAL, ThematicArea.BIODIVERSITY_PROTECTION, Location.OCEANIA],
-        citizenScienceInitiatives: ['Initiative 5A', 'Initiative 5B'],
-        citizenScienceData: ['Data 5A', 'Data 5B'],
-        partner: { name: 'Partner 5', url: 'http://partner5.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-11.874590438445415, 9.09185585862],
+        title: '[TBD] study case 8',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Africa',
+          country: {
+            name: 'Sierra Leone',
+            code: 'SL',
           },
-          properties: {
-            id: '5',
-            name: 'Pioneer Case 8',
-            thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-11.874590438445415, 9.09185585862],
+            },
+            properties: {
+              id: '5',
+              name: '[TBD] study case 8',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'There is a need to integrate citizen science data into SDG 632 reporting, as the first water quality report submitted to the UN in 2021 showed that over half of the sampled areas failed to meet national standards. Spatial and temporal data gaps persist due to lack of technical capacity to integrate citizen science with agency data and manage non-citizen science monitoring data effectively.',
+        ],
+        stakeholders: ['31 local communities.'],
+        authorities: ['Sierra Leona National Water Resources.'],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
+          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description for the Rokel River Basin Management Plan.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Africa'],
+      },
+      {
+        id: '6',
+        title: '[TBD] study case 9',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Italy',
+            code: 'IT',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [12.240924646771024, 45.49272481983484],
+            },
+            properties: {
+              id: '6',
+              name: '[TBD] study case 9',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'Current regulatory monitoring has data gaps, especially in tributaries, smaller water bodies, and wetlands, while ongoing Citizen Science Initiatives could provide better spatial coverage and collect necessary data for the Water Framework Directive.',
+        ],
+        stakeholders: ['Schools, community members, local associations.'],
+        authorities: [
+          {
+            title: 'ARPAV (Environment Agency)',
+            url: 'https://www.arpa.veneto.it/',
+          },
+          {
+            title: 'Consorzio di Bonifica (river management consortium)',
+            url: 'https://www.bonificabasilicata.it/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
+          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
       },
       {
         id: '8',
-        name: 'Pioneer Case 11',
-        description: 'Description for Case Study Theta',
-        location: Location.AFRICA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-        citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
-        citizenScienceData: ['Data 8A', 'Data 8B'],
-        partner: { name: 'Partner 8', url: 'http://partner8.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-6.994805119538429, 52.153970892963315],
+        title: '[TBD] study case 11',
+        subTheme: 'Clean and healthy surface water',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Ireland',
+            code: 'IE',
           },
-          properties: {
-            id: '8',
-            name: 'Pioneer Case 11',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-6.994805119538429, 52.153970892963315],
+            },
+            properties: {
+              id: '8',
+              name: '[TBD] study case 11',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['Local'],
+        complianceNeed: [
+          'Authorities seek to meet the Bathing Water Directive through sodium hypochlorite bleach disinfection of streams entering bathing waters, prompting a review of bleach policy and a shift towards addressing stream pollution causes and restoring stream health with citizen participation, influenced by Citizen Generated Data and media coverage of data.',
+        ],
+        stakeholders: [
+          'Local authority',
+          {
+            title: 'LAWPRO',
+            url: 'https://www.lawpro.ca/',
+          },
+          'NGO',
+          'citizens',
+          'riparian landowners',
+        ],
+        authorities: [
+          {
+            title: 'Waterford County Council',
+            url: 'https://waterfordcouncil.ie/',
+          },
+          {
+            title: 'Environmental Protection Agency',
+            url: 'https://www.epa.ie/',
+          },
+        ],
+        citizenScienceInitiatives: ['Halt Stream Chemical Pollution'],
+        citizenScienceData: [
+          'Qualitative & quantitative reports from citizens on stream life, chlorine smell test',
+        ],
+        contact: {
+          title: 'Coastwatch',
+          url: 'https://www.coastwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
       {
         id: '11',
-        name: 'Pioneer Case 14',
-        description: 'Description for Case Study Lambda',
-        location: Location.EUROPE,
-        impact: Impact.NATIONAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.NATIONAL, ThematicArea.ZERO_POLLUTION, Location.EUROPE],
-        citizenScienceInitiatives: ['Initiative 11A', 'Initiative 11B'],
-        citizenScienceData: ['Data 11A', 'Data 11B'],
-        partner: { name: 'Partner 11', url: 'http://partner11.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [20.990477226558713, 52.23140447391029],
+        title: '[TBD] study case 14',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Poland',
+            code: 'PL',
           },
-          properties: {
-            id: '11',
-            name: 'Pioneer Case 14',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [20.990477226558713, 52.23140447391029],
+            },
+            properties: {
+              id: '11',
+              name: '[TBD] study case 14',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'There is a data gap in official monitoring of air quality, highlighting the need to identify local hotspots to facilitate the development of additional air quality protection measures.',
+        ],
+        stakeholders: [
+          {
+            title: 'Poland Chief Environmental Inspectorate',
+            url: 'https://www.gov.pl/web/gios-en',
+          },
+          {
+            title: 'Ministry of Climate and Environment, Environmental Research Institute',
+            url: 'https://www.gov.pl/web/climate',
+          },
+          'local authorities',
+        ],
+        authorities: [
+          {
+            title: 'Norwegian Environment Agency',
+            url: 'https://www.environmentagency.no/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Polish Smog Alert',
+            url: 'https://www.polishsmogalert.org/',
+          },
+          {
+            title: 'Education Antismog Network',
+            url: 'https://en.nask.pl/eng/activities/educational-projects/esa-educational-anti-sm/3418,ESA-Educational-Anti-Smog-Network.html',
+          },
+          {
+            title: 'Airly',
+            url: 'https://airly.org/map/en/',
+          },
+          {
+            title: 'LookO2',
+            url: 'https://looko2.com/heatmap.php',
+          },
+          {
+            title: 'Kanarek',
+            url: 'https://play.google.com/store/apps/details?id=pl.tajchert.canary&hl=en_US',
+          },
+          {
+            title: 'Sensor.Community',
+            url: 'https://sensor.community/en/',
+          },
+        ],
+        citizenScienceData: [
+          'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway.',
+        ],
+        contact: {
+          title: 'Krakow Smog Alert',
+          url: 'https://www.polishsmogalert.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '12',
+        title: 'Measure Together (Samen Meten)',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Netherlands',
+            code: 'NL',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [5.76467838897042, 51.937121018546925],
+            },
+            properties: {
+              id: '12',
+              name: 'Measure Together (Samen Meten)',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['National'],
+        complianceNeed: [
+          'Finding out how citizen science data can complement official air quality monitoring, for example by creating more detailed maps, making it possible to identify local hot spots to develop additional air quality protection measures.',
+        ],
+        stakeholders: [
+          {
+            title: 'Poland Chief Environmental Inspectorate',
+            url: 'https://www.gov.pl/web/gios-en',
+          },
+          {
+            title: 'Ministry of Climate and Environment, Environmental Research Institute',
+            url: 'https://www.gov.pl/web/climate',
+          },
+          'local authorities',
+        ],
+        authorities: [
+          'RIVM',
+          {
+            title: 'Members of the Clean Air Agreement - Schone Lucht Akkoord',
+            url: 'https://www.schoneluchtakkoord.nl/default.aspx',
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Many bottom-up and top-down initiatives, many (but not all) of them using Sensor.Community methods',
+        ],
+        citizenScienceData: [
+          'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more',
+        ],
+        contact: {
+          title: 'National Institute for Public Health and the Environment',
+          url: 'https://www.rivm.nl/en/about-rivm',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Europe'],
+      },
+      {
+        id: '13',
+        title: 'Woodburning and Industry',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [7.948881832659551, 58.143415786630904],
+            },
+            properties: {
+              id: '12',
+              name: 'Woodburning and Industry',
+              thematicAreas: ['Zero Pollution'],
+            },
+          },
+        },
+        impact: ['Local'],
+        complianceNeed: [
+          'Municipalities seek higher spatial density of data due to limited spatial coverage of reference stations, finding that Citizen Science data for PM2.5 is complementary and can serve as indicative measurement. Due to regulatory monitoring focus on air pollution from traffic, particularly for pollutants from seasonal hotspots due to woodburning (PM2.5). There is also a need to assess the suitability of sensor data for monitoring other air quality parameters than PM2,5, such as SO2.',
+        ],
+        stakeholders: [
+          '>30 citizen scientists, 3-4 neighborhoods, municipalities, research institutes, Norwegian Asthma and Allergy association (NAAF), Sauna associations/companies',
+        ],
+        authorities: ['Municipalities of Oslo', 'Bærum', 'Kristiansand'],
+        citizenScienceInitiatives: [
+          'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
+        ],
+        citizenScienceData: ['Air Quality (PM 2,5, SO2, and perceived Odor)'],
+        contact: {
+          title: 'NILU',
+          url: 'https://nilu.com/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
       {
         id: '14',
-        name: 'Pioneer Case 17 and 18',
-        description: 'Description for Case Study Xi',
-        location: Location.AFRICA,
-        impact: Impact.LOCAL,
-        complianceType: ComplianceType.MONITORING,
-        thematicAreas: [ThematicArea.ZERO_POLLUTION],
-        tags: [Impact.LOCAL, ThematicArea.ZERO_POLLUTION, Location.AFRICA],
-        citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
-        citizenScienceData: ['Data 14A', 'Data 14B'],
-        partner: { name: 'Partner 14', url: 'http://partner14.com' },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.463768054020553, 56.55809512928662],
+        title: 'Citizens for a deforestation-free Denmark',
+        subTheme: 'Halting illegal deforestation',
+        thematicAreas: ['Deforestation Prevention'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Denmark',
+            code: 'DK',
           },
-          properties: {
-            id: '14',
-            name: 'Pioneer Case 17 and 18',
-            thematicAreas: [ThematicArea.ZERO_POLLUTION],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [9.463768054020553, 56.55809512928662],
+            },
+            properties: {
+              id: '14',
+              name: 'Citizens for a deforestation-free Denmark',
+              thematicAreas: ['Deforestation Prevention'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Authorities are unable to identify every case of illegal deforestation. Citizen Generated Data can highlight areas for further investigation so authorities can take action.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Authorities unable to identify every case of illegal deforestation. Citizen Science data can highlight areas for further investigation so that authorities can take action.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Nature and Biodiversity Division, Danish Ministry of Environment and the general public with an estimated 300-400 citizens’ report per year.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Selected Forest districts (3), chief science officers, and individual citizens',
+              ],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: ['Nature and Biodiversity Division, Danish Ministry of Environment.'],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['Selected Forest districts and private forest owners.'],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Citizens’ reports on national forest interventions & imports of commodities causing deforestation or forest degradation.',
+        ],
+        citizenScienceData: [
+          'Reports on potentially illegal placement of commodities causing deforestation or forest degradation. Reports on forest management interventions in Denmark. Geo-referenced reports on forest management interventions that may be in contradiction with national forest law.',
+        ],
+        contact: {
+          title: 'University of Copenhagen',
+          url: 'https://www.ku.dk/english/',
+        },
+        tags: [
+          'Deforestation Prevention',
+          'Promoting',
+          'Monitoring',
+          'Local',
+          'National',
+          'Europe',
+        ],
       },
     ]);
   });
 
   it('should filter case studies by impacts', () => {
     const filters = { impacts: [Impact.LOCAL] };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
         id: '1',
-        name: 'Pioneer Case 1 and 2',
-        description: 'Description for Case Study Alpha',
-        location: 'Asia',
-        impact: 'Local',
-        complianceType: 'Promoting',
-        thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Asia'],
-        citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
-        citizenScienceData: ['Data 1A', 'Data 1B'],
-        partner: {
-          name: 'Partner 1',
-          url: 'http://partner1.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.441795399183874, 55.984683236682784],
-          },
-          properties: {
-            id: '1',
-            name: 'Pioneer Case 1 and 2',
-            thematicAreas: ['Zero Pollution'],
-          },
-        },
-      },
-      {
-        id: '3',
-        name: 'Pioneer Case 5',
-        description: 'Description for Case Study Gamma',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Deforestation Prevention'],
-        tags: ['Local', 'Deforestation Prevention', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
-        citizenScienceData: ['Data 3A', 'Data 3B'],
-        partner: {
-          name: 'Partner 3',
-          url: 'http://partner3.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [4.899829613176121, 52.39353661709069],
-          },
-          properties: {
-            id: '3',
-            name: 'Pioneer Case 5',
-            thematicAreas: ['Deforestation Prevention'],
-          },
-        },
-      },
-      {
-        id: '5',
-        name: 'Pioneer Case 8',
-        description: 'Description for Case Study Epsilon',
-        location: 'Oceania',
-        impact: 'Local',
-        complianceType: 'Monitoring',
+        title: '[TBD] study case 1 & 2',
+        subTheme: 'Monitoring and achieving global biodiversity targets',
         thematicAreas: ['Biodiversity Protection'],
-        tags: ['Local', 'Biodiversity Protection', 'Oceania'],
-        citizenScienceInitiatives: ['Initiative 5A', 'Initiative 5B'],
-        citizenScienceData: ['Data 5A', 'Data 5B'],
-        partner: {
-          name: 'Partner 5',
-          url: 'http://partner5.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-11.874590438445415, 9.09185585862],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Portugal',
+            code: 'PT',
           },
-          properties: {
-            id: '5',
-            name: 'Pioneer Case 8',
-            thematicAreas: ['Biodiversity Protection'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [9.441795399183874, 55.984683236682784],
+            },
+            properties: {
+              id: '1',
+              name: '[TBD] study case 1 & 2',
+              thematicAreas: ['Biodiversity Protection'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'All 195 parties to the Convention on Biological Diversity must track progress towards goals and targets using an agreed monitoring framework. Governments are encouraged to use Citizen Generated Data to enhance their reports, with provisional estimates indicating that it can be involved in 45% of the 365 indicators.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'As a Natura 2000 area, the park is envisaged to track progress towards the goals and targets of the Global Biodiversity Framework.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: ['10,000 citizen scientists.'],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['500 citizen scientists.'],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                {
+                  title: 'Danish Nature Agency',
+                  url: 'https://eng.naturstyrelsen.dk/',
+                },
+                {
+                  title: 'Danish Ministry of Environment',
+                  url: 'https://eng.mim.dk/',
+                },
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                {
+                  title: 'Thy National Park',
+                  url: 'https://eng.nationalparkthy.dk/',
+                },
+              ],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Arter.dk',
+            url: 'https://arter.dk/landing-page',
+          },
+          {
+            title: 'Bugbase',
+            url: 'https://bugbase.cs.umn.edu/',
+          },
+          {
+            title: 'DOFbasen',
+            url: 'https://dofbasen.dk/',
+          },
+          {
+            title: 'InsektObs',
+            url: 'https://www.fynskeinsekter.dk/viewpage.php?page_id=2',
+          },
+        ],
+        citizenScienceData: [
+          '20 datasets. Global Biodiversity Framework indicators, e.g.: Change in the quality of coastal water ecosystems over time, Red List Index, and services provided by ecosystems.',
+        ],
+        contact: {
+          title: 'The Nordic Agency for Development and Ecology',
+          url: 'https://www.nordeco.dk/',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
       },
       {
-        id: '6',
-        name: 'Pioneer Case 9',
-        description: 'Description for Case Study Zeta',
-        location: 'Europe',
-        impact: 'Local',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Zero Pollution', 'Biodiversity Protection'],
-        tags: ['Local', 'Zero Pollution', 'Biodiversity Protection', 'Europe'],
-        citizenScienceInitiatives: ['Initiative 6A', 'Initiative 6B'],
-        citizenScienceData: ['Data 6A', 'Data 6B'],
-        partner: {
-          name: 'Partner 6',
-          url: 'http://partner6.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [12.240924646771024, 45.49272481983484],
+        id: '2',
+        title: '[TBD] study case 3 & 4',
+        subTheme: 'Reversing the decline of pollinators',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Denmark',
+            code: 'DK',
           },
-          properties: {
-            id: '6',
-            name: 'Pioneer Case 9',
-            thematicAreas: ['Zero Pollution', 'Biodiversity Protection'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-8.043277825790401, 40.01914953666145],
+            },
+            properties: {
+              id: '2',
+              name: '[TBD] study case 3 & 4',
+              thematicAreas: ['Biodiversity Protection'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'The lack of a government initiative specifically targeting pollinators and pollination highlights the need for compliance, and Citizen Generated Data (CGD) can provide crucial evidence for the National Strategy for Nature Conservation and Biodiversity 2030.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Oeiras Municipal Plan of Adaptation to Climate Change (PMAACO) includes objectives around biodiversity but there is a lack of statutory monitoring to assess progress. Ongoing CSIs can provide relevant data particularly on pollinators.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Around 1100 observers, local communities, municipalities, NGO’s, universities, national authorities.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['Local communities, schools, municipalities.'],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                {
+                  title:
+                    'Portuguese Ministry of Environment; Portuguese Institute of Nature Conservation and Forests',
+                  url: 'https://icnf.pt/',
+                },
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                {
+                  title: 'Municipality of Oeiras',
+                  url: 'https://www.oeiras.pt/',
+                },
+              ],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          {
+            title: 'Biodiversity4All platform',
+            url: 'https://www.biodiversity4all.org/',
+          },
+          {
+            title:
+              'Portuguese Butterfly Census (Censos de Borboletas de Portugal - connected to the European Butterfly Monitoring Scheme - eBMS)',
+            url: 'https://butterfly-monitoring.net/es/portugal-bms',
+          },
+          {
+            title: 'FitCount (Flower-Insect Timed Counts)',
+            url: 'https://fitcount.ceh.ac.uk/',
+          },
+          {
+            title: 'PolinizAÇÃO',
+            url: 'https://www.inaturalist.org/projects/polinizacao-interacoes-planta-polinizador',
+          },
+        ],
+        citizenScienceData: [
+          'Data available at the Biodiversity4All platform, the Censos de Borboletas de Portugal website and FitCount app.',
+        ],
+        contact: {
+          title: 'Faculdade de Ciências da Universidade de Lisboa',
+          url: 'https://www.fciencias-id.pt/',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
+      },
+      {
+        id: '4',
+        title: '[TBD] study case 6 & 7',
+        subTheme: 'Free-flowing rivers for freshwater and wetland biodiversity',
+        thematicAreas: ['Biodiversity Protection'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [6.070817014926126, 58.78746279402633],
+            },
+            properties: {
+              id: '4',
+              name: '[TBD] study case 6 & 7',
+              thematicAreas: ['Biodiversity Protection'],
+            },
+          },
+        },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Member states are required to produce a national inventory of current river barriers and prioritize obsolete ones for removal, but thousands of barriers are estimated to be unaccounted for, creating a data gap that can be filled with citizen science.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Local areas are required to contribute to national inventory of river barriers. Many barriers are small and unsuitable for aerial surveillance. Citizen science can help to fill data gaps and provide additional information such as whether fish species are able to pass the barriers.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'River basin district authorities, water managers, anglers and angling organizations; county governors.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Local angler organizations, the local catchments (river basin sub-districts) managers.',
+              ],
+            },
+          },
+        ],
+        authorities: [
+          {
+            title: 'Norwegian Environment Agency',
+            url: 'https://www.environmentagency.no/',
+          },
+        ],
+        citizenScienceInitiatives: ['AMBER river barrier app.'],
+        citizenScienceData: [
+          'National / regional dataset available through the AMBER Barrier Atlas.',
+        ],
+        contact: {
+          title: 'The Norwegian Institute for Water Research (NIVA)',
+          url: 'https://www.niva.no/en',
+        },
+        tags: ['Biodiversity Protection', 'Promoting', 'Monitoring', 'National', 'Local', 'Europe'],
       },
       {
         id: '8',
-        name: 'Pioneer Case 11',
-        description: 'Description for Case Study Theta',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Monitoring',
+        title: '[TBD] study case 11',
+        subTheme: 'Clean and healthy surface water',
         thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
-        citizenScienceData: ['Data 8A', 'Data 8B'],
-        partner: {
-          name: 'Partner 8',
-          url: 'http://partner8.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-6.994805119538429, 52.153970892963315],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Ireland',
+            code: 'IE',
           },
-          properties: {
-            id: '8',
-            name: 'Pioneer Case 11',
-            thematicAreas: ['Zero Pollution'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-6.994805119538429, 52.153970892963315],
+            },
+            properties: {
+              id: '8',
+              name: '[TBD] study case 11',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['Local'],
+        complianceNeed: [
+          'Authorities seek to meet the Bathing Water Directive through sodium hypochlorite bleach disinfection of streams entering bathing waters, prompting a review of bleach policy and a shift towards addressing stream pollution causes and restoring stream health with citizen participation, influenced by Citizen Generated Data and media coverage of data.',
+        ],
+        stakeholders: [
+          'Local authority',
+          {
+            title: 'LAWPRO',
+            url: 'https://www.lawpro.ca/',
+          },
+          'NGO',
+          'citizens',
+          'riparian landowners',
+        ],
+        authorities: [
+          {
+            title: 'Waterford County Council',
+            url: 'https://waterfordcouncil.ie/',
+          },
+          {
+            title: 'Environmental Protection Agency',
+            url: 'https://www.epa.ie/',
+          },
+        ],
+        citizenScienceInitiatives: ['Halt Stream Chemical Pollution'],
+        citizenScienceData: [
+          'Qualitative & quantitative reports from citizens on stream life, chlorine smell test',
+        ],
+        contact: {
+          title: 'Coastwatch',
+          url: 'https://www.coastwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
       {
-        id: '10',
-        name: 'Pioneer Case 13',
-        description: 'Description for Case Study Kappa',
-        location: 'Oceania',
-        impact: 'Local',
-        complianceType: 'Promoting',
-        thematicAreas: ['Deforestation Prevention'],
-        tags: ['Local', 'Deforestation Prevention', 'Oceania'],
-        citizenScienceInitiatives: ['Initiative 10A', 'Initiative 10B'],
-        citizenScienceData: ['Data 10A', 'Data 10B'],
-        partner: {
-          name: 'Partner 10',
-          url: 'http://partner10.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [10.77518886774447, 59.9124148103055],
+        id: '13',
+        title: 'Woodburning and Industry',
+        subTheme: 'Clean air for all',
+        thematicAreas: ['Zero Pollution'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Norway',
+            code: 'NO',
           },
-          properties: {
-            id: '10',
-            name: 'Pioneer Case 13',
-            thematicAreas: ['Deforestation Prevention'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [7.948881832659551, 58.143415786630904],
+            },
+            properties: {
+              id: '12',
+              name: 'Woodburning and Industry',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
-      },
-      {
-        id: '12',
-        name: 'Pioneer Case 15 local',
-        description: 'Description for Case Study Mu',
-        location: 'Asia',
-        impact: 'Local',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Biodiversity Protection'],
-        tags: ['Local', 'Biodiversity Protection', 'Asia'],
-        citizenScienceInitiatives: ['Initiative 12A', 'Initiative 12B'],
-        citizenScienceData: ['Data 12A', 'Data 12B'],
-        partner: {
-          name: 'Partner 12',
-          url: 'http://partner12.com',
+        impact: ['Local'],
+        complianceNeed: [
+          'Municipalities seek higher spatial density of data due to limited spatial coverage of reference stations, finding that Citizen Science data for PM2.5 is complementary and can serve as indicative measurement. Due to regulatory monitoring focus on air pollution from traffic, particularly for pollutants from seasonal hotspots due to woodburning (PM2.5). There is also a need to assess the suitability of sensor data for monitoring other air quality parameters than PM2,5, such as SO2.',
+        ],
+        stakeholders: [
+          '>30 citizen scientists, 3-4 neighborhoods, municipalities, research institutes, Norwegian Asthma and Allergy association (NAAF), Sauna associations/companies',
+        ],
+        authorities: ['Municipalities of Oslo', 'Bærum', 'Kristiansand'],
+        citizenScienceInitiatives: [
+          'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
+        ],
+        citizenScienceData: ['Air Quality (PM 2,5, SO2, and perceived Odor)'],
+        contact: {
+          title: 'NILU',
+          url: 'https://nilu.com/',
         },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [5.76467838897042, 51.937121018546925],
-          },
-          properties: {
-            id: '12',
-            name: 'Pioneer Case 15 local',
-            thematicAreas: ['Biodiversity Protection'],
-          },
-        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
       {
         id: '14',
-        name: 'Pioneer Case 17 and 18',
-        description: 'Description for Case Study Xi',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Monitoring',
-        thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
-        citizenScienceData: ['Data 14A', 'Data 14B'],
-        partner: {
-          name: 'Partner 14',
-          url: 'http://partner14.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.463768054020553, 56.55809512928662],
+        title: 'Citizens for a deforestation-free Denmark',
+        subTheme: 'Halting illegal deforestation',
+        thematicAreas: ['Deforestation Prevention'],
+        location: {
+          continent: 'Europe',
+          country: {
+            name: 'Denmark',
+            code: 'DK',
           },
-          properties: {
-            id: '14',
-            name: 'Pioneer Case 17 and 18',
-            thematicAreas: ['Zero Pollution'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [9.463768054020553, 56.55809512928662],
+            },
+            properties: {
+              id: '14',
+              name: 'Citizens for a deforestation-free Denmark',
+              thematicAreas: ['Deforestation Prevention'],
+            },
           },
         },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Authorities are unable to identify every case of illegal deforestation. Citizen Generated Data can highlight areas for further investigation so authorities can take action.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Authorities unable to identify every case of illegal deforestation. Citizen Science data can highlight areas for further investigation so that authorities can take action.',
+              ],
+            },
+          },
+        ],
+        stakeholders: [
+          {
+            impact: {
+              name: 'National',
+              list: [
+                'Nature and Biodiversity Division, Danish Ministry of Environment and the general public with an estimated 300-400 citizens’ report per year.',
+              ],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: [
+                'Selected Forest districts (3), chief science officers, and individual citizens',
+              ],
+            },
+          },
+        ],
+        authorities: [
+          {
+            impact: {
+              name: 'National',
+              list: ['Nature and Biodiversity Division, Danish Ministry of Environment.'],
+            },
+          },
+          {
+            impact: {
+              name: 'Local',
+              list: ['Selected Forest districts and private forest owners.'],
+            },
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Citizens’ reports on national forest interventions & imports of commodities causing deforestation or forest degradation.',
+        ],
+        citizenScienceData: [
+          'Reports on potentially illegal placement of commodities causing deforestation or forest degradation. Reports on forest management interventions in Denmark. Geo-referenced reports on forest management interventions that may be in contradiction with national forest law.',
+        ],
+        contact: {
+          title: 'University of Copenhagen',
+          url: 'https://www.ku.dk/english/',
+        },
+        tags: [
+          'Deforestation Prevention',
+          'Promoting',
+          'Monitoring',
+          'Local',
+          'National',
+          'Europe',
+        ],
+      },
+      {
+        id: '15',
+        title: 'It’s our forest too',
+        subTheme: 'Halting illegal deforestation',
+        thematicAreas: ['Deforestation Prevention'],
+        location: {
+          continent: 'Asia',
+          country: {
+            name: 'Cambodia',
+            code: 'KH',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [104.85648556428505, 12.70157454584046],
+            },
+            properties: {
+              id: '15',
+              name: 'It’s our forest too',
+              thematicAreas: ['Deforestation Prevention'],
+            },
+          },
+        },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          'Earth Observation data cannot identify selective logging, whereas local communities can swiftly and accurately report instances of illegal deforestation. Integrating data from both sources is essential to achieve comprehensive information for compliance monitoring and enforcement.',
+        ],
+        stakeholders: [
+          'Three forest community networks; i.e. more than 100 communities across five forest-rich provinces engaged in the use of the Prey Lang App to report on forest resources and forest crimes.',
+        ],
+        authorities: [
+          {
+            title: 'Ministry of Environment Cambodia',
+            url: 'https://www.moe.gov.kh/en',
+          },
+        ],
+        citizenScienceInitiatives: ["It's Our Forest Too www.preylang.net"],
+        citizenScienceData: [
+          'Geo-referenced data on forest crimes; > 30.000 records collected using the Prey Lang App www.preylang.net Citizens data is integrated with freely available Satellite Images on forest loss Global Forest Watch and Copernicus.',
+        ],
+        contact: {
+          title: 'University of Copenhagen',
+          url: 'https://www.ku.dk/english/',
+        },
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Asia'],
+      },
+      {
+        id: '16',
+        title: '[TBD] study case 20',
+        subTheme: 'Reducing forest loss from illegal activities and fires',
+        thematicAreas: ['Deforestation Prevention'],
+        location: {
+          continent: 'Americas',
+          country: {
+            name: 'Bolivia',
+            code: 'BO',
+          },
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-64.40656063713384, -16.554895031581502],
+            },
+            properties: {
+              id: '16',
+              name: '[TBD] study case 20',
+              thematicAreas: ['Deforestation Prevention'],
+            },
+          },
+        },
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          'Indigenous organizations are largely responsible for compliance assurance within formally recognized collectively titled indigenous territories. Communities can collect citizen science data but need to integrate with other relevant data from Earth Observation and link to relevant national policies.',
+        ],
+        stakeholders: [
+          'The indigenous Chiquitano population, their organisations & authorities; 20 local fire brigades, each with 10 members; Apoyo Para el Campesino-Indígena del Oriente Boliviano (APCOB), local implementing NGO, and FoW.',
+        ],
+        authorities: [
+          {
+            title: 'The Territorial Government of Monte Verde (TGMV)',
+            url: 'https://www.facebook.com/GTIMVBolivia/',
+          },
+          'The Municipal Governments of Lomerío',
+          'San Javier and Concepción',
+          {
+            title: 'The Municipal Emergency Operations Centre (COEM)',
+            url: 'http://www.defensacivil.gob.bo/web/uploads/images/doc_20210429_140951.pdf',
+          },
+          {
+            title: 'The Forest and Land Operational Unit (UOBT)',
+            url: 'https://abt.gob.bo/index.php/institucion/oficina/unidad-operativa-de-bosques-y-tierra',
+          },
+          'Concepción',
+          {
+            title:
+              'The Departmental Directorate of the Authority of Social Control and Inspection of Forests and Land (ABT) of Santa Cruz\n',
+            url: 'https://abt.gob.bo/',
+          },
+        ],
+        citizenScienceInitiatives: [
+          'Members of the Chiquitano indigenous people participate in forest monitoring in the field and reporting on illegal forest activities. Reports are passed on to traditional indigenous authorities and public authorities',
+        ],
+        citizenScienceData: [
+          'Geo-referenced data on forest resources, illegal forest activities and forest fires. Daily reports on forest fires during the fire season August-November during 2019-2022. Freely available satellite images.',
+        ],
+        contact: {
+          title: 'Forests of the World',
+          url: 'https://www.forestsoftheworld.org/',
+        },
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Americas'],
       },
     ]);
   });
 
   it('should filter case studies by locations', () => {
-    const filters = { locations: [Location.ASIA, Location.AFRICA] };
-    const caseStudyService = new CaseStudyService(mockCaseStudies, filters);
+    const filters = { locations: [Continent.ASIA, Continent.AFRICA] };
+    const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
     expect(result.data).toEqual([
       {
-        id: '1',
-        name: 'Pioneer Case 1 and 2',
-        description: 'Description for Case Study Alpha',
-        location: 'Asia',
-        impact: 'Local',
-        complianceType: 'Promoting',
+        id: '5',
+        title: '[TBD] study case 8',
+        subTheme: 'Clean and healthy surface water',
         thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Asia'],
-        citizenScienceInitiatives: ['Initiative 1A', 'Initiative 1B'],
-        citizenScienceData: ['Data 1A', 'Data 1B'],
-        partner: {
-          name: 'Partner 1',
-          url: 'http://partner1.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.441795399183874, 55.984683236682784],
+        location: {
+          continent: 'Africa',
+          country: {
+            name: 'Sierra Leone',
+            code: 'SL',
           },
-          properties: {
-            id: '1',
-            name: 'Pioneer Case 1 and 2',
-            thematicAreas: ['Zero Pollution'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-11.874590438445415, 9.09185585862],
+            },
+            properties: {
+              id: '5',
+              name: '[TBD] study case 8',
+              thematicAreas: ['Zero Pollution'],
+            },
           },
         },
+        impact: ['National'],
+        complianceNeed: [
+          'There is a need to integrate citizen science data into SDG 632 reporting, as the first water quality report submitted to the UN in 2021 showed that over half of the sampled areas failed to meet national standards. Spatial and temporal data gaps persist due to lack of technical capacity to integrate citizen science with agency data and manage non-citizen science monitoring data effectively.',
+        ],
+        stakeholders: ['31 local communities.'],
+        authorities: ['Sierra Leona National Water Resources.'],
+        citizenScienceInitiatives: [
+          {
+            title: 'FreshWater Watch',
+            url: 'https://www.freshwaterwatch.org/',
+          },
+        ],
+        citizenScienceData: [
+          'Nitrates, Phosphates, Turbidity, and qualitative environmental description for the Rokel River Basin Management Plan.',
+        ],
+        contact: {
+          title: 'Earthwatch',
+          url: 'https://earthwatch.org/',
+        },
+        tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'National', 'Africa'],
       },
       {
-        id: '3',
-        name: 'Pioneer Case 5',
-        description: 'Description for Case Study Gamma',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Enforcement',
+        id: '15',
+        title: 'It’s our forest too',
+        subTheme: 'Halting illegal deforestation',
         thematicAreas: ['Deforestation Prevention'],
-        tags: ['Local', 'Deforestation Prevention', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 3A', 'Initiative 3B'],
-        citizenScienceData: ['Data 3A', 'Data 3B'],
-        partner: {
-          name: 'Partner 3',
-          url: 'http://partner3.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [4.899829613176121, 52.39353661709069],
+        location: {
+          continent: 'Asia',
+          country: {
+            name: 'Cambodia',
+            code: 'KH',
           },
-          properties: {
-            id: '3',
-            name: 'Pioneer Case 5',
-            thematicAreas: ['Deforestation Prevention'],
-          },
-        },
-      },
-      {
-        id: '7',
-        name: 'Pioneer Case 10',
-        description: 'Description for Case Study Eta',
-        location: 'Asia',
-        impact: 'National',
-        complianceType: 'Promoting',
-        thematicAreas: ['Deforestation Prevention'],
-        tags: ['National', 'Deforestation Prevention', 'Asia'],
-        citizenScienceInitiatives: ['Initiative 7A', 'Initiative 7B'],
-        citizenScienceData: ['Data 7A', 'Data 7B'],
-        partner: {
-          name: 'Partner 7',
-          url: 'http://partner7.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-6.258428722269101, 53.34587913160031],
-          },
-          properties: {
-            id: '7',
-            name: 'Pioneer Case 10',
-            thematicAreas: ['Deforestation Prevention'],
+          coordinates: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [104.85648556428505, 12.70157454584046],
+            },
+            properties: {
+              id: '15',
+              name: 'It’s our forest too',
+              thematicAreas: ['Deforestation Prevention'],
+            },
           },
         },
-      },
-      {
-        id: '8',
-        name: 'Pioneer Case 11',
-        description: 'Description for Case Study Theta',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Monitoring',
-        thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 8A', 'Initiative 8B'],
-        citizenScienceData: ['Data 8A', 'Data 8B'],
-        partner: {
-          name: 'Partner 8',
-          url: 'http://partner8.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-6.994805119538429, 52.153970892963315],
+        impact: ['Local', 'National'],
+        complianceNeed: [
+          'Earth Observation data cannot identify selective logging, whereas local communities can swiftly and accurately report instances of illegal deforestation. Integrating data from both sources is essential to achieve comprehensive information for compliance monitoring and enforcement.',
+        ],
+        stakeholders: [
+          'Three forest community networks; i.e. more than 100 communities across five forest-rich provinces engaged in the use of the Prey Lang App to report on forest resources and forest crimes.',
+        ],
+        authorities: [
+          {
+            title: 'Ministry of Environment Cambodia',
+            url: 'https://www.moe.gov.kh/en',
           },
-          properties: {
-            id: '8',
-            name: 'Pioneer Case 11',
-            thematicAreas: ['Zero Pollution'],
-          },
+        ],
+        citizenScienceInitiatives: ["It's Our Forest Too www.preylang.net"],
+        citizenScienceData: [
+          'Geo-referenced data on forest crimes; > 30.000 records collected using the Prey Lang App www.preylang.net Citizens data is integrated with freely available Satellite Images on forest loss Global Forest Watch and Copernicus.',
+        ],
+        contact: {
+          title: 'University of Copenhagen',
+          url: 'https://www.ku.dk/english/',
         },
-      },
-      {
-        id: '12',
-        name: 'Pioneer Case 15 local',
-        description: 'Description for Case Study Mu',
-        location: 'Asia',
-        impact: 'Local',
-        complianceType: 'Enforcement',
-        thematicAreas: ['Biodiversity Protection'],
-        tags: ['Local', 'Biodiversity Protection', 'Asia'],
-        citizenScienceInitiatives: ['Initiative 12A', 'Initiative 12B'],
-        citizenScienceData: ['Data 12A', 'Data 12B'],
-        partner: {
-          name: 'Partner 12',
-          url: 'http://partner12.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [5.76467838897042, 51.937121018546925],
-          },
-          properties: {
-            id: '12',
-            name: 'Pioneer Case 15 local',
-            thematicAreas: ['Biodiversity Protection'],
-          },
-        },
-      },
-      {
-        id: '14',
-        name: 'Pioneer Case 17 and 18',
-        description: 'Description for Case Study Xi',
-        location: 'Africa',
-        impact: 'Local',
-        complianceType: 'Monitoring',
-        thematicAreas: ['Zero Pollution'],
-        tags: ['Local', 'Zero Pollution', 'Africa'],
-        citizenScienceInitiatives: ['Initiative 14A', 'Initiative 14B'],
-        citizenScienceData: ['Data 14A', 'Data 14B'],
-        partner: {
-          name: 'Partner 14',
-          url: 'http://partner14.com',
-        },
-        point: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [9.463768054020553, 56.55809512928662],
-          },
-          properties: {
-            id: '14',
-            name: 'Pioneer Case 17 and 18',
-            thematicAreas: ['Zero Pollution'],
-          },
-        },
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Asia'],
       },
     ]);
   });

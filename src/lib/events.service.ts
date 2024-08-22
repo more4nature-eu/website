@@ -1,13 +1,21 @@
 // src/services/EventsService.ts
 
+import { URLink } from '@/lib/case-studies.service';
 import { Paginator } from '@/lib/paginator';
 
 export type Event = {
-  name: string;
+  id: string;
+  title: string;
   description: string;
   date: string;
+  formatDate?: string;
   image: string;
   location: string;
+  theme: string;
+  type: string;
+  presenters: string[];
+  organizations: (string | URLink)[];
+  link?: URLink;
 };
 
 export class EventsService extends Paginator<Event> {
@@ -26,7 +34,7 @@ export class EventsService extends Paginator<Event> {
     return items.filter((event) => {
       const filterByLocation = filters.location ? event.location === filters.location : true;
       const filterByDate = filters.date ? event.date === filters.date : true;
-      const filterByName = filters.name ? event.name.includes(filters.name) : true;
+      const filterByName = filters.title ? event.title.includes(filters.title) : true;
       return filterByLocation && filterByDate && filterByName;
     });
   }
@@ -47,7 +55,7 @@ export class EventsService extends Paginator<Event> {
     const filters: Partial<Event> = {
       location: searchParams.get('location') || undefined,
       date: searchParams.get('date') || undefined,
-      name: searchParams.get('name') || undefined,
+      title: searchParams.get('title') || undefined,
     };
     return { filters };
   }

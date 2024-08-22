@@ -1,5 +1,4 @@
 'use client';
-
 import CountryFlag from 'react-country-flag';
 
 import Link from 'next/link';
@@ -8,6 +7,7 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
+import { ThematicArea, URLink } from '@/lib/case-studies.service';
 import { CaseStudy } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
 
@@ -21,28 +21,42 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-const ACCORDION_CONTENT: {
-  title: string;
-  key: 'citizenScienceInitiatives' | 'citizenScienceData' | 'complianceNeed';
-}[] = [
-  {
-    title: 'Citizen Science Initiatives',
-    key: 'citizenScienceInitiatives',
-  },
-  {
-    title: 'Citizen Science Data',
-    key: 'citizenScienceData',
-  },
-  {
-    title: 'Compliance Need',
-    key: 'complianceNeed',
-  },
-];
+function renderItem(item: string | URLink) {
+  if (typeof item === 'string') {
+    return <span dangerouslySetInnerHTML={{ __html: item }} />;
+  }
+
+  return (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center space-x-2 underline"
+    >
+      <span>{item.title}</span> <HiOutlineExternalLink className="h-[20px] w-[20px] shrink-0" />
+    </a>
+  );
+}
+
+function getThematicStyle(thematicArea: CaseStudy['thematicAreas']) {
+  if (thematicArea?.length > 1) return 'bg-grey-500';
+
+  switch (thematicArea?.[0]) {
+    case ThematicArea.ZERO_POLLUTION:
+      return 'bg-blue-500';
+    case ThematicArea.DEFORESTATION_PREVENTION:
+      return 'bg-blue-500';
+    case ThematicArea.BIODIVERSITY_PROTECTION:
+      return 'bg-orange-500';
+    default:
+      return 'bg-grey-500';
+  }
+}
 
 export default function CaseDetailSidebar() {
   const { id } = useParams();
 
-  const { data } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryKey: queryKeys.studyCases.byId(id as string).queryKey,
     queryFn: async (): Promise<CaseStudy> => {
       try {
@@ -58,22 +72,31 @@ export default function CaseDetailSidebar() {
     },
   });
 
+  if (!isSuccess) return null;
+
   return (
     <ScrollArea className="h-full flex-1">
-      <div className="flex flex-col items-start space-y-8 bg-orange-500 p-[50px]">
+      <div
+        className={`flex flex-col items-start space-y-8 ${getThematicStyle(data?.thematicAreas)} p-[50px]`}
+      >
         <Button asChild variant="ghost" className="border border-grey-900">
           <Link href="/cases">Close detail</Link>
         </Button>
-        <h3 className="text-xl">{data?.name}</h3>
+        <div className="space-y-2">
+          <h3 className="text-xl">{data?.title}</h3>
+          <h4 className="text-lg">{data?.subTheme}</h4>
+        </div>
 
         <div className="flex items-center space-x-2">
           <CountryFlag
             svg
-            countryCode={data?.country.code as NonNullable<CaseStudy['country']['code']>}
-            aria-label={data?.country.name}
+            countryCode={
+              data?.location.country.code as NonNullable<CaseStudy['location']['country']['code']>
+            }
+            aria-label={data?.location.country.name}
             className="!h-[15px] !w-[21px]"
           />
-          <span className="text-grey-900">{data?.country.name}</span>
+          <span className="text-grey-900">{data?.location.country.name}</span>
         </div>
       </div>
       <div className="flex flex-col">
@@ -83,36 +106,142 @@ export default function CaseDetailSidebar() {
             collapsible
             className="flex w-full flex-col divide-y divide-white/20"
           >
-            {ACCORDION_CONTENT.map(({ title, key }) => (
-              <AccordionItem key={key} value={title} className="peer w-full py-5 first:pt-0">
-                <AccordionTrigger>
-                  <div className="flex items-center space-x-5">
-                    <span className="text-lg font-semibold">{title}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="leading-9">{data?.[key]}</AccordionContent>
-              </AccordionItem>
-            ))}
+            <AccordionItem
+              value="citizenScienceInitiatives"
+              className="peer w-full py-5 first:pt-0"
+            >
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Citizen Science Initiatives</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul>
+                  {data?.citizenScienceInitiatives.map((item, index) => (
+                    <li key={index}>{renderItem(item)}</li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="citizenScienceData" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Citizen Science Data</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul>
+                  {data?.citizenScienceData.map((item, index) => (
+                    <li key={index}>{renderItem(item)}</li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="complianceNeed" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Compliance Need</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul className="space-y-4">
+                  {data?.complianceNeed.map((item, index) => (
+                    <li key={index}>
+                      {typeof item === 'object' && 'impact' in item ? (
+                        <>
+                          <h4 className="font-semibold">{item.impact.name}</h4>
+                          <ul className="space-y-2">
+                            {item.impact.list.map((subItem, index) => (
+                              <li key={index}>{renderItem(subItem)}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        renderItem(item)
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="stakeholders" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Stakeholders</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul className="space-y-4">
+                  {data?.stakeholders.map((item, index) => (
+                    <li key={index}>
+                      {typeof item === 'object' && 'impact' in item ? (
+                        <>
+                          <h4 className="font-semibold">{item.impact.name}</h4>
+                          <ul className="space-y-2">
+                            {item.impact.list.map((subItem, index) => (
+                              <li key={index}>{renderItem(subItem)}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        renderItem(item)
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="authorities" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Authorities</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul className="space-y-4">
+                  {data?.authorities.map((item, index) => (
+                    <li key={index}>
+                      {typeof item === 'object' && 'impact' in item ? (
+                        <>
+                          <h4 className="font-semibold">{item.impact.name}</h4>
+                          <ul className="space-y-2">
+                            {item.impact.list.map((subItem, index) => (
+                              <li key={index}>{renderItem(subItem)}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        renderItem(item)
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
           <div>
             <div className="flex flex-col items-start space-y-5 border-t border-t-white py-9">
               <span className="text-lg font-semibold">Theme</span>
               <div className="flex gap-4">
-                {data?.thematicAreas.map((theme) => <Badge key={theme}>{theme}</Badge>)}
+                {data?.thematicAreas.map((theme) => (
+                  <Badge key={theme} className="pointer-events-none">
+                    {theme}
+                  </Badge>
+                ))}
               </div>
             </div>
             <div className="flex flex-col space-y-5 border-t border-t-white pt-9">
-              <span className="text-lg font-semibold">Partner</span>
+              <span className="text-lg font-semibold">Contact</span>
               <span className="flex items-center space-x-2">
                 <a
-                  href={data?.['partner'].url}
+                  href={data?.contact.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="flex items-center space-x-2 underline"
                 >
-                  {data?.['partner'].name}
+                  <span>{data?.contact.title}</span>
+                  <HiOutlineExternalLink className="h-[20px] w-[20px] shrink-0" />
                 </a>
-                <HiOutlineExternalLink className="h-[20px] w-[20px]" />
               </span>
             </div>
           </div>

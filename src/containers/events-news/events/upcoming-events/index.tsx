@@ -27,10 +27,13 @@ export default function UpcomingEvents() {
 
   return (
     <ul>
-      {data?.map(({ name, image, location, date, description }) => (
-        <li key={name} className="grid grid-cols-12 gap-14 border-t border-t-grey-800/30 py-[60px]">
+      {data?.map(({ title, image, location, date, description }) => (
+        <li
+          key={title}
+          className="grid grid-cols-12 gap-14 border-t border-t-grey-800/30 py-[60px]"
+        >
           <div className="relative col-span-6 h-[242px]">
-            <Image src={image} alt={name} fill />
+            <Image src={image} alt={title} fill />
           </div>
           <div className="col-span-6 flex flex-col items-start justify-between">
             <div className="space-y-4">
@@ -44,7 +47,7 @@ export default function UpcomingEvents() {
                   <span>{location}</span>
                 </span>
               </div>
-              <h4 className="text-xl">{name}</h4>
+              <h4 className="text-xl">{title}</h4>
             </div>
             <Dialog>
               <DialogTrigger asChild>
@@ -52,7 +55,7 @@ export default function UpcomingEvents() {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>{name}</DialogTitle>
+                  <DialogTitle>{title}</DialogTitle>
                   <DialogDescription>
                     <div
                       className="space-y-4"

@@ -36,7 +36,7 @@ export const ClusterLayer = ({
   const handleSelectMarker = (
     clusterId: number,
     coordinates: Supercluster.PointFeature<
-      CaseStudy['point']['properties']
+      CaseStudy['location']['coordinates']['properties']
     >['geometry']['coordinates'],
   ) => {
     const nextZoom = SUPERCLUSTER.getClusterExpansionZoom(clusterId);
@@ -88,7 +88,7 @@ export const ClusterLayer = ({
           <Marker key={properties.id} latitude={latitude} longitude={longitude}>
             <MarkerComponent
               key={`marker-${properties.id}`}
-              properties={properties as CaseStudy['point']['properties']}
+              properties={properties as CaseStudy['location']['coordinates']['properties']}
             />
           </Marker>
         );
