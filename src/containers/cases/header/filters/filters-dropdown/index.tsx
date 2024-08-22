@@ -30,7 +30,8 @@ export default function FiltersDropdown() {
 
   const onClearFilters = useCallback(() => {
     setFilters(INITIAL_FILTERS_STATE);
-  }, []);
+    setGlobalFilters(INITIAL_FILTERS_STATE);
+  }, [setGlobalFilters]);
 
   const onApplyFilters = useCallback(() => {
     setGlobalFilters((prev) => ({
