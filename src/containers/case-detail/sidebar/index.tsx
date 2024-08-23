@@ -45,7 +45,7 @@ function getThematicStyle(thematicArea: CaseStudy['thematicAreas']) {
     case ThematicArea.ZERO_POLLUTION:
       return 'bg-blue-500';
     case ThematicArea.DEFORESTATION_PREVENTION:
-      return 'bg-blue-500';
+      return 'bg-green-500';
     case ThematicArea.BIODIVERSITY_PROTECTION:
       return 'bg-orange-500';
     default:
