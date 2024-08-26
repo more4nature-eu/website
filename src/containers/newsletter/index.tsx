@@ -56,7 +56,6 @@ export const NewsletterSchema = z.object({
   privacyPolicy: z.boolean().refine((value) => value, {
     message: 'Privacy policy must be accepted',
   }),
-  updates: z.boolean().optional(),
   organizationType: z.enum(ORGANIZATION_TYPES_VALUES),
   otherOrganization: z.string().optional(),
 });
@@ -85,7 +84,6 @@ export default function Newsletter() {
       email: '',
       organizationType: undefined,
       privacyPolicy: false,
-      updates: false,
     },
     mode: 'onSubmit',
   });
@@ -234,37 +232,26 @@ export default function Newsletter() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="updates"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className="flex space-x-2">
-                        <Checkbox
-                          {...field}
-                          id={field.name}
-                          value="updates"
-                          onCheckedChange={field.onChange}
-                          className="relative top-0.5"
-                        />
-                        <Label htmlFor={field.name} className="font-normal leading-5">
-                          I want to be added to the more4nature mailing list for occasional updates
-                          through the email newsletter.
-                        </Label>
-                      </div>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-4">
+              {['idle', 'loading'].includes(subscribedStatus) && (
+                <p className="text-sm">
+                  Subscribe to stay connected! By clicking the button, you&apos;ll join the
+                  more4nature mailing list and receive occasional updates directly to your inbox.
+                  You can unsubscribe at any time.
+                </p>
+              )}
               {!['subscribed', 'error'].includes(subscribedStatus) && (
-                <Button type="submit" className="w-full md:w-auto">
+                <Button
+                  type="submit"
+                  className="w-full md:w-auto"
+                  disabled={subscribedStatus === 'loading'}
+                >
                   Subscribe to newsletter
                 </Button>
               )}
+
               {subscribedStatus === 'subscribed' && <p>Thank you for subscribing.</p>}
               {subscribedStatus === 'error' && (
                 <p>There was an error subscribing to the newsletter. Please, try again</p>
