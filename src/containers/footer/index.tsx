@@ -20,7 +20,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex">
               <Image
                 src="/images/m4n-logo.webp"
-                alt="More4Nature logo"
+                alt="more4nature logo"
                 width={200}
                 height={70}
                 className="h-auto w-full"

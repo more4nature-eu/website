@@ -10,7 +10,7 @@ import LayoutProviders from '@/app/providers';
 const lexend = Lexend({ subsets: ['latin'], weight: ['100', '400', '500', '700'] });
 
 export const metadata: Metadata = {
-  title: 'More4Nature',
+  title: 'more4nature',
   description:
     'We are on a mission to trigger transformative change in conservation efforts regarding zero pollution, biodiversity protection and deforestation prevention by strengthening the role of citizens and communities.',
   manifest: '/site.webmanifest',
