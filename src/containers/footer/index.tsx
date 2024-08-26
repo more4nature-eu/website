@@ -96,11 +96,6 @@ export default function Footer() {
                 Privacy Policy
               </Link>
             </li>
-            <li className="inline-flex">
-              <Link href="/terms-of-service" className="text-xs underline">
-                Terms of Service
-              </Link>
-            </li>
           </ul>
         </div>
       </footer>

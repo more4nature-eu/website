@@ -1,3 +1,7 @@
+'use client';
+
+import { Media } from '@/containers/media';
+
 import {
   Accordion,
   AccordionContent,
@@ -43,30 +47,52 @@ export default function Objectives() {
   return (
     <>
       <Wrapper>
-        <Accordion type="single" collapsible className="flex w-full flex-col">
-          {OBJECTIVES.map(({ name, description, imageURL }) => (
-            <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
-              <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
-                <AccordionTrigger>
-                  <div className="flex items-center space-x-5">
-                    <span className="text-4xl">{name}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="leading-9">{description}</AccordionContent>
-              </AccordionItem>
-              <div
-                className="flex w-[395px] bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${imageURL})`,
-                }}
-              />
-            </div>
-          ))}
-        </Accordion>
+        <Media lessThan="lg">
+          <ul className="space-y-10 divide-y divide-grey-800/20">
+            {OBJECTIVES.map(({ name, description, imageURL }, index) => (
+              <li key={name} className="flex flex-col space-y-4 [&:not(:first-child)]:pt-10">
+                <div
+                  className="flex h-[110px] w-full bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${imageURL})`,
+                  }}
+                />
+
+                <div className="flex flex-col space-y-4 text-lg">
+                  <span>0{index + 1}</span>
+                  <span className="font-semibold">{name}</span>
+                </div>
+                <p>{description}</p>
+              </li>
+            ))}
+          </ul>
+        </Media>
+        <Media greaterThanOrEqual="lg">
+          <Accordion type="single" collapsible className="flex w-full flex-col">
+            {OBJECTIVES.map(({ name, description, imageURL }) => (
+              <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
+                <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-5">
+                      <span className="text-lg">{name}</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="leading-9">{description}</AccordionContent>
+                </AccordionItem>
+                <div
+                  className="flex w-[395px] bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${imageURL})`,
+                  }}
+                />
+              </div>
+            ))}
+          </Accordion>
+        </Media>
       </Wrapper>
       <Wrapper className="space-y-4">
         <span className="text-lg font-semibold">Methodology</span>
-        <h3 className="text-xl leading-[48px]">
+        <h3 className="tex-lg lg:text-xl lg:leading-[48px]">
           A socio-technical approach implemented via Dooble Loop Action Research.
         </h3>
         {/*  todo: ask for picture */}

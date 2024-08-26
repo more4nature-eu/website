@@ -1,5 +1,9 @@
-import Header from '@/containers/header';
+'use client';
 
+import Header from '@/containers/header';
+import { Media } from '@/containers/media';
+
+import AppMenu from '@/components/app-menu';
 import { SocialMenu } from '@/components/ui/social-menu';
 
 export default function Intro() {
@@ -14,7 +18,19 @@ export default function Intro() {
       />
       <div className="absolute top-0 h-full w-full bg-gradient-to-r from-grey-900/80 via-transparent to-grey-900/50" />
       <div className="container relative z-10 flex h-full flex-col py-4">
-        <Header showSocial />
+        <Media lessThan="md">
+          <Header>
+            <AppMenu />
+          </Header>
+        </Media>
+        <Media greaterThanOrEqual="md">
+          <Header>
+            <div className="flex items-center space-x-24">
+              <SocialMenu />
+              <AppMenu />
+            </div>
+          </Header>
+        </Media>
 
         <div className="flex flex-1 flex-col items-start justify-center space-y-9 md:grid md:grid-cols-12 md:items-center md:justify-between">
           <div className="col-span-8 space-y-9 text-white">

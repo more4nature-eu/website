@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 
 import { HiOutlineExternalLink, HiPlus } from 'react-icons/hi';
 
-import { Button } from '@/components/ui/button';
+import { PARTNERS } from '@/containers/about/partners/constants';
+
 import {
   Dialog,
   DialogContent,
@@ -12,82 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Separator } from '@/components/ui/separator';
 import Wrapper from '@/components/ui/wrapper';
-
-const PARTNERS = [
-  {
-    name: 'Institute for Water Education',
-    description: (
-      <>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad alias, consequatur
-          deleniti dignissimos dolor dolorem dolores earum, error fuga in libero, odit officiis
-          praesentium provident quae quod soluta velit!{' '}
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad alias, consequatur
-          deleniti dignissimos dolor dolorem dolores earum, error fuga in libero, odit officiis
-          praesentium provident quae quod soluta velit!{' '}
-        </p>
-      </>
-    ),
-    logo: {
-      url: '/images/partners/ihe-delft.webp',
-      size: [160, 80],
-    },
-    url: 'https://www.un-ihe.org/',
-  },
-  {
-    name: 'CREAF',
-    description: (
-      <>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad alias, consequatur
-          deleniti dignissimos dolor dolorem dolores earum, error fuga in libero, odit officiis
-          praesentium provident quae quod soluta velit!{' '}
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad alias, consequatur
-          deleniti dignissimos dolor dolorem dolores earum, error fuga in libero, odit officiis
-          praesentium provident quae quod soluta velit!{' '}
-        </p>
-      </>
-    ),
-    logo: {
-      url: '/images/partners/creaf.webp',
-      size: [160, 129],
-    },
-    url: 'https://www.creaf.cat/',
-  },
-  {
-    name: 'earthwatch',
-    description: '',
-    logo: {
-      url: '/images/partners/earthwatch.webp',
-      size: [160, 129],
-    },
-    url: 'https://earthwatch.org/',
-  },
-  {
-    name: 'earthwatch',
-    description: '',
-    logo: {
-      url: '/images/partners/earthwatch.webp',
-      size: [160, 129],
-    },
-    url: 'https://earthwatch.org/',
-  },
-  {
-    name: 'earthwatch',
-    description: '',
-    logo: {
-      url: '/images/partners/earthwatch.webp',
-      size: [160, 129],
-    },
-    url: 'https://earthwatch.org/',
-  },
-];
 
 export default function Partners() {
   return (
@@ -107,28 +35,26 @@ export default function Partners() {
         private sector. This enables the consortium to implement its ambitious and truly innovative
         socio-technical approach for large-scale double loop Action Research.
       </p>
-      <Separator className="bg-grey-800/30" />
-      <ul className="flex flex-wrap divide-grey-800/30 border border-grey-800/30">
+      <ul className="grid flex-wrap divide-grey-800/30 border-l border-t border-grey-800/30 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {PARTNERS.map(({ name, description, logo, url }) => (
           <li
             key={name}
-            className="flex h-[242px] w-[242px] items-center justify-center bg-blue-500 p-2"
+            className="flex h-[242px] w-full items-center justify-center border-b border-r border-grey-800/30 md:bg-white lg:[&:nth-child(4n)]:border-r"
           >
             <div className="relative flex h-full w-full shrink-0 items-center justify-center rounded-full bg-white">
-              <Image
-                src={logo.url}
-                alt={`${name} logo`}
-                width={logo.size[0]}
-                height={logo.size[1]}
-              />
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button
+                  <button
                     type="button"
-                    className="absolute bottom-0 right-2 h-14 w-14 rounded-full"
+                    className="flex h-full w-full cursor-pointer items-center justify-center"
                   >
-                    <HiPlus className="h-6 w-6 text-white" />
-                  </Button>
+                    <Image
+                      src={logo.url}
+                      alt={`${name} logo`}
+                      width={logo.size[0]}
+                      height={logo.size[1]}
+                    />
+                  </button>
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>

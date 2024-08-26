@@ -4,6 +4,8 @@ import { PropsWithChildren } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { MediaContextProvider } from '@/containers/media';
+
 function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
@@ -39,7 +41,9 @@ export default function LayoutProviders({ children }: PropsWithChildren) {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <MediaContextProvider>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </MediaContextProvider>
     </>
   );
 }

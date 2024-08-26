@@ -20,9 +20,9 @@ const MISSION_STRATEGY_STEPS = [
 
 export default function MissionStrategy() {
   return (
-    <Wrapper>
+    <Wrapper className="!pt-0">
       <div className="grid grid-cols-12">
-        <div className="col-span-12 space-y-9 md:col-span-6">
+        <div className="col-span-12 space-y-9 lg:col-span-6">
           <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Our mission and strategy</h2>
           <p className="leading-9 md:text-lg">
             We aim to redefine conservation by placing the power of change into the hands of every
@@ -30,7 +30,7 @@ export default function MissionStrategy() {
           </p>
         </div>
       </div>
-      <div className="grid grid-rows-3 gap-6 py-16 lg:grid-cols-12 lg:grid-rows-none">
+      <div className="grid grid-rows-3 gap-6 py-10 md:py-16 lg:grid-cols-12 lg:grid-rows-none">
         {MISSION_STRATEGY_STEPS.map(({ name, description }) => (
           <div
             key={name}
@@ -41,7 +41,7 @@ export default function MissionStrategy() {
           </div>
         ))}
       </div>
-      <div className="min-h-[615px] bg-[url('/images/citizen-science.webp')] bg-cover bg-center bg-no-repeat" />
+      <div className="min-h-[363px] bg-[url('/images/citizen-science.webp')] bg-cover bg-center bg-no-repeat md:min-h-[615px]" />
     </Wrapper>
   );
 }

@@ -5,9 +5,8 @@ import queryKeys from '@/lib/query-keys';
 
 import CASE_STUDIES from '@/data/case-studies';
 
-import CaseDetailSidebar from '@/containers/case-detail/sidebar';
-import Map from '@/containers/cases/map';
-import Sidebar from '@/containers/cases/sidebar';
+import ResponsiveCaseDetailPage from '@/app/cases/[id]/responsive';
+
 import { INITIAL_FILTERS_STATE } from '@/containers/cases/store';
 
 const prefetchData = async (queryClient: QueryClient, id: string) => {
@@ -32,10 +31,7 @@ export default async function CaseDetail({ params: { id } }: { params: { id: str
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Sidebar>
-        <CaseDetailSidebar />
-      </Sidebar>
-      <Map />
+      <ResponsiveCaseDetailPage />
     </HydrationBoundary>
   );
 }
