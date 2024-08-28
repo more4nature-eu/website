@@ -1,6 +1,10 @@
+'use client';
+
 import { PropsWithChildren } from 'react';
 
 import { cn } from '@/lib/utils';
+
+import { Media } from '@/containers/media';
 
 import BiodiversityIcon from '@/components/icons/biodiversity';
 import DeforestationIcon from '@/components/icons/deforestation';
@@ -65,9 +69,9 @@ const THEMATIC_AREAS = [
 
 export default function ThematicAreas() {
   return (
-    <Wrapper className="space-y-20">
+    <Wrapper className="space-y-10 md:space-y-20">
       <div className="grid grid-cols-12">
-        <div className="col-span-12 space-y-9 md:col-span-6">
+        <div className="col-span-12 space-y-9 lg:col-span-6">
           <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Thematic areas</h2>
           <p className="leading-9 md:text-lg">
             The more4nature activities are focused on three key thematic areas in environmental
@@ -75,27 +79,48 @@ export default function ThematicAreas() {
           </p>
         </div>
       </div>
-      <Accordion type="single" collapsible className="flex w-full flex-col">
-        {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
-          <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
-            <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
-              <AccordionTrigger>
-                <div className="flex items-center space-x-5">
-                  {icon}
-                  <span className="text-4xl">{name}</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="leading-9">{description}</AccordionContent>
-            </AccordionItem>
-            <div
-              className="flex w-[395px] bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url(${imageURL})`,
-              }}
-            />
-          </div>
-        ))}
-      </Accordion>
+      <Media lessThan="lg">
+        <ul className="space-y-10 divide-y divide-grey-800/20">
+          {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
+            <li key={name} className="flex flex-col space-y-4 [&:not(:first-child)]:pt-10">
+              <div
+                className="flex h-[110px] w-full bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${imageURL})`,
+                }}
+              />
+              <div className="flex items-center space-x-5">
+                {icon}
+                <span className="text-lg">{name}</span>
+              </div>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+      </Media>
+      <Media greaterThanOrEqual="lg">
+        <Accordion type="single" collapsible className="flex w-full flex-col">
+          {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
+            <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
+              <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
+                <AccordionTrigger>
+                  <div className="flex flex-1 items-center space-x-5">
+                    {icon}
+                    <span className="text-4xl">{name}</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="leading-9">{description}</AccordionContent>
+              </AccordionItem>
+              <div
+                className="flex w-[395px] bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${imageURL})`,
+                }}
+              />
+            </div>
+          ))}
+        </Accordion>
+      </Media>
     </Wrapper>
   );
 }

@@ -1,15 +1,18 @@
 'use client';
+
 import CountryFlag from 'react-country-flag';
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
-import { HiOutlineExternalLink } from 'react-icons/hi';
+import { HiOutlineExternalLink, HiOutlineXCircle } from 'react-icons/hi';
 
 import { ThematicArea, URLink } from '@/lib/case-studies.service';
 import { CaseStudy } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
+
+import { Media } from '@/containers/media';
 
 import {
   Accordion,
@@ -77,12 +80,24 @@ export default function CaseDetailSidebar() {
   return (
     <ScrollArea className="h-full flex-1">
       <div
-        className={`flex flex-col items-start space-y-8 ${getThematicStyle(data?.thematicAreas)} p-[50px]`}
+        className={`flex flex-col items-start space-y-8 ${getThematicStyle(data?.thematicAreas)} px-4 pb-10 pt-4 md:p-[50px]`}
       >
-        <Button asChild variant="ghost" className="border border-grey-900">
-          <Link href="/cases">Close detail</Link>
-        </Button>
-        <div className="space-y-2">
+        <Media greaterThanOrEqual="md">
+          {(className: string, renderChildren: boolean) =>
+            renderChildren ? (
+              <Button asChild variant="ghost" className="border border-grey-900">
+                <Link href="/cases">Close detail</Link>
+              </Button>
+            ) : (
+              <Button asChild variant="ghost" className="absolute right-4 p-0">
+                <Link href="/cases">
+                  <HiOutlineXCircle className="h-14 w-14" strokeWidth={1} />
+                </Link>
+              </Button>
+            )
+          }
+        </Media>
+        <div className="space-y-2 pt-8 md:pt-0">
           <h3 className="text-xl">{data?.title}</h3>
           <h4 className="text-lg">{data?.subTheme}</h4>
         </div>
@@ -100,11 +115,12 @@ export default function CaseDetailSidebar() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="bg-grey-800 p-[50px] text-white">
+        <div className="bg-grey-800 px-4 py-10 text-white md:p-[50px]">
           <Accordion
             type="single"
             collapsible
             className="flex w-full flex-col divide-y divide-white/20"
+            defaultValue={'citizenScienceInitiatives'}
           >
             <AccordionItem
               value="citizenScienceInitiatives"

@@ -29,7 +29,7 @@ export default function Community() {
               </h2>
             </div>
           </div>
-          <div className="grid grid-rows-3 gap-6 py-16 md:grid-cols-12 md:grid-rows-none">
+          <div className="grid grid-rows-3 gap-6 pt-8 md:grid-cols-12 md:grid-rows-none md:pt-16">
             {COMMUNITY_NUMBERS.map(({ quantity, description }) => (
               <figure key={description} className="border-t-2 border-t-grey-800 md:col-span-4">
                 <h4 className="py-9 text-3xl">
@@ -41,7 +41,7 @@ export default function Community() {
           </div>
         </Wrapper>
       </div>
-      <div className="bg-grey-800 py-16">
+      <div className="bg-grey-800 py-10 md:py-16">
         <div className="container space-y-9">
           <h3 className="text-center text-xl text-white md:text-2xl">Join our community</h3>
           <SocialMenu className="justify-center" />

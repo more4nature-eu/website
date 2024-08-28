@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { HiOutlineExternalLink } from 'react-icons/hi';
+
 import DiscoverMoreButton from '@/components/discover-more-button';
 import {
   Dialog,
@@ -41,13 +43,30 @@ export default function AboutDescription() {
           </p>
           <Dialog>
             <DialogTrigger asChild>
-              <DiscoverMoreButton />
+              <DiscoverMoreButton className="text-grey-800" />
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>TODO</DialogTitle>
+                <DialogTitle>Project structure</DialogTitle>
                 <DialogDescription>
-                  <p>TODO</p>
+                  <p>
+                    P1 is dedicated to the social aspects of empowering citizens and citizen science
+                    initiatives in collaborative environmental compliance assurance, while WP2 deals
+                    with the technical dimensions of these changes. Both WPs support WP3 which
+                    implements 40 cases (in Europe, Latin America, Asia and Africa) on collaborative
+                    environmental compliance assurance for zero pollution, biodiversity protection
+                    and deforestation prevention in Europe and abroad. In addition, we selected
+                    LivingLabs and Fab Labs across Europe. WP4 supports the creation of impact via
+                    the broad communication, dissemination and exploitation of more4nature results
+                    to specific target audiences.
+                  </p>
+                  <p>
+                    To discover more about EU research results,{' '}
+                    <a href="https://cordis.europa.eu/" rel="noopener noreferrer" target="_blank">
+                      <span className="underline">visit CORDIS</span>
+                      <HiOutlineExternalLink className="h-[20px] w-[20px] shrink-0" />
+                    </a>
+                  </p>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
