@@ -15,7 +15,9 @@ import { cn } from '@/lib/utils';
 
 import { filtersAtom } from '@/containers/cases/store';
 
+import Loader from '@/components/icons/loader';
 import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const getThematicAreaColor = (thematicArea: ThematicArea | undefined) => {
   switch (thematicArea) {
@@ -130,7 +132,7 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
 export default function CaseStudyList() {
   const filters = useAtomValue(filtersAtom);
 
-  const { data } = useQuery({
+  const { data, isFetching, isSuccess } = useQuery({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
     queryFn: async (): Promise<PaginatedResult<CaseStudy>> => {
       const serialized = queryString.stringify(filters);
@@ -147,12 +149,25 @@ export default function CaseStudyList() {
   });
 
   return (
-    <ul className="space-y-3">
-      {data?.map((caseStudy) => (
-        <li key={caseStudy.id} className="flex">
-          <CaseStudyItem caseStudy={caseStudy} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {isFetching && (
+        <div className="flex grow items-center justify-center">
+          <Loader />
+        </div>
+      )}
+      {!isFetching && isSuccess && (
+        <ScrollArea className="h-full pb-8">
+          <div className="md:px-[60px]">
+            <ul className="space-y-3">
+              {data?.map((caseStudy) => (
+                <li key={caseStudy.id} className="flex">
+                  <CaseStudyItem caseStudy={caseStudy} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </ScrollArea>
+      )}
+    </>
   );
 }

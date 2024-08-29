@@ -12,8 +12,6 @@ import Sidebar from '@/containers/cases/sidebar';
 import CaseStudiesTotal from '@/containers/cases/total';
 import { Media } from '@/containers/media';
 
-import { ScrollArea } from '@/components/ui/scroll-area';
-
 export default function ResponsiveCasesPage() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.15 });
@@ -29,7 +27,7 @@ export default function ResponsiveCasesPage() {
 
   return (
     <>
-      <Media lessThan="md">
+      <Media lessThan="md" className="flex flex-col">
         <motion.div
           className="fixed top-0 z-20 w-full justify-between border-b border-b-grey-800/20 bg-white duration-75 ease-in-out"
           variants={{
@@ -48,11 +46,9 @@ export default function ResponsiveCasesPage() {
             <MobileFiltersDropdown onClickSearch={() => {}} onClickFilters={handleOpenFilters} />
           </CaseStudiesTotal>
         </div>
-        <ScrollArea className="pb-8">
-          <div className="px-4 md:p-[50px]">
-            <CaseStudies />
-          </div>
-        </ScrollArea>
+        <div className="flex grow px-4">
+          <CaseStudies />
+        </div>
         <motion.div
           className="fixed h-[calc(100%-128px)] rounded-t-3xl bg-grey-800 px-10 py-4"
           variants={{
@@ -71,11 +67,7 @@ export default function ResponsiveCasesPage() {
             <div className="px-[60px]">
               <CaseStudiesTotal className="text-xl" />
             </div>
-            <ScrollArea className="pb-8">
-              <div className="px-[60px]">
-                <CaseStudies />
-              </div>
-            </ScrollArea>
+            <CaseStudies />
           </Sidebar>
           <CasesMap />
         </>
