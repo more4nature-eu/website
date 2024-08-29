@@ -16,7 +16,7 @@ export default function Intro() {
         loop
         muted
       />
-      <div className="absolute top-0 h-full w-full bg-gradient-to-r from-grey-900/80 via-transparent to-grey-900/50" />
+      <div className="absolute top-0 h-full w-full bg-gradient-to-r from-grey-900/80 to-transparent" />
       <div className="container relative z-10 flex h-full flex-col py-4">
         <Media lessThan="md">
           <Header>
