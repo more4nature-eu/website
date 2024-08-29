@@ -64,7 +64,9 @@ export default function Goals() {
             />
           </div>
         </div>
-        <div className="bg-[url('/images/m4n-goals.webp')] bg-contain bg-center bg-no-repeat" />
+        <div>
+          <Image src="/images/m4n-goals.webp" alt="m4n-goals" width={1974} height={1347} />
+        </div>
       </Wrapper>
     </div>
   );
