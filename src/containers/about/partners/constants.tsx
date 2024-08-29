@@ -277,7 +277,7 @@ export const PARTNERS = [
       url: '/images/partners/polski-alarm-smogowy.webp',
       size: [160, 130],
     },
-    url: 'https://earthwatch.org/',
+    url: 'https://www.polishsmogalert.org/',
   },
   {
     name: 'Rijksinstituut voor Volksgezondheid en Milieu (RIVM)',

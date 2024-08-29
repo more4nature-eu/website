@@ -1,17 +1,12 @@
+import { ThematicArea } from '@/lib/case-studies.service';
 import { Paginator, SearchParams, PaginatedResult } from '@/lib/paginator';
-
-export enum NewsCategory {
-  CONFERENCES = 'conferences',
-  PUBLICATIONS = 'publications',
-  POLICY_LEGAL = 'policy/legal',
-  WORLD_NATIONAL_EVENTS = 'world and national events',
-}
 
 export type News = {
   name: string;
   date: string;
   description: string;
-  categories: NewsCategory[];
+  categories: ThematicArea[];
+  link?: string;
 };
 
 export class NewsService extends Paginator<News> {
@@ -45,7 +40,7 @@ export class NewsService extends Paginator<News> {
     const filters: Partial<News> = {
       name: searchParams.get('name') || undefined,
       date: searchParams.get('date') || undefined,
-      categories: searchParams.getAll('categories')?.map((cat) => cat as NewsCategory) || undefined,
+      categories: searchParams.getAll('categories')?.map((cat) => cat as ThematicArea) || undefined,
     };
     const paginationFilters = this.extractPaginationFilters(searchParams);
     return { filters, paginationFilters };

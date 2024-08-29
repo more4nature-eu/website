@@ -12,6 +12,8 @@ import type { Event } from '@/lib/events.service';
 import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
 
+import { Media } from '@/containers/media';
+
 import DiscoverMoreButton from '@/components/discover-more-button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { type CarouselApi } from '@/components/ui/carousel';
@@ -27,13 +29,13 @@ import dateFormatter from '@/utils/date';
 
 function PastEvent(event: Event) {
   return (
-    <div className="flex h-full flex-col space-y-8 border-l border-l-grey-900/30 px-6">
+    <div className="flex h-full flex-col space-y-8 border-l border-l-grey-900/30 px-6 first:border-l-0 first:pl-0">
       <Image
         src={event.image}
         alt={event.title}
         width={310}
         height={203}
-        className="h-[203px] max-w-[310px]"
+        className="h-[203px] w-full"
       />
       <div className="flex flex-1 flex-col items-start justify-between space-y-8">
         <div className="shrink-0 space-y-4">
@@ -132,61 +134,60 @@ export default function PastEvents() {
 
   const [api, setApi] = useState<CarouselApi>();
   const [, setCurrent] = useState(0);
+  console.log(api);
 
   return (
     <div className="space-y-14">
       <div className="flex items-center justify-between">
-        <h3 className="text-xl">Past Events</h3>
-        <div className="flex space-x-4">
-          <button
-            type="button"
-            className={cn('flex items-center space-x-1 transition-colors', {
-              'cursor-default text-grey-800/20': !api?.canScrollPrev(),
-            })}
-            disabled={!api?.canScrollPrev()}
-            onClick={() => {
-              setCurrent((api?.selectedScrollSnap() || 0) + 1);
-              api?.scrollPrev();
-            }}
-          >
-            <HiOutlineChevronLeft className="h-4 w-4" />
-            <span>Back</span>
-          </button>
-          <button
-            type="button"
-            className={cn(
-              'flex items-center space-x-1 border-l border-l-grey-900/30 pl-4 transition-colors',
-              {
-                'cursor-default text-grey-800/20': !api?.canScrollNext(),
-              },
-            )}
-            disabled={!api?.canScrollNext()}
-            onClick={() => {
-              setCurrent((api?.selectedScrollSnap() || 0) + 1);
-              api?.scrollNext();
-            }}
-          >
-            <span>Next</span>
-            <HiOutlineChevronRight className="h-4 w-4" />
-          </button>
-        </div>
+        <h3 className="flex-1 text-xl">Past Events</h3>
+        <Media greaterThanOrEqual="md">
+          <div className="flex space-x-4">
+            <button
+              type="button"
+              className={cn('flex items-center space-x-1 transition-colors', {
+                'cursor-default text-grey-800/20': !api?.canScrollPrev(),
+              })}
+              disabled={!api?.canScrollPrev()}
+              onClick={() => {
+                setCurrent((api?.selectedScrollSnap() || 0) + 1);
+                api?.scrollPrev();
+              }}
+            >
+              <HiOutlineChevronLeft className="h-4 w-4" />
+              <span>Back</span>
+            </button>
+            <button
+              type="button"
+              className={cn(
+                'flex items-center space-x-1 border-l border-l-grey-900/30 pl-4 transition-colors',
+                {
+                  'cursor-default text-grey-800/20': !api?.canScrollNext(),
+                },
+              )}
+              disabled={!api?.canScrollNext()}
+              onClick={() => {
+                setCurrent((api?.selectedScrollSnap() || 0) + 1);
+                api?.scrollNext();
+              }}
+            >
+              <span>Next</span>
+              <HiOutlineChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </Media>
       </div>
-      <div>
-        <Carousel
-          setApi={setApi}
-          opts={{
-            loop: false,
-          }}
-        >
-          <CarouselContent>
-            {data?.map((event) => (
-              <CarouselItem key={event.id} className="basis-1/3">
-                <PastEvent {...event} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+      <Carousel setApi={setApi}>
+        <CarouselContent infinite>
+          {data?.map((event) => (
+            <CarouselItem
+              key={event.id}
+              className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+            >
+              <PastEvent {...event} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 }
