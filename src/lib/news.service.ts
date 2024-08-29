@@ -1,10 +1,10 @@
 import { Paginator, SearchParams, PaginatedResult } from '@/lib/paginator';
 
 export enum NewsCategory {
-  CATEGORY_1 = 'category 1',
-  CATEGORY_2 = 'category 2',
-  CATEGORY_3 = 'category 3',
-  CATEGORY_4 = 'category 4',
+  CONFERENCES = 'conferences',
+  PUBLICATIONS = 'publications',
+  POLICY_LEGAL = 'policy/legal',
+  WORLD_NATIONAL_EVENTS = 'world and national events',
 }
 
 export type News = {

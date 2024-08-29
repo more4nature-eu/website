@@ -64,7 +64,7 @@ export default function Goals() {
             />
           </div>
         </div>
-        <div>
+        <div className="mt-8">
           <Image src="/images/m4n-goals.webp" alt="m4n-goals" width={1974} height={1347} />
         </div>
       </Wrapper>

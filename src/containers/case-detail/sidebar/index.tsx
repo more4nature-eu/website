@@ -89,7 +89,11 @@ export default function CaseDetailSidebar() {
                 <Link href="/cases">Close detail</Link>
               </Button>
             ) : (
-              <Button asChild variant="ghost" className="absolute right-4 p-0">
+              <Button
+                asChild
+                variant="ghost"
+                className="absolute right-4 h-auto w-14 p-0 hover:bg-white"
+              >
                 <Link href="/cases">
                   <HiOutlineXCircle className="h-14 w-14" strokeWidth={1} />
                 </Link>

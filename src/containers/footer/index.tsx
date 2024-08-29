@@ -18,13 +18,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5 md:grid md:grid-cols-12 md:gap-9">
           <div className="col-span-6">
             <Link href="/" className="inline-flex">
-              <Image
-                src="/images/m4n-logo.webp"
-                alt="more4nature logo"
-                width={200}
-                height={70}
-                className="h-auto w-full"
-              />
+              <Image src="/images/m4n-logo.webp" alt="more4nature logo" width={200} height={70} />
             </Link>
           </div>
           <div className="col-span-6 flex flex-col space-y-9 md:items-end">

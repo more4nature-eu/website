@@ -8,6 +8,8 @@ import { News } from '@/lib/news.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
 
+import { Media } from '@/containers/media';
+
 import DiscoverMoreButton from '@/components/discover-more-button';
 import { Paginator } from '@/components/paginator';
 import { Badge } from '@/components/ui/badge';
@@ -23,10 +25,10 @@ import formatDate from '@/utils/date';
 
 function NewsItem({ name, date, description, categories }: News) {
   return (
-    <div className="grid grid-cols-12 border-t border-t-white/30 py-16 text-white">
+    <div className="flex flex-col border-t border-t-white/30 py-8 text-white lg:grid lg:grid-cols-12 lg:py-16">
       <span className="col-span-3 uppercase">{formatDate(date)}</span>
-      <div className="col-span-6 space-y-4">
-        <h5 className="text-xl">{name}</h5>
+      <div className="col-span-6 mt-4 space-y-4 lg:mt-0">
+        <h5 className="text-lg lg:text-xl">{name}</h5>
         {categories?.length > 0 && (
           <div className="flex gap-4">
             {categories.map((category) => (
@@ -37,7 +39,7 @@ function NewsItem({ name, date, description, categories }: News) {
           </div>
         )}
       </div>
-      <div className="col-span-3 flex items-start justify-end">
+      <div className="col-span-3 mt-4 flex items-start justify-end lg:mt-0">
         <Dialog>
           <DialogTrigger asChild>
             <DiscoverMoreButton />
@@ -92,22 +94,30 @@ export default function NewsList() {
           </li>
         ))}
       </ul>
-      <Paginator
-        pageIndex={page}
-        pageCount={Math.ceil(
-          (data?.total as NonNullable<PaginatedResult<News>['total']>) / PAGE_SIZE,
-        )}
-        totalPagesToDisplay={6}
-        onPagePrevious={() => {
-          setPage(page - 1);
-        }}
-        onPageNext={() => {
-          setPage(page + 1);
-        }}
-        onPageIndex={(p) => {
-          setPage(p);
-        }}
-      />
+      {(data?.total || 0) > 5 && (
+        <Media greaterThanOrEqual="md">
+          {(className, renderChildren) => {
+            return (
+              <Paginator
+                pageIndex={page}
+                pageCount={Math.ceil(
+                  (data?.total as NonNullable<PaginatedResult<News>['total']>) / PAGE_SIZE,
+                )}
+                totalPagesToDisplay={renderChildren ? 6 : 2}
+                onPagePrevious={() => {
+                  setPage(page - 1);
+                }}
+                onPageNext={() => {
+                  setPage(page + 1);
+                }}
+                onPageIndex={(p) => {
+                  setPage(p);
+                }}
+              />
+            );
+          }}
+        </Media>
+      )}
     </>
   );
 }
