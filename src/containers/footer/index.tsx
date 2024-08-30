@@ -11,10 +11,12 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SocialMenu } from '@/components/ui/social-menu';
 
+const EXCLUDED_SECTIONS = ['Home', 'Contact us'];
+
 export default function Footer() {
   return (
     <div className="bg-grey-800 text-white">
-      <footer className="container py-4 md:py-16">
+      <footer className="container py-4 md:py-16" id="contact-us">
         <div className="flex flex-col gap-5 md:grid md:grid-cols-12 md:gap-9">
           <div className="col-span-6">
             <Link href="/" className="inline-flex">
@@ -40,13 +42,15 @@ export default function Footer() {
               </li>
             </SocialMenu>
             <ul className="hidden md:space-x-12 xl:flex">
-              {SECTIONS.filter(({ name }) => name !== 'Home').map(({ name, href }) => (
-                <li key={name}>
-                  <Link href={href} className="hover:underline">
-                    {name}
-                  </Link>
-                </li>
-              ))}
+              {SECTIONS.filter(({ name }) => !EXCLUDED_SECTIONS.includes(name)).map(
+                ({ name, href }) => (
+                  <li key={name}>
+                    <Link href={href} className="hover:underline">
+                      {name}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </div>

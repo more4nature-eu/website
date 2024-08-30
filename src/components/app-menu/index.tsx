@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { motion } from 'framer-motion';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
@@ -11,6 +12,13 @@ import { Media } from '@/containers/media';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export default function AppMenu() {
+  const pathname = usePathname();
+
+  const sections = SECTIONS.map(({ name, href }) => ({
+    name,
+    href: pathname === '/cases' && href === '#contact-us' ? `/${href}` : href,
+  }));
+
   return (
     <Popover>
       <PopoverTrigger asChild className="group">
@@ -30,7 +38,7 @@ export default function AppMenu() {
       </PopoverTrigger>
       <PopoverContent>
         <ul className="space-y-8 text-right">
-          {SECTIONS.map(({ name, href }) => (
+          {sections.map(({ name, href }) => (
             <li key={name}>
               <Link href={href} className="text-lg hover:underline hover:underline-offset-4">
                 {name}

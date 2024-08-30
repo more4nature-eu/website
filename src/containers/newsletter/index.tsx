@@ -120,7 +120,7 @@ export default function Newsletter() {
   );
 
   return (
-    <div className="container space-y-14 py-10 md:py-16" id="contact-us">
+    <div className="container space-y-14 py-10 md:py-16">
       <h2 className="text-xl font-bold text-grey-800 md:text-2xl">
         Interested in environmental conservation?
       </h2>

@@ -9,7 +9,7 @@ export const SECTIONS = [
   { name: 'About', href: '/about' },
   { name: 'Cases', href: '/cases' },
   { name: 'Events & News', href: '/events-news' },
-  { name: 'Contact us', href: '/#contact-us' },
+  { name: 'Contact us', href: '#contact-us' },
 ];
 
 export default function Header({
