@@ -30,7 +30,7 @@ function NewsItem({ name, date, description, categories }: News) {
       <div className="col-span-6 mt-4 space-y-4 lg:mt-0">
         <h5 className="text-lg lg:text-xl">{name}</h5>
         {categories?.length > 0 && (
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             {categories.map((category) => (
               <span key={category} className="text-sm">
                 <Badge className="pointer-events-none">{category}</Badge>
