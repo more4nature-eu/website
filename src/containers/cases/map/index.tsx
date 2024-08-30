@@ -2,7 +2,9 @@
 
 import { useCallback, useMemo } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'next/navigation';
+
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { bbox as getBbox } from '@turf/turf';
 import { useAtomValue } from 'jotai';
 import queryString from 'query-string';
@@ -10,6 +12,7 @@ import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
 import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
+import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
 
@@ -49,6 +52,12 @@ export default function CasesMap() {
   const { default: map } = useMap();
   const bbox = map?.getBounds().toArray().flat() as [number, number, number, number];
   const filters = useAtomValue(filtersAtom);
+  const queryClient = useQueryClient();
+  const { id } = useParams();
+
+  const caseStudy = queryClient
+    .getQueryData<PaginatedResult<CaseStudy>>(queryKeys.studyCases.filteredList(filters).queryKey)
+    ?.data?.find(({ id: _id }) => _id === id);
 
   const { data } = useQuery({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
@@ -83,31 +92,33 @@ export default function CasesMap() {
     map?.flyTo({ zoom: nextZoom, center: coordinates as [number, number] });
   };
 
-  const initialBbox = useMemo(() => {
-    if (!data) return [];
+  const allCasesBbox = useMemo(() => {
+    if (!data) return undefined;
 
-    return getBbox({
-      type: 'FeatureCollection',
-      features: data as NonNullable<typeof data>,
-    });
-  }, [data]);
-
-  const resetMapView = useCallback(() => {
-    map?.fitBounds(initialBbox as LngLatBoundsLike, {
-      padding: {
-        top: 25,
-        bottom: 25,
-        left: isExpanded ? SIDEBAR_WIDTH + 25 : 25,
-        right: 25,
+    return {
+      bounds: getBbox({
+        type: 'FeatureCollection',
+        features: data as NonNullable<typeof data>,
+      }),
+      options: {
+        padding: {
+          top: 25,
+          bottom: 25,
+          left: isExpanded ? SIDEBAR_WIDTH + 25 : 25,
+          right: 25,
+        },
       },
-    });
-  }, [map, isExpanded, initialBbox]);
+    };
+  }, [data, isExpanded]);
 
-  return (
-    <Map
-      initialViewState={{
-        bounds: initialBbox as LngLatBoundsLike,
-        fitBoundsOptions: {
+  const initialBbox = useMemo(() => {
+    if (!data) return undefined;
+
+    if (caseStudy) {
+      return {
+        bounds: getBbox(caseStudy.location.coordinates),
+        options: {
+          maxZoom: 10,
           padding: {
             top: 25,
             bottom: 25,
@@ -115,6 +126,21 @@ export default function CasesMap() {
             right: 25,
           },
         },
+      };
+    }
+
+    return allCasesBbox;
+  }, [caseStudy, data, isExpanded, allCasesBbox]);
+
+  const resetMapView = useCallback(() => {
+    map?.fitBounds(allCasesBbox?.bounds as LngLatBoundsLike, allCasesBbox?.options);
+  }, [map, allCasesBbox]);
+
+  return (
+    <Map
+      initialViewState={{
+        bounds: initialBbox?.bounds as LngLatBoundsLike,
+        fitBoundsOptions: initialBbox?.options,
       }}
     >
       <>
