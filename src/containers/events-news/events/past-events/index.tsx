@@ -27,9 +27,20 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import dateFormatter from '@/utils/date';
 
-function PastEvent(event: Event) {
+function PastEvent({
+  event,
+  className,
+}: {
+  event: Event;
+  className?: HTMLDivElement['className'];
+}) {
   return (
-    <div className="flex h-full flex-col space-y-8 border-l border-l-grey-900/30 px-6 first:border-l-0 first:pl-0">
+    <div
+      className={cn(
+        'flex h-full flex-col space-y-8 border-l border-l-grey-900/30 px-6 first:border-l-0 first:pl-0 md:w-[310px]',
+        className,
+      )}
+    >
       <Image
         src={event.image}
         alt={event.title}
@@ -175,18 +186,26 @@ export default function PastEvents() {
           </div>
         </Media>
       </div>
-      <Carousel setApi={setApi}>
-        <CarouselContent infinite>
+      <Media greaterThanOrEqual="md">
+        <Carousel setApi={setApi}>
+          <CarouselContent>
+            {data?.map((event) => (
+              <CarouselItem key={event.id} className="basis-auto">
+                <PastEvent event={event} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </Media>
+      <Media lessThan="md">
+        <ul className="divide-y divide-grey-800/20">
           {data?.map((event) => (
-            <CarouselItem
-              key={event.id}
-              className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <PastEvent {...event} />
-            </CarouselItem>
+            <li key={event.id}>
+              <PastEvent event={event} className="px-0 py-8" />
+            </li>
           ))}
-        </CarouselContent>
-      </Carousel>
+        </ul>
+      </Media>
     </div>
   );
 }
