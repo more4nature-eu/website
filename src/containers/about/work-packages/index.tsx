@@ -31,34 +31,34 @@ const WORK_PACKAGES = [
     name: 'Technical dimensions: Geospatial modelling with FAIR Citizen Generated Data.',
     description: (
       <p>
-        WP1 provides and advances relevant social science approaches and guidance that will help to
-        integrate Citizen Generated Data and citizen & community-led actions in environmental
-        compliance assurance, triggering transformative change and empowering citizens.
+        WP2 takes existing Citizens Generated Data and applies geospatial standards to make it FAIR.
+        By increasing the level of data quality, it generates trust to the end-users. Tools are
+        created to automatically derive environmental indicators to monitor progress towards and to
+        generate (near) real-time infringement alerts for compliance enforcement.
       </p>
     ),
-    organization: 'IHE',
+    organization: 'CREAF',
   },
   {
     name: 'Case studies on collaborative environmental compliance assurance for zero pollution, biodiversity protection and deforestation prevention.',
     description: (
       <p>
-        WP1 provides and advances relevant social science approaches and guidance that will help to
-        integrate Citizen Generated Data and citizen & community-led actions in environmental
-        compliance assurance, triggering transformative change and empowering citizens.
+        WP3 runs 40 case studies to research the transition towards collaborative environmental
+        compliance assurance, empowering citizens, communities and Citizen Science Initiatives in
+        environmental protection through the integration of their data, knowledge and actions.
       </p>
     ),
-    organization: 'IHE',
+    organization: 'EarthWatch',
   },
   {
     name: 'Communication, Dissemination and Exploitation.',
     description: (
       <p>
-        WP1 provides and advances relevant social science approaches and guidance that will help to
-        integrate Citizen Generated Data and citizen & community-led actions in environmental
-        compliance assurance, triggering transformative change and empowering citizens.
+        WP4 creates impact via the communication, dissemination and exploitation of project results
+        to specific target audiences
       </p>
     ),
-    organization: 'IHE',
+    organization: 'Vizzuality',
   },
 ];
 
