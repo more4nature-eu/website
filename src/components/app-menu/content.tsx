@@ -1,0 +1,103 @@
+import { PropsWithChildren, useEffect } from 'react';
+
+import Link, { LinkProps } from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import Hamburger from 'hamburger-react';
+import { useAtom, useSetAtom } from 'jotai';
+
+import { cn } from '@/lib/utils';
+
+import { menuOpenAtom } from '@/app/store';
+
+import { SECTIONS } from '@/containers/header';
+
+const NavItem = (props: PropsWithChildren<LinkProps>) => {
+  const pathname = usePathname();
+  const setOpen = useSetAtom(menuOpenAtom);
+
+  return (
+    <Link
+      href={props.href}
+      className="hover:text-navy-500 relative inline-flex items-center space-x-6 text-xl text-grey-800 2xl:text-4xl"
+      onClick={() => {
+        if (pathname === props.href) {
+          setOpen(false);
+        }
+      }}
+    >
+      <span className="peer block">{props.children}</span>
+      <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-grey-800 transition-all duration-300 peer-hover:w-full" />
+    </Link>
+  );
+};
+
+export const Nav = () => {
+  const pathname = usePathname();
+  const [open, setOpen] = useAtom(menuOpenAtom);
+  const isCasesPage = pathname === '/cases';
+
+  const handleOpen = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname, setOpen]);
+
+  return (
+    <div
+      className={cn({
+        'pointer-events-none fixed left-0 top-0 z-50 h-screen w-full overflow-y-auto bg-orange-500 opacity-0 transition-all':
+          true,
+        'pointer-events-auto opacity-100': open,
+      })}
+    >
+      <div
+        className={cn('py-4', {
+          container: !isCasesPage,
+          'py-2 md:py-4': isCasesPage,
+        })}
+      >
+        <div
+          className={cn({
+            'flex h-[69px] items-center justify-end': true,
+            'h-[60px] px-4 md:px-[60px]': isCasesPage,
+          })}
+        >
+          <button
+            type="button"
+            aria-label="menu"
+            className="outline-navy-700 flex items-center justify-center rounded-full border-2 border-transparent bg-orange-500 ring-2 ring-grey-800 transition-colors hover:bg-white"
+            onClick={handleOpen}
+          >
+            <Hamburger color="#002848" size={24} toggled={open} rounded />
+          </button>
+        </div>
+      </div>
+
+      <div
+        className={cn({
+          container: !isCasesPage,
+          'px-4 md:px-[60px]': isCasesPage,
+        })}
+      >
+        <nav
+          className={cn({
+            'transition-transform': true,
+            '-translate-y-4': !open,
+            'translate-y-0': open,
+          })}
+        >
+          <ul className="flex flex-col gap-5 lg:gap-8">
+            {SECTIONS.map((item) => (
+              <li key={item.href} className="text-right">
+                <NavItem href={item.href}>{item.name}</NavItem>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+};
