@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { HiOutlineExternalLink, HiPlus } from 'react-icons/hi';
+import { HiOutlineExternalLink, HiOutlinePlus } from 'react-icons/hi';
 
 import { PARTNERS } from '@/containers/about/partners/constants';
 
@@ -46,7 +46,7 @@ export default function Partners() {
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="flex h-full w-full cursor-pointer items-center justify-center"
+                    className="relative flex h-full w-full cursor-pointer items-center justify-center"
                   >
                     <Image
                       src={logo.url}
@@ -54,6 +54,9 @@ export default function Partners() {
                       width={logo.size[0]}
                       height={logo.size[1]}
                     />
+                    <div className="absolute bottom-4 right-4 h-14 w-14 rounded-full bg-grey-800 transition-colors hover:bg-grey-900 md:hidden">
+                      <HiOutlinePlus className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-white" />
+                    </div>
                   </button>
                 </DialogTrigger>
                 <DialogContent>
