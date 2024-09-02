@@ -50,7 +50,7 @@ function PastEvent(event: Event) {
             <DiscoverMoreButton className="text-gray-800" />
           </DialogTrigger>
           <DialogContent className="flex flex-col">
-            <ScrollArea className="flex max-h-[calc(100svh_-_theme(space.60))] grow flex-col pr-4">
+            <ScrollArea className="flex max-h-[100svh] grow flex-col pr-4 sm:max-h-[calc(100svh_-_theme(space.60))]">
               <DialogHeader>
                 <DialogTitle>{event.title}</DialogTitle>
               </DialogHeader>
@@ -134,7 +134,6 @@ export default function PastEvents() {
 
   const [api, setApi] = useState<CarouselApi>();
   const [, setCurrent] = useState(0);
-  console.log(api);
 
   return (
     <div className="space-y-14">
