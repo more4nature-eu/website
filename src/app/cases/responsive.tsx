@@ -3,23 +3,38 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { motion, useInView } from 'framer-motion';
+import { useSetAtom } from 'jotai/index';
 
 import CaseStudies from '@/containers/cases';
 import FiltersContent from '@/containers/cases/header/filters/filters-dropdown/content';
 import MobileFiltersDropdown from '@/containers/cases/header/filters/filters-dropdown/mobile';
 import CasesMap from '@/containers/cases/map';
 import Sidebar from '@/containers/cases/sidebar';
+import { filtersAtom } from '@/containers/cases/store';
 import CaseStudiesTotal from '@/containers/cases/total';
 import { Media } from '@/containers/media';
+
+import Search from '@/components/search';
 
 export default function ResponsiveCasesPage() {
   const ref = useRef<HTMLDivElement>(null);
   const filtersContainerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.15 });
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const setFilters = useSetAtom(filtersAtom);
 
   const handleOpenFilters = () => {
     setIsFiltersOpen((prev) => !prev);
+  };
+
+  const handleOpenSearch = () => {
+    setIsSearchOpen((prev) => !prev);
+  };
+
+  const handleCloseSearch = () => {
+    setIsSearchOpen(false);
+    setFilters((prev) => ({ ...prev, keyword: undefined }));
   };
 
   const closeFilters = () => {
@@ -43,6 +58,20 @@ export default function ResponsiveCasesPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <Media lessThan="md" className="flex flex-col">
@@ -56,12 +85,18 @@ export default function ResponsiveCasesPage() {
           animate={inView ? 'initial' : 'show'}
         >
           <CaseStudiesTotal className="flex w-full items-center justify-between gap-4 px-4 text-lg">
-            <MobileFiltersDropdown onClickSearch={() => {}} onClickFilters={handleOpenFilters} />
+            <MobileFiltersDropdown
+              onClickSearch={handleOpenSearch}
+              onClickFilters={handleOpenFilters}
+            />
           </CaseStudiesTotal>
         </motion.div>
         <div className="px-4 md:p-[50px]" ref={ref}>
           <CaseStudiesTotal className="flex items-baseline justify-between gap-4 text-xl">
-            <MobileFiltersDropdown onClickSearch={() => {}} onClickFilters={handleOpenFilters} />
+            <MobileFiltersDropdown
+              onClickSearch={handleOpenSearch}
+              onClickFilters={handleOpenFilters}
+            />
           </CaseStudiesTotal>
         </div>
         <div className="flex grow px-4">
@@ -91,6 +126,26 @@ export default function ResponsiveCasesPage() {
           <CasesMap />
         </>
       </Media>
+
+      {isSearchOpen && (
+        <div className="fixed left-0 top-0 z-50 flex h-full w-full flex-col bg-white">
+          <div className="border-b border-b-grey-800/20 px-4 py-6">
+            <Search
+              onChange={(keyword) => {
+                setFilters((prev) => ({ ...prev, keyword }));
+              }}
+              autoFocus
+              placeholder="Search case studies by keyword..."
+              onClose={handleCloseSearch}
+              showCloseIconAlways
+            />
+          </div>
+
+          <div className="flex h-full grow p-4 pb-[90px]">
+            <CaseStudies />
+          </div>
+        </div>
+      )}
     </>
   );
 }
