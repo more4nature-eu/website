@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { motion, useInView } from 'framer-motion';
 
@@ -14,6 +14,7 @@ import { Media } from '@/containers/media';
 
 export default function ResponsiveCasesPage() {
   const ref = useRef<HTMLDivElement>(null);
+  const filtersContainerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.15 });
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
@@ -24,6 +25,23 @@ export default function ResponsiveCasesPage() {
   const closeFilters = () => {
     setIsFiltersOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        filtersContainerRef.current &&
+        !filtersContainerRef.current.contains(event.target as Node)
+      ) {
+        setIsFiltersOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -57,6 +75,7 @@ export default function ResponsiveCasesPage() {
           }}
           initial="initial"
           animate={isFiltersOpen ? 'show' : 'initial'}
+          ref={filtersContainerRef}
         >
           <FiltersContent onSetFiltersDone={closeFilters} onClearFiltersDone={closeFilters} />
         </motion.div>
