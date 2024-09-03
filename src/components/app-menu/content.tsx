@@ -45,7 +45,7 @@ export const Nav = () => {
   return (
     <div
       className={cn({
-        'pointer-events-none fixed left-0 top-0 z-50 h-screen w-full overflow-y-auto bg-orange-500 opacity-0 transition-all':
+        'pointer-events-none fixed left-0 top-0 z-50 h-screen w-full overflow-y-auto bg-white opacity-0 transition-all':
           true,
         'pointer-events-auto opacity-100': open,
       })}
@@ -65,10 +65,10 @@ export const Nav = () => {
           <button
             type="button"
             aria-label="menu"
-            className="outline-navy-700 flex items-center justify-center rounded-full border-2 border-transparent bg-orange-500 ring-2 ring-grey-800 transition-colors hover:bg-white"
+            className="outline-navy-700 flex items-center justify-center rounded-full border-2 border-transparent bg-grey-800 ring-2 ring-grey-800 transition-colors hover:bg-grey-900"
             onClick={handleOpen}
           >
-            <Hamburger color="#002848" size={24} toggled={open} rounded />
+            <Hamburger color="#FFF" size={24} toggled={open} rounded />
           </button>
         </div>
       </div>
