@@ -11,7 +11,6 @@ import LayoutProviders from '@/app/providers';
 const lexend = Lexend({ subsets: ['latin'], weight: ['100', '400', '500', '700'] });
 
 const socialMediaTitle = 'Citizen Science in Environmental Compliance Assurance';
-const socialMediaImage = 'https://landgriffon.com/images/og/m4n.png';
 
 const description =
   'Discover more4nature, a transformative project empowering citizens and communities to combat environmental degradation. Explore our case studies on zero pollution, biodiversity protection, and deforestation prevention. Learn how you can be part of the solution through collaborative Citizen Science Initiatives and Environmental Compliance Assurance.';
@@ -55,16 +54,12 @@ export const metadata: Metadata = {
     title: 'Citizen Science in Environmental Compliance Assurance',
     description,
     url: 'https://more4nature.eu/',
-    // TODO: add images
-    images: [],
   },
   twitter: {
     card: 'summary',
     site: '@more4nature',
     title: socialMediaTitle,
     description,
-    // TODO: add images
-    images: [],
   },
 };
 

@@ -9,7 +9,7 @@ import Header from '@/containers/cases/header';
 export default function CasesLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <CasesLayoutProviders>
-      <main className="flex min-h-[calc(100svh)] flex-col">
+      <main className="flex min-h-[100svh] flex-col">
         <Header />
         <div className="relative flex flex-1">{children}</div>
       </main>
