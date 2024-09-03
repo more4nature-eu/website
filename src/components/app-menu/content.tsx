@@ -13,7 +13,6 @@ import { menuOpenAtom } from '@/app/store';
 import { SECTIONS } from '@/containers/header';
 
 const NavItem = (props: PropsWithChildren<LinkProps>) => {
-  const pathname = usePathname();
   const setOpen = useSetAtom(menuOpenAtom);
 
   return (
@@ -21,9 +20,7 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
       href={props.href}
       className="hover:text-navy-500 relative inline-flex items-center space-x-6 text-xl text-grey-800 2xl:text-4xl"
       onClick={() => {
-        if (pathname === props.href) {
-          setOpen(false);
-        }
+        setOpen(false);
       }}
     >
       <span className="peer block">{props.children}</span>
