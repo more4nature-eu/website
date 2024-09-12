@@ -66,8 +66,8 @@ export default function Goals() {
             />
           </div>
         </div>
-        <div className="mt-8 flex justify-center">
-          <Image src={M4NGoals} alt="m4n-goals" width={987} height={625} />
+        <div className="mt-8">
+          <Image src={M4NGoals} alt="m4n-goals" width={1974} height={1250} />
         </div>
       </Wrapper>
     </div>
