@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/dialog';
 import Wrapper from '@/components/ui/wrapper';
 
+import M4NGoals from '../../../../public/images/m4n-goals.avif';
+
 export default function Goals() {
   return (
     <div className="bg-grey-800">
@@ -64,8 +66,8 @@ export default function Goals() {
             />
           </div>
         </div>
-        <div className="mt-8">
-          <Image src="/images/m4n-goals.webp" alt="m4n-goals" width={1974} height={1347} />
+        <div className="mt-8 flex justify-center">
+          <Image src={M4NGoals} alt="m4n-goals" width={987} height={625} />
         </div>
       </Wrapper>
     </div>
