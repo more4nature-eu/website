@@ -40,8 +40,11 @@ export default function Intro() {
               nature
             </h1>
             <p className="text-lg">
-              Reversing the trend in environmental degradation through collaboration{' '}
-              <span className="font-bold">of citizen science initiatives with authorities</span>.
+              Reversing the trend in environmental degradation through{' '}
+              <span className="font-bold">collaboration</span> of{' '}
+              <span className="text-nowrap font-bold">
+                citizen science initiatives with authorities.
+              </span>
             </p>
           </div>
           <SocialMenu className="col-span-4 justify-center md:hidden" />
