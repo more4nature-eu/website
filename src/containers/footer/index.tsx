@@ -60,8 +60,10 @@ export default function Footer() {
             <div className="flex flex-col gap-4 md:flex-row">
               <div className="h-10 min-w-[72px] bg-[url('/images/flag-of-europe.svg')] bg-contain bg-no-repeat" />
               <p className="text-2xs">
-                This project has received funding from the European Union’s Horizon Europe research
-                and innovation programme under grant agreement No. 101133983.
+                Co-Funded by the European Union. Views and opinions expressed are however those of
+                the author(s) only and do not necessarily reflect those of the European Union.
+                Neither the European Union nor the granting authority can be held responsible for
+                them.
               </p>
             </div>
           </div>

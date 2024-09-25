@@ -1,7 +1,6 @@
 import { ThematicArea } from '@/lib/case-studies.service';
 import { Paginator, SearchParams, PaginatedResult } from '@/lib/paginator';
-
-import { sortByDateDescending } from './utils';
+import { sortByDateDescending } from '@/lib/utils';
 
 export type News = {
   name: string;

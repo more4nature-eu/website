@@ -39,7 +39,7 @@ export default function AboutDescription() {
           </p>
           <Separator className="my-4 bg-grey-800/20" />
           <p>
-            more4nature (10.3030/101133983) is structured into work packages that reflect the&nbsp;
+            more4nature is structured into work packages that reflect the&nbsp;
             <span className="font-bold">socio-technical approach</span> of the project.
           </p>
           <Dialog>

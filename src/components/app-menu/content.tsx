@@ -11,9 +11,15 @@ import { cn } from '@/lib/utils';
 import { menuOpenAtom } from '@/app/store';
 
 import { SECTIONS } from '@/containers/header';
+import Newsletter from '@/containers/newsletter';
 
-import Newsletter from '../../containers/newsletter';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 const navItemContainerClass =
   'hover:text-navy-500 relative inline-flex items-center space-x-6 text-xl text-grey-800 2xl:text-4xl' as const;
@@ -40,7 +46,7 @@ const NavItem = (props: PropsWithChildren<LinkProps & { isDialogButton?: boolean
             {Text}
           </button>
         </DialogTrigger>
-        <DialogContent className="bg-white text-grey-800" aria-describedby={undefined}>
+        <DialogContent className="bg-white pt-8 text-grey-800" aria-describedby={undefined}>
           <DialogHeader>
             <DialogTitle className="text-xl font-bold text-grey-800 md:text-2xl">
               Interested in our work?

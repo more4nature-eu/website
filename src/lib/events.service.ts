@@ -2,8 +2,7 @@
 
 import { URLink } from '@/lib/case-studies.service';
 import { Paginator } from '@/lib/paginator';
-
-import { sortByDateDescending } from './utils';
+import { sortByDateDescending } from '@/lib/utils';
 
 export type Event = {
   id: string;
