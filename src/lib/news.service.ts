@@ -1,6 +1,8 @@
 import { ThematicArea } from '@/lib/case-studies.service';
 import { Paginator, SearchParams, PaginatedResult } from '@/lib/paginator';
 
+import { sortByDate } from './utils';
+
 export type News = {
   name: string;
   date: string;
@@ -29,7 +31,8 @@ export class NewsService extends Paginator<News> {
   }
 
   public searchNews(): PaginatedResult<News> {
-    const filteredItems = this.filter(this.items);
+    const filteredItems = sortByDate(this.filter(this.items));
+
     return this.paginate(filteredItems);
   }
 
