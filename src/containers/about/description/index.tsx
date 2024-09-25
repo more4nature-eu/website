@@ -34,9 +34,8 @@ export default function AboutDescription() {
         </div>
         <div className="space-y-4 leading-8 lg:col-span-6 lg:col-start-8">
           <p>
-            more4nature is a Horizon Europe project funded under Food, Bioeconomy Natural Resources,
-            Agriculture and Environment that started in January 2024, ending in December 2027,
-            formed by a consortium of 21 partners and led by IHE Delft.
+            more4nature is a Horizon Europe project that started in January 2024, ending in December
+            2027, formed by a consortium of 21 partners and led by IHE Delft.
           </p>
           <Separator className="my-4 bg-grey-800/20" />
           <p>
@@ -52,15 +51,15 @@ export default function AboutDescription() {
                 <DialogTitle>Project structure</DialogTitle>
                 <DialogDescription>
                   <p>
-                    P1 is dedicated to the social aspects of empowering citizens and citizen science
-                    initiatives in collaborative environmental compliance assurance, while WP2 deals
-                    with the technical dimensions of these changes. Both WPs support WP3 which
-                    implements 40 cases (in Europe, Latin America, Asia and Africa) on collaborative
-                    environmental compliance assurance for zero pollution, biodiversity protection
-                    and deforestation prevention in Europe and abroad. In addition, we selected
-                    LivingLabs and Fab Labs across Europe. WP4 supports the creation of impact via
-                    the broad communication, dissemination and exploitation of more4nature results
-                    to specific target audiences.
+                    WP1 is dedicated to the social aspects of empowering citizens and citizen
+                    science initiatives in collaborative environmental compliance assurance, while
+                    WP2 deals with the technical dimensions of these changes. Both WPs support WP3
+                    which implements 40 cases (in Europe, Latin America, Asia and Africa) on
+                    collaborative environmental compliance assurance for zero pollution,
+                    biodiversity protection and deforestation prevention in Europe and abroad. In
+                    addition, we selected LivingLabs and Fab Labs across Europe. WP4 supports the
+                    creation of impact via the broad communication, dissemination and exploitation
+                    of more4nature results to specific target audiences.
                   </p>
                   <p>
                     To discover more about EU research results,{' '}

@@ -21,9 +21,10 @@ export default function Goals() {
           <div className="col-span-12 space-y-9 text-white md:col-span-8">
             <h2>more4nature aim</h2>
             <p className="text-lg md:text-xl">
-              more4nature aims to bring about transformative change in environmental protection by
-              including citizens and communities as key actors in collaborative environmental
-              compliance assurance.
+              more4nature aims to bring about{' '}
+              <strong className="font-bold">transformative change</strong> in environmental
+              protection by including citizens and communities as key actors in collaborative
+              environmental compliance assurance.
             </p>
             <Dialog>
               <DialogTrigger asChild>
