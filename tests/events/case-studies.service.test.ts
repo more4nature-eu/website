@@ -828,14 +828,14 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Portugal',
-            code: 'PT',
+            name: 'Denmark',
+            code: 'DK',
           },
           coordinates: {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [9.441795399183874, 55.984683236682784],
+              coordinates: [8.500257454233855, 57.00032630290456],
             },
             properties: {
               id: '1',
@@ -940,8 +940,8 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Denmark',
-            code: 'DK',
+            name: 'Portugal',
+            code: 'PT',
           },
           coordinates: {
             type: 'Feature',
@@ -1623,14 +1623,14 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Portugal',
-            code: 'PT',
+            name: 'Denmark',
+            code: 'DK',
           },
           coordinates: {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [9.441795399183874, 55.984683236682784],
+              coordinates: [8.500257454233855, 57.00032630290456],
             },
             properties: {
               id: '1',
@@ -1735,8 +1735,8 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Denmark',
-            code: 'DK',
+            name: 'Portugal',
+            code: 'PT',
           },
           coordinates: {
             type: 'Feature',

@@ -120,17 +120,9 @@ export default function Newsletter() {
   );
 
   return (
-    <div className="container space-y-14 py-10 md:py-16">
-      <h2 className="text-xl font-bold text-grey-800 md:text-2xl">
-        Interested in environmental conservation?
-      </h2>
-
+    <div className="container space-y-14 p-0">
       <Form {...form}>
-        <form
-          ref={formRef}
-          className="space-y-8 md:grid md:grid-cols-12 md:gap-[5%] md:space-y-0"
-          onSubmit={handleNewsletter}
-        >
+        <form ref={formRef} className="space-y-8" onSubmit={handleNewsletter}>
           <div className="flex w-full flex-col justify-between space-y-8 md:col-span-6">
             <FormField
               control={form.control}

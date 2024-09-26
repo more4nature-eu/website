@@ -106,7 +106,7 @@ export default function ThematicAreas() {
                 <AccordionTrigger>
                   <div className="flex flex-1 items-center space-x-5">
                     {icon}
-                    <span className="text-4xl">{name}</span>
+                    <span className="text-left text-4xl">{name}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="leading-9">{description}</AccordionContent>

@@ -15,7 +15,7 @@ export const SECTIONS = [
   { name: 'Cases', href: '/cases' },
   { name: 'Events & News', href: '/events-news' },
   { name: 'Contact us', href: '#contact-us' },
-];
+] as const;
 
 export default function Header({
   className,
