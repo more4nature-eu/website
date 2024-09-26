@@ -15,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
 import Wrapper from '@/components/ui/wrapper';
 
 const IconBackground = ({
@@ -69,58 +70,66 @@ const THEMATIC_AREAS = [
 
 export default function ThematicAreas() {
   return (
-    <Wrapper className="space-y-10 md:space-y-20">
-      <div className="grid grid-cols-12">
-        <div className="col-span-12 space-y-9 lg:col-span-6">
-          <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Thematic areas</h2>
-          <p className="leading-9 md:text-lg">
-            The more4nature activities are focused on three key thematic areas in environmental
-            protection:
-          </p>
+    <>
+      <Wrapper className="space-y-10 md:space-y-20">
+        <div className="grid grid-cols-12">
+          <div className="col-span-12 space-y-9 lg:col-span-6">
+            <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Thematic areas</h2>
+            <p className="leading-9 md:text-lg">
+              The more4nature activities are focused on three key thematic areas in environmental
+              protection:
+            </p>
+          </div>
         </div>
-      </div>
-      <Media lessThan="lg">
-        <ul className="space-y-10 divide-y divide-grey-800/20">
-          {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
-            <li key={name} className="flex flex-col space-y-4 [&:not(:first-child)]:pt-10">
+        <Media lessThan="lg">
+          <ul className="space-y-10 divide-y divide-grey-800/20">
+            {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
+              <li key={name} className="flex flex-col space-y-4 [&:not(:first-child)]:pt-10">
+                <div
+                  className="flex h-[110px] w-full bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${imageURL})`,
+                  }}
+                />
+                <div className="flex items-center space-x-5">
+                  {icon}
+                  <span className="text-lg">{name}</span>
+                </div>
+                <p>{description}</p>
+              </li>
+            ))}
+          </ul>
+        </Media>
+        <Media greaterThanOrEqual="lg">
+          <Accordion type="single" collapsible className="flex w-full flex-col">
+            {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
               <div
-                className="flex h-[110px] w-full bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${imageURL})`,
-                }}
-              />
-              <div className="flex items-center space-x-5">
-                {icon}
-                <span className="text-lg">{name}</span>
+                key={name}
+                className="flex h-full w-full flex-1 flex-row-reverse border-b-grey-800/30 last-of-type:border-b"
+              >
+                <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
+                  <AccordionTrigger>
+                    <div className="flex flex-1 items-center space-x-5">
+                      {icon}
+                      <span className="text-left text-4xl">{name}</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="leading-9">{description}</AccordionContent>
+                </AccordionItem>
+                <div
+                  className="flex w-[395px] bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${imageURL})`,
+                  }}
+                />
               </div>
-              <p>{description}</p>
-            </li>
-          ))}
-        </ul>
-      </Media>
+            ))}
+          </Accordion>
+        </Media>
+      </Wrapper>
       <Media greaterThanOrEqual="lg">
-        <Accordion type="single" collapsible className="flex w-full flex-col">
-          {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
-            <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
-              <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
-                <AccordionTrigger>
-                  <div className="flex flex-1 items-center space-x-5">
-                    {icon}
-                    <span className="text-left text-4xl">{name}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="leading-9">{description}</AccordionContent>
-              </AccordionItem>
-              <div
-                className="flex w-[395px] bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${imageURL})`,
-                }}
-              />
-            </div>
-          ))}
-        </Accordion>
+        <Separator className="mb-16 mt-12 bg-grey-800/30" />
       </Media>
-    </Wrapper>
+    </>
   );
 }
