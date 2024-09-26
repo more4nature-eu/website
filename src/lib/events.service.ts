@@ -2,6 +2,7 @@
 
 import { URLink } from '@/lib/case-studies.service';
 import { Paginator } from '@/lib/paginator';
+import { sortByDateDescending } from '@/lib/utils';
 
 export type Event = {
   id: string;
@@ -45,7 +46,9 @@ export class EventsService extends Paginator<Event> {
   }
 
   getPastEvents(): Event[] {
-    const pastEvents = this.events.filter((event) => event.date <= this.currentDate);
+    const pastEvents = sortByDateDescending(
+      this.events.filter((event) => event.date <= this.currentDate),
+    );
     return this.filter(pastEvents, this.filters);
   }
 

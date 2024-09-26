@@ -46,49 +46,33 @@ describe('EventsService', () => {
           url: 'https://www.pollinet.pt/?pgid=lxer1xkc-0cdd2b4b-2b57-4b57-b20d-52c5492603b8',
         },
       },
+
       {
-        id: '2',
-        title: 'Seagrass and Pollution',
-        type: 'Seminar',
+        id: '5',
+        title: 'Earth Day Workshop, Single Use Plastics Directive',
+        type: 'International Days',
         theme: 'Pollution',
         presenters: [
-          'Rita Hagan - Coastwatch CS Coordinator',
-          'Mick Berry - Coastwatch CS Coordinator',
-          'Marcial Bardolet - IBANAT, Government of the Balearic Islands & Mediterranean Posidonia Network',
-          'Prof. Bissswajit Bazu - Civil, Structural & Environmental Engineering TCD',
-          'Jody Power - Mayor of Waterford',
-          'Prof Iris Moeller - Head of Geography, Trinity College  Dublin (TCD)',
-          'Fintan Kelly - Policy officer, Irish Environmental Network',
-          'Dr. Robert Wilkes - EPA',
-          'Tim Butter - Cork SubAqua Club',
+          'Colm Lambert - DECC',
+          'Jarlath T Duffy - EPA',
+          'Karin Dubky - Coaswatch',
+          'Will Mitchel - Mywaste.ie',
+          'Bernie Connolly - Coastwatch',
+          'Cecilia Harrington - Harrington Solicitors',
+          'Gaëlle Haut - Surfrider Foundation',
+          'Maya Galante - NEU Boston',
+          'Johnny Dabrowski - TCD & Earthday.org',
+          'Barbara Nolan - Head of EC Representation in Ireland',
         ],
-        organizations: ['FCID/Ciências ULisboa'],
-        description:
-          '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
-        date: '2024-01-01',
-        formatDate: 'LLLL, yyyy',
-        image: '/images/events/town.webp',
-        location: 'Dublin, Ireland',
-        link: {
-          title: '',
-          url: 'https://www.facebook.com/share/p/ZGCbMeZDogJFgN5M/',
-        },
-      },
-      {
-        id: '3',
-        title: 'Joint Oireachteas Agriculture Committee on Nitrates',
-        type: 'Policy',
-        theme: 'Pollution',
-        presenters: ['Karin Dubsky', 'Bernie Connolly'],
         organizations: ['Coastwatch'],
         description:
-          '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
-        date: '2024-02-01',
+          '<p>The UN themed Earth Day 2024 around plastics. To mark the day, Coastwatch organised a workshop on Banned Single Use Plastics in the European Commission Representation of Ireland offices in Dublin and online.</p>',
+        date: '2024-04-22',
         image: '/images/events/town.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
-          url: 'https://x.com/swanireland/status/1760359066319135069',
+          url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
         },
       },
       {
@@ -118,50 +102,22 @@ describe('EventsService', () => {
         },
       },
       {
-        id: '5',
-        title: 'Earth Day Workshop, Single Use Plastics Directive',
-        type: 'International Days',
+        id: '3',
+        title: 'Joint Oireachteas Agriculture Committee on Nitrates',
+        type: 'Policy',
         theme: 'Pollution',
-        presenters: [
-          'Colm Lambert - DECC',
-          'Jarlath T Duffy - EPA',
-          'Karin Dubky - Coaswatch',
-          'Will Mitchel - Mywaste.ie',
-          'Bernie Connolly - Coastwatch',
-          'Cecilia Harrington - Harrington Solicitors',
-          'Gaëlle Haut - Surfrider Foundation',
-          'Maya Galante - NEU Boston',
-          'Johnny Dabrowski - TCD & Earthday.org',
-          'Barbara Nolan - Head of EC Representation in Ireland',
-        ],
+        presenters: ['Karin Dubsky', 'Bernie Connolly'],
         organizations: ['Coastwatch'],
         description:
-          '<p>The UN themed Earth Day 2024 around plastics. To mark the day, Coastwatch organised a workshop on Banned Single Use Plastics in the European Commission Representation of Ireland offices in Dublin and online.</p>',
-        date: '2024-04-22',
+          '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
+        date: '2024-02-01',
         image: '/images/events/town.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
-          url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
+          url: 'https://x.com/swanireland/status/1760359066319135069',
         },
       },
-    ]);
-  });
-
-  it('should return upcoming events filtered by location', () => {
-    const filters: Partial<Event> = { location: 'Dublin, Ireland' };
-    eventsService = new EventsService(EVENTS, filters);
-    const upcomingEvents = eventsService.getUpcomingEvents();
-
-    expect(upcomingEvents).toEqual([]);
-  });
-
-  it('should return past events filtered by location', () => {
-    const filters: Partial<Event> = { location: 'Dublin, Ireland' };
-    eventsService = new EventsService(EVENTS, filters);
-    const pastEvents = eventsService.getPastEvents();
-
-    expect(pastEvents).toEqual([
       {
         id: '2',
         title: 'Seagrass and Pollution',
@@ -190,23 +146,23 @@ describe('EventsService', () => {
           url: 'https://www.facebook.com/share/p/ZGCbMeZDogJFgN5M/',
         },
       },
-      {
-        id: '3',
-        title: 'Joint Oireachteas Agriculture Committee on Nitrates',
-        type: 'Policy',
-        theme: 'Pollution',
-        presenters: ['Karin Dubsky', 'Bernie Connolly'],
-        organizations: ['Coastwatch'],
-        description:
-          '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
-        date: '2024-02-01',
-        image: '/images/events/town.webp',
-        location: 'Dublin, Ireland',
-        link: {
-          title: '',
-          url: 'https://x.com/swanireland/status/1760359066319135069',
-        },
-      },
+    ]);
+  });
+
+  it('should return upcoming events filtered by location', () => {
+    const filters: Partial<Event> = { location: 'Dublin, Ireland' };
+    eventsService = new EventsService(EVENTS, filters);
+    const upcomingEvents = eventsService.getUpcomingEvents();
+
+    expect(upcomingEvents).toEqual([]);
+  });
+
+  it('should return past events filtered by location', () => {
+    const filters: Partial<Event> = { location: 'Dublin, Ireland' };
+    eventsService = new EventsService(EVENTS, filters);
+    const pastEvents = eventsService.getPastEvents();
+
+    expect(pastEvents).toEqual([
       {
         id: '5',
         title: 'Earth Day Workshop, Single Use Plastics Directive',
@@ -233,6 +189,52 @@ describe('EventsService', () => {
         link: {
           title: '',
           url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
+        },
+      },
+      {
+        id: '3',
+        title: 'Joint Oireachteas Agriculture Committee on Nitrates',
+        type: 'Policy',
+        theme: 'Pollution',
+        presenters: ['Karin Dubsky', 'Bernie Connolly'],
+        organizations: ['Coastwatch'],
+        description:
+          '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
+        date: '2024-02-01',
+        image: '/images/events/town.webp',
+        location: 'Dublin, Ireland',
+        link: {
+          title: '',
+          url: 'https://x.com/swanireland/status/1760359066319135069',
+        },
+      },
+
+      {
+        id: '2',
+        title: 'Seagrass and Pollution',
+        type: 'Seminar',
+        theme: 'Pollution',
+        presenters: [
+          'Rita Hagan - Coastwatch CS Coordinator',
+          'Mick Berry - Coastwatch CS Coordinator',
+          'Marcial Bardolet - IBANAT, Government of the Balearic Islands & Mediterranean Posidonia Network',
+          'Prof. Bissswajit Bazu - Civil, Structural & Environmental Engineering TCD',
+          'Jody Power - Mayor of Waterford',
+          'Prof Iris Moeller - Head of Geography, Trinity College  Dublin (TCD)',
+          'Fintan Kelly - Policy officer, Irish Environmental Network',
+          'Dr. Robert Wilkes - EPA',
+          'Tim Butter - Cork SubAqua Club',
+        ],
+        organizations: ['FCID/Ciências ULisboa'],
+        description:
+          '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
+        date: '2024-01-01',
+        formatDate: 'LLLL, yyyy',
+        image: '/images/events/town.webp',
+        location: 'Dublin, Ireland',
+        link: {
+          title: '',
+          url: 'https://www.facebook.com/share/p/ZGCbMeZDogJFgN5M/',
         },
       },
     ]);

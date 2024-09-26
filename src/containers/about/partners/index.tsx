@@ -21,10 +21,6 @@ export default function Partners() {
   return (
     <Wrapper className="space-y-10">
       <h3 className="text-xl font-semibold">Partners</h3>
-      <p className="text-lg leading-9">
-        The more4nature activities are focused on three key thematic areas in environmental
-        protection:
-      </p>
       <p className="leading-8">
         The multidisciplinary more4nature consortium brings together a unique combination of
         collaborations, with scientific experts from the social sciences, data science and
