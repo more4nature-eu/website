@@ -48,7 +48,7 @@ const NavItem = (props: PropsWithChildren<LinkProps & { isDialogButton?: boolean
         </DialogTrigger>
         <DialogContent className="bg-white pt-8 text-grey-800" aria-describedby={undefined}>
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-grey-800 md:text-2xl">
+            <DialogTitle className="pr-2 text-xl font-bold text-grey-800 md:text-2xl">
               Interested in our work?
             </DialogTitle>
           </DialogHeader>
