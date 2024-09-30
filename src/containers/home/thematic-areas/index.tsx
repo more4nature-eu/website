@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -69,6 +69,7 @@ const THEMATIC_AREAS = [
 ];
 
 export default function ThematicAreas() {
+  const [openAccordionItem, setOpenAccordionItem] = useState<string | null>(null);
   return (
     <>
       <Wrapper className="space-y-10 md:space-y-20">
@@ -101,7 +102,12 @@ export default function ThematicAreas() {
           </ul>
         </Media>
         <Media greaterThanOrEqual="lg">
-          <Accordion type="single" collapsible className="flex w-full flex-col">
+          <Accordion
+            type="single"
+            collapsible
+            className="flex w-full flex-col"
+            onValueChange={(v) => setOpenAccordionItem(v || null)}
+          >
             {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
               <div
                 key={name}
@@ -117,9 +123,17 @@ export default function ThematicAreas() {
                   <AccordionContent className="leading-9">{description}</AccordionContent>
                 </AccordionItem>
                 <div
-                  className="flex w-[395px] bg-cover bg-center bg-no-repeat"
+                  className={cn({
+                    'flex w-[395px] bg-cover bg-center bg-no-repeat transition-opacity duration-300':
+                      true,
+                    'bg-gray-400 opacity-40 bg-blend-multiply':
+                      openAccordionItem && name !== openAccordionItem,
+                  })}
                   style={{
-                    backgroundImage: `url(${imageURL})`,
+                    backgroundImage:
+                      openAccordionItem && name !== openAccordionItem
+                        ? `linear-gradient(0deg, rgba(36, 59, 74, 0.20) 0%, rgba(36, 59, 74, 0.20) 100%), url(${imageURL})`
+                        : `url(${imageURL})`,
                   }}
                 />
               </div>
