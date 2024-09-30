@@ -108,36 +108,46 @@ export default function ThematicAreas() {
             className="flex w-full flex-col"
             onValueChange={(v) => setOpenAccordionItem(v || null)}
           >
-            {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
-              <div
-                key={name}
-                className="flex h-full w-full flex-1 flex-row-reverse border-b-grey-800/30 last-of-type:border-b"
-              >
-                <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
-                  <AccordionTrigger>
-                    <div className="flex flex-1 items-center space-x-5">
-                      {icon}
-                      <span className="text-left text-4xl">{name}</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="leading-9">{description}</AccordionContent>
-                </AccordionItem>
+            {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => {
+              const isFadedAccordionItem = openAccordionItem && name !== openAccordionItem;
+              const isOpenAccordionItem = openAccordionItem && name === openAccordionItem;
+              return (
                 <div
-                  className={cn({
-                    'flex w-[395px] bg-cover bg-center bg-no-repeat transition-opacity duration-300':
-                      true,
-                    'bg-gray-400 opacity-40 bg-blend-multiply':
-                      openAccordionItem && name !== openAccordionItem,
-                  })}
-                  style={{
-                    backgroundImage:
-                      openAccordionItem && name !== openAccordionItem
+                  key={name}
+                  className="flex h-full w-full flex-1 flex-row-reverse border-b-grey-800/30 last-of-type:border-b"
+                >
+                  <AccordionItem
+                    key={name}
+                    value={name}
+                    className={cn({
+                      'peer w-full px-14 py-10': true,
+                      'border-t-2': isOpenAccordionItem,
+                    })}
+                  >
+                    <AccordionTrigger>
+                      <div className="flex flex-1 items-center space-x-5">
+                        {icon}
+                        <span className="text-left text-4xl">{name}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="leading-9">{description}</AccordionContent>
+                  </AccordionItem>
+                  <div
+                    className={cn({
+                      'relative flex w-[395px] border-t border-t-grey-800/30 bg-cover bg-center bg-no-repeat transition-opacity duration-300':
+                        true,
+                      'bg-gray-400 opacity-40 bg-blend-multiply': isFadedAccordionItem,
+                      'border-t-2 border-t-grey-800': isOpenAccordionItem,
+                    })}
+                    style={{
+                      backgroundImage: isFadedAccordionItem
                         ? `linear-gradient(0deg, rgba(36, 59, 74, 0.20) 0%, rgba(36, 59, 74, 0.20) 100%), url(${imageURL})`
                         : `url(${imageURL})`,
-                  }}
-                />
-              </div>
-            ))}
+                    }}
+                  />
+                </div>
+              );
+            })}
           </Accordion>
         </Media>
       </Wrapper>
