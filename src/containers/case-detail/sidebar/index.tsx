@@ -114,8 +114,8 @@ export default function CaseDetailSidebar() {
         <Media greaterThanOrEqual="md">
           {(className: string, renderChildren: boolean) =>
             renderChildren ? (
-              <Button asChild variant="ghost" className="border border-grey-900">
-                <Link href="/cases">Close detail</Link>
+              <Button asChild variant="secondary" className="border border-grey-900 text-white">
+                <Link href="/cases">Back</Link>
               </Button>
             ) : (
               <Button
