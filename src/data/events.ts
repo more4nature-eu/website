@@ -118,6 +118,21 @@ const events: Event[] = [
       url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
     },
   },
+  {
+    id: '5',
+    title: 'Copenhagen Plenary',
+    description:
+      "<p>In May, more4nature partners gathered in Copenhagen to discuss and advance the projects' ongoing work to transform conservation efforts using Citizen Science initiatives in the process of environmental compliance assurance.</p>" +
+      "<p>Over three days, project partners shared updates, discussed cases and ideas for moving promoting Sitizen Science initiatives in environmental compliance assurance. The partners also met with the European Environmental Agency to discuss the agency's role in aggregating data and information from EU member states for compliance reporting and finding areas for collaboration.</p>" +
+      '<p>Finally, attendees took a field trip to Jægersborg Deer Park to learn from a local forest ranger in charge from the Nature Agency, about the actions taken to enhance biodiversity, one of the core more4nature themes.</p>',
+    date: '2024-05-28',
+    image: '/images/events/town.webp',
+    location: 'Copenhagen',
+    link: {
+      title: '',
+      url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
+    },
+  },
 ];
 
 export default events;
