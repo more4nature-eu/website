@@ -91,7 +91,7 @@ export default function ResponsiveCasesPage() {
             />
           </CaseStudiesTotal>
         </motion.div>
-        <div className="px-4 md:p-[50px]" ref={ref}>
+        <div className="px-6" ref={ref}>
           <CaseStudiesTotal className="flex items-baseline justify-between gap-4 text-xl">
             <MobileFiltersDropdown
               onClickSearch={handleOpenSearch}
@@ -99,7 +99,7 @@ export default function ResponsiveCasesPage() {
             />
           </CaseStudiesTotal>
         </div>
-        <div className="flex grow px-4">
+        <div className="flex grow px-6">
           <CaseStudies />
         </div>
         <motion.div
@@ -118,7 +118,7 @@ export default function ResponsiveCasesPage() {
       <Media greaterThanOrEqual="md" className="relative flex flex-1">
         <>
           <Sidebar>
-            <div className="px-[60px]">
+            <div className="px-6">
               <CaseStudiesTotal className="text-xl" />
             </div>
             <CaseStudies />
@@ -135,7 +135,7 @@ export default function ResponsiveCasesPage() {
                 setFilters((prev) => ({ ...prev, keyword }));
               }}
               autoFocus
-              placeholder="Search case studies by keyword..."
+              placeholder="Search case studies by title or tag..."
               onClose={handleCloseSearch}
               showCloseIconAlways
             />

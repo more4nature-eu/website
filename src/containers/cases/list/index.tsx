@@ -157,7 +157,7 @@ export default function CaseStudyList() {
       )}
       {!isFetching && isSuccess && (
         <ScrollArea className="h-full pb-8">
-          <div className="md:px-[60px]">
+          <div className="md:px-6">
             <ul className="space-y-3">
               {data?.map((caseStudy) => (
                 <li key={caseStudy.id} className="flex">
