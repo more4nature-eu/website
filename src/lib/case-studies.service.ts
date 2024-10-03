@@ -97,11 +97,6 @@ export class CaseStudyService extends Paginator<CaseStudy> {
         ? keywordRegex.test(caseStudy.title) || caseStudy.tags.some((tag) => keywordRegex.test(tag))
         : true;
 
-      console.log({
-        filters: this.filters.complianceTypes,
-        filterByComplianceType,
-      });
-
       return (
         filterByThematicArea &&
         filterByComplianceType &&
