@@ -21,9 +21,11 @@ import {
 import formatDate from '@/utils/date';
 
 export default function UpcomingEvents() {
-  const { data } = useQuery<Event[]>({
+  const { data, isSuccess } = useQuery<Event[]>({
     queryKey: queryKeys.events.upcoming.queryKey,
   });
+
+  if (isSuccess && data?.length < 3) return null;
 
   return (
     <ul>
