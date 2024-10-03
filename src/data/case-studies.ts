@@ -164,7 +164,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         impact: {
           name: Impact.LOCAL,
           list: [
-            'Oeiras Municipal Plan of Adaptation to Climate Change (PMAACO) includes objectives around biodiversity but there is a lack of statutory monitoring to assess progress. Ongoing CSIs can provide relevant data particularly on pollinators.',
+            'Oeiras Municipal Plan of Adaptation to Climate Change (PMAACO) includes objectives around biodiversity but there is a lack of statutory monitoring to assess progress. Ongoing Citizen Science initiatives can provide relevant data particularly on pollinators.',
           ],
         },
       },

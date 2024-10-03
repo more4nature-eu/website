@@ -26,7 +26,7 @@ export default function Partners() {
         collaborations, with scientific experts from the social sciences, data science and
         technology, and natural sciences, most of whom also have substantial experience with
         hands-on Citizen Science. The consortium combines institutional actors, namely environmental
-        agencies and institutions with citizen science initiatives and environmental NGOs practicing
+        agencies and institutions with Citizen Science initiatives and environmental NGOs practicing
         Citizen Science and intermediaries as well as a network of Fab Labs and Designers and the
         private sector. This enables the consortium to implement its ambitious and truly innovative
         socio-technical approach for large-scale double loop Action Research.
