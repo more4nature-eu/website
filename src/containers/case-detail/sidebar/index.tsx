@@ -155,33 +155,147 @@ export default function CaseDetailSidebar() {
             className="flex w-full flex-col divide-y divide-white/20"
             defaultValue={accordionItems[0].value}
           >
-            {accordionItems.map((item) => (
-              <AccordionItem key={item.value} value={item.value} className="py-5 first:pt-0">
+            {/*<AccordionItem*/}
+            {/*  value="citizenScienceInitiatives"*/}
+            {/*  className="peer w-full py-5 first:pt-0"*/}
+            {/*>*/}
+            {/*  <AccordionTrigger>*/}
+            {/*    <div className="flex items-center space-x-5">*/}
+            {/*      <span className="text-lg font-semibold">Citizen Science Initiatives</span>*/}
+            {/*    </div>*/}
+            {/*  </AccordionTrigger>*/}
+            {/*  <AccordionContent className="leading-9">*/}
+            {/*    <ul>*/}
+            {/*      {data?.citizenScienceInitiatives.map((item, index) => (*/}
+            {/*        <li key={index}>{renderItem(item)}</li>*/}
+            {/*      ))}*/}
+            {/*    </ul>*/}
+            {/*  </AccordionContent>*/}
+            {/*</AccordionItem>*/}
+            <AccordionItem value="citizenScienceData" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Citizen Science Data</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul>
+                  {data?.citizenScienceData.map((item, index) => (
+                    <li key={index}>{renderItem(item)}</li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="complianceNeed" className="peer w-full py-5 first:pt-0">
+              <AccordionTrigger>
+                <div className="flex items-center space-x-5">
+                  <span className="text-lg font-semibold">Compliance Need</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="leading-9">
+                <ul className="space-y-4">
+                  {data?.complianceNeed.map((item, index) => (
+                    <li key={index}>
+                      {typeof item === 'object' && 'impact' in item ? (
+                        <>
+                          <h4 className="font-semibold">{item.impact.name}</h4>
+                          <ul className="space-y-2">
+                            {item.impact.list.map((subItem, index) => (
+                              <li key={index}>{renderItem(subItem)}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        renderItem(item)
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            {data?.relevantPoliciesLaw && data.relevantPoliciesLaw.length > 0 && (
+              <AccordionItem value="relevantPoliciesLaw" className="peer w-full py-5 first:pt-0">
                 <AccordionTrigger>
-                  <span className="text-lg font-semibold">{item.title}</span>
+                  <div className="flex items-center space-x-5">
+                    <span className="text-lg font-semibold">Relevant policy/laws</span>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="leading-9">
                   <ul className="space-y-4">
-                    {item.data.map((dataItem, index) => (
+                    {data.relevantPoliciesLaw.map((item, index) => (
                       <li key={index}>
-                        {typeof dataItem === 'object' && 'impact' in dataItem ? (
+                        {typeof item === 'object' && 'impact' in item ? (
                           <>
-                            <h4 className="font-semibold">{dataItem.impact.name}</h4>
+                            <h4 className="font-semibold">{item.impact.name}</h4>
                             <ul className="space-y-2">
-                              {dataItem.impact.list.map((subItem, subIndex) => (
-                                <li key={subIndex}>{renderItem(subItem)}</li>
+                              {item.impact.list.map((subItem, index) => (
+                                <li key={index}>{renderItem(subItem)}</li>
                               ))}
                             </ul>
                           </>
                         ) : (
-                          renderItem(dataItem)
+                          renderItem(item)
                         )}
                       </li>
                     ))}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
-            ))}
+            )}
+            {/*<AccordionItem value="stakeholders" className="peer w-full py-5 first:pt-0">*/}
+            {/*  <AccordionTrigger>*/}
+            {/*    <div className="flex items-center space-x-5">*/}
+            {/*      <span className="text-lg font-semibold">Stakeholders</span>*/}
+            {/*    </div>*/}
+            {/*  </AccordionTrigger>*/}
+            {/*  <AccordionContent className="leading-9">*/}
+            {/*    <ul className="space-y-4">*/}
+            {/*      {data?.stakeholders.map((item, index) => (*/}
+            {/*        <li key={index}>*/}
+            {/*          {typeof item === 'object' && 'impact' in item ? (*/}
+            {/*            <>*/}
+            {/*              <h4 className="font-semibold">{item.impact.name}</h4>*/}
+            {/*              <ul className="space-y-2">*/}
+            {/*                {item.impact.list.map((subItem, index) => (*/}
+            {/*                  <li key={index}>{renderItem(subItem)}</li>*/}
+            {/*                ))}*/}
+            {/*              </ul>*/}
+            {/*            </>*/}
+            {/*          ) : (*/}
+            {/*            renderItem(item)*/}
+            {/*          )}*/}
+            {/*        </li>*/}
+            {/*      ))}*/}
+            {/*    </ul>*/}
+            {/*  </AccordionContent>*/}
+            {/*</AccordionItem>*/}
+            {/*<AccordionItem value="authorities" className="peer w-full py-5 first:pt-0">*/}
+            {/*  <AccordionTrigger>*/}
+            {/*    <div className="flex items-center space-x-5">*/}
+            {/*      <span className="text-lg font-semibold">Authorities</span>*/}
+            {/*    </div>*/}
+            {/*  </AccordionTrigger>*/}
+            {/*  <AccordionContent className="leading-9">*/}
+            {/*    <ul className="space-y-4">*/}
+            {/*      {data?.authorities.map((item, index) => (*/}
+            {/*        <li key={index}>*/}
+            {/*          {typeof item === 'object' && 'impact' in item ? (*/}
+            {/*            <>*/}
+            {/*              <h4 className="font-semibold">{item.impact.name}</h4>*/}
+            {/*              <ul className="space-y-2">*/}
+            {/*                {item.impact.list.map((subItem, index) => (*/}
+            {/*                  <li key={index}>{renderItem(subItem)}</li>*/}
+            {/*                ))}*/}
+            {/*              </ul>*/}
+            {/*            </>*/}
+            {/*          ) : (*/}
+            {/*            renderItem(item)*/}
+            {/*          )}*/}
+            {/*        </li>*/}
+            {/*      ))}*/}
+            {/*    </ul>*/}
+            {/*  </AccordionContent>*/}
+            {/*</AccordionItem>*/}
           </Accordion>
           <div>
             <div className="flex flex-col items-start space-y-5 border-t border-t-white py-9">

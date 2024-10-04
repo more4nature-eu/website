@@ -38,6 +38,11 @@ export type CaseStudy = {
   complianceNeed: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
   stakeholders: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
   authorities: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
+  relevantPoliciesLaw?: (
+    | string
+    | URLink
+    | { impact: { name: Impact; list: (string | URLink)[] } }
+  )[];
   contact: URLink;
   impact: Impact[];
   thematicAreas: ThematicArea[];
