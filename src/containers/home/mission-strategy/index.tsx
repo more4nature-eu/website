@@ -2,19 +2,19 @@ import Wrapper from '@/components/ui/wrapper';
 
 const MISSION_STRATEGY_STEPS = [
   {
-    name: 'Unlocking the potential of citizen science.',
-    description:
-      'Citizen science is an untapped asset for authorities and governance. We are working to ensure that it informs essential and urgent decisions.',
-  },
-  {
-    name: 'Bridging data and policy gaps',
-    description:
-      'We want to  ensure that valuable data directly informs essential and urgent decisions at all levels of government, from local to international.',
-  },
-  {
-    name: 'Developing data visualization tools',
+    name: 'Developing Data Visualization Tools',
     description:
       'Our purpose is developing tools to validate data from citizens, contributing to its incorporation into environmental governance authorities.',
+  },
+  {
+    name: 'Unlocking the Potential of Citizen Science',
+    description:
+      'Citizen science is an untapped asset for authorities and governance. We are working to ensure that if informs essential and urgent decisions.',
+  },
+  {
+    name: 'Bridging Data and Policy Gaps',
+    description:
+      'We want to ensure that valuable data directly informs essential and urgent decisions at all levels of government, from local to international.',
   },
 ];
 

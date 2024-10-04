@@ -70,6 +70,8 @@ const THEMATIC_AREAS = [
 
 export default function ThematicAreas() {
   const [openAccordionItem, setOpenAccordionItem] = useState<string | null>(null);
+  const [currentAccordionItem, setCurrentAccordionItem] = useState<string | null>(null);
+
   return (
     <>
       <Wrapper className="space-y-10 md:space-y-20">
@@ -152,7 +154,49 @@ export default function ThematicAreas() {
         </Media>
       </Wrapper>
       <Media greaterThanOrEqual="lg">
-        <Separator className="mb-16 mt-12 bg-grey-800/30" />
+        <Accordion
+          type="single"
+          collapsible
+          className={cn('flex w-full flex-col border-y-2 border-grey-800', {
+            'border-t-grey-800/30':
+              currentAccordionItem && currentAccordionItem !== THEMATIC_AREAS[0].name,
+            'border-b-grey-800/30':
+              currentAccordionItem &&
+              currentAccordionItem !== THEMATIC_AREAS[THEMATIC_AREAS.length - 1].name,
+          })}
+          onValueChange={(v) => {
+            setCurrentAccordionItem(v);
+          }}
+        >
+          {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
+            <div
+              key={name}
+              className={cn(
+                'first flex h-full w-full flex-1 flex-row-reverse border-t border-t-grey-800/30',
+                {
+                  'border-t-2 border-t-grey-800 first:border-b-grey-800':
+                    name === currentAccordionItem,
+                },
+              )}
+            >
+              <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
+                <AccordionTrigger>
+                  <div className="flex flex-1 items-center space-x-6">
+                    {icon}
+                    <span className="flex-1 text-4xl font-normal">{name}</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="leading-9">{description}</AccordionContent>
+              </AccordionItem>
+              <div
+                className="flex w-[395px] bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${imageURL})`,
+                }}
+              />
+            </div>
+          ))}
+        </Accordion>
       </Media>
     </>
   );

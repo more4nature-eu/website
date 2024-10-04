@@ -139,12 +139,14 @@ function PastEvent({
 }
 
 export default function PastEvents() {
-  const { data } = useQuery<Event[]>({
+  const { data, isSuccess } = useQuery<Event[]>({
     queryKey: queryKeys.events.past.queryKey,
   });
 
   const [api, setApi] = useState<CarouselApi>();
   const [, setCurrent] = useState(0);
+
+  if (isSuccess && data?.length < 3) return null;
 
   return (
     <div className="space-y-14">

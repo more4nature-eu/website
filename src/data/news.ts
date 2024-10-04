@@ -3,10 +3,18 @@ import { News } from '@/lib/news.service';
 
 const NEWS: News[] = [
   {
+    name: 'Joan Maso Pau presents "Empowering Citizens in Collaborative Environmental Compliance Assurance; Promote, Monitor, and Enforce."',
+    date: '2024-06-18',
+    description:
+      '<p>On June 25, representatives from Hutsulshchyna National Nature Park, part of the more4nature project by the National Ecological Centre of Ukraine, visited the Carpathian National Nature Park in Yaremche. The event aimed to raise awareness about forest management reforms and illegal logging, engaging 75 local citizens in discussions. Later, the delegation also visited Vorokhta and the Vorokhta Forest Management Branch, presenting the more4nature project and surveying 30 forestry workers. The day was highly productive and informative for all involved.</p>',
+    categories: [],
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7214292712999546880',
+  },
+  {
     name: 'Introduction to more4nature Project',
     date: '2024-01-03',
     description:
-      "<p>We're excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between citizen science initiatives (CSIs) and local authorities, enhancing environmental compliance and monitoring. By strengthening CSIs, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>",
+      "<p>We're excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between Citizen Science initiatives (CSIs) and local authorities, enhancing environmental compliance and monitoring. By strengthening CSIs, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>",
     categories: [
       ThematicArea.DEFORESTATION_PREVENTION,
       ThematicArea.BIODIVERSITY_PROTECTION,
@@ -25,7 +33,7 @@ const NEWS: News[] = [
     name: 'Leveraging Citizen Science Initiatives',
     date: '2024-04-25',
     description:
-      "<p>It’s exciting to see the discussion on societal engagement and open science. At more4nature, we're actively contributing to this dialogue by empowering citizens and communities in environmental action. Our project is all about leveraging citizen science initiatives (CSIs) to tackle pollution, protect biodiversity, and prevent deforestation.</p><p>Citizen involvement and citizen-generated data (CGD) are vital to counter environmental degradation. That's why more4nature is dedicated to bridging the gap between CSIs and authorities. By strengthening CSIs, facilitating collaboration, and developing tools for validating CGD, we ensure that valuable data doesn't go to waste.</p>",
+      "<p>It’s exciting to see the discussion on societal engagement and open science. At more4nature, we're actively contributing to this dialogue by empowering citizens and communities in environmental action. Our project is all about leveraging Citizen Science initiatives (CSIs) to tackle pollution, protect biodiversity, and prevent deforestation.</p><p>Citizen involvement and citizen-generated data (CGD) are vital to counter environmental degradation. That's why more4nature is dedicated to bridging the gap between CSIs and authorities. By strengthening CSIs, facilitating collaboration, and developing tools for validating CGD, we ensure that valuable data doesn't go to waste.</p>",
     categories: [
       ThematicArea.DEFORESTATION_PREVENTION,
       ThematicArea.BIODIVERSITY_PROTECTION,
@@ -45,7 +53,7 @@ const NEWS: News[] = [
     name: 'more4nature Project in Copenhagen!',
     date: '2024-05-30',
     description:
-      '<p>Our team is thrilled to reunite in Copenhagen, advancing transformative conservation efforts by integrating citizens and citizen science initiatives into environmental compliance. Discussions with European Environment Agency (EEA) experts highlighted shared interests in using Citizen-Generated Data for monitoring at national and regional levels.</p> <p>We explored links between health, pollution, and the need for better data on issues like microplastics. More4nature partner Ida Theilade emphasized, "Citizens can play a role because they know what to look for," despite challenges like illegal logging.</p>',
+      '<p>Our team is thrilled to reunite in Copenhagen, advancing transformative conservation efforts by integrating citizens and Sitizen Science initiatives into environmental compliance. Discussions with European Environment Agency (EEA) experts highlighted shared interests in using Citizen-Generated Data for monitoring at national and regional levels.</p> <p>We explored links between health, pollution, and the need for better data on issues like microplastics. More4nature partner Ida Theilade emphasized, "Citizens can play a role because they know what to look for," despite challenges like illegal logging.</p>',
     categories: [
       ThematicArea.DEFORESTATION_PREVENTION,
       ThematicArea.BIODIVERSITY_PROTECTION,
@@ -57,7 +65,7 @@ const NEWS: News[] = [
     name: 'European Space Agency Environmental Crimes Workshop 2024',
     date: '2024-06-11',
     description:
-      '<p>At the JRC and ESA Environmental Crimes Workshop 2024, Joan Maso Pau from CREAF presented a poster on "Empowering Citizens in Collaborative Environmental Compliance Assurance." Joan highlighted how more4nature drove conservation by involving citizens and communities in efforts to achieve zero pollution, protect biodiversity, and prevent deforestation. The presentation covered strengthening Citizen Science Initiatives for reliable data, enhancing collaboration between CSIs and authorities, developing tools for validating and integrating citizen data, incorporating data into the Green Deal Data Space, and fostering synergies with LivingLabs and Fab Labs. We engaged with experts and explored how remote sensing could complement citizen science.</p>',
+      '<p>At the JRC and ESA Environmental Crimes Workshop 2024, Joan Maso Pau from CREAF presented a poster on "Empowering Citizens in Collaborative Environmental Compliance Assurance." Joan highlighted how more4nature drove conservation by involving citizens and communities in efforts to achieve zero pollution, protect biodiversity, and prevent deforestation. The presentation covered strengthening Citizen Science Initiatives for reliable data, enhancing collaboration between Citizen Science initiatives and authorities, developing tools for validating and integrating citizen data, incorporating data into the Green Deal Data Space, and fostering synergies with LivingLabs and Fab Labs. We engaged with experts and explored how remote sensing could complement citizen science.</p>',
     categories: [
       ThematicArea.DEFORESTATION_PREVENTION,
       ThematicArea.BIODIVERSITY_PROTECTION,
@@ -70,7 +78,7 @@ const NEWS: News[] = [
     date: '2024-06-18',
     description:
       '<p>The EU Council has adopted a first-of-its-kind regulation with measures to restore at least 20% of the EU’s land and sea areas by 2030 and all ecosystems needing restoration by 2050. The Nature Restoration Law targets specific ecosystems- terrestrial to marine, freshwater and urban ecosystems.\n' +
-      "This aligns perfectly with more4nature's mission to empower citizens through citizen science initiatives. Together, we can be the stewards of change, monitoring, reporting, and taking action to protect our planet's biodiversity for generations to come.\n</p>",
+      "This aligns perfectly with more4nature's mission to empower citizens through Sitizen Science initiatives. Together, we can be the stewards of change, monitoring, reporting, and taking action to protect our planet's biodiversity for generations to come.\n</p>",
     categories: [ThematicArea.BIODIVERSITY_PROTECTION],
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7206272288357298176',
   },

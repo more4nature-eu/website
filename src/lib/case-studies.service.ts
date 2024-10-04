@@ -38,6 +38,11 @@ export type CaseStudy = {
   complianceNeed: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
   stakeholders: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
   authorities: (string | URLink | { impact: { name: Impact; list: (string | URLink)[] } })[];
+  relevantPoliciesLaw?: (
+    | string
+    | URLink
+    | { impact: { name: Impact; list: (string | URLink)[] } }
+  )[];
   contact: URLink;
   impact: Impact[];
   thematicAreas: ThematicArea[];
@@ -80,14 +85,14 @@ export class CaseStudyService extends Paginator<CaseStudy> {
 
     return items.filter((caseStudy) => {
       const filterByThematicArea = this.filters.thematicAreas
-        ? this.filters.thematicAreas.every((area) => caseStudy.thematicAreas.includes(area))
+        ? this.filters.thematicAreas.some((area) => caseStudy.thematicAreas.includes(area))
         : true;
       const filterByComplianceType = this.filters.complianceTypes
-        ? this.filters.complianceTypes.every((compliance) => caseStudy.tags.includes(compliance))
+        ? this.filters.complianceTypes.some((compliance) => caseStudy.tags.includes(compliance))
         : true;
 
       const filterByImpact = this.filters.impacts
-        ? this.filters.impacts.every((impact) => caseStudy.impact.includes(impact))
+        ? this.filters.impacts.some((impact) => caseStudy.impact.includes(impact))
         : true;
       const filterByLocation = this.filters.locations
         ? this.filters.locations.includes(caseStudy.location.continent)

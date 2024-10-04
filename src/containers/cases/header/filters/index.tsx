@@ -13,7 +13,7 @@ export default function CaseFilters() {
   return (
     <div className="flex items-center space-x-5">
       <Search
-        placeholder="Search case studies by keyword..."
+        placeholder="Search case studies by title or tag..."
         onChange={(keyword) => {
           setFilters((prev) => ({ ...prev, keyword }));
         }}
