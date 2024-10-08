@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 
+import { useAtomValue } from 'jotai';
 import { useSetAtom } from 'jotai/index';
 import { HiOutlineTrash, HiOutlineX } from 'react-icons/hi';
 
@@ -17,7 +18,8 @@ export default function FiltersContent({
   onSetFiltersDone?: () => void;
   onClearFiltersDone?: () => void;
 }) {
-  const [filters, setFilters] = useState(INITIAL_FILTERS_STATE);
+  const globalFilters = useAtomValue(filtersAtom);
+  const [filters, setFilters] = useState(globalFilters);
   const setGlobalFilters = useSetAtom(filtersAtom);
 
   const onClearFilters = useCallback(() => {

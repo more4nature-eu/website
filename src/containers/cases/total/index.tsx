@@ -27,7 +27,7 @@ export default function CaseStudiesTotal({
 
   return (
     <div className={className}>
-      <div className="space-y-4 bg-white py-8">
+      <div className="space-y-4 bg-white py-7">
         <h4 className="text-[length:inherit] font-bold">Case studies</h4>
         <p className="text-lg text-gray-600">{totalCaseStudies} case studies</p>
       </div>

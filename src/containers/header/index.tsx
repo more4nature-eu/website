@@ -14,7 +14,7 @@ export const SECTIONS = [
   { name: 'About', href: '/about' },
   { name: 'Cases', href: '/cases' },
   { name: 'Events & News', href: '/events-news' },
-  { name: 'Contact us', href: '#contact-us' },
+  { name: 'Contact us', href: 'mailto:more4nature_project@un-ihe.org' },
 ] as const;
 
 export default function Header({

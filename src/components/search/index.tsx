@@ -35,7 +35,7 @@ export default function Search({
       <div className="relative flex w-full">
         <input
           className={cn(
-            'flex w-[310px] items-center bg-white pl-6 pr-6 placeholder:text-grey-600 focus:outline-none',
+            'flex w-[345px] items-center bg-white pl-6 pr-6 placeholder:text-grey-600 focus:outline-none',
           )}
           placeholder={placeholder}
           onChange={(e) => {

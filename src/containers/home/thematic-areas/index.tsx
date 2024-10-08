@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -15,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
 import Wrapper from '@/components/ui/wrapper';
 
 const IconBackground = ({
@@ -68,6 +69,8 @@ const THEMATIC_AREAS = [
 ];
 
 export default function ThematicAreas() {
+  const [currentAccordionItem, setCurrentAccordionItem] = useState<string | null>(null);
+
   return (
     <Wrapper className="space-y-10 md:space-y-20">
       <div className="grid grid-cols-12">
@@ -99,14 +102,36 @@ export default function ThematicAreas() {
         </ul>
       </Media>
       <Media greaterThanOrEqual="lg">
-        <Accordion type="single" collapsible className="flex w-full flex-col">
+        <Accordion
+          type="single"
+          collapsible
+          className={cn('flex w-full flex-col border-y-2 border-grey-800', {
+            'border-t-grey-800/30':
+              currentAccordionItem && currentAccordionItem !== THEMATIC_AREAS[0].name,
+            'border-b-grey-800/30':
+              currentAccordionItem &&
+              currentAccordionItem !== THEMATIC_AREAS[THEMATIC_AREAS.length - 1].name,
+          })}
+          onValueChange={(v) => {
+            setCurrentAccordionItem(v);
+          }}
+        >
           {THEMATIC_AREAS.map(({ name, description, imageURL, icon }) => (
-            <div key={name} className="flex h-full w-full flex-1 flex-row-reverse">
+            <div
+              key={name}
+              className={cn(
+                'first flex h-full w-full flex-1 flex-row-reverse border-t border-t-grey-800/30',
+                {
+                  'border-t-2 border-t-grey-800 first:border-t-0 first:border-b-grey-800':
+                    name === currentAccordionItem,
+                },
+              )}
+            >
               <AccordionItem key={name} value={name} className="peer w-full px-14 py-10">
                 <AccordionTrigger>
-                  <div className="flex flex-1 items-center space-x-5">
+                  <div className="flex flex-1 items-center space-x-6">
                     {icon}
-                    <span className="text-left text-4xl">{name}</span>
+                    <span className="flex-1 text-4xl font-normal">{name}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="leading-9">{description}</AccordionContent>

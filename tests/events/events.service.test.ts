@@ -29,6 +29,19 @@ describe('EventsService', () => {
 
     expect(pastEvents).toEqual([
       {
+        id: '5',
+        title: 'Copenhagen Plenary',
+        description:
+          "<p>In May, more4nature partners gathered in Copenhagen to discuss and advance the projects' ongoing work to transform conservation efforts using Citizen Science initiatives in the process of environmental compliance assurance.</p><p>Over three days, project partners shared updates, discussed cases and ideas for moving promoting Sitizen Science initiatives in environmental compliance assurance. The partners also met with the European Environmental Agency to discuss the agency's role in aggregating data and information from EU member states for compliance reporting and finding areas for collaboration.</p><p>Finally, attendees took a field trip to Jægersborg Deer Park to learn from a local forest ranger in charge from the Nature Agency, about the actions taken to enhance biodiversity, one of the core more4nature themes.</p>",
+        date: '2024-05-28',
+        image: '/images/events/more4nature-group-copenhagen.webp',
+        location: 'Copenhagen',
+        link: {
+          title: '',
+          url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
+        },
+      },
+      {
         id: '1',
         title:
           'IV Reunião anual da Rede Colaborativa para a Avaliação, Conservação e Valorização dos Polinizadores e da Polinização (Polli.NET)',
@@ -39,14 +52,13 @@ describe('EventsService', () => {
         description:
           '<p>The main objectives of the Collaborative Network was to bring together the scientific community, stakeholders and civil society (directly and indirectly) linked to pollinators and pollination, to promote information sharing and knowledge transfer between stakeholders, and to promote the training of researchers and citizens.</p><p>The Collaborative Network aimed to develop an action plan at a national level for the assessment, conservation, and enhancement of pollinators, as well as promoting the implementation of the actions proposed therein. Involving all stakeholders in a process of collaborative work and commitment on the part of all those involved.</p>',
         date: '2024-05-27',
-        image: '/images/events/town.webp',
+        image: '/images/events/pollinator-portugal.webp',
         location: 'Online (Portugal)',
         link: {
           title: '',
           url: 'https://www.pollinet.pt/?pgid=lxer1xkc-0cdd2b4b-2b57-4b57-b20d-52c5492603b8',
         },
       },
-
       {
         id: '5',
         title: 'Earth Day Workshop, Single Use Plastics Directive',
@@ -68,7 +80,7 @@ describe('EventsService', () => {
         description:
           '<p>The UN themed Earth Day 2024 around plastics. To mark the day, Coastwatch organised a workshop on Banned Single Use Plastics in the European Commission Representation of Ireland offices in Dublin and online.</p>',
         date: '2024-04-22',
-        image: '/images/events/town.webp',
+        image: '/images/events/earth-day-workshop.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -94,7 +106,7 @@ describe('EventsService', () => {
         description:
           '<p>A #worldwaterday2024 event focused on water quality in Bannow Bay, an outlier inlet that showed improved levels of nitrate discharge in Coastwatch’s Autumn Survey.</p>',
         date: '2024-03-01',
-        image: '/images/events/town.webp',
+        image: '/images/events/world-water-day.webp',
         location: 'Wexford, Ireland',
         link: {
           title: '',
@@ -111,7 +123,7 @@ describe('EventsService', () => {
         description:
           '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
         date: '2024-02-01',
-        image: '/images/events/town.webp',
+        image: '/images/events/joint-oireachtas-committee-post.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -139,7 +151,7 @@ describe('EventsService', () => {
           '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
         date: '2024-01-01',
         formatDate: 'LLLL, yyyy',
-        image: '/images/events/town.webp',
+        image: '/images/events/coastwatch-seagrass.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -184,7 +196,7 @@ describe('EventsService', () => {
         description:
           '<p>The UN themed Earth Day 2024 around plastics. To mark the day, Coastwatch organised a workshop on Banned Single Use Plastics in the European Commission Representation of Ireland offices in Dublin and online.</p>',
         date: '2024-04-22',
-        image: '/images/events/town.webp',
+        image: '/images/events/earth-day-workshop.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -201,14 +213,13 @@ describe('EventsService', () => {
         description:
           '<p>Presenting at the Joint Oireachtas Committee on Agriculture on "Compliance with the Nitrates Directive: Implications for Ireland."</p>',
         date: '2024-02-01',
-        image: '/images/events/town.webp',
+        image: '/images/events/joint-oireachtas-committee-post.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
           url: 'https://x.com/swanireland/status/1760359066319135069',
         },
       },
-
       {
         id: '2',
         title: 'Seagrass and Pollution',
@@ -230,7 +241,7 @@ describe('EventsService', () => {
           '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
         date: '2024-01-01',
         formatDate: 'LLLL, yyyy',
-        image: '/images/events/town.webp',
+        image: '/images/events/coastwatch-seagrass.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -275,7 +286,7 @@ describe('EventsService', () => {
           '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
         date: '2024-01-01',
         formatDate: 'LLLL, yyyy',
-        image: '/images/events/town.webp',
+        image: '/images/events/coastwatch-seagrass.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',
@@ -323,7 +334,7 @@ describe('EventsService', () => {
           '<p>From Coastwatch FB “[Our] seminar yesterday in partnership with Irish Environmental Network & Trinity College Dublin on Coastal Nature Protection, Management & Restoration with a focus on Seagrass & the Nature Restoration Law</p><p>Thank you to everyone who attended and to all of our wonderful presenters, especially Marcial Bardolet Govern de les Illes Balears who traveled from Spain to be with us and gave such an inspiring example of a country that does protect all of its seagrass.</p><p>Thanks also to workshop facilitators, legal experts and rapporteurs, and all who helped with organising as well as our hosts in the Department of Engineering, Trinity College Dublin & of course our Coastwatchers from all around the island who contribute so much to the citizen science work of Coastwatch.”</p>',
         date: '2024-01-01',
         formatDate: 'LLLL, yyyy',
-        image: '/images/events/town.webp',
+        image: '/images/events/coastwatch-seagrass.webp',
         location: 'Dublin, Ireland',
         link: {
           title: '',

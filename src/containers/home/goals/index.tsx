@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import Wrapper from '@/components/ui/wrapper';
 
-import M4NGoals from '../../../../public/images/m4n-goals.avif';
+import M4NGoals from '../../../../public/images/m4n-goals.png';
 
 export default function Goals() {
   return (

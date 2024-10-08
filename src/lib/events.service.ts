@@ -12,10 +12,10 @@ export type Event = {
   formatDate?: string;
   image: string;
   location: string;
-  theme: string;
-  type: string;
-  presenters: string[];
-  organizations: (string | URLink)[];
+  theme?: string;
+  type?: string;
+  presenters?: string[];
+  organizations?: (string | URLink)[];
   link?: URLink;
 };
 
@@ -46,9 +46,9 @@ export class EventsService extends Paginator<Event> {
   }
 
   getPastEvents(): Event[] {
-    const pastEvents = sortByDateDescending(
-      this.events.filter((event) => event.date <= this.currentDate),
-    );
+    const pastEvents = this.events
+      .filter((event) => event.date <= this.currentDate)
+      .sort((a, b) => (a.date < b.date ? 1 : -1));
     return this.filter(pastEvents, this.filters);
   }
 

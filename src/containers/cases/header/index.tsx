@@ -12,7 +12,7 @@ export default function Header() {
   const { id } = useParams();
 
   return (
-    <header className="flex items-center justify-between border-b border-b-grey-400 px-4 py-2 md:px-[60px] md:py-4">
+    <header className="flex items-center justify-between border-b border-b-grey-400 px-6 py-2 md:py-4">
       <AppLogo variant="secondary" />
       <Media greaterThanOrEqual="md">{!id && <CaseFilters />}</Media>
       <AppMenu />
