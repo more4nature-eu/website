@@ -18,17 +18,18 @@ import ForestPerson from '../../../../public/images/forest-person.webp';
 
 export default function AboutDescription() {
   return (
-    <Wrapper className="space-y-10">
-      <div className="space-y-4 lg:grid lg:grid-cols-12">
-        <p className="uppercase tracking-wide lg:col-span-6">A Horizon Europe project</p>
-        <h2 className="text-xl font-semibold lg:col-span-6 lg:text-3xl">
-          Doing
-          <br /> more
-          <span className="font-thin">4</span>
-          nature with citizen science
+    <Wrapper className="space-y-10 lg:space-y-20">
+      <div className="space-y-4">
+        <p className="uppercase tracking-wide">A Horizon Europe project</p>
+        <h2 className="text-xl font-semibold lg:text-3xl">
+          <span className="text-wrap">
+            Doing more
+            <span className="font-thin">4</span>nature
+          </span>
+          <span className="text-nowrap"> with citizen science</span>
         </h2>
       </div>
-      <div className="items-end space-y-10 lg:grid lg:grid-cols-12">
+      <div className="space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0">
         <div className="relative lg:col-span-5">
           <Image src={ForestPerson} alt="person in a forest" />
         </div>

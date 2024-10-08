@@ -42,7 +42,7 @@ export default function Intro() {
             <p className="text-lg">
               Reversing the trend in environmental degradation through{' '}
               <span className="font-bold">collaboration</span> of{' '}
-              <span className="text-nowrap font-bold md:text-nowrap">
+              <span className="text-nowrap font-bold">
                 Citizen Science initiatives with authorities.
               </span>
             </p>
