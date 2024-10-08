@@ -11,19 +11,10 @@ import { cn } from '@/lib/utils';
 import { menuOpenAtom } from '@/app/store';
 
 import { SECTIONS } from '@/containers/header';
-import Newsletter from '@/containers/newsletter';
-
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 
 const navItemContainerClass =
   'hover:text-navy-500 relative inline-flex items-center space-x-6 text-xl text-grey-800 2xl:text-4xl' as const;
-const NavItem = (props: PropsWithChildren<LinkProps & { isDialogButton?: boolean }>) => {
+const NavItem = (props: PropsWithChildren<LinkProps>) => {
   const setOpen = useSetAtom(menuOpenAtom);
   const Text = (
     <>
@@ -31,32 +22,6 @@ const NavItem = (props: PropsWithChildren<LinkProps & { isDialogButton?: boolean
       <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-grey-800 transition-all duration-300 peer-hover:w-full" />
     </>
   );
-
-  if (props.isDialogButton) {
-    return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <button
-            type="button"
-            className={navItemContainerClass}
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
-            {Text}
-          </button>
-        </DialogTrigger>
-        <DialogContent className="bg-white pt-8 text-grey-800" aria-describedby={undefined}>
-          <DialogHeader>
-            <DialogTitle className="pr-2 text-xl font-bold text-grey-800 md:text-2xl">
-              Interested in our work?
-            </DialogTitle>
-          </DialogHeader>
-          <Newsletter />
-        </DialogContent>
-      </Dialog>
-    );
-  }
 
   return (
     <Link
@@ -131,9 +96,7 @@ export const Nav = () => {
           <ul className="flex flex-col gap-5 lg:gap-8">
             {SECTIONS.map((item) => (
               <li key={item.href} className="text-right">
-                <NavItem href={item.href} isDialogButton={item.href === '#contact-us'}>
-                  {item.name}
-                </NavItem>
+                <NavItem href={item.href}>{item.name}</NavItem>
               </li>
             ))}
           </ul>
