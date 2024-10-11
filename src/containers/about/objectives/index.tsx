@@ -15,31 +15,31 @@ const OBJECTIVES = [
     name: 'Create transformative change in citizens, communities and authorities in monitoring, protecting and improving pollution, biodiversity and deforestation.',
     description:
       'Clean rivers, lakes, oceans, soils and skies are the basic building blocks of healthy ecosystems and communities. In this theme, more4nature explores how citizen science can monitor, promote and enforce current policies to prevent air, water and plastic pollution.',
-    imageURL: '/images/objectives/create.webp',
+    imageURL: '/images/objectives/objective-01.webp',
   },
   {
     name: 'Increase trust in citizen-generated data as complementary to official observations and enabling its validation, sharing, and reuse.',
     description:
       'Thriving wildlife and resilient ecosystems sustain the diversity of life on our planet. In this theme, more4nature explores how citizen science can help by promoting compliance with policies that protect species and ecosystem diversity and monitoring policy effectiveness.',
-    imageURL: '/images/objectives/create.webp',
+    imageURL: '/images/objectives/objective-02.webp',
   },
   {
     name: 'Generation of indicators using the European Open Science Cloud (EOSC) as a platform.',
     description:
       'Deforestation and forest degradation aggravates climate change and the loss of biodiversity. The main driver of deforestation is the expansion of agricultural land, and the EU is responsible for about 20% of deforestation and forest degradation worldwide mainly through imports of agricultural products. In this theme, more4nature explores how citizen generated data can best support deforestation-free imports and the implementation of complementary international agreements by ensuring uptake of relevant citizen generated data in compliance assurance.',
-    imageURL: '/images/objectives/generation.webp',
+    imageURL: '/images/objectives/objective-03.webp',
   },
   {
     name: 'Empower citizens and communities by co-designing actions with local authorities to protect their environment in diverse LivingLabs via guidance, tools and capacity building.',
     description:
       'Deforestation and forest degradation aggravates climate change and the loss of biodiversity. The main driver of deforestation is the expansion of agricultural land, and the EU is responsible for about 20% of deforestation and forest degradation worldwide mainly through imports of agricultural products. In this theme, more4nature explores how citizen generated data can best support deforestation-free imports and the implementation of complementary international agreements by ensuring uptake of relevant citizen generated data in compliance assurance.',
-    imageURL: '/images/objectives/empower.webp',
+    imageURL: '/images/objectives/objective-04.webp',
   },
   {
     name: 'Enable authorities and national agencies to combine authoritative data and citizen science data for monitoring of policy frameworks.',
     description:
       'Citizen science is becoming accepted for biodiversity (e.g. species occurrence quantification and forest monitoring) and air quality (e.g. by the deployment of low-cost sensors) but a deeper transformation is needed in the way authorities collaborate with citizens to integrate CGD in the monitoring frameworks for Zero pollution, biodiversity protection and deforestation prevention.',
-    imageURL: '/images/objectives/enable.webp',
+    imageURL: '/images/objectives/objective-05.webp',
   },
 ];
 
