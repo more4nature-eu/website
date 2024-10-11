@@ -6,7 +6,7 @@ const NEWS: News[] = [
     name: 'Joan Maso Pau presents "Empowering Citizens in Collaborative Environmental Compliance Assurance; Promote, Monitor, and Enforce."',
     date: '2024-06-18',
     description:
-      '<p>On June 25, representatives from Hutsulshchyna National Nature Park, part of the more4nature project by the National Ecological Centre of Ukraine, visited the Carpathian National Nature Park in Yaremche. The event aimed to raise awareness about forest management reforms and illegal logging, engaging 75 local citizens in discussions. Later, the delegation also visited Vorokhta and the Vorokhta Forest Management Branch, presenting the more4nature project and surveying 30 forestry workers. The day was highly productive and informative for all involved.</p>',
+      '<p>While at the European Space Agency Environmental Crimes Workshop, Joan Maso (CREAF) showcased how more4nature aims to drive impactful change in conservation efforts. The poster highlighted to role of citizen science in strengthening datasets, developing toolks to validate citizen science data and making such data available in the Green Deal Data Space.</p>',
     categories: [],
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7214292712999546880',
   },

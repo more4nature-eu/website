@@ -128,10 +128,6 @@ const events: Event[] = [
     date: '2024-05-28',
     image: '/images/events/more4nature-group-copenhagen.webp',
     location: 'Copenhagen',
-    link: {
-      title: '',
-      url: 'https://www.coastwatch.org/post/single-use-plastics-directive-earth-day-2024-workshop-report',
-    },
   },
 ];
 
