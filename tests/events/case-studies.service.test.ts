@@ -79,7 +79,7 @@ describe('CaseStudyService', () => {
   });
 
   it('should filter cases studies by keyword in tags', () => {
-    const filters = { keyword: 'Americas' };
+    const filters = { keyword: 'America' };
     const caseStudyService = new CaseStudyService(CASE_STUDIES, filters);
     const result = caseStudyService.searchCaseStudies();
 
@@ -90,7 +90,7 @@ describe('CaseStudyService', () => {
         subTheme: 'Reducing forest loss from illegal activities and fires',
         thematicAreas: ['Deforestation Prevention'],
         location: {
-          continent: 'Americas',
+          continent: 'America',
           country: {
             name: 'Bolivia',
             code: 'BO',
@@ -155,7 +155,7 @@ describe('CaseStudyService', () => {
           title: 'Forests of the World',
           url: 'https://www.forestsoftheworld.org/',
         },
-        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Americas'],
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'America'],
       },
     ]);
   });
@@ -446,14 +446,14 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Dunmore East stream flowing into EU Bathing Water, Ireland',
+            name: 'Galway',
             code: 'IE',
           },
           coordinates: {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [-6.9859777, 52.1480022],
+              coordinates: [-9.051501731471465, 53.274995533218394],
             },
             properties: {
               id: '11',
@@ -1347,14 +1347,14 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Dunmore East stream flowing into EU Bathing Water, Ireland',
+            name: 'Galway',
             code: 'IE',
           },
           coordinates: {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [-6.9859777, 52.1480022],
+              coordinates: [-9.051501731471465, 53.274995533218394],
             },
             properties: {
               id: '11',
@@ -1950,14 +1950,14 @@ describe('CaseStudyService', () => {
         location: {
           continent: 'Europe',
           country: {
-            name: 'Dunmore East stream flowing into EU Bathing Water, Ireland',
+            name: 'Galway',
             code: 'IE',
           },
           coordinates: {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [-6.9859777, 52.1480022],
+              coordinates: [-9.051501731471465, 53.274995533218394],
             },
             properties: {
               id: '11',
@@ -2265,7 +2265,7 @@ describe('CaseStudyService', () => {
         subTheme: 'Reducing forest loss from illegal activities and fires',
         thematicAreas: ['Deforestation Prevention'],
         location: {
-          continent: 'Americas',
+          continent: 'America',
           country: {
             name: 'Bolivia',
             code: 'BO',
@@ -2330,7 +2330,7 @@ describe('CaseStudyService', () => {
           title: 'Forests of the World',
           url: 'https://www.forestsoftheworld.org/',
         },
-        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'Americas'],
+        tags: ['Deforestation Prevention', 'Promoting', 'Enforcement', 'Local', 'America'],
       },
     ]);
   });

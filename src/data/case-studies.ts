@@ -686,14 +686,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     location: {
       continent: Continent.EUROPE,
       country: {
-        name: 'Dunmore East stream flowing into EU Bathing Water, Ireland',
+        name: 'Galway',
         code: 'IE',
       },
       coordinates: {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [-6.9859777, 52.1480022],
+          coordinates: [-9.051501731471465, 53.274995533218394],
         },
         properties: {
           id: '11',
@@ -1235,7 +1235,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     subTheme: 'Reducing forest loss from illegal activities and fires',
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
     location: {
-      continent: Continent.AMERICAS,
+      continent: Continent.AMERICA,
       country: {
         name: 'Bolivia',
         code: 'BO',
@@ -1305,7 +1305,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       ComplianceType.PROMOTING,
       ComplianceType.ENFORCEMENT,
       Impact.LOCAL,
-      Continent.AMERICAS,
+      Continent.AMERICA,
     ],
   },
 ];
