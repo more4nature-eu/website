@@ -29,6 +29,88 @@ export const PARTNERS = [
     url: 'https://www.creaf.cat/',
   },
   {
+    name: 'NILU – Norwegian Institute for Air Research',
+    description: (
+      <p>
+        Nonprofit and independent climate and environmental research institute founded in 1969.
+        Creates sustainable development through internationally leading climate and environmental
+        research.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/nilu.webp',
+      size: [160, 130],
+    },
+    url: 'https://nilu.com/',
+  },
+  {
+    name: 'NIVA - Norwegian Institute for Water Research',
+    description: (
+      <p>Norway&apos;s premier research institute in the fields of water and the environment.</p>
+    ),
+    logo: {
+      url: '/images/partners/niva.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.niva.no/en',
+  },
+  {
+    name: 'NIOO – KNAW - Netherlands Institute for Ecology',
+    description: (
+      <p>
+        Performs leading ecological research on individual organisms, populations, ecological
+        communities and ecosystems.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/nioo.webp',
+      size: [160, 130],
+    },
+    url: 'https://nioo.knaw.nl/en',
+  },
+  {
+    name: 'University of Copenhagen',
+    description: (
+      <p>
+        Driven by intellectual creativity and critical thinking since 1479, researchers and students
+        at the University of Copenhagen expand horizons and contribute to moving the world forward.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/university-copenhagen.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.ku.dk/english/',
+  },
+  {
+    name: 'Nordeco – Nordisk Fond for Miljø og Udvikling',
+    description: (
+      <p>
+        Wholly owned by the non-profit Nordic Foundation for Development and Ecology. We conduct
+        research and do consulting in international development.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/nordeco.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.nordeco.dk/',
+  },
+  {
+    name: 'European Citizen Science Association',
+    description: (
+      <p>
+        Membership and networking organization for practitioners and researchers of citizen science
+        in Europe.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/ecsa.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.ecsa.ngo/',
+  },
+  {
     name: 'Earthwatch Europe',
     description: (
       <p>
@@ -58,34 +140,6 @@ export const PARTNERS = [
     url: 'https://www.dreamocracy.eu/',
   },
   {
-    name: 'Coastwatch',
-    description: (
-      <p>
-        International network of environmental groups, universities and other educational
-        institutions, who in turn work with local groups and individuals around the coast of Europe.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/coastwatch.webp',
-      size: [160, 129],
-    },
-    url: 'https://www.coastwatch.org/',
-  },
-  {
-    name: 'European Citizen Science Association',
-    description: (
-      <p>
-        Membership and networking organization for practitioners and researchers of citizen science
-        in Europe.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/ecsa.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.ecsa.ngo/',
-  },
-  {
     name: 'IAAC',
     description: (
       <p>
@@ -102,49 +156,6 @@ export const PARTNERS = [
     url: 'https://iaac.net/',
   },
   {
-    name: 'Forests of the World',
-    description: (
-      <p>
-        An international Environmental and Development Organization working for Forest Conservation
-        and the Global Sustainable Development Goals.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/forest-world.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.forestsoftheworld.org/',
-  },
-  {
-    name: 'University of Copenhagen',
-    description: (
-      <p>
-        Driven by intellectual creativity and critical thinking since 1479, researchers and students
-        at the University of Copenhagen expand horizons and contribute to moving the world forward.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/university-copenhagen.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.ku.dk/english/',
-  },
-  {
-    name: 'NECU',
-    description: (
-      <p>
-        The largest environmental organisation in Ukraine working for the conservation of
-        biodiversity, and a healthy environment, creating an ecologically conscious civil society
-        and promoting environmental protection.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/necu.webp',
-      size: [160, 130],
-    },
-    url: 'https://necu.org.ua/en',
-  },
-  {
     name: 'Tracasa',
     description: (
       <p>
@@ -157,83 +168,6 @@ export const PARTNERS = [
       size: [160, 130],
     },
     url: 'https://tracasa.es/',
-  },
-  {
-    name: 'NIVA - Norwegian Institute for Water Research',
-    description: (
-      <p>Norway&apos;s premier research institute in the fields of water and the environment.</p>
-    ),
-    logo: {
-      url: '/images/partners/niva.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.niva.no/en',
-  },
-  {
-    name: 'NILU – Norwegian Institute for Air Research',
-    description: (
-      <p>
-        Nonprofit and independent climate and environmental research institute founded in 1969.
-        Creates sustainable development through internationally leading climate and environmental
-        research.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/nilu.webp',
-      size: [160, 130],
-    },
-    url: 'https://nilu.com/',
-  },
-  {
-    name: 'NIOO – KNAW - Netherlands Institute for Ecology',
-    description: (
-      <p>
-        Performs leading ecological research on individual organisms, populations, ecological
-        communities and ecosystems.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/nioo.webp',
-      size: [160, 130],
-    },
-    url: 'https://nioo.knaw.nl/en',
-  },
-  {
-    name: 'Nordeco – Nordisk Fond for Miljø og Udvikling',
-    description: (
-      <p>
-        Wholly owned by the non-profit Nordic Foundation for Development and Ecology. We conduct
-        research and do consulting in international development.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/nordeco.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.nordeco.dk/',
-  },
-  {
-    name: 'UN Environment Programme World Conservation Monitoring Centre',
-    description: <p>Specialist biodiversity centre of the UN Environment Programme</p>,
-    logo: {
-      url: '/images/partners/un-wcmc.webp',
-      size: [160, 130],
-    },
-    url: 'https://www.unep-wcmc.org/en',
-  },
-  {
-    name: 'VITO',
-    description: (
-      <p>
-        Belgian independent research organisation in the area of cleantech and sustainable
-        development with the aim to accelerate the transition to a sustainable world.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/vito.webp',
-      size: [160, 130],
-    },
-    url: 'https://vito.be/en',
   },
   {
     name: 'Vizzuality/Simbiotica',
@@ -265,6 +199,20 @@ export const PARTNERS = [
     url: 'https://ciencias.ulisboa.pt/',
   },
   {
+    name: 'VITO',
+    description: (
+      <p>
+        Belgian independent research organisation in the area of cleantech and sustainable
+        development with the aim to accelerate the transition to a sustainable world.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/vito.webp',
+      size: [160, 130],
+    },
+    url: 'https://vito.be/en',
+  },
+  {
     name: 'Polish Smog Alert',
     description: (
       <p>
@@ -292,5 +240,57 @@ export const PARTNERS = [
       size: [225, 175],
     },
     url: 'https://www.rivm.nl/en',
+  },
+  {
+    name: 'Coastwatch',
+    description: (
+      <p>
+        International network of environmental groups, universities and other educational
+        institutions, who in turn work with local groups and individuals around the coast of Europe.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/coastwatch.webp',
+      size: [160, 129],
+    },
+    url: 'https://www.coastwatch.org/',
+  },
+  {
+    name: 'NECU',
+    description: (
+      <p>
+        The largest environmental organisation in Ukraine working for the conservation of
+        biodiversity, and a healthy environment, creating an ecologically conscious civil society
+        and promoting environmental protection.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/necu.webp',
+      size: [160, 130],
+    },
+    url: 'https://necu.org.ua/en',
+  },
+  {
+    name: 'Forests of the World',
+    description: (
+      <p>
+        An international Environmental and Development Organization working for Forest Conservation
+        and the Global Sustainable Development Goals.
+      </p>
+    ),
+    logo: {
+      url: '/images/partners/forest-world.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.forestsoftheworld.org/',
+  },
+  {
+    name: 'UN Environment Programme World Conservation Monitoring Centre',
+    description: <p>Specialist biodiversity centre of the UN Environment Programme</p>,
+    logo: {
+      url: '/images/partners/un-wcmc.webp',
+      size: [160, 130],
+    },
+    url: 'https://www.unep-wcmc.org/en',
   },
 ];
