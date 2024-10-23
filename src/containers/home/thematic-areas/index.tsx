@@ -15,7 +15,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
 import Wrapper from '@/components/ui/wrapper';
 
 const IconBackground = ({
@@ -36,7 +35,7 @@ const THEMATIC_AREAS = [
   {
     name: 'Zero Pollution',
     description:
-      'Clean rivers, lakes, oceans, soils and skies are the basic building blocks of healthy ecosystems and communities. In this theme, more4nature explores how citizen science can monitor, promote and enforce current policies to prevent air, water and plastic pollution.',
+      'Clean rivers, lakes, oceans, soils, and skies are the basic building blocks of healthy ecosystems and communities. In this theme, more4nature explores how citizen science can help monitor, promote, and enforce current policies to prevent air, water, and plastic pollution.',
     icon: (
       <IconBackground className="bg-blue-500">
         <ZeroPollutionIcon className="h-[64px] w-[64px] fill-grey-800" />

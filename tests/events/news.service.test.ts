@@ -10,16 +10,7 @@ describe('NewsService', () => {
     const newsService = new NewsService(NEWS, filters);
     const result = newsService.searchNews();
 
-    expect(result.data).toEqual([
-      {
-        name: 'Leveraging Citizen Science Initiatives',
-        date: '2024-04-25',
-        description:
-          "<p>It’s exciting to see the discussion on societal engagement and open science. At more4nature, we're actively contributing to this dialogue by empowering citizens and communities in environmental action. Our project is all about leveraging Citizen Science initiatives (CSIs) to tackle pollution, protect biodiversity, and prevent deforestation.</p><p>Citizen involvement and citizen-generated data (CGD) are vital to counter environmental degradation. That's why more4nature is dedicated to bridging the gap between CSIs and authorities. By strengthening CSIs, facilitating collaboration, and developing tools for validating CGD, we ensure that valuable data doesn't go to waste.</p>",
-        categories: ['Deforestation Prevention', 'Biodiversity Protection', 'Zero Pollution'],
-        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7189277848879124481',
-      },
-    ]);
+    expect(result.data).toEqual([]);
   });
 
   it('should filter news by date', () => {
@@ -70,18 +61,10 @@ describe('NewsService', () => {
         link: 'https://www.linkedin.com/feed/update/urn:li:activity:7189583716824854528',
       },
       {
-        name: 'Leveraging Citizen Science Initiatives',
-        date: '2024-04-25',
-        description:
-          "<p>It’s exciting to see the discussion on societal engagement and open science. At more4nature, we're actively contributing to this dialogue by empowering citizens and communities in environmental action. Our project is all about leveraging Citizen Science initiatives (CSIs) to tackle pollution, protect biodiversity, and prevent deforestation.</p><p>Citizen involvement and citizen-generated data (CGD) are vital to counter environmental degradation. That's why more4nature is dedicated to bridging the gap between CSIs and authorities. By strengthening CSIs, facilitating collaboration, and developing tools for validating CGD, we ensure that valuable data doesn't go to waste.</p>",
-        categories: ['Deforestation Prevention', 'Biodiversity Protection', 'Zero Pollution'],
-        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7189277848879124481',
-      },
-      {
         name: 'Introduction to more4nature Project',
         date: '2024-01-03',
         description:
-          "<p>We're excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between Citizen Science initiatives (CSIs) and local authorities, enhancing environmental compliance and monitoring. By strengthening CSIs, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>",
+          '<p>We&apos;re excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between Citizen Science initiatives and local authorities, enhancing environmental compliance and monitoring. By strengthening CS initiatives, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>',
         categories: ['Deforestation Prevention', 'Biodiversity Protection', 'Zero Pollution'],
         link: 'https://www.linkedin.com/feed/update/urn:li:activity:7169301090432200704',
       },
@@ -112,7 +95,7 @@ describe('NewsService', () => {
         link: 'https://www.linkedin.com/feed/update/urn:li:activity:7212008106069766144',
       },
     ]);
-    expect(result.total).toBe(11);
+    expect(result.total).toBe(9);
     expect(result.page).toBe(1);
     expect(result.pageSize).toBe(2);
   });
@@ -133,7 +116,7 @@ describe('NewsService', () => {
         link: 'https://www.linkedin.com/feed/update/urn:li:activity:7214292712999546880',
       },
     ]);
-    expect(result.total).toBe(5);
+    expect(result.total).toBe(4);
     expect(result.page).toBe(1);
     expect(result.pageSize).toBe(1);
   });

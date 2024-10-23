@@ -2,19 +2,19 @@ import Wrapper from '@/components/ui/wrapper';
 
 const MISSION_STRATEGY_STEPS = [
   {
-    name: 'Developing Data Visualization Tools',
-    description:
-      'Our purpose is developing tools to validate data from citizens, contributing to its incorporation into environmental governance authorities.',
-  },
-  {
     name: 'Unlocking the Potential of Citizen Science',
     description:
-      'Citizen science is an untapped asset for authorities and governance. We are working to ensure that if informs essential and urgent decisions.',
+      'Citizen Science is an untapped asset for many authorities and governance. We are working to enable Citizen Science Initiatives to influence policy implementation.',
   },
   {
-    name: 'Bridging Data and Policy Gaps',
+    name: 'Transforming data into actionable information and knowledge',
     description:
-      'We want to ensure that valuable data directly informs essential and urgent decisions at all levels of government, from local to international.',
+      'We are developing tools to validate citizen generated data, compute indicators for monitoring policies and alert about infringement of regulations.',
+  },
+  {
+    name: 'Speed up the pace of change',
+    description:
+      'Via large scale demonstration, we validate a set of behavioural best practices and technical tools and promote their adoption beyond the project.\n',
   },
 ];
 
@@ -25,8 +25,9 @@ export default function MissionStrategy() {
         <div className="col-span-12 space-y-9 lg:col-span-6">
           <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Our mission and strategy</h2>
           <p className="leading-9 md:text-lg">
-            We aim to redefine conservation by placing the power of change into the hands of every
-            citizen and we are achieving it by three main paths:
+            We aim to strengthen collaboration and partnerships between citizen science initiatives
+            and local, regional and even national authorities in charge of environmental compliance
+            assurance and we are achieving it via three main paths:
           </p>
         </div>
       </div>

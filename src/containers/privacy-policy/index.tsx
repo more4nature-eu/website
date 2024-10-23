@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
           <li className="space-y-4 text-lg font-semibold">
             <h4>Data We Collect</h4>
             <p className="text-base font-normal">
-              We collect personal data for specific purposes, such as:
+              We collect personal data for specific purposes, namely:
             </p>
             <ul className="list-disc space-y-4 pl-10 text-base font-normal">
               <li>

@@ -22,9 +22,11 @@ export default function Goals() {
             <h2>more4nature aim</h2>
             <p className="text-lg md:text-xl">
               more4nature aims to bring about{' '}
-              <strong className="font-bold">transformative change</strong> in environmental
-              protection by including citizens and communities as key actors in collaborative
-              environmental compliance assurance.
+              <strong className="font-bold">
+                transformative change in environmental protection
+              </strong>{' '}
+              by including citizens and communities as key actors in{' '}
+              <span className="italic">collaborative</span> environmental compliance assurance.
             </p>
             <Dialog>
               <DialogTrigger asChild>
@@ -34,21 +36,23 @@ export default function Goals() {
                 <DialogHeader>
                   <DialogTitle>more4nature aim</DialogTitle>
                   <DialogDescription>
-                    <p>We are facing biodiversity loss, polluted environments and deforestation.</p>
+                    <p>
+                      We are facing biodiversity loss, polluted environments, and deforestation.
+                    </p>
                     <p>
                       Although policies and laws are generally in place to manage environmental
                       resources, environmental compliance assurance is still lacking. More data and
                       information are needed, and we need to improve public awareness and take
                       action to avoid further environmental degradation in terms of pollution of
-                      natural resources, biodiversity loss and deforestation.
+                      natural resources, biodiversity loss, and deforestation.
                     </p>
                     <p>
                       Citizen science initiatives present innovative ways of joint data and
-                      knowledge generation (&quot;Citizen Generated Data&quot;) and can empower
-                      citizens and communities in environmental protection.
+                      knowledge generation and can empower citizens and communities in environmental
+                      protection.
                     </p>
                     <p>
-                      More4nature works on institutionalising citizen science in key aspects of
+                      more4nature works on institutionalizing citizen science in key aspects of
                       environmental compliance assurance, from promotion to monitoring and
                       enforcement.
                     </p>

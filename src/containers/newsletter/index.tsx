@@ -34,17 +34,19 @@ import {
 const ORGANIZATION_TYPES_VALUES = [
   'NGO',
   'Citizen Science Initiative',
-  'Policy and Authorities',
+  'Industry',
   'Research & Academia',
+  'Public sector',
   'other',
 ] as const;
 
 const ORGANIZATION_TYPES = [
   { label: 'NGO', value: ORGANIZATION_TYPES_VALUES[0] },
   { label: 'Citizen Science Initiative', value: ORGANIZATION_TYPES_VALUES[1] },
-  { label: 'Policy and Authorities', value: ORGANIZATION_TYPES_VALUES[2] },
+  { label: 'Industry', value: ORGANIZATION_TYPES_VALUES[2] },
   { label: 'Research & Academia', value: ORGANIZATION_TYPES_VALUES[3] },
-  { label: 'Other', value: ORGANIZATION_TYPES_VALUES[4] },
+  { label: 'Public sector', value: ORGANIZATION_TYPES_VALUES[4] },
+  { label: 'Other', value: ORGANIZATION_TYPES_VALUES[5] },
 ];
 
 export const NewsletterSchema = z.object({
@@ -121,9 +123,7 @@ export default function Newsletter() {
 
   return (
     <div className="container space-y-14 py-10 md:py-16">
-      <h2 className="text-xl font-bold text-grey-800 md:text-2xl">
-        Interested in environmental conservation?
-      </h2>
+      <h2 className="text-xl font-bold text-grey-800 md:text-2xl">Interested in more4nature?</h2>
       <Form {...form}>
         <form
           ref={formRef}
