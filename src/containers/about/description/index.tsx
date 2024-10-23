@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-import { HiOutlineExternalLink } from 'react-icons/hi';
-
 import DiscoverMoreButton from '@/components/discover-more-button';
 import {
   Dialog,
@@ -61,18 +59,6 @@ export default function AboutDescription() {
                     addition, we collaborate with selected LivingLabs and Fab Labs across Europe.
                     WP4 supports the creation of impact via the broad communication, dissemination,
                     and exploitation of more4nature results to specific target audiences.
-                  </p>
-                  <p>
-                    To discover more about EU research results,{' '}
-                    <a
-                      href="https://cordis.europa.eu/"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      className="inline-flex space-x-2"
-                    >
-                      <span className="underline">visit CORDIS</span>
-                      <HiOutlineExternalLink className="h-[20px] w-[20px] shrink-0" />
-                    </a>
                   </p>
                 </DialogDescription>
               </DialogHeader>
