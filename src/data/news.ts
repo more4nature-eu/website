@@ -6,7 +6,7 @@ const NEWS: News[] = [
     name: 'Joan Maso Pau presents "Empowering Citizens in Collaborative Environmental Compliance Assurance; Promote, Monitor, and Enforce."',
     date: '2024-06-18',
     description:
-      '<p>On June 25, representatives from Hutsulshchyna National Nature Park, part of the more4nature project by the National Ecological Centre of Ukraine, visited the Carpathian National Nature Park in Yaremche. The event aimed to raise awareness about forest management reforms and illegal logging, engaging 75 local citizens in discussions. Later, the delegation also visited Vorokhta and the Vorokhta Forest Management Branch, presenting the more4nature project and surveying 30 forestry workers. The day was highly productive and informative for all involved.</p>',
+      '<p>While at the European Space Agency Environmental Crimes Workshop, Joan Maso (CREAF) showcased how more4nature aims to drive impactful change in conservation efforts. The poster highlighted to role of citizen science in strengthening datasets, developing toolks to validate citizen science data and making such data available in the Green Deal Data Space.</p>',
     categories: [],
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7214292712999546880',
   },
@@ -14,7 +14,7 @@ const NEWS: News[] = [
     name: 'Introduction to more4nature Project',
     date: '2024-01-03',
     description:
-      "<p>We're excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between Citizen Science initiatives (CSIs) and local authorities, enhancing environmental compliance and monitoring. By strengthening CSIs, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>",
+      '<p>We&apos;re excited to launch the more4nature project, focusing on zero pollution, biodiversity protection, and deforestation prevention by empowering citizens and communities. The project aims to bridge the gap between Citizen Science initiatives and local authorities, enhancing environmental compliance and monitoring. By strengthening CS initiatives, facilitating collaboration, and developing tools to validate Citizen-Generated Data (CGD), more4nature seeks to make CGD a key part of the Green Deal Data Space, driving green and digital transformations.</p>',
     categories: [
       ThematicArea.DEFORESTATION_PREVENTION,
       ThematicArea.BIODIVERSITY_PROTECTION,
@@ -28,18 +28,6 @@ const NEWS: News[] = [
     description:
       '<p>Following the project Kick-Off at IHE Delft Institute for Water Education in Delft, some more4nature partners got up close and personal with some of the natural beauty that they hope to protect in the course of the project lifetime, in Europe, Africa, Asia and Latin America. Watch the video to find out more!</p>',
     categories: [ThematicArea.BIODIVERSITY_PROTECTION],
-  },
-  {
-    name: 'Leveraging Citizen Science Initiatives',
-    date: '2024-04-25',
-    description:
-      "<p>It’s exciting to see the discussion on societal engagement and open science. At more4nature, we're actively contributing to this dialogue by empowering citizens and communities in environmental action. Our project is all about leveraging Citizen Science initiatives (CSIs) to tackle pollution, protect biodiversity, and prevent deforestation.</p><p>Citizen involvement and citizen-generated data (CGD) are vital to counter environmental degradation. That's why more4nature is dedicated to bridging the gap between CSIs and authorities. By strengthening CSIs, facilitating collaboration, and developing tools for validating CGD, we ensure that valuable data doesn't go to waste.</p>",
-    categories: [
-      ThematicArea.DEFORESTATION_PREVENTION,
-      ThematicArea.BIODIVERSITY_PROTECTION,
-      ThematicArea.ZERO_POLLUTION,
-    ],
-    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7189277848879124481',
   },
   {
     name: 'Earth Day Workshop with Coastwatch',
@@ -71,15 +59,6 @@ const NEWS: News[] = [
       ThematicArea.BIODIVERSITY_PROTECTION,
       ThematicArea.ZERO_POLLUTION,
     ],
-    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7206272288357298176',
-  },
-  {
-    name: 'Nature Restoration Law',
-    date: '2024-06-18',
-    description:
-      '<p>The EU Council has adopted a first-of-its-kind regulation with measures to restore at least 20% of the EU’s land and sea areas by 2030 and all ecosystems needing restoration by 2050. The Nature Restoration Law targets specific ecosystems- terrestrial to marine, freshwater and urban ecosystems.\n' +
-      "This aligns perfectly with more4nature's mission to empower citizens through Sitizen Science initiatives. Together, we can be the stewards of change, monitoring, reporting, and taking action to protect our planet's biodiversity for generations to come.\n</p>",
-    categories: [ThematicArea.BIODIVERSITY_PROTECTION],
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7206272288357298176',
   },
   {

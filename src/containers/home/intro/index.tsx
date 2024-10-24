@@ -33,7 +33,7 @@ export default function Intro() {
         </Media>
 
         <div className="flex flex-1 flex-col items-start justify-center space-y-9 md:grid md:grid-cols-12 md:items-center md:justify-between">
-          <div className="col-span-8 space-y-9 text-white">
+          <div className="space-y-9 text-white md:col-span-8">
             <h1 className="text-xl text-white md:text-3xl">
               Welcome to more
               <span className="font-thin">4</span>
@@ -42,7 +42,7 @@ export default function Intro() {
             <p className="text-lg">
               Reversing the trend in environmental degradation through{' '}
               <span className="font-bold">collaboration</span> of{' '}
-              <span className="text-nowrap font-bold">
+              <span className="font-bold md:text-nowrap">
                 Citizen Science initiatives with authorities.
               </span>
             </p>

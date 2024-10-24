@@ -33,7 +33,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     impact: [Impact.NATIONAL],
     complianceNeed: [
-      'All 195 parties to the Convention on Biological Diversity must track progress towards goals and targets using an agreed monitoring framework. Governments are encouraged to use Citizen Generated Data to enhance their reports, with provisional estimates indicating that it can be involved in 45% of the 365 indicators.',
+      'All 195 parties to the Convention on Biological Diversity must track progress towards goals and targets using an agreed monitoring framework. Citizen Generated Data could enhance reports, potentially involved in 51% of 365 proposed indicators.',
     ],
     stakeholders: ['10,000 citizen scientists'],
     authorities: [
@@ -84,6 +84,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     citizenScienceData: [
       '20 datasets. Global Biodiversity Framework indicators, e.g.: Change in the quality of coastal water ecosystems over time, Red List Index, and services provided by ecosystems.',
+    ],
+    relevantPoliciesLaw: [
+      'Global Biodiversity Framework; EU Biodiversity Strategy; European Green Deal; EU Farm2Fork Strategy; SDG 14 & 15; Nature Restoration Regulation; upcoming Danish Biodiversity Law.',
     ],
     contact: {
       title: 'The Nordic Agency for Development and Ecology (NORDECO)',
@@ -160,6 +163,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       '20 datasets. Global Biodiversity Framework indicators, e.g.: Change in the quality of coastal water ecosystems over time, Red List Index, and services provided by ecosystems.',
     ],
+    relevantPoliciesLaw: [
+      'Global Biodiversity Framework; EU Biodiversity Strategy; European Green Deal; EU Farm2Fork Strategy; SDG 14 & 15; Natura2000 designation; upcoming Danish Biodiversity Law.',
+    ],
     contact: {
       title: 'The Nordic Agency for Development and Ecology (NORDECO)',
       url: 'https://www.nordeco.dk/',
@@ -174,8 +180,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '3',
-    title:
-      'Co-production of an Action Plan for the Conservation & Sustainability of Pollinators (PolinizAÇÃO)',
+    title: 'Co-production of an Action Plan for the Conservation & Sustainability of Pollinators',
     subTheme: 'Reversing the decline of pollinators',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -192,7 +197,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '3',
-          name: 'Co-production of an Action Plan for the Conservation & Sustainability of Pollinators (PolinizAÇÃO)',
+          name: 'Co-production of an Action Plan for the Conservation & Sustainability of Pollinators',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -257,7 +262,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '4',
-    title: 'More Pollinators, More Biodiversity',
+    title: 'Citizen science data on pollinators in Oeiras municipality',
     subTheme: 'Reversing the decline of pollinators',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -274,7 +279,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '4',
-          name: 'More Pollinators, More Biodiversity',
+          name: 'Citizen science data on pollinators in Oeiras municipality',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -321,6 +326,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Data available at the Biodiversity4All platform, the Censos Borboletas de Portugal website and the FitCount app',
     ],
+    relevantPoliciesLaw: ['Habitat directive; Natura 2000.'],
     contact: {
       title: 'Faculdade de Ciências da Universidade de Lisboa',
       url: 'https://www.fciencias-id.pt/',
@@ -335,7 +341,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '5',
-    title: 'Citizen science data on pollinators in the Netherlands',
+    title: 'Citizen Science for pollinators to complement official reporting',
     subTheme: 'Reversing the decline of pollinators',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -352,7 +358,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '5',
-          name: 'Citizen science data on pollinators in the Netherlands',
+          name: 'Citizen Science for pollinators to complement official reporting',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -381,6 +387,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Trends and indicators based on national data available via Environmental Data Compendium Netherlands and national/provincial reports.',
     ],
+    relevantPoliciesLaw: ['Habitat directive; Nature Restoration; Dutch Flora and Fauna Law.'],
     contact: {
       title: 'Netherlands Institute of Ecology (NIOO)',
       url: 'https://nioo.knaw.nl/en',
@@ -395,7 +402,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '6',
-    title: '[TBD]',
+    title: 'Free-flowing rivers for freshwater and wetland biodiversity',
     subTheme: 'Free-flowing rivers for freshwater and wetland biodiversity',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -412,7 +419,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '6',
-          name: '[TBD]',
+          name: 'Free-flowing rivers for freshwater and wetland biodiversity',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -432,6 +439,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     citizenScienceInitiatives: ['AMBER river barrier app.'],
     citizenScienceData: ['National / regional dataset available through the AMBER Barrier Atlas.'],
+    relevantPoliciesLaw: [
+      'National strategy for watercourse restoration 2021-2030, EU Biodiversity Strategy, Kunming-Montral Global Biodiversity Framework - GBF, Nature Restoration Law.',
+    ],
     contact: {
       title: 'The Norwegian Institute for Water Research (NIVA)',
       url: 'https://www.niva.no/en',
@@ -446,7 +456,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '7',
-    title: '[TBD]',
+    title:
+      'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland water region',
     subTheme: 'Free-flowing rivers for freshwater and wetland biodiversity',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -463,7 +474,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '7',
-          name: '[TBD]',
+          name: 'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland water region',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -476,6 +487,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     authorities: ['Local catchments (sub-districts)'],
     citizenScienceInitiatives: ['AMBER river barrier app.'],
     citizenScienceData: ['National / regional dataset available through the AMBER Barrier Atlas.'],
+    relevantPoliciesLaw: [
+      'National strategy for watercourse restoration 2021-2030, EU Biodiversity Strategy, (Kunming-Montral Global Biodiversity Framework - GBF, Nature Restoration Law.',
+    ],
     contact: {
       title: 'The Norwegian Institute for Water Research (NIVA)',
       url: 'https://www.niva.no/en',
@@ -490,7 +504,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '8',
-    title: 'CGD for SDG 632 monitoring in Sierra Leone',
+    title: 'A collaborative freshwater monitoring framework for Rokel River Basin',
     subTheme: 'Clean and healthy surface water',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -507,7 +521,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '8',
-          name: 'CGD for SDG 632 monitoring in Sierra Leone',
+          name: 'A collaborative freshwater monitoring framework for Rokel River Basin',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -527,6 +541,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Nitrates, Phosphates, Turbidity, and environmental description for the Rokel River Basin Management Plan.',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Earthwatch',
       url: 'https://earthwatch.org/',
@@ -541,7 +556,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '9',
-    title: 'Citizen Science Initiatives in WFD monitoring and promotion in Italy',
+    title:
+      'Citizen Science Initiatives in Water Framework Directive monitoring and promotion in the Marzenego River',
     subTheme: 'Clean and healthy surface water',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -558,7 +574,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '9',
-          name: 'Citizen Science Initiatives in WFD monitoring and promotion in Italy',
+          name: 'Citizen Science Initiatives in Water Framework Directive monitoring and promotion in the Marzenego River',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -587,6 +603,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Nitrates, Phosphates, Turbidity, and qualitative environmental description',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Earthwatch',
       url: 'https://earthwatch.org/',
@@ -601,7 +618,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '10',
-    title: '[TBD]',
+    title: 'Nitrates down - Biodiversity up, in bays and esturies',
     subTheme: 'Clean and healthy surface water',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -618,7 +635,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '10',
-          name: '[TBD]',
+          name: 'Nitrates down - Biodiversity up, in bays and esturies',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -638,17 +655,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       'coastal stakeholders with septic tanks, farmers and operators of wastewater treatment',
     ],
-    authorities: [
-      {
-        title: 'Inland Fisheries Ireland',
-        url: 'https://www.fisheriesireland.ie/',
-      },
-      {
-        title: 'LAWPRO',
-        url: 'https://www.lawpro.ca/',
-      },
-      'coastal stakeholders with septic tanks, farmers and operators of wastewater treatment',
-    ],
+    authorities: [],
     citizenScienceInitiatives: [
       {
         title: 'Coastwatch Autumn Survey and Seagrass Campaign',
@@ -658,6 +665,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Shore quality indicators based on Zostera beds, opportunistic seaweeds, stream quality and Nitrogen tests.',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -672,24 +680,24 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '11',
-    title: '[TBD]',
+    title: 'Tackling slippiness of Marine slipways and sea stairs in Galway',
     subTheme: 'Clean and healthy surface water',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
       continent: Continent.EUROPE,
       country: {
-        name: 'Dunmore East stream flowing into EU Bathing Water, Ireland',
+        name: 'Galway',
         code: 'IE',
       },
       coordinates: {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [-6.9859777, 52.1480022],
+          coordinates: [-9.051501731471465, 53.274995533218394],
         },
         properties: {
           id: '11',
-          name: '[TBD]',
+          name: 'Tackling slippiness of Marine slipways and sea stairs in Galway',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -722,6 +730,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Qualitative & quantitative reports from citizens on stream life, chlorine smell test.',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -736,7 +745,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '12',
-    title: '[TBD]',
+    title: 'Making banned Single Use Plastics disappear',
     subTheme: 'Preventing plastics in the ocean',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -753,7 +762,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '12',
-          name: '[TBD]',
+          name: 'Making banned Single Use Plastics disappear',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -775,6 +784,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Coastwatch marine litter data from several hundred sites in 2020, 2021, and 2022.',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -789,7 +799,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '13',
-    title: '[TBD]',
+    title: 'Preventing plastic pollution together in the coastal environment',
     subTheme: 'Preventing plastics in the ocean',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -806,7 +816,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '13',
-          name: '[TBD]',
+          name: 'Preventing plastic pollution together in the coastal environment',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -838,6 +848,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'The Norwegian Institute for Water Research',
       url: 'https://www.niva.no/en',
@@ -852,7 +863,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '14',
-    title: '[TBD]',
+    title: 'Citizen Science for air quality monitoring and interventions',
     subTheme: 'Clean air for all',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -869,7 +880,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '14',
-          name: '[TBD]',
+          name: 'Citizen Science for air quality monitoring and interventions',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -916,6 +927,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Real-time data available from >3,500 sensors from Airly, LookO2 and Sensor.Community, and visualized by Kanarek and Sensor.Community',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'Krakow Smog Alert',
       url: 'https://www.polishsmogalert.org/',
@@ -930,7 +942,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '15',
-    title: 'Measure Together (Samen Meten)',
+    title: 'Measure together air quality to complement official monitoring',
     subTheme: 'Clean air for all',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -947,7 +959,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '15',
-          name: 'Measure Together (Samen Meten)',
+          name: 'Measure together air quality to complement official monitoring',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -970,6 +982,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more.',
     ],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'National Institute for Public Health and the Environment',
       url: 'https://www.samenmeten.nl/',
@@ -984,7 +997,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '16',
-    title: 'Woodburning and Industry',
+    title: 'AirAware Woodburning Observatory to complement official monitoring',
     subTheme: 'Clean air for all',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -1001,7 +1014,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '16',
-          name: 'Woodburning and Industry',
+          name: 'AirAware Woodburning Observatory to complement official monitoring',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -1018,6 +1031,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
     ],
     citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
+    relevantPoliciesLaw: ['Single-use Plastics Directive '],
     contact: {
       title: 'NILU',
       url: 'https://nilu.com/',
@@ -1033,7 +1047,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '17',
-    title: 'Citizens for a deforestation-free Denmark',
+    title: 'Citizens Science and collaborative forest monitoring',
     subTheme: 'Halting illegal deforestation',
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
     location: {
@@ -1050,7 +1064,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '17',
-          name: 'Citizens for a deforestation-free Denmark',
+          name: 'Citizens Science and collaborative forest monitoring',
           thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
         },
       },
@@ -1098,7 +1112,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '18',
-    title: 'Citizens for a deforestation-free Denmark',
+    title: 'Eyes on forests',
     subTheme: 'Halting illegal deforestation',
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
     location: {
@@ -1115,7 +1129,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '18',
-          name: 'Citizens for a deforestation-free Denmark',
+          name: 'Eyes on forests',
           thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
         },
       },
@@ -1156,7 +1170,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '19',
-    title: "It's our forest too",
+    title: "It's our forest too - protecting five provinces in Cambodia",
     subTheme: 'Halting illegal deforestation',
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
     location: {
@@ -1173,7 +1187,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '19',
-          name: "It's our forest too",
+          name: "It's our forest too - protecting five provinces in Cambodia",
           thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
         },
       },
@@ -1217,11 +1231,11 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '20',
-    title: 'Monitoring of forest fires',
+    title: 'Monitoring to protect forests in Concepción',
     subTheme: 'Reducing forest loss from illegal activities and fires',
     thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
     location: {
-      continent: Continent.AMERICAS,
+      continent: Continent.AMERICA,
       country: {
         name: 'Bolivia',
         code: 'BO',
@@ -1234,7 +1248,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '20',
-          name: '[TBD] study case 20',
+          name: 'Monitoring to protect forests in Concepción',
           thematicAreas: [ThematicArea.DEFORESTATION_PREVENTION],
         },
       },
@@ -1291,7 +1305,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       ComplianceType.PROMOTING,
       ComplianceType.ENFORCEMENT,
       Impact.LOCAL,
-      Continent.AMERICAS,
+      Continent.AMERICA,
     ],
   },
 ];

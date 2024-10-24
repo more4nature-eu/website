@@ -24,7 +24,7 @@ export type URLink = { title: string; url: string };
 export type Tag = Impact | ThematicArea | Continent | ComplianceType;
 export enum Continent {
   EUROPE = 'Europe',
-  AMERICAS = 'Americas',
+  AMERICA = 'America',
   ASIA = 'Asia',
   AFRICA = 'Africa',
 }
