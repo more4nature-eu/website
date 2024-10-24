@@ -24,7 +24,7 @@ export default function AboutDescription() {
             Doing more
             <span className="font-thin">4</span>nature
           </span>
-          <span className="text-nowrap"> with citizen science</span>
+          <span className="md:text-nowrap"> with citizen science</span>
         </h2>
       </div>
       <div className="space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0">
@@ -39,7 +39,8 @@ export default function AboutDescription() {
           <Separator className="my-4 bg-grey-800/20" />
           <p>
             more4nature is structured into work packages that reflect the&nbsp;
-            <span className="text-nowrap font-bold">socio-technical approach</span> of the project.
+            <span className="font-bold md:text-nowrap">socio-technical approach</span> of the
+            project.
           </p>
           <Dialog>
             <DialogTrigger asChild>
