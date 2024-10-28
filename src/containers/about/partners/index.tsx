@@ -27,7 +27,7 @@ export default function Partners() {
         technology, and natural sciences, most of whom also have substantial experience with
         hands-on Citizen Science. The consortium also consists of institutional actors,
         environmental NGOs practicing Citizen Science, as well as a network of Fab Labs and
-        Designers and the private sector. This enables the more4nature consortium to implement its
+        designers and the private sector. This enables the more4nature consortium to implement its
         ambitious and truly innovative approach.
       </p>
       <ul className="grid flex-wrap divide-grey-800/30 border-l border-t border-grey-800/30 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
