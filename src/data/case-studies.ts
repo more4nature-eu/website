@@ -415,7 +415,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [6.070817014926126, 58.78746279402633],
+          coordinates: [10.7539283, 59.9386357],
         },
         properties: {
           id: '6',
@@ -470,7 +470,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [6.0210272, 59.1484525],
+          coordinates: [6.070817014926126, 58.78746279402633],
         },
         properties: {
           id: '7',
@@ -603,7 +603,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Nitrates, Phosphates, Turbidity, and qualitative environmental description',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Single-use Plastics Directive'],
     contact: {
       title: 'Earthwatch',
       url: 'https://earthwatch.org/',
@@ -665,7 +665,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Shore quality indicators based on Zostera beds, opportunistic seaweeds, stream quality and Nitrogen tests.',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Single-use Plastics Directive'],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -730,7 +730,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Qualitative & quantitative reports from citizens on stream life, chlorine smell test.',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Single-use Plastics Directive'],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -784,7 +784,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Coastwatch marine litter data from several hundred sites in 2020, 2021, and 2022.',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Single-use Plastics Directive'],
     contact: {
       title: 'Coastwatch',
       url: 'https://www.coastwatch.org/',
@@ -848,7 +848,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Single-use Plastics Directive'],
     contact: {
       title: 'The Norwegian Institute for Water Research',
       url: 'https://www.niva.no/en',
@@ -927,7 +927,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Real-time data available from >3,500 sensors from Airly, LookO2 and Sensor.Community, and visualized by Kanarek and Sensor.Community',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Air Quality Directive'],
     contact: {
       title: 'Krakow Smog Alert',
       url: 'https://www.polishsmogalert.org/',
@@ -942,7 +942,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '15',
-    title: 'Measure together air quality to complement official monitoring',
+    title: 'Measure Together: air quality sensors to complement official monitoring',
     subTheme: 'Clean air for all',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -955,11 +955,12 @@ export const CASE_STUDIES: CaseStudy[] = [
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [5.76467838897042, 51.937121018546925],
+          // coordinates: [5.76467838897042, 51.937121018546925],
+          coordinates: [5.1842349, 52.1185937],
         },
         properties: {
           id: '15',
-          name: 'Measure together air quality to complement official monitoring',
+          name: 'Measure Together: air quality sensors to complement official monitoring',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
@@ -982,10 +983,10 @@ export const CASE_STUDIES: CaseStudy[] = [
     citizenScienceData: [
       'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more.',
     ],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Ambient air quality directive'],
     contact: {
       title: 'National Institute for Public Health and the Environment',
-      url: 'https://www.samenmeten.nl/',
+      url: 'https://www.samenmeten.nl/international',
     },
     tags: [
       ThematicArea.ZERO_POLLUTION,
@@ -1031,7 +1032,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
     ],
     citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
-    relevantPoliciesLaw: ['Single-use Plastics Directive '],
+    relevantPoliciesLaw: ['Ambient air quality directive'],
     contact: {
       title: 'NILU',
       url: 'https://nilu.com/',

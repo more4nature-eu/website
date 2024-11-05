@@ -210,7 +210,7 @@ describe('CaseStudyService', () => {
           'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
         ],
         citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'NILU',
           url: 'https://nilu.com/',
@@ -375,7 +375,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Nitrates, Phosphates, Turbidity, and qualitative environmental description',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Earthwatch',
           url: 'https://earthwatch.org/',
@@ -431,7 +431,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Shore quality indicators based on Zostera beds, opportunistic seaweeds, stream quality and Nitrogen tests.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Coastwatch',
           url: 'https://www.coastwatch.org/',
@@ -490,7 +490,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Qualitative & quantitative reports from citizens on stream life, chlorine smell test.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Coastwatch',
           url: 'https://www.coastwatch.org/',
@@ -538,7 +538,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Coastwatch marine litter data from several hundred sites in 2020, 2021, and 2022.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Coastwatch',
           url: 'https://www.coastwatch.org/',
@@ -596,7 +596,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Data on CS beach litter available from Rydde; 33 tons, 1239 km covered in Norway',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'The Norwegian Institute for Water Research',
           url: 'https://www.niva.no/en',
@@ -671,7 +671,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Real-time data available from >3,500 sensors from Airly, LookO2 and Sensor.Community, and visualized by Kanarek and Sensor.Community',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Air Quality Directive'],
         contact: {
           title: 'Krakow Smog Alert',
           url: 'https://www.polishsmogalert.org/',
@@ -680,7 +680,7 @@ describe('CaseStudyService', () => {
       },
       {
         id: '15',
-        title: 'Measure together air quality to complement official monitoring',
+        title: 'Measure Together: air quality sensors to complement official monitoring',
         subTheme: 'Clean air for all',
         thematicAreas: ['Zero Pollution'],
         location: {
@@ -693,11 +693,11 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [5.76467838897042, 51.937121018546925],
+              coordinates: [5.1842349, 52.1185937],
             },
             properties: {
               id: '15',
-              name: 'Measure together air quality to complement official monitoring',
+              name: 'Measure Together: air quality sensors to complement official monitoring',
               thematicAreas: ['Zero Pollution'],
             },
           },
@@ -720,10 +720,10 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'National Institute for Public Health and the Environment',
-          url: 'https://www.samenmeten.nl/',
+          url: 'https://www.samenmeten.nl/international',
         },
         tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
@@ -763,7 +763,7 @@ describe('CaseStudyService', () => {
           'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
         ],
         citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'NILU',
           url: 'https://nilu.com/',
@@ -1158,7 +1158,7 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [6.070817014926126, 58.78746279402633],
+              coordinates: [10.7539283, 59.9386357],
             },
             properties: {
               id: '6',
@@ -1209,7 +1209,7 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [6.0210272, 59.1484525],
+              coordinates: [6.070817014926126, 58.78746279402633],
             },
             properties: {
               id: '7',
@@ -1332,7 +1332,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Nitrates, Phosphates, Turbidity, and qualitative environmental description',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Earthwatch',
           url: 'https://earthwatch.org/',
@@ -1391,7 +1391,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Qualitative & quantitative reports from citizens on stream life, chlorine smell test.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Coastwatch',
           url: 'https://www.coastwatch.org/',
@@ -1466,7 +1466,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Real-time data available from >3,500 sensors from Airly, LookO2 and Sensor.Community, and visualized by Kanarek and Sensor.Community',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Air Quality Directive'],
         contact: {
           title: 'Krakow Smog Alert',
           url: 'https://www.polishsmogalert.org/',
@@ -1475,7 +1475,7 @@ describe('CaseStudyService', () => {
       },
       {
         id: '15',
-        title: 'Measure together air quality to complement official monitoring',
+        title: 'Measure Together: air quality sensors to complement official monitoring',
         subTheme: 'Clean air for all',
         thematicAreas: ['Zero Pollution'],
         location: {
@@ -1488,11 +1488,11 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [5.76467838897042, 51.937121018546925],
+              coordinates: [5.1842349, 52.1185937],
             },
             properties: {
               id: '15',
-              name: 'Measure together air quality to complement official monitoring',
+              name: 'Measure Together: air quality sensors to complement official monitoring',
               thematicAreas: ['Zero Pollution'],
             },
           },
@@ -1515,10 +1515,10 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'National Institute for Public Health and the Environment',
-          url: 'https://www.samenmeten.nl/',
+          url: 'https://www.samenmeten.nl/international',
         },
         tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
@@ -1558,7 +1558,7 @@ describe('CaseStudyService', () => {
           'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
         ],
         citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'NILU',
           url: 'https://nilu.com/',
@@ -1812,7 +1812,7 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [6.0210272, 59.1484525],
+              coordinates: [6.070817014926126, 58.78746279402633],
             },
             properties: {
               id: '7',
@@ -1935,7 +1935,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Nitrates, Phosphates, Turbidity, and qualitative environmental description',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Earthwatch',
           url: 'https://earthwatch.org/',
@@ -1994,7 +1994,7 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Qualitative & quantitative reports from citizens on stream life, chlorine smell test.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Single-use Plastics Directive'],
         contact: {
           title: 'Coastwatch',
           url: 'https://www.coastwatch.org/',
@@ -2003,7 +2003,7 @@ describe('CaseStudyService', () => {
       },
       {
         id: '15',
-        title: 'Measure together air quality to complement official monitoring',
+        title: 'Measure Together: air quality sensors to complement official monitoring',
         subTheme: 'Clean air for all',
         thematicAreas: ['Zero Pollution'],
         location: {
@@ -2016,11 +2016,11 @@ describe('CaseStudyService', () => {
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [5.76467838897042, 51.937121018546925],
+              coordinates: [5.1842349, 52.1185937],
             },
             properties: {
               id: '15',
-              name: 'Measure together air quality to complement official monitoring',
+              name: 'Measure Together: air quality sensors to complement official monitoring',
               thematicAreas: ['Zero Pollution'],
             },
           },
@@ -2043,10 +2043,10 @@ describe('CaseStudyService', () => {
         citizenScienceData: [
           'Real time data available from >3000 PM2.5 sensors, but also noise sensors, monthly values NO2 tubes, and open to more.',
         ],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'National Institute for Public Health and the Environment',
-          url: 'https://www.samenmeten.nl/',
+          url: 'https://www.samenmeten.nl/international',
         },
         tags: ['Zero Pollution', 'Promoting', 'Monitoring', 'Local', 'Europe'],
       },
@@ -2086,7 +2086,7 @@ describe('CaseStudyService', () => {
           'Top-down initiative (Woodburning from household heating and saunas in Metropolitan Oslo) and Bottom-up initiative (Industry in Kristiansand).',
         ],
         citizenScienceData: ['Air Quality (PM 2.5, SO2, and perceived Odor)'],
-        relevantPoliciesLaw: ['Single-use Plastics Directive '],
+        relevantPoliciesLaw: ['Ambient air quality directive'],
         contact: {
           title: 'NILU',
           url: 'https://nilu.com/',
