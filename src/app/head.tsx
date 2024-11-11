@@ -15,7 +15,7 @@ function RootHead() {
         />
       </head>
       <head>
-        <PlausibleProvider domain="more4nature.vercel.app" />
+        <PlausibleProvider domain="more4nature.eu" />
       </head>
     </>
   );
