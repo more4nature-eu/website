@@ -456,8 +456,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '7',
-    title:
-      'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland water region',
+    title: 'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland',
     subTheme: 'Free-flowing rivers for freshwater and wetland biodiversity',
     thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
     location: {
@@ -474,7 +473,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '7',
-          name: 'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland water region',
+          name: 'Free-flowing rivers for freshwater and wetland biodiversity in the Rogaland',
           thematicAreas: [ThematicArea.BIODIVERSITY_PROTECTION],
         },
       },
@@ -693,7 +692,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [-9.051501731471465, 53.274995533218394],
+          coordinates: [-6.1430735, 53.2782817],
         },
         properties: {
           id: '11',
@@ -799,7 +798,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: '13',
-    title: 'Preventing plastic pollution together in the coastal environment',
+    title: 'Together against plastic pollution',
     subTheme: 'Preventing plastics in the ocean',
     thematicAreas: [ThematicArea.ZERO_POLLUTION],
     location: {
@@ -816,7 +815,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         properties: {
           id: '13',
-          name: 'Preventing plastic pollution together in the coastal environment',
+          name: 'Together against plastic pollution',
           thematicAreas: [ThematicArea.ZERO_POLLUTION],
         },
       },
