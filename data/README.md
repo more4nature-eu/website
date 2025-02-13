@@ -1,0 +1,5 @@
+# More4nature data Schema
+
+The provided schema implements a comprehensive metadata structure for citizen science datasets using JSON Schema for validation and JSON-LD for semantic linking. It combines established standards including DCAT (Data Catalog Vocabulary), Dublin Core Terms, and domain-specific vocabularies like Darwin Core and SensorThings API. The schema enables detailed dataset description, covering aspects from basic metadata to spatial coverage, organizational attribution, and data access methods.
+
+The schema's architecture separates structural validation (JSON Schema) from semantic context (JSON-LD), allowing robust data validation while maintaining semantic interoperability. Key features include support for multiple data standards, explicit data access specifications through DCAT distributions, spatial coverage definition using Simple Features, and organizational attribution via the Organization Ontology. This dual approach ensures both machine readability and semantic richness, facilitating dataset discovery, access, and integration across different citizen science initiatives.

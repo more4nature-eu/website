@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["@type", "@id", "title", "description", "publisher"],
+  "properties": {
+    "@type": { "const": "dcat:Dataset" },
+    "@id": { "type": "string", "format": "uri" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "publisher": {
+      "type": "object",
+      "required": ["@type", "@id", "name"],
+      "properties": {
+        "@type": { "const": "org:Organization" },
+        "@id": { "type": "string", "format": "uri" },
+        "name": { "type": "string" },
+        "homepage": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "spatialCoverage": {
+      "type": "object",
+      "required": ["@type", "geometry"],
+      "properties": {
+        "@type": { "const": "dct:Location" },
+        "geometry": {
+          "type": "object",
+          "required": ["@type", "asWKT"],
+          "properties": {
+            "@type": { "const": "sf:Geometry" },
+            "asWKT": { "type": "string" }
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["@type", "@id", "prefLabel"],
+        "properties": {
+          "@type": { "const": "skos:Concept" },
+          "@id": { "type": "string", "format": "uri" },
+          "prefLabel": { "type": "string" }
+        }
+      }
+    },
+    "conformsTo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["@type", "identifier", "title"],
+        "properties": {
+          "@type": { "const": "dct:Standard" },
+          "identifier": {
+            "type": "string",
+            "enum": [
+              "http://rs.tdwg.org/dwc/terms/",
+              "http://www.opengis.net/spec/sensorthings/1.0",
+              "http://www.w3.org/ns/csvw"
+            ]
+          },
+          "title": { "type": "string" },
+          "version": { "type": "string" }
+        }
+      }
+    },
+    "distribution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["@type", "accessURL", "mediaType"],
+        "properties": {
+          "@type": { "const": "dcat:Distribution" },
+          "accessURL": { "type": "string", "format": "uri" },
+          "downloadURL": { "type": "string", "format": "uri" },
+          "mediaType": {
+            "type": "string",
+            "enum": [
+              "application/json",
+              "text/csv",
+              "application/geo+json",
+              "application/ld+json",
+              "application/dwc+json",
+              "application/sensorthings+json"
+            ]
+          },
+          "format": { "type": "string" },
+          "byteSize": { "type": "integer" },
+          "temporalResolution": { "type": "string" },
+          "spatialResolution": { "type": "string" },
+          "conformsTo": { "$ref": "#/definitions/standard" }
+        }
+      }
+    }
+  }
+}
