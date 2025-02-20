@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-import { FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6';
+import { FaLinkedin, FaYoutube, FaBluesky } from 'react-icons/fa6';
 
 import { cn } from '@/lib/utils';
 
@@ -13,9 +13,9 @@ const SOCIAL_NETWORKS = [
     icon: <FaLinkedin className="h-4 w-4" />,
   },
   {
-    name: 'X',
-    url: 'https://x.com/more4nature',
-    icon: <FaXTwitter className="h-4 w-4" />,
+    name: 'Bluesky',
+    url: 'https://bsky.app/profile/more4nature.eu',
+    icon: <FaBluesky className="h-4 w-4" />,
   },
   {
     name: 'YouTube',
