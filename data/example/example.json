@@ -1,0 +1,66 @@
+{
+  "@context": "schemas/dataset-context.jsonld",
+  "@type": "dcat:Dataset",
+  "@id": "http://example.org/dataset/123",
+  "title": "Air Quality Measurements",
+  "description": "PM2.5 measurements from urban sensors",
+  "publisher": {
+    "@type": "org:Organization",
+    "@id": "http://example.org/org/citycouncil",
+    "name": "Barcelona City Council",
+    "homepage": "https://www.barcelona.cat",
+    "email": "contact@barcelona.cat"
+  },
+  "spatialCoverage": {
+    "@type": "dct:Location",
+    "geometry": {
+      "@type": "sf:Geometry",
+      "asWKT": "POINT(2.154007 41.390205)"
+    }
+  },
+  "category": [
+    {
+      "@type": "skos:Concept",
+      "@id": "http://example.org/category/zero-pollution",
+      "prefLabel": "Zero Pollution"
+    }
+  ],
+  "conformsTo": [
+    {
+      "@type": "dct:Standard",
+      "identifier": "http://www.opengis.net/spec/sensorthings/1.0",
+      "title": "OGC SensorThings API",
+      "version": "1.0"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "dcat:Distribution",
+      "accessURL": "https://api.example.org/v1/observations",
+      "mediaType": "application/sensorthings+json",
+      "format": "SensorThings API",
+      "temporalResolution": "PT1M",
+      "spatialResolution": "100m",
+      "conformsTo": {
+        "@type": "dct:Standard",
+        "identifier": "http://www.opengis.net/spec/sensorthings/1.0",
+        "title": "OGC SensorThings API",
+        "version": "1.0"
+      }
+    },
+    {
+      "@type": "dcat:Distribution",
+      "accessURL": "https://api.example.org/v1/observations/download",
+      "downloadURL": "https://api.example.org/v1/observations/download/latest.csv",
+      "mediaType": "text/csv",
+      "format": "CSV",
+      "byteSize": 1048576,
+      "conformsTo": {
+        "@type": "dct:Standard",
+        "identifier": "http://www.w3.org/ns/csvw",
+        "title": "CSV on the Web",
+        "version": "1.0"
+      }
+    }
+  ]
+}
