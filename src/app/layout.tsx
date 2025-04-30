@@ -8,7 +8,11 @@ import './globals.css';
 import RootHead from '@/app/head';
 import LayoutProviders from '@/app/providers';
 
-const lexend = Lexend({ subsets: ['latin'], weight: ['100', '400', '500', '700'] });
+const lexend = Lexend({
+  subsets: ['latin'],
+  weight: ['100', '400', '500', '700'],
+  variable: '--font-lexend',
+});
 
 const socialMediaTitle = 'Citizen Science in Environmental Compliance Assurance';
 
