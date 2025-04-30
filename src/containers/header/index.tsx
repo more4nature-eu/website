@@ -2,8 +2,7 @@
 
 import { PropsWithChildren, useRef, useState } from 'react';
 
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView, useMotionValueEvent, useScroll } from 'framer-motion';
 
 import { cn } from '@/lib/utils';
 
@@ -13,7 +12,7 @@ export const SECTIONS = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Cases', href: '/cases' },
-  { name: 'Events & News', href: '/events-news' },
+  { name: 'Events & News', href: 'https://blog.more4nature.eu' },
   { name: 'Contact us', href: 'mailto:more4nature_project@un-ihe.org' },
 ] as const;
 

@@ -23,6 +23,22 @@ const NavItem = (props: PropsWithChildren<LinkProps>) => {
     </>
   );
 
+  if (/^https?:\/\//.test(props.href.toString())) {
+    return (
+      <a
+        href={props.href.toString()}
+        className={navItemContainerClass}
+        onClick={() => {
+          setOpen(false);
+        }}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {Text}
+      </a>
+    );
+  }
+
   return (
     <Link
       href={props.href}
