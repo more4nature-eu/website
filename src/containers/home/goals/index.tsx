@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import Wrapper from '@/components/ui/wrapper';
 
-import M4NGoals from '../../../../public/images/m4n-goals.png';
+import M4NGoals from '../../../../public/images/m4n-goals.svg';
 
 export default function Goals() {
   return (
@@ -71,8 +71,19 @@ export default function Goals() {
             />
           </div>
         </div>
-        <div className="mt-8">
-          <Image src={M4NGoals} alt="m4n-goals" width={1974} height={1250} />
+        <div className="mt-8 flex flex-col items-center gap-8 sm:gap-12 lg:gap-[72px]">
+          <div className="grid grid-cols-12 justify-center">
+            <h4 className="col-span-12 text-center font-sans text-white md:col-span-12 md:text-lg md:leading-9 lg:col-span-8 lg:col-start-3 xl:col-span-8 xl:col-start-3">
+              We help catalyse change by{' '}
+              <span className="font-semibold">
+                reinforcing the connections between policy,{' '}
+                <span className="text-nowrap">Citizen Science</span>, and compliance
+              </span>
+              . We work with citizens across these areas to enhance capacity, build tools, and
+              foster partnerships.
+            </h4>
+          </div>
+          <Image src={M4NGoals} alt="m4n-goals" />
         </div>
       </Wrapper>
     </div>

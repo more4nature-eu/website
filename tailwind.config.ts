@@ -15,7 +15,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Legend', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-lexend)', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         '2xl': '1400px',
