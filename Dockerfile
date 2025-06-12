@@ -11,6 +11,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 RUN npm install -g corepack
 RUN corepack enable pnpm && pnpm i --frozen-lockfile
+RUN pnpm add sharp
 
 
 # Rebuild the source code only when needed
