@@ -1001,7 +1001,7 @@ describe('CaseStudyService', () => {
         citizenScienceInitiatives: [
           {
             title:
-              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, More biodiversity',
+              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, more biodiversity',
             url: 'https://butterfly-monitoring.net/es/portugal-bms',
           },
         ],
@@ -1074,7 +1074,7 @@ describe('CaseStudyService', () => {
         citizenScienceInitiatives: [
           {
             title:
-              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, More biodiversity',
+              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, more biodiversity',
             url: 'https://butterfly-monitoring.net/es/portugal-bms',
           },
         ],
@@ -1708,7 +1708,7 @@ describe('CaseStudyService', () => {
         citizenScienceInitiatives: [
           {
             title:
-              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, More biodiversity',
+              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, more biodiversity',
             url: 'https://butterfly-monitoring.net/es/portugal-bms',
           },
         ],
@@ -1781,7 +1781,7 @@ describe('CaseStudyService', () => {
         citizenScienceInitiatives: [
           {
             title:
-              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, More biodiversity',
+              'Censos Borboletas de Portugal (connected to the European Butterfly Monitoring Scheme - eBMS), FitCount (Flower-Insect Timed Count), PolinizAÇÃO - Interações planta-polinizador, More Pollinators, more biodiversity',
             url: 'https://butterfly-monitoring.net/es/portugal-bms',
           },
         ],
