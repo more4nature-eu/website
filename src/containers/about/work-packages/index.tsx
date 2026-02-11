@@ -52,7 +52,7 @@ const WORK_PACKAGES = [
         to specific target audiences
       </p>
     ),
-    organization: 'Vizzuality',
+    organization: 'IAAC',
   },
 ];
 
