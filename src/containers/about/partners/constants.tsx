@@ -170,20 +170,6 @@ export const PARTNERS = [
     url: 'https://tracasa.es/',
   },
   {
-    name: 'Vizzuality/Simbiotica',
-    description: (
-      <p>
-        Company that uses high-impact digital tools and data-driven strategies to advance
-        sustainability locally and globally.
-      </p>
-    ),
-    logo: {
-      url: '/images/partners/vizzuality.webp',
-      size: [160, 130],
-    },
-    url: 'https://vizzuality.com/',
-  },
-  {
     name: 'FCiências.ID (FC.ID)/Ciências ULisboa',
     description: (
       <p>
