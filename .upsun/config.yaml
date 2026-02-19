@@ -38,9 +38,6 @@ applications:
       .next/cache:
         source: storage
 
-    build:
-      flavor: none
-
 routes:
   "https://{default}/":
     type: upstream
