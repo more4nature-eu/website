@@ -1,0 +1,45 @@
+# Complete list of all available properties: https://docs.upsun.com/app/reference/
+applications:
+  more4nature-website:
+    type: "nodejs:22"
+
+    dependencies:
+      nodejs:
+        pnpm: "*"
+
+    build:
+      flavor: none
+
+    hooks:
+      build: |
+        set -ex
+        pnpm install
+        pnpm add sharp
+        pnpm run build
+
+      deploy: |
+        set -ex
+
+    web:
+      commands:
+        start: pnpm run start -p "$PORT"
+
+      locations:
+        /:
+          root: public
+          passthru: true
+          expires: 1h
+          scripts: false
+
+    variables:
+      env:
+        NEXT_TELEMETRY_DISABLED: '1'
+
+    mounts:
+      .next/cache:
+        source: storage
+
+routes:
+  "https://{default}/":
+    type: upstream
+    upstream: "more4nature-website:http"
