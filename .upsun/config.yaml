@@ -42,7 +42,7 @@ applications:
 routes:
   "https://{default}/":
     type: upstream
-    upstream: "more4nature-website:http"
+    upstream: more4nature-website:http
     
   "https://www.{default}/":
     type: redirect
