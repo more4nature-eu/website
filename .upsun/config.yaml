@@ -44,6 +44,3 @@ routes:
     type: upstream
     upstream: more4nature-website:http
     
-  "https://more4nature.eu/":
-    type: redirect
-    to: "https://{default}/"
