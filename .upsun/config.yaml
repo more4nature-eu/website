@@ -40,10 +40,10 @@ applications:
         source: storage
 
 routes:
-  "https://{default}/":
+  "https://www.{default}/":
     type: upstream
     upstream: more4nature-website:http
     
-  "https://www.{default}/":
+  "https://{default}/":
     type: redirect
-    to: "https://{default}/"
+    to: "https://www.{default}/"
