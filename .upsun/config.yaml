@@ -2,6 +2,7 @@
 applications:
   more4nature-website:
     type: "nodejs:22"
+    container_profile: BALANCED
 
     dependencies:
       nodejs:
@@ -44,6 +45,6 @@ routes:
     type: upstream
     upstream: more4nature-website:http
     
-  "https://www.{default}/":
+  "https://more4nature.eu/":
     type: redirect
     to: "https://{default}/"
