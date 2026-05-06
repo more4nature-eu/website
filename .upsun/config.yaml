@@ -2,6 +2,7 @@
 applications:
   more4nature-website:
     type: "nodejs:22"
+    container_profile: BALANCED
 
     dependencies:
       nodejs:
