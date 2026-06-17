@@ -43,7 +43,11 @@ routes:
   "https://{default}/":
     type: upstream
     upstream: more4nature-website:http
-    
+
   "https://www.{default}/":
     type: redirect
     to: "https://{default}/"
+
+  "https://{default}/knowledge":
+    type: proxy
+    to: https://knowledge.more4nature.eu
