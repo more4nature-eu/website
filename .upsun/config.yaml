@@ -40,6 +40,14 @@ applications:
         source: storage
 
 routes:
+  "https://{default}/knowledge":
+    type: proxy
+    to: https://knowledge.more4nature.eu
+
+  "https://www.{default}/knowledge":
+    type: proxy
+    to: https://knowledge.more4nature.eu
+
   "https://{default}/":
     type: upstream
     upstream: more4nature-website:http
@@ -48,6 +56,3 @@ routes:
     type: redirect
     to: "https://{default}/"
 
-  "https://{default}/knowledge":
-    type: proxy
-    to: https://knowledge.more4nature.eu
