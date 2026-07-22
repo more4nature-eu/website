@@ -34,18 +34,18 @@ import {
 const ORGANIZATION_TYPES_VALUES = [
   'NGO',
   'Citizen Science Initiative',
-  'Industry',
+  'Policymaker',
   'Research & Academia',
-  'Public sector',
-  'other',
+  'Duty Holder Authority',
+  'Other',
 ] as const;
 
 const ORGANIZATION_TYPES = [
   { label: 'NGO', value: ORGANIZATION_TYPES_VALUES[0] },
   { label: 'Citizen Science Initiative', value: ORGANIZATION_TYPES_VALUES[1] },
-  { label: 'Industry', value: ORGANIZATION_TYPES_VALUES[2] },
+  { label: 'Policymaker', value: ORGANIZATION_TYPES_VALUES[2] },
   { label: 'Research & Academia', value: ORGANIZATION_TYPES_VALUES[3] },
-  { label: 'Public sector', value: ORGANIZATION_TYPES_VALUES[4] },
+  { label: 'Duty Holder Authority', value: ORGANIZATION_TYPES_VALUES[4] },
   { label: 'Other', value: ORGANIZATION_TYPES_VALUES[5] },
 ];
 
