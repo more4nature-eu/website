@@ -30,16 +30,10 @@ export const subscribeNewsletter = async (
   } catch (err) {
 
     if (err instanceof Error) {
-      console.error('Newsletter subscription failed', {
-        email,
-        list: z.string().parse(process.env.MAILCHIMP_LIST_ID),
-        error: err,
-      });
-
 
       return {
         ok: false,
-        message: err.message,
+        message: err.response.text,
       };
     }
 
