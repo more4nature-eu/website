@@ -48,4 +48,3 @@ routes:
   "https://more4nature.eu/":
     type: redirect
     to: "https://{default}/"
-

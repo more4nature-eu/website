@@ -34,18 +34,18 @@ import {
 const ORGANIZATION_TYPES_VALUES = [
   'NGO',
   'Citizen Science Initiative',
-  'Industry',
+  'Policymaker',
   'Research & Academia',
-  'Public sector',
-  'other',
+  'Duty Holder Authority',
+  'Other',
 ] as const;
 
 const ORGANIZATION_TYPES = [
   { label: 'NGO', value: ORGANIZATION_TYPES_VALUES[0] },
   { label: 'Citizen Science Initiative', value: ORGANIZATION_TYPES_VALUES[1] },
-  { label: 'Industry', value: ORGANIZATION_TYPES_VALUES[2] },
+  { label: 'Policymaker', value: ORGANIZATION_TYPES_VALUES[2] },
   { label: 'Research & Academia', value: ORGANIZATION_TYPES_VALUES[3] },
-  { label: 'Public sector', value: ORGANIZATION_TYPES_VALUES[4] },
+  { label: 'Duty Holder Authority', value: ORGANIZATION_TYPES_VALUES[4] },
   { label: 'Other', value: ORGANIZATION_TYPES_VALUES[5] },
 ];
 
@@ -64,7 +64,7 @@ export const NewsletterSchema = z.object({
 
 const refinedNewsletterSchema = NewsletterSchema.superRefine(
   ({ organizationType, otherOrganization }, ctx) => {
-    if (organizationType === 'other' && otherOrganization === undefined) {
+    if (organizationType === 'Other' && otherOrganization === undefined) {
       return ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: 'Please, provide an answer',
@@ -105,7 +105,7 @@ export default function Newsletter() {
             const response = await subscribeNewsletter(parsed.data.email, {
               FNAME: parsed.data.name.split(' ')[0],
               LNAME: parsed.data.name.split(' ')[1],
-              ...(parsed.data.organizationType !== 'other' && {
+              ...(parsed.data.organizationType !== 'Other' && {
                 ORG_TYPE: parsed.data.organizationType,
               }),
               ...(parsed.data.otherOrganization && { ORG_TYPE_O: parsed.data.otherOrganization }),
@@ -171,7 +171,7 @@ export default function Newsletter() {
                 </FormItem>
               )}
             />
-            {form.watch('organizationType') === 'other' && (
+            {form.watch('organizationType') === 'Other' && (
               <FormField
                 control={form.control}
                 name="otherOrganization"
