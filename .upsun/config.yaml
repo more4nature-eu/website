@@ -14,20 +14,19 @@ applications:
     hooks:
       build: |
         set -ex
-        pnpm install
-        pnpm add sharp
+        pnpm install --frozen-lockfile
         pnpm run build
 
-      deploy: |
-        set -ex
+        cp -r public .next/standalone/
+        mkdir -p .next/standalone/.next
+        cp -r .next/static .next/standalone/.next/
 
     web:
       commands:
-        start: pnpm run start -p "$PORT"
+        start: node .next/standalone/server.js
 
       locations:
         /:
-          root: public
           passthru: true
           expires: 1h
           scripts: false
@@ -35,6 +34,7 @@ applications:
     variables:
       env:
         NEXT_TELEMETRY_DISABLED: '1'
+        HOSTNAME: '0.0.0.0'
 
     mounts:
       .next/cache:
