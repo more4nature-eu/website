@@ -1,8 +1,12 @@
 import mailchimp from '@mailchimp/mailchimp_marketing';
+import { z } from 'zod';
+
+const apiKey = z.string().parse(process.env.MAILCHIMP_API_KEY);
+const server = apiKey.split('-').pop();
 
 mailchimp.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY,
-  server: 'us18',
+  apiKey: apiKey,
+  server: server,
 });
 
 export default mailchimp;
