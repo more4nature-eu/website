@@ -41,7 +41,6 @@ applications:
         source: storage
 
 routes:
-
   "https://{default}/":
     type: upstream
     upstream: more4nature-website:http
