@@ -105,7 +105,7 @@ export default function Newsletter() {
             const response = await subscribeNewsletter(parsed.data.email, {
               FNAME: parsed.data.name.split(' ')[0],
               LNAME: parsed.data.name.split(' ')[1],
-              ...(parsed.data.organizationType !== 'other' && {
+              ...(parsed.data.organizationType !== 'Other' && {
                 ORG_TYPE: parsed.data.organizationType,
               }),
               ...(parsed.data.otherOrganization && { ORG_TYPE_O: parsed.data.otherOrganization }),
@@ -171,7 +171,7 @@ export default function Newsletter() {
                 </FormItem>
               )}
             />
-            {form.watch('organizationType') === 'other' && (
+            {form.watch('organizationType') === 'Other' && (
               <FormField
                 control={form.control}
                 name="otherOrganization"
