@@ -22,7 +22,7 @@ applications:
 
     web:
       commands:
-        start: pnpm run start -p "$PORT"
+        start: node .next/standalone/server.js
 
       locations:
         /:
@@ -34,6 +34,7 @@ applications:
     variables:
       env:
         NEXT_TELEMETRY_DISABLED: '1'
+        HOSTNAME: '0.0.0.0'
 
     mounts:
       .next/cache:
