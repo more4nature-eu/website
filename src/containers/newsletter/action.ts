@@ -21,7 +21,7 @@ interface MailchimpApiError {
 }
 
 function isMailchimpApiError(err: unknown): err is MailchimpApiError {
-  return (typeof err === 'object' && err !== null && 'response' in err);
+  return typeof err === 'object' && err !== null && 'response' in err;
 }
 
 export const subscribeNewsletter = async (
