@@ -14,8 +14,7 @@ applications:
     hooks:
       build: |
         set -ex
-        pnpm install
-        pnpm add sharp
+        pnpm install --frozen-lockfile
         pnpm run build
 
       deploy: |
