@@ -16,7 +16,7 @@ export const subscribeNewsletter = async (
   },
 ) => {
   try {
-    await mailchimp.lists.addListMember('77ab6984cf', {
+    await mailchimp.lists.addListMember(z.string().parse(process.env.MAILCHIMP_LIST_ID), {
       status: 'subscribed',
       email_address: email,
       merge_fields: {
@@ -28,7 +28,15 @@ export const subscribeNewsletter = async (
       ok: true,
     };
   } catch (err) {
+
     if (err instanceof Error) {
+      console.error('Newsletter subscription failed', {
+        email,
+        list: z.string().parse(process.env.MAILCHIMP_LIST_ID),
+        error: err,
+      });
+
+
       return {
         ok: false,
         message: err.message,
