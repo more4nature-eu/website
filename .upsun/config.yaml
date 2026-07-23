@@ -17,8 +17,9 @@ applications:
         pnpm install --frozen-lockfile
         pnpm run build
 
-      deploy: |
-        set -ex
+        cp -r public .next/standalone/
+        mkdir -p .next/standalone/.next
+        cp -r .next/static .next/standalone/.next/
 
     web:
       commands:
@@ -26,7 +27,6 @@ applications:
 
       locations:
         /:
-          root: public
           passthru: true
           expires: 1h
           scripts: false
