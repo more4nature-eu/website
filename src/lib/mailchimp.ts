@@ -6,7 +6,7 @@ const server = apiKey.split('-').pop();
 
 mailchimp.setConfig({
   apiKey: apiKey,
-  server: server
+  server: server,
 });
 
 export default mailchimp;
