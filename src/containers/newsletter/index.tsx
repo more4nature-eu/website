@@ -64,7 +64,7 @@ export const NewsletterSchema = z.object({
 
 const refinedNewsletterSchema = NewsletterSchema.superRefine(
   ({ organizationType, otherOrganization }, ctx) => {
-    if (organizationType === 'other' && otherOrganization === undefined) {
+    if (organizationType === 'Other' && otherOrganization === undefined) {
       return ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: 'Please, provide an answer',
