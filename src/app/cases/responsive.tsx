@@ -24,7 +24,12 @@ export default function ResponsiveCasesPage() {
   const inView = useInView(ref, { amount: 0.15 });
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const setFilters = useSetAtom(filtersAtom);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleOpenFilters = () => {
     setIsFiltersOpen((prev) => !prev);
@@ -84,7 +89,7 @@ export default function ResponsiveCasesPage() {
             show: { opacity: 1, y: '0', display: 'flex' },
           }}
           initial="initial"
-          animate={inView ? 'initial' : 'show'}
+          animate={mounted && !inView ? 'show' : 'initial'}
         >
           <CaseStudiesTotal className="flex w-full items-center justify-between gap-4 px-4 text-lg">
             <MobileFiltersDropdown
@@ -111,7 +116,7 @@ export default function ResponsiveCasesPage() {
             show: { opacity: 1, display: 'flex', bottom: 0 },
           }}
           initial="initial"
-          animate={isFiltersOpen ? 'show' : 'initial'}
+          animate={mounted && isFiltersOpen ? 'show' : 'initial'}
           ref={filtersContainerRef}
         >
           <FiltersContent onSetFiltersDone={closeFilters} onClearFiltersDone={closeFilters} />
