@@ -4,9 +4,11 @@ import { useState } from 'react';
 
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 
-import { News } from '@/lib/news.service';
+import { News, NewsService } from '@/lib/news.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
+
+import NEWS from '@/data/news';
 
 import { Media } from '@/containers/media';
 
@@ -71,16 +73,7 @@ export default function NewsList() {
   const { data } = useQuery<PaginatedResult<News>>({
     queryKey: queryKeys.news.paginated({ page: page + 1 }).queryKey,
     queryFn: async () => {
-      try {
-        const response = await fetch(`/news?page=${page + 1}&pageSize=${PAGE_SIZE}`);
-
-        if (!response.ok) {
-          throw new Error('Error fetching news');
-        }
-        return await response.json();
-      } catch (err) {
-        throw new Error('Error fetching news');
-      }
+      return new NewsService(NEWS, {}, { page: page + 1, pageSize: PAGE_SIZE }).searchNews();
     },
     placeholderData: keepPreviousData,
   });

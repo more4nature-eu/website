@@ -25,6 +25,10 @@ const prefetchData = async (queryClient: QueryClient, id: string) => {
   }
 };
 
+export function generateStaticParams() {
+  return CASE_STUDIES.map(({ id }) => ({ id }));
+}
+
 export default async function CaseDetail({ params: { id } }: { params: { id: string } }) {
   const queryClient = new QueryClient();
   await prefetchData(queryClient, id);

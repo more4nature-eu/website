@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { useAtomValue } from 'jotai';
-import queryString from 'query-string';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
-import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
+import { CaseStudy, CaseStudyService, ThematicArea } from '@/lib/case-studies.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
+
+import CASE_STUDIES from '@/data/case-studies';
 
 import { filtersAtom } from '@/containers/cases/store';
 
@@ -135,14 +136,7 @@ export default function CaseStudyList() {
   const { data, isFetching, isSuccess } = useQuery({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
     queryFn: async (): Promise<PaginatedResult<CaseStudy>> => {
-      const serialized = queryString.stringify(filters);
-      try {
-        const response = await fetch(`/case-studies?${serialized}`);
-        if (!response.ok) throw new Error('An error occurred while fetching the data');
-        return response.json();
-      } catch (error) {
-        throw new Error('An error occurred while fetching the data');
-      }
+      return new CaseStudyService(CASE_STUDIES, filters, {}).searchCaseStudies();
     },
     select: (data) => data?.data,
     placeholderData: keepPreviousData,
