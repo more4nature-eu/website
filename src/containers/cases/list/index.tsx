@@ -16,7 +16,6 @@ import CASE_STUDIES from '@/data/case-studies';
 
 import { filtersAtom } from '@/containers/cases/store';
 
-import Loader from '@/components/icons/loader';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -133,7 +132,7 @@ function CaseStudyItem({ caseStudy }: CaseStudyItemProps) {
 export default function CaseStudyList() {
   const filters = useAtomValue(filtersAtom);
 
-  const { data, isFetching, isSuccess } = useQuery({
+  const { data } = useQuery({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
     queryFn: async (): Promise<PaginatedResult<CaseStudy>> => {
       return new CaseStudyService(CASE_STUDIES, filters, {}).searchCaseStudies();
@@ -143,25 +142,16 @@ export default function CaseStudyList() {
   });
 
   return (
-    <>
-      {isFetching && (
-        <div className="flex grow items-center justify-center">
-          <Loader />
-        </div>
-      )}
-      {!isFetching && isSuccess && (
-        <ScrollArea className="h-full pb-8">
-          <div className="md:px-6">
-            <ul className="space-y-3">
-              {data?.map((caseStudy) => (
-                <li key={caseStudy.id} className="flex">
-                  <CaseStudyItem caseStudy={caseStudy} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </ScrollArea>
-      )}
-    </>
+    <ScrollArea className="h-full pb-8">
+      <div className="md:px-6">
+        <ul className="space-y-3">
+          {data?.map((caseStudy) => (
+            <li key={caseStudy.id} className="flex">
+              <CaseStudyItem caseStudy={caseStudy} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </ScrollArea>
   );
 }
