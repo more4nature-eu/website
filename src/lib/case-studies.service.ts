@@ -84,17 +84,17 @@ export class CaseStudyService extends Paginator<CaseStudy> {
     const keywordRegex = this.filters.keyword ? new RegExp(this.filters.keyword, 'i') : null;
 
     return items.filter((caseStudy) => {
-      const filterByThematicArea = this.filters.thematicAreas
+      const filterByThematicArea = this.filters.thematicAreas?.length
         ? this.filters.thematicAreas.some((area) => caseStudy.thematicAreas.includes(area))
         : true;
-      const filterByComplianceType = this.filters.complianceTypes
+      const filterByComplianceType = this.filters.complianceTypes?.length
         ? this.filters.complianceTypes.some((compliance) => caseStudy.tags.includes(compliance))
         : true;
 
-      const filterByImpact = this.filters.impacts
+      const filterByImpact = this.filters.impacts?.length
         ? this.filters.impacts.some((impact) => caseStudy.impact.includes(impact))
         : true;
-      const filterByLocation = this.filters.locations
+      const filterByLocation = this.filters.locations?.length
         ? this.filters.locations.includes(caseStudy.location.continent)
         : true;
 

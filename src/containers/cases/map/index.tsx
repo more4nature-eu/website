@@ -84,7 +84,7 @@ export default function CasesMap() {
   };
 
   const allCasesBbox = useMemo(() => {
-    if (!data) return undefined;
+    if (!data || data.length === 0) return undefined;
 
     return {
       bounds: getBbox({
