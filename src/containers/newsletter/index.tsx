@@ -31,11 +31,12 @@ import {
 
 /**
  * Mailchimp doesn't support CORS on its list-manage subscribe endpoint, so this posts as a plain
- * (non-fetch) HTML form submission opened in a new tab. Values come from
- * Audience > Signup forms > Embedded forms in the Mailchimp dashboard.
+ * (non-fetch) HTML form submission targeting a hidden iframe, so the page never navigates away
+ * or opens a popup. Values come from Audience > Signup forms > Embedded forms in Mailchimp.
  */
 const MAILCHIMP_FORM_ACTION = process.env.NEXT_PUBLIC_MAILCHIMP_FORM_ACTION ?? '';
 const MAILCHIMP_HONEYPOT_NAME = process.env.NEXT_PUBLIC_MAILCHIMP_HONEYPOT_NAME ?? '';
+const MAILCHIMP_IFRAME_NAME = 'mc-hidden-frame';
 
 const ORGANIZATION_TYPES_VALUES = [
   'NGO',
@@ -133,14 +134,17 @@ export default function Newsletter() {
           ref={formRef}
           action={MAILCHIMP_FORM_ACTION}
           method="post"
-          target="_blank"
+          target={MAILCHIMP_IFRAME_NAME}
           className="space-y-8 md:grid md:grid-cols-12 md:gap-[5%] md:space-y-0"
           onSubmit={handleNewsletter}
         >
+          <iframe name={MAILCHIMP_IFRAME_NAME} hidden title="Newsletter subscription" />
           <input type="hidden" name="FNAME" ref={fnameRef} />
           <input type="hidden" name="LNAME" ref={lnameRef} />
           <input type="hidden" name="ORG_TYPE" ref={orgTypeRef} />
           <input type="hidden" name="ORG_TYPE_O" ref={orgOtherRef} />
+          {/* Audience has a required GDPR consent field; our privacy-policy checkbox already gates submission. */}
+          <input type="hidden" name="gdpr[88946]" value="Y" />
           {/* Mailchimp bot trap: real users must never fill this in. */}
           <div aria-hidden="true" className="absolute left-[-5000px]">
             <input type="text" name={MAILCHIMP_HONEYPOT_NAME} tabIndex={-1} defaultValue="" />
@@ -270,8 +274,8 @@ export default function Newsletter() {
 
               {subscribedStatus === 'subscribed' && (
                 <p>
-                  Thank you for subscribing! A confirmation page has opened in a new tab &mdash;
-                  please follow its instructions to complete your subscription.
+                  Thank you for subscribing! Check your inbox for a confirmation email to complete
+                  your subscription.
                 </p>
               )}
             </div>
