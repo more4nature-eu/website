@@ -4,17 +4,19 @@ import { useEffect, useRef, useState } from 'react';
 
 import { motion, useInView } from 'framer-motion';
 import { useSetAtom } from 'jotai/index';
+import dynamic from 'next/dynamic';
 
 import CaseStudies from '@/containers/cases';
 import FiltersContent from '@/containers/cases/header/filters/filters-dropdown/content';
 import MobileFiltersDropdown from '@/containers/cases/header/filters/filters-dropdown/mobile';
-import CasesMap from '@/containers/cases/map';
 import Sidebar from '@/containers/cases/sidebar';
 import { filtersAtom } from '@/containers/cases/store';
 import CaseStudiesTotal from '@/containers/cases/total';
 import { Media } from '@/containers/media';
 
 import Search from '@/components/search';
+
+const CasesMap = dynamic(() => import('@/containers/cases/map'), { ssr: false });
 
 export default function ResponsiveCasesPage() {
   const ref = useRef<HTMLDivElement>(null);
