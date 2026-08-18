@@ -1,16 +1,21 @@
 # Requirements
 
-This project requires Node.js v22.2.0 (as specified in the Dockerfile and the `.nvmrc` file) and
+This project requires Node.js v22.2.0 (as specified in the `.nvmrc` file) and
 uses [pnpm](https://pnpm.io/) as the package manager.
 
 # Environment Variables
 
-This project requires certain environment variables to be set for proper operation. Please create a `.env` file in the
-root directory and define the following variables:
+The newsletter form posts directly to Mailchimp's hosted signup endpoint (see the
+[Newsletter signup](#newsletter-signup) section), so these must be set at build time. Create a `.env` file in the
+root directory and define:
 
 ```
-MAILCHIMP_API_KEY=your-mailchimp-key-here
+NEXT_PUBLIC_MAILCHIMP_FORM_ACTION=https://<dc>.list-manage.com/subscribe/post?u=<u>&id=<list-id>
+NEXT_PUBLIC_MAILCHIMP_HONEYPOT_NAME=b_<u>_<list-id>
 ```
+
+Both values come from Mailchimp: **Audience → Signup forms → Embedded forms**. Copy the `<form action="...">` URL
+for the first, and the hidden bot-trap input's `name` (starts with `b_`) for the second.
 
 # Getting Started
 
@@ -42,7 +47,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Framer Motion](https://www.framer.com/motion/)
 - [Embla Carousel](https://www.embla-carousel.com/)
 - [React Hook Form](https://react-hook-form.com/)
-- [Mailchimp Marketing](https://mailchimp.com/developer/marketing/api/)
 - [RadixUI](https://www.radix-ui.com/)
 
 # Data
@@ -81,23 +85,23 @@ consistency across the codebase.
 
 It is recommended to run linting and formatting before committing code to maintain a clean and consistent codebase.
 
+## Newsletter signup
+
+There is no backend: `pnpm build` produces a fully static site (`output: 'export'` in `next.config.js`), so the
+newsletter form submits directly to Mailchimp's hosted signup endpoint from the browser (see Environment Variables
+above) instead of going through a server action or API route.
+
 ## Deployment
 
-This project includes a `Dockerfile` for containerized deployment. The Dockerfile uses a multi-stage build for efficient
-image size and security:
+The site is a static export (`next build` writes to `out/`) deployed to GitHub Pages via
+`.github/workflows/deploy.yml`, which runs on every push to `dev` and publishes `out/` using
+`actions/deploy-pages`. Set `NEXT_PUBLIC_MAILCHIMP_FORM_ACTION` and `NEXT_PUBLIC_MAILCHIMP_HONEYPOT_NAME` as
+repository variables (Settings → Secrets and variables → Actions → Variables) so the build step can read them, and
+configure the custom domain under Settings → Pages.
 
-- **Base image:** Uses `node:22.2.0-alpine` for a lightweight Node.js environment.
-- **Dependencies stage:** Installs dependencies using `pnpm` and `corepack` for reproducible builds.
-- **Build stage:** Builds the Next.js app with production optimizations and disables telemetry.
-- **Runner stage:** Runs the app as a non-root user (`nextjs`) for security, exposes port 3000, and uses Next.js
-  standalone output for minimal runtime footprint.
-
-Before building or running the Docker image, make sure you have a `.env` file in the project root with all required
-environment variables filled in (see the Environment Variables section above).
-
-To build and run the Docker image:
+To build and preview the static output locally:
 
 ```bash
-docker build -t m4n-website .
-docker run -p 3000:3000 m4n-website
+pnpm build
+pnpm start
 ```

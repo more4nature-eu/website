@@ -7,14 +7,15 @@ import { useParams } from 'next/navigation';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { bbox as getBbox } from '@turf/turf';
 import { useAtomValue } from 'jotai';
-import queryString from 'query-string';
 import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
-import { CaseStudy, ThematicArea } from '@/lib/case-studies.service';
+import { CaseStudy, CaseStudyService, ThematicArea } from '@/lib/case-studies.service';
 import { PaginatedResult } from '@/lib/paginator';
 import queryKeys from '@/lib/query-keys';
 import { cn } from '@/lib/utils';
+
+import CASE_STUDIES from '@/data/case-studies';
 
 import { SIDEBAR_WIDTH } from '@/containers/cases/sidebar';
 import { filtersAtom, sidebarAtom } from '@/containers/cases/store';
@@ -61,18 +62,8 @@ export default function CasesMap() {
 
   const { data } = useQuery({
     queryKey: queryKeys.studyCases.filteredList(filters).queryKey,
-    queryFn: async (): Promise<{ data: CaseStudy[]; total: number }> => {
-      try {
-        const serialized = queryString.stringify(filters);
-        const response = await fetch(`/case-studies?${serialized}`);
-
-        if (!response.ok) {
-          throw new Error('Error fetching case studies');
-        }
-        return await response.json();
-      } catch (err) {
-        throw new Error('Error fetching case studies');
-      }
+    queryFn: async (): Promise<PaginatedResult<CaseStudy>> => {
+      return new CaseStudyService(CASE_STUDIES, filters, {}).searchCaseStudies();
     },
     select: (data) => {
       if (!data) return [];

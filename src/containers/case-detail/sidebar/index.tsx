@@ -8,9 +8,11 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { HiOutlineExternalLink, HiOutlineXCircle } from 'react-icons/hi';
 
-import { ThematicArea, URLink } from '@/lib/case-studies.service';
+import { CaseStudyService, ThematicArea, URLink } from '@/lib/case-studies.service';
 import { CaseStudy } from '@/lib/case-studies.service';
 import queryKeys from '@/lib/query-keys';
+
+import CASE_STUDIES from '@/data/case-studies';
 
 import { Media } from '@/containers/media';
 
@@ -62,16 +64,13 @@ export default function CaseDetailSidebar() {
   const { data, isSuccess } = useQuery({
     queryKey: queryKeys.studyCases.byId(id as string).queryKey,
     queryFn: async (): Promise<CaseStudy> => {
-      try {
-        const response = await fetch(`/case-studies/${id}`);
+      const caseStudy = new CaseStudyService(CASE_STUDIES, {}, {}).searchById(id as string);
 
-        if (!response.ok) {
-          throw new Error('Error fetching case study');
-        }
-        return await response.json();
-      } catch (err) {
+      if (!caseStudy) {
         throw new Error('Error fetching case study');
       }
+
+      return caseStudy;
     },
   });
 
